@@ -16,9 +16,10 @@ namespace sci {
 
         /// @brief when an identifier is found
         /// @return 
-        Token parseArgument();
-        Token parseQuotedString();
-        Token parseString();
+        Token getArgument();
+        Token getQuotedString();
+        Token getString();
+        Token getIdentifier();
 
         /// @brief only sets the first token if firstToken.type is NONE 
         void setFirstToken(const Token& token);
