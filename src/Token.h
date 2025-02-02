@@ -19,5 +19,8 @@ namespace sci {
         TokenType type = NONE;
         const char* value = nullptr;
         size_t valueSize = 0;
+
+        Token(TokenType type);
+        Token(TokenType type, const char* value, size_t valueSize);
     };
 }
