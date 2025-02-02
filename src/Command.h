@@ -8,7 +8,7 @@ namespace sci {
     struct Command {
         const char* name = nullptr;
         unsigned char minArgs = 0, maxArgs = 0;
-        CommandCallback callback;
+        CommandCallback callback = nullptr;
         const char* description = nullptr;
         void* pData = nullptr;
 
