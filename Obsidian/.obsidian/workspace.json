@@ -4,37 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "b4b6e6290bb64c3a",
+        "id": "08a0019df09d1e76",
         "type": "tabs",
         "children": [
           {
-            "id": "d944566e063d1f8f",
+            "id": "0127475a58ee3f63",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "Syntax.md",
-                "mode": "source",
-                "source": false
+                "file": "Concept.canvas",
+                "viewState": {
+                  "x": -268.660923759885,
+                  "y": -410.50976909957956,
+                  "zoom": -0.3333333333333332
+                }
               },
-              "icon": "lucide-file",
-              "title": "Syntax"
-            }
-          }
-        ]
-      },
-      {
-        "id": "6bf554cc3c9f2c5a",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "22100146b33ab8fa",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "icon": "lucide-layout-dashboard",
+              "title": "Concept"
             }
           }
         ]
@@ -184,9 +171,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8c50a309a838fd41",
+  "active": "0127475a58ee3f63",
   "lastOpenFiles": [
-    "Welcome.md",
-    "Syntax.md"
+    "Concept.canvas",
+    "Implementation.canvas",
+    "Untitled.md",
+    "Untitled 1.canvas",
+    "2025-02-02.md",
+    "FreeBoard.md",
+    "Syntax.md",
+    "Welcome.md"
   ]
 }
