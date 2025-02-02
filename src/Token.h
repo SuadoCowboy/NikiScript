@@ -6,7 +6,7 @@
 #endif
 
 namespace sci {
-    enum TokenType {
+    enum TokenType : unsigned char {
         NONE = 0,
         IDENTIFIER,
         STRING,
