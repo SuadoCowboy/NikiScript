@@ -10,8 +10,8 @@ namespace sci {
         NONE = 0,
         IDENTIFIER,
         STRING,
-        EOS,
-        EOF,
+        EOS, // End Of Statement
+        END
     };
 
     /// @brief either keep the original char array alive so that value won't have issues, or allocate to value
