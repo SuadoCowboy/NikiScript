@@ -8,7 +8,7 @@ namespace sci {
         const char* input = nullptr;
         size_t inputSize = 0;
         size_t position = 0;
-        Token previousToken = NONE;
+        Token firstToken = NONE;
 
         Lexer(const char* input = nullptr, size_t inputSize = 0);
 
