@@ -6,16 +6,16 @@
 		{"id":"42b87bb51d608b5e","type":"text","text":"# cfg/sayhi.cfg\n```\necho hi from &dir\n```","x":770,"y":-1286,"width":280,"height":676},
 		{"id":"c4a8f1ce1871bdaa","type":"text","text":"# Create CVARs like cfgDir and customDir\nEach directory added to DSS is added as a PVAR","x":685,"y":-1523,"width":599,"height":90},
 		{"id":"fcb158ed3efe0ab7","type":"text","text":"# Comments\n`echo hello // Comment ` \n`var /*Comment*/myVariable 10/*Comment*/`)\n","x":-1160,"y":-1429,"width":380,"height":120},
-		{"id":"dd62d10c8f65197a","type":"text","text":"## Commands\n```\nhelp\ncommands\nvar <name> <value>\necho <message>\nprint <type> <message>\nmath <var> <expression>\nexec <file>\n```","x":-1160,"y":-1069,"width":280,"height":260},
 		{"id":"05bc87f42b4c9a50","type":"text","text":"# Exec\n- DSS\n- Create temporary variables like currentDir, fileName and filePath","x":-780,"y":-1018,"width":320,"height":159},
 		{"id":"bbd2757c7720482e","type":"text","text":"# Lexer","x":-1017,"y":-460,"width":137,"height":50},
 		{"id":"27a0bc9920133e5e","type":"text","text":"# Tokens","x":-537,"y":-460,"width":162,"height":50},
 		{"id":"17bb2ffe744b4e43","type":"text","text":"# Parser","x":-20,"y":-460,"width":160,"height":50},
 		{"id":"a90b18093ca72395","type":"text","text":"# CVAR (Console Variable)\nVariable defined by a script.","x":-234,"y":-290,"width":424,"height":128},
-		{"id":"900ccff6f65f5fa2","type":"text","text":"# PVAR (Program Variable)\nVariable defined by C++ code. **Can be immutable by scripts.**","x":-234,"y":-150,"width":424,"height":128},
+		{"id":"900ccff6f65f5fa2","type":"text","text":"# PVAR (Program Variable)\nVariable defined by C++ code. **Can be immutable for scripts.**","x":-234,"y":-150,"width":424,"height":128},
 		{"id":"96e7180544a7bcd7","type":"text","text":"# Variables\nVariables values are also interpreted as scripts.\n`var g \"echo Hello my man\"`","x":-714,"y":-226,"width":400,"height":140},
-		{"id":"66e94b8d982e7599","x":-1073,"y":-162,"width":250,"height":60,"type":"text","text":"# String"},
-		{"id":"cf69388c1de2f80e","type":"text","text":"**Last arg in a command doesn't require quotes and no warning\nwould be displayed unless the command says so**","x":-206,"y":-610,"width":533,"height":60}
+		{"id":"66e94b8d982e7599","type":"text","text":"# String","x":-1073,"y":-162,"width":250,"height":60},
+		{"id":"cf69388c1de2f80e","type":"text","text":"**Last arg in a command doesn't require quotes and no warning\nwould be displayed unless the command says so**","x":-206,"y":-610,"width":533,"height":60},
+		{"id":"dd62d10c8f65197a","type":"text","text":"## Commands\n```\nhelp\ncommands\nvar <name> <value>\necho <message>\nprint <type> <message>\nmath <var> <expression>\nexec <file>\n```","x":-1160,"y":-1068,"width":280,"height":260}
 	],
 	"edges":[
 		{"id":"3b885a4d17b724f7","fromNode":"74b1924ed9ec411e","fromSide":"top","toNode":"8f3735167b5685a3","toSide":"right"},
