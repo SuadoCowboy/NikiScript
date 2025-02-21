@@ -142,7 +142,7 @@ namespace SweatCI {
         commands.clear();
     }
 
-    void Command::run(CommandContext& ctx) {
+    void Command::run(Context& ctx) {
         ctx.pCommand = this;
 
         callback(ctx);
@@ -163,7 +163,7 @@ namespace SweatCI {
         registerCommand("toggle", 3, 3, toggle, "<var|cvar> <option1> <option2> - toggles value between option1 and option2", pVariables);
     }
 
-    void BaseCommands::help(CommandContext& ctx) {
+    void BaseCommands::help(Context& ctx) {
         if (ctx.args.size() == 1) {
             // Print usage for a specific command
             Command* pCommand = nullptr;
@@ -173,7 +173,7 @@ namespace SweatCI {
             printf(OutputLevel::WARNING, "{} {} - see \"commands\" command to get a list of commands\n", ctx.pCommand->name, ctx.pCommand->usage);
     }
 
-    void BaseCommands::commands(CommandContext&) {
+    void BaseCommands::commands(Context&) {
         std::stringstream out;
         for (auto& command : Command::getCommands())
             out << command.name << " " << command.usage << "\n";
@@ -181,7 +181,7 @@ namespace SweatCI {
         print(OutputLevel::ECHO, out.str());
     }
 
-    void BaseCommands::echo(CommandContext& ctx) {
+    void BaseCommands::echo(Context& ctx) {
         std::stringstream message;
         for (const auto& arg : ctx.args)
             message << arg;
@@ -190,7 +190,7 @@ namespace SweatCI {
         print(OutputLevel::ECHO, message.str());
     }
 
-    void BaseCommands::alias(CommandContext& ctx) {
+    void BaseCommands::alias(Context& ctx) {
         auto pVariables = static_cast<std::unordered_map<std::string, std::string>*>(ctx.pCommand->pData);
         
         if (ctx.args.size() == 1) {
@@ -237,7 +237,7 @@ namespace SweatCI {
         (*pVariables)[ctx.args[0]] = ctx.args[1];
     }
 
-    void BaseCommands::getVariables(CommandContext& ctx) {
+    void BaseCommands::getVariables(Context& ctx) {
         auto pVariables = static_cast<std::unordered_map<std::string, std::string>*>(ctx.pCommand->pData);
 
         std::stringstream out;
@@ -250,7 +250,7 @@ namespace SweatCI {
         print(OutputLevel::ECHO, out.str());
     }
 
-    void BaseCommands::variable(CommandContext& ctx) {
+    void BaseCommands::variable(Context& ctx) {
         auto pVariables = static_cast<std::unordered_map<std::string, std::string>*>(ctx.pCommand->pData);
 
         const std::string& key = ctx.args[0];
@@ -263,7 +263,7 @@ namespace SweatCI {
         printf(OutputLevel::ECHO, "{} = \"{}\"\n", key, it->second);
     }
 
-    void BaseCommands::incrementvar(CommandContext& ctx) {
+    void BaseCommands::incrementvar(Context& ctx) {
         auto pVariables = static_cast<std::unordered_map<std::string, std::string>*>(ctx.pCommand->pData);
         double minValue, maxValue, delta;
 
@@ -319,12 +319,12 @@ namespace SweatCI {
         it->second = numberToString(variableValue);
     }
 
-    void BaseCommands::exec(CommandContext& ctx) {
+    void BaseCommands::exec(Context& ctx) {
         auto pVariables = static_cast<std::unordered_map<std::string, std::string>*>(ctx.pCommand->pData);
         execConfigFile(ctx, ctx.args[0], pVariables);
     }
 
-    void BaseCommands::toggle(CommandContext& ctx) {
+    void BaseCommands::toggle(Context& ctx) {
         auto pVariables = static_cast<std::unordered_map<std::string, std::string>*>(ctx.pCommand->pData);
 
         { // CVAR
@@ -355,7 +355,7 @@ namespace SweatCI {
             it->second = ctx.args[1];
     }
 
-    Lexer::Lexer(const CommandContext& ctx, const std::string& input) : ctx(ctx), input(input) {}
+    Lexer::Lexer(const Context& ctx, const std::string& input) : ctx(ctx), input(input) {}
 
     bool Lexer::nextPosition() {
         ++position;
@@ -584,7 +584,7 @@ namespace SweatCI {
         return true;
     }
 
-    void CVARStorage::asCommand(CommandContext& ctx) {
+    void CVARStorage::asCommand(Context& ctx) {
         CVariable* pCvar = nullptr;
         if (!getCvar(ctx.pCommand->name, pCvar)) {
             printf(_ERROR, "\"{}\" CVAR not found", ctx.pCommand->name);
@@ -857,7 +857,7 @@ namespace SweatCI {
         }
     }
 
-    void execConfigFile(CommandContext ctx, const std::string& path, std::unordered_map<std::string, std::string>* pVariables) {
+    void execConfigFile(Context ctx, const std::string& path, std::unordered_map<std::string, std::string>* pVariables) {
         std::ifstream file(path);
 
         if (!file) {

@@ -120,7 +120,7 @@ namespace SweatCI {
 #endif
     };
 
-    struct CommandContext {
+    struct Context {
         std::vector<std::string> args{};
 
         Command* pCommand = nullptr;
@@ -130,7 +130,7 @@ namespace SweatCI {
         size_t lineIndex = 0, columnIndex = 0, lineCount = 0;
     };
 
-    typedef void(*CommandCallback)(CommandContext& ctx);
+    typedef void(*CommandCallback)(Context& ctx);
 
     class Command {
     public:
@@ -150,7 +150,7 @@ namespace SweatCI {
 
         static void clear();
         
-        void run(CommandContext& ctx);
+        void run(Context& ctx);
 
         std::string name = "";
         std::string usage = "";
@@ -172,24 +172,24 @@ namespace SweatCI {
     namespace BaseCommands {
         void init(std::unordered_map<std::string, std::string>* variables);
 
-        void help(CommandContext& ctx);
-        void commands(CommandContext& ctx);
-        void echo(CommandContext& ctx);
-        void alias(CommandContext& ctx);
-        void getVariables(CommandContext& ctx);
-        void variable(CommandContext& ctx);
-        void incrementvar(CommandContext& ctx);
-        void exec(CommandContext& ctx);
-        void toggle(CommandContext& ctx);
+        void help(Context& ctx);
+        void commands(Context& ctx);
+        void echo(Context& ctx);
+        void alias(Context& ctx);
+        void getVariables(Context& ctx);
+        void variable(Context& ctx);
+        void incrementvar(Context& ctx);
+        void exec(Context& ctx);
+        void toggle(Context& ctx);
     };
 
     class Lexer {
     public:
-        Lexer(const CommandContext& ctx, const std::string& input);
+        Lexer(const Context& ctx, const std::string& input);
 
         Token nextToken();
 
-        CommandContext ctx;
+        Context ctx;
     private:
         /// @note skips newline
         /// @return true if is newline
@@ -295,7 +295,7 @@ namespace SweatCI {
     private:
         static std::unordered_map<std::string, CVariable> cvars;
         
-        static void asCommand(CommandContext& ctx);
+        static void asCommand(Context& ctx);
     };
 
     extern std::vector<std::string> loopAliasesRunning;
@@ -326,5 +326,5 @@ namespace SweatCI {
         std::string getVariableFromCurrentTokenValue();
     };
 
-    void execConfigFile(CommandContext ctx, const std::string& path, std::unordered_map<std::string, std::string>* pVariables);
+    void execConfigFile(Context ctx, const std::string& path, std::unordered_map<std::string, std::string>* pVariables);
 }

@@ -3,8 +3,8 @@
 sci::Command::Command() {}
 
 sci::Command::Command(const char* name, unsigned char minArgs, unsigned char maxArgs,
-    CommandCallback callback, const char* description, void* pData)
-  : name(name), minArgs(minArgs), maxArgs(maxArgs), callback(callback), description(description),
+    CommandCallback callback, char* usage, char** argsDescriptions, void* pData)
+  : name(name), minArgs(minArgs), maxArgs(maxArgs), callback(callback), usage(usage), argsDescriptions(argsDescriptions),
     pData(pData) {}
 
 void sci::Command::call(CommandContext& ctx) {

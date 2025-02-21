@@ -1,0 +1,1 @@
+Just a wonder... Check how much memory would be saved if we did this. It's not a big deal though

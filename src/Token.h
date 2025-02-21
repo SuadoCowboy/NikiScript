@@ -1,4 +1,5 @@
 #pragma once
+#include <stdint.h>
 #include <cstring>
 
 #ifndef SWEATCI_STATEMENT_SEPARATOR
@@ -31,10 +32,10 @@ namespace sci {
     struct Token {
         TokenType type = NONE;
         const char* value = nullptr;
-        size_t valueSize = 0;
+        uint64_t valueSize = 0;
 
         Token();
         Token(TokenType type);
-        Token(TokenType type, const char* value, size_t valueSize);
+        Token(TokenType type, const char* value, uint64_t valueSize);
     };
 }
