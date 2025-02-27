@@ -1,9 +1,7 @@
 #pragma once
 
-#include <stdint.h>
 #include <string>
-
-#include "Variable.h"
+#include <sstream>
 
 namespace sci {
     /// @warning this function is not meant to be used outside this header
