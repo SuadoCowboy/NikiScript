@@ -1,7 +1,6 @@
 #pragma once
 
-#include "Command.h"
-#include "SweatString.h"
+#include <string>
 
 namespace sci {
     enum VariableType : uint8_t {
@@ -24,12 +23,9 @@ namespace sci {
     struct Variable {
         VariableType type;
         void* pVariable = nullptr;
-
-        const char* name = nullptr;
-        CommandCallback callback = nullptr;
-        const char* description = nullptr;
+        std::string name = nullptr;
 
         Variable();
-        Variable(const char* name, const char* description, VariableType type, void* pVariable);
+        Variable(const std::string& name, VariableType type, void* pVariable);
     };
 }
