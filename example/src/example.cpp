@@ -1,20 +1,22 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <stdint.h>
 
-struct Color {
+/*struct Color {
     uint8_t r=0,g=0,b=0,a=255;
-};
+};*/
 
-#define SWEATCI_ARGUMENTS_EXTRA Color getColor(sci::CommandContext& ctx);
+//#define SWEATCI_ARGUMENTS_EXTRA Color getColor();
 
-#include <CommandContext.h>
+#include <SweatContext.h>
 #include <PrintCallback.h>
 #include <Lexer.h>
+#include <Variable.h>
 
-Color sci::Arguments::getColor(sci::CommandContext& ctx) {
-    SweatString& arg = arguments[offset++];
-    
+/*Color sci::Arguments::getColor() {
+    std::string& arg = getString();
+
     uint64_t argOffset = 0;
     Variable* pVariable = nullptr;
     char* c = nullptr;
@@ -38,7 +40,7 @@ Color sci::Arguments::getColor(sci::CommandContext& ctx) {
             break;
         }
     }
-}
+}*/
 
 void sweatciPrintCallback(void*, sci::PrintLevel level, const std::string& msg) {
     std::cout << sci::printLevelToString(level) << ": " << msg;
@@ -56,6 +58,8 @@ std::string tokenTypeToString(const sci::TokenType& type) {
         return "EOS";
     case sci::TokenType::END:
         return "END";
+    default:
+        return "UNKNOWN";
     }
 }
 
