@@ -13,7 +13,10 @@ std::string sci::printLevelToString(PrintLevel level) {
         return std::string("WARNING");
     case PrintLevel::_ERROR:
         return std::string("ERROR");
+    default:
+        return std::string("UNKNOWN");
     }
+
 }
 
 void sci::setPrintCallback(void* pData, PrintCallback callback) {
