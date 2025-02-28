@@ -1,6 +1,6 @@
 #pragma once
 #include <stdint.h>
-#include <cstring>
+#include <string>
 
 #ifndef SWEATCI_STATEMENT_SEPARATOR
 #define SWEATCI_STATEMENT_SEPARATOR ';'
@@ -19,7 +19,7 @@
 #endif
 
 namespace sci {
-    enum TokenType : unsigned char {
+    enum class TokenType : uint8_t {
         NONE = 0,
         IDENTIFIER,
         REFERENCE, // '$' example: var "my var" "hello there"; echo "${my var}, how are you?". Yes it can use whitespace, but it's suggested not to
@@ -30,12 +30,12 @@ namespace sci {
 
     /// @brief either keep the original char array alive so that value won't have issues, or allocate to value
     struct Token {
-        TokenType type = NONE;
-        const char* value = nullptr;
+        TokenType type = TokenType::NONE;
+        std::string value;
         uint64_t valueSize = 0;
 
         Token();
         Token(TokenType type);
-        Token(TokenType type, const char* value, uint64_t valueSize);
+        Token(TokenType type, const std::string& value, uint64_t valueSize);
     };
 }
