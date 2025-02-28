@@ -39,3 +39,9 @@ namespace sci {
         Token(TokenType type, const std::string& value);
     };
 }
+
+uint8_t operator|(const sci::TokenType& l, const sci::TokenType& r);
+uint8_t operator|(uint8_t l, const sci::TokenType& r);
+uint8_t operator|(const sci::TokenType& l, uint8_t r);
+uint8_t operator&(uint8_t l, const sci::TokenType& r);
+uint8_t operator&(const sci::TokenType& l, uint8_t r);
