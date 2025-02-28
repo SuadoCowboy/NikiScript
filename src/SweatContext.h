@@ -7,6 +7,8 @@
 #include "Command.h"
 #include "CommandHandler.h"
 #include "PrintCallback.h"
+#include "Variable.h"
+#include "Lexer.h"
 
 namespace sci {
     struct SweatContext;
@@ -29,10 +31,12 @@ namespace sci {
     };
 
     struct SweatContext {
+        Lexer* pLexer = nullptr;
         //void* pData = nullptr;
         Command* pCommand = nullptr;
         Arguments arguments;
 
+        Variables variables;
         CommandHandler commands;
     };
 }
