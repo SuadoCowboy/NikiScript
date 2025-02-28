@@ -2,6 +2,7 @@
 
 #include <stdint.h>
 #include <string>
+#include <vector>
 
 namespace sci {
     enum class VariableType : uint8_t {
@@ -30,4 +31,6 @@ namespace sci {
         Variable();
         Variable(const std::string& name, VariableType type, void* pVariable);
     };
+
+    typedef std::vector<Variable> Variables;
 }
