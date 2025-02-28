@@ -6,7 +6,7 @@
 namespace sci {
     enum class TokenType : uint8_t {
         NONE = 0,
-        COMMAND = 1,
+        IDENTIFIER = 1,
         STRING = 4,
         NUMBER = 8,
         EOS = 16, // End Of Statement
