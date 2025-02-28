@@ -24,7 +24,7 @@ namespace sci {
         COMMAND = 1,
         REFERENCE = 2, // '$' example: var "my var" "hello there"; echo "${my var}, how are you?". Yes it can use whitespace, but it's suggested not to
         STRING = 4,
-        NUMBER= 8,
+        NUMBER = 8,
         EOS = 16, // End Of Statement
         END = 32
     };
