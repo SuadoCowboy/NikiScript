@@ -53,7 +53,6 @@ uint64_t sci::Lexer::setTokenValue() {
     while (nextTokenPosition < input.size() && (position == nextTokenPosition || ((input[nextTokenPosition] != ' ' || allowWhiteSpace) && input[nextTokenPosition] != SWEATCI_STATEMENT_SEPARATOR))) {
         if (input[nextTokenPosition] == '"' && input[nextTokenPosition-1] != '\\') {
             if (allowWhiteSpace) {
-                allowWhiteSpace = false;
                 break;
             } else {
                 allowWhiteSpace = true;
@@ -65,6 +64,8 @@ uint64_t sci::Lexer::setTokenValue() {
     }
 
     token.value = input.substr(position, nextTokenPosition-position);
+    if (allowWhiteSpace)
+        ++nextTokenPosition;
 
     return nextTokenPosition;
 }
