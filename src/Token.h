@@ -32,10 +32,9 @@ namespace sci {
     struct Token {
         TokenType type = TokenType::NONE;
         std::string value;
-        uint64_t valueSize = 0;
 
         Token();
         Token(TokenType type);
-        Token(TokenType type, const std::string& value, uint64_t valueSize);
+        Token(TokenType type, const std::string& value);
     };
 }
