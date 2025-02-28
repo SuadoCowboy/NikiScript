@@ -2,22 +2,6 @@
 #include <stdint.h>
 #include <string>
 
-#ifndef SWEATCI_STATEMENT_SEPARATOR
-#define SWEATCI_STATEMENT_SEPARATOR ';'
-#endif
-
-#ifndef SWEATCI_REFERENCE
-#define SWEATCI_REFERENCE '$'
-#endif
-
-#ifndef SWEATCI_REFERENCE_OPEN
-#define SWEATCI_REFERENCE_OPEN '{'
-#endif
-
-#ifndef SWEATCI_REFERENCE_CLOSE
-#define SWEATCI_REFERENCE_CLOSE '}'
-#endif
-
 namespace sci {
     enum class TokenType : uint8_t {
         NONE = 0,
