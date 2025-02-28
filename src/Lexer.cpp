@@ -16,11 +16,11 @@ sci::Token sci::Lexer::advance() {
 
     NOTE: The lexer only gives information to the parser.
     WHO DECIDES HOW THE ARGUMENTS ARE PASSED IS THE PARSER
-    Example 1: echo "Hello! How are you ${name}?" -> {COMMAND, STRING, REFERENCE, STRING} -> {COMMAND, STRING}
+    Example 1: echo "Hello! How are you ${name}?" -> {IDENTIFIER, STRING, REFERENCE, STRING} -> {IDENTIFIER, STRING}
     
-    Example 2: echo ${name} -> {COMMAND, REFERENCE} -> {COMMAND, STRING}
+    Example 2: echo ${name} -> {IDENTIFIER, REFERENCE} -> {IDENTIFIER, STRING}
 
-    Example 3: incrementvar ${myNumber} 0 10 1 -> {COMMAND, REFERENCE, NUMBER, NUMBER, NUMBER} -> {COMMAND, REFERENCE, NUMBER, NUMBER, NUMBER}
+    Example 3: incrementvar ${myNumber} 0 10 1 -> {IDENTIFIER, REFERENCE, NUMBER, NUMBER, NUMBER} -> {IDENTIFIER, REFERENCE, NUMBER, NUMBER, NUMBER}
 
     All depends on what the command itself is asking for. If a REFENRECE conversion is not possible, print usage of the command
     WE ARE ONLY CHECKING REFERENCES AND NOT ALL TYPES
@@ -112,12 +112,12 @@ uint64_t sci::Lexer::setTokenValue() {
 
 void sci::Lexer::setTokenType() {
     if (token.type == TokenType::NONE || ((TokenType::EOS|TokenType::END) & token.type)) { // if the lexer just started
-        token.type = TokenType::COMMAND;
+        token.type = TokenType::IDENTIFIER;
 
     } else if (!token.value.empty() && token.value[0] == SWEATCI_STATEMENT_SEPARATOR) {
         token.type = TokenType::EOS;
 
-    } else if ((TokenType::COMMAND|TokenType::STRING|TokenType::NUMBER) & token.type) {
+    } else if ((TokenType::IDENTIFIER|TokenType::STRING|TokenType::NUMBER) & token.type) {
         try {
             std::stoi(token.value);
             token.type = TokenType::NUMBER;
