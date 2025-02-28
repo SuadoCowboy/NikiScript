@@ -1,10 +1,12 @@
 #pragma once
 
+#include <stdint.h>
 #include <string>
 
 namespace sci {
-    enum VariableType : uint8_t {
-        STRING = 0,
+    enum class VariableType : uint8_t {
+        NONE = 0,
+        STRING,
         INT8,
         UINT8,
         INT16,
@@ -21,7 +23,7 @@ namespace sci {
     };
 
     struct Variable {
-        VariableType type;
+        VariableType type = VariableType::NONE;
         void* pVariable = nullptr;
         std::string name = nullptr;
 
