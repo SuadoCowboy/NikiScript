@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <stdint.h>
+#include <sstream>
 
 /*struct Color {
     uint8_t r=0,g=0,b=0,a=255;
@@ -9,6 +10,8 @@
 //#define SWEATCI_ARGUMENTS_EXTRA Color getColor();
 
 #include <SweatCI.h>
+#include <PrintCallback.h>
+#include <SweatContext.h>
 #include <Token.h>
 #include <Lexer.h>
 
@@ -52,6 +55,8 @@ std::string tokenTypeToString(const sci::TokenType& type) {
         return "COMMAND";
     case sci::TokenType::STRING:
         return "STRING";
+    case sci::TokenType::NUMBER:
+        return "NUMBER";
     case sci::TokenType::EOS:
         return "EOS";
     case sci::TokenType::END:
@@ -62,7 +67,19 @@ std::string tokenTypeToString(const sci::TokenType& type) {
 }
 
 std::string tokenToString(const sci::Token& token) {
-    return std::string("(")+tokenTypeToString(token.type)+", \""+token.value+"\")";
+    std::stringstream out;
+    out << '(' << tokenTypeToString(token.type) << ", \"" << token.value << "\", REFS: {";
+
+    std::string formatted = token.value;
+    if (token.references.empty())
+        return out.str()+"})";
+
+    else for (auto& ref : token.references) {
+        out << '(' << ref.first << ", " << ref.second << "), ";
+        formatted.insert(ref.first, ref.second);
+    }
+
+    return out.str().substr(0, out.str().size()-2)+"}) -> " + formatted;
 }
 
 int main(int, char**) {
@@ -73,7 +90,7 @@ int main(int, char**) {
     //    return EXIT_FAILURE;
     //}
 
-    std::string input = "echo Hello, World!;      echo \"Ho                  w\" are you?";
+    std::string input = "echo \"${name}\"";
     //for (int i = 1; i < argc; ++i)
     //    input += std::string(argv[i]) + " ";
 
