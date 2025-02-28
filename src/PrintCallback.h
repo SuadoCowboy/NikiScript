@@ -6,12 +6,11 @@
 #include "Utils.h"
 
 namespace sci {
-    enum PrintLevel : uint8_t {
+    enum class PrintLevel : uint8_t {
         DEFAULT = 0, // text that is not involved by user interaction
         ECHO, // any text that came from a command that is not an error
         WARNING,
-        // _ERROR needs a underscore because when including windows.h, it identifies as a macro
-        _ERROR, // anything that went wrong
+        ERROR, // anything that went wrong
     };
 
     std::string printLevelToString(PrintLevel level);

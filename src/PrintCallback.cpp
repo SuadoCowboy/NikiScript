@@ -11,7 +11,7 @@ std::string sci::printLevelToString(PrintLevel level) {
         return std::string("ECHO");
     case PrintLevel::WARNING:
         return std::string("WARNING");
-    case PrintLevel::_ERROR:
+    case PrintLevel::ERROR:
         return std::string("ERROR");
     default:
         return std::string("UNKNOWN");
@@ -29,5 +29,5 @@ void sci::print(const sci::PrintLevel &level, const std::string& str) {
 }
 
 void sci::printUnknownCommand(const std::string& command) {
-    printf(PrintLevel::_ERROR, "Unknown command \"{}\"\n", command);
+    printf(PrintLevel::ERROR, "Unknown command \"{}\"\n", command);
 }

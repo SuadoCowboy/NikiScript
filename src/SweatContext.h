@@ -45,7 +45,7 @@ bool sci::Arguments::getInteger(SweatContext& ctx, T& output) {
         output = (uint8_t)std::stoi(str);
         return true;
     } catch (...) {
-        sci::printf(sci::_ERROR, "\"{}\" is not a valid integer. Argument #{}: {}\n", str, offset-1, ctx.pCommand->maxArgs == 1? ctx.pCommand->argsDescriptions[0] : ctx.pCommand->argsDescriptions[offset-1]);
+        sci::printf(sci::PrintLevel::ERROR, "\"{}\" is not a valid integer. Argument #{}: {}\n", str, offset-1, ctx.pCommand->maxArgs == 1? ctx.pCommand->argsDescriptions[0] : ctx.pCommand->argsDescriptions[offset-1]);
         return false;
     }
 }
