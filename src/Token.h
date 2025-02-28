@@ -21,12 +21,12 @@
 namespace sci {
     enum class TokenType : uint8_t {
         NONE = 0,
-        IDENTIFIER,
-        REFERENCE, // '$' example: var "my var" "hello there"; echo "${my var}, how are you?". Yes it can use whitespace, but it's suggested not to
-        STRING,
-        NUMBER,
-        EOS, // End Of Statement
-        END
+        COMMAND = 1,
+        REFERENCE = 2, // '$' example: var "my var" "hello there"; echo "${my var}, how are you?". Yes it can use whitespace, but it's suggested not to
+        STRING = 4,
+        NUMBER= 8,
+        EOS = 16, // End Of Statement
+        END = 32
     };
 
     /// @brief either keep the original char array alive so that value won't have issues, or allocate to value
