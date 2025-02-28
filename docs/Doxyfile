@@ -965,8 +965,7 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = .. \
-                         README.md \
+INPUT                  = ..
 
 # This tag can be used to specify the character encoding of the source files
 # that Doxygen parses. Internally Doxygen uses the UTF-8 encoding. Doxygen uses
@@ -1068,6 +1067,8 @@ RECURSIVE              = YES
 EXCLUDE                = ../include \
                         ../SweatCI.cpp \
                         ../SweatCI.h \
+                        ../build \
+                        ../Obsidian
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
