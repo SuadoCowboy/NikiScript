@@ -33,7 +33,7 @@ namespace sci {
         Command* pCommand = nullptr;
         Arguments arguments;
 
-        CommandHandler CommandHandler;
+        CommandHandler commands;
     };
 }
 
