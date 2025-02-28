@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <sstream>
 #include <stdint.h>
 
 /*struct Color {
@@ -9,10 +8,9 @@
 
 //#define SWEATCI_ARGUMENTS_EXTRA Color getColor();
 
-#include <SweatContext.h>
-#include <PrintCallback.h>
+#include <SweatCI.h>
+#include <Token.h>
 #include <Lexer.h>
-#include <Variable.h>
 
 /*Color sci::Arguments::getColor() {
     std::string& arg = getString();
@@ -50,8 +48,8 @@ std::string tokenTypeToString(const sci::TokenType& type) {
     switch (type) {
     case sci::TokenType::NONE:
         return "NONE";
-    case sci::TokenType::IDENTIFIER:
-        return "IDENTIFIER";
+    case sci::TokenType::COMMAND:
+        return "COMMAND";
     case sci::TokenType::STRING:
         return "STRING";
     case sci::TokenType::EOS:
@@ -64,23 +62,25 @@ std::string tokenTypeToString(const sci::TokenType& type) {
 }
 
 std::string tokenToString(const sci::Token& token) {
-    return std::string("(")+tokenTypeToString(token.type)+", "+token.value+")";
+    return std::string("(")+tokenTypeToString(token.type)+", \""+token.value+"\")";
 }
 
-int main(int argc, char** argv) {
+int main(int, char**) {
     sci::setPrintCallback(nullptr, sweatciPrintCallback);
 
-    if (argc <= 1) {
-        sci::printf(sci::_ERROR, "Usage: \"{}\" <input>\n", argv[0]);
-        return EXIT_FAILURE;
-    }
+    //if (argc <= 1) {
+    //    sci::printf(sci::PrintLevel::ERROR, "Usage: \"{}\" <input>\n", argv[0]);
+    //    return EXIT_FAILURE;
+    //}
 
-    std::string input;
-    for (int i = 1; i < argc; ++i)
-        input += std::string(argv[i]) + " ";
+    std::string input = "echo Hello, World!;      echo \"Ho                  w\" are you?";
+    //for (int i = 1; i < argc; ++i)
+    //    input += std::string(argv[i]) + " ";
+
+    sci::SweatContext ctx;
+    sci::registerCommands(ctx);
 
     sci::Lexer lexer{input};
-
     sci::Token token = {sci::TokenType::NONE};
     while (token.type != sci::TokenType::END) {
         token = lexer.advance();
