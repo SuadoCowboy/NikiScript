@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 #include <string>
-#include <vector>
+#include <unordered_map>
 
 namespace sci {
     enum class VariableType : uint8_t {
@@ -32,5 +32,5 @@ namespace sci {
         Variable(const std::string& name, VariableType type, void* pVariable);
     };
 
-    typedef std::vector<Variable> Variables;
+    typedef std::unordered_map<std::string_view, Variable> Variables;
 }
