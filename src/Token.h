@@ -1,12 +1,12 @@
 #pragma once
 #include <stdint.h>
 #include <string>
+#include <unordered_map>
 
 namespace sci {
     enum class TokenType : uint8_t {
         NONE = 0,
         COMMAND = 1,
-        REFERENCE = 2, // '$' example: var "my var" "hello there"; echo "${my var}, how are you?". Yes it can use whitespace, but it's suggested not to
         STRING = 4,
         NUMBER = 8,
         EOS = 16, // End Of Statement
@@ -17,6 +17,7 @@ namespace sci {
     struct Token {
         TokenType type = TokenType::NONE;
         std::string value;
+        std::unordered_map<uint64_t, std::string> references;
 
         Token();
         Token(TokenType type);

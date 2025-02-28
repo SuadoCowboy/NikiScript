@@ -1,5 +1,9 @@
 #include "Lexer.h"
 
+#include <sstream>
+
+#include "PrintCallback.h"
+
 sci::Lexer::Lexer(const std::string& input) : input(input) {}
 
 sci::Token sci::Lexer::advance() {
@@ -24,6 +28,7 @@ sci::Token sci::Lexer::advance() {
     TODO: split code into functions
     */
 
+    token.references.clear();
     while (position < input.size() && input[position] == ' ')
         ++position;
 
@@ -34,7 +39,7 @@ sci::Token sci::Lexer::advance() {
     }
 
     uint64_t nextTokenPosition = setTokenValue();
-    setTokenType(nextTokenPosition);
+    setTokenType();
 
     /*
     echo "This is a quoted string"
@@ -48,49 +53,76 @@ sci::Token sci::Lexer::advance() {
 
 uint64_t sci::Lexer::setTokenValue() {
     uint64_t nextTokenPosition = position;
-    
-    bool allowWhiteSpace = false;
-    while (nextTokenPosition < input.size() && (position == nextTokenPosition || ((input[nextTokenPosition] != ' ' || allowWhiteSpace) && input[nextTokenPosition] != SWEATCI_STATEMENT_SEPARATOR))) {
-        if (input[nextTokenPosition] == '"' && input[nextTokenPosition-1] != '\\') {
-            if (allowWhiteSpace) {
+    std::stringstream result;
+
+    /*
+    1 = allow white space
+    2 = escape quotes allowed
+    */
+    unsigned char flags = 0;
+
+    while (nextTokenPosition < input.size() && (position == nextTokenPosition || ((input[nextTokenPosition] != ' ' || (flags & 1)) && input[nextTokenPosition] != SWEATCI_STATEMENT_SEPARATOR))) {
+        if (flags & 2) {
+            flags &= ~2;
+            result << input[nextTokenPosition++];
+            continue;
+        }
+
+        if (input[nextTokenPosition] == '\\') {
+            flags |= 2;
+            ++nextTokenPosition;
+            continue;
+        
+        } else if (input[nextTokenPosition] == SWEATCI_REFERENCE && nextTokenPosition+1 < input.size() && input[nextTokenPosition+1] == SWEATCI_REFERENCE_OPEN) {
+            std::stringstream referenceStream;
+
+            nextTokenPosition += 2;
+            for (; nextTokenPosition < input.size() && input[nextTokenPosition] != ' '; ++nextTokenPosition) {
+                if (input[nextTokenPosition] == '}') {
+                    ++nextTokenPosition;
+                    break;
+                }
+
+                referenceStream << input[nextTokenPosition];
+            }
+
+            token.references[result.str().size()] = referenceStream.str();
+            continue;
+        }
+        
+        if (input[nextTokenPosition] == '"') {
+            ++nextTokenPosition;
+            
+            if (flags & 1) {
+                flags &= ~1;
                 break;
             } else {
-                allowWhiteSpace = true;
-                ++position;
+                flags |= 1;
+                continue;
             }
         }
 
-        ++nextTokenPosition;
+        result << input[nextTokenPosition++];
     }
 
-    token.value = input.substr(position, nextTokenPosition-position);
-    if (allowWhiteSpace)
-        ++nextTokenPosition;
+    token.value = result.str();
 
     return nextTokenPosition;
 }
 
-void sci::Lexer::setTokenType(uint64_t nextTokenPosition) {
+void sci::Lexer::setTokenType() {
     if (token.type == TokenType::NONE || ((TokenType::EOS|TokenType::END) & token.type)) { // if the lexer just started
         token.type = TokenType::COMMAND;
 
     } else if (!token.value.empty() && token.value[0] == SWEATCI_STATEMENT_SEPARATOR) {
         token.type = TokenType::EOS;
 
-    } else if ((TokenType::COMMAND|TokenType::REFERENCE|TokenType::STRING|TokenType::NUMBER) & token.type) {
-        if (position < nextTokenPosition
-         && input[position] == SWEATCI_REFERENCE
-         && input[position+1] == SWEATCI_REFERENCE_OPEN
-         && input[input.find(' ', position)] == SWEATCI_REFERENCE_CLOSE) {
-            token.type = TokenType::REFERENCE;
-
-        } else {
-            try {
-                std::stoi(token.value);
-                token.type = TokenType::NUMBER;
-            } catch (...) {
-                token.type = TokenType::STRING;
-            }
+    } else if ((TokenType::COMMAND|TokenType::STRING|TokenType::NUMBER) & token.type) {
+        try {
+            std::stoi(token.value);
+            token.type = TokenType::NUMBER;
+        } catch (...) {
+            token.type = TokenType::STRING;
         }
     }
 }

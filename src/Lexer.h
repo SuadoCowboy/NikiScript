@@ -42,10 +42,8 @@ namespace sci {
 
         /**
          * @brief Checks if the last token type was any of those and search which type current token should be
-         * 
-         * @param nextTokenPosition
          * @see Lexer::setTokenValue
          */
-        void setTokenType(uint64_t nextTokenPosition);
+        void setTokenType();
     };
 }
