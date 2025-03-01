@@ -5,32 +5,20 @@
 #include <unordered_map>
 
 namespace sci {
-    enum class VariableType : uint8_t {
-        NONE = 0,
-        STRING,
-        INT8,
-        UINT8,
-        INT16,
-        UINT16,
-        INT32,
-        UINT32,
-        INT64,
-        UINT64,
-        FLOAT,
-        DOUBLE
-    #ifdef SWEATCI_VARIABLE_TYPES_EXTRA
-        ,SWEATCI_VARIABLE_TYPES_EXTRA
-    #endif
-    };
+    typedef std::string(*variableToString)();
+    typedef void(*parseStringToVariable)(const std::string& str);
 
     struct Variable {
-        VariableType type = VariableType::NONE;
         void* pVariable = nullptr;
         std::string name = nullptr;
 
+        parseStringToVariable parseString = nullptr;
+        variableToString toString = nullptr;
+
         Variable();
-        Variable(const std::string& name, VariableType type, void* pVariable);
+        Variable(const parseStringToVariable& parseString, const variableToString& toString,
+            const std::string& name, void* pVariable);
     };
 
-    typedef std::unordered_map<std::string_view, Variable> Variables;
+    typedef std::unordered_map<std::string, Variable> Variables;
 }
