@@ -36,20 +36,36 @@ void sci::handleCommandCall(SweatContext& ctx) {
 void sci::handleStringToken(SweatContext& ctx) {
     expandStringToken(ctx, ctx.pLexer->token);
 
-    char type = 0;
-    bool isName = true;
-    type = ctx.pCommand->argsDescriptions[ctx.arguments.arguments.size()*2][0];
-
-    for (auto& arg : ctx.pCommand->argsDescriptions) {
-        if (isName && !arg.empty()) {
-            
+    const std::string_view& arg = ctx.pCommand->argsDescriptions[ctx.arguments.arguments.size()*2];
+    switch (arg[0]) {
+    case 'i':
+        try {
+            std::stoi(ctx.pLexer->token.value);
+        } catch (...) {
+            sci::printf(PrintLevel::ERROR, "{} -> type not matched(expected integer)\n", arg);
         }
+        break;
 
-        isName = !isName;
+    case 'f':
+        try {
+            std::stof(ctx.pLexer->token.value);
+        } catch (...) {
+            sci::printf(PrintLevel::ERROR, "{} -> type not matched(expected float)\n", arg);
+        }
+        break;
+
+    case 's':
+        break;
+
+    case 'v':
+        if (!ctx.programVariables.count(ctx.pLexer->token.value) == 0 && ctx.consoleVariables.count(ctx.pLexer->token.value) == 0)    
+            sci::printf(PrintLevel::ERROR, "{} -> type not matched(variable console expected)\n", arg);
+        break;
+
+    default: // should never happen
+        break;
     }
 
-    // TODO: if parameter should be number (or reference and string is not a reference) then print usage and explain
-    // TODO: if is reference, check if reference is number if parameter should be number
     if (ctx.pCommand->maxArgs == 1 && !ctx.arguments.arguments.empty())
         ctx.arguments.arguments[0] += ctx.pLexer->token.value;
     else
