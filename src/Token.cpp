@@ -26,7 +26,7 @@ uint8_t operator&(sci::TokenType l, uint8_t r) {
     return static_cast<uint8_t>(l)&r;
 }
 
-void sci::expandStringToken(SweatContext& ctx, Token& token) {
+void sci::insertReferencesInToken(SweatContext& ctx, Token& token) {
     size_t offset = 0;
     for (auto& reference : token.references) {
         if (ctx.consoleVariables.count(reference.second) != 0) { // console variable
