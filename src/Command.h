@@ -12,13 +12,28 @@ namespace sci {
         std::string_view name;
         unsigned char minArgs = 0, maxArgs = 0;
         CommandCallback callback = nullptr;
-        std::string_view usage;
+        std::string_view description;
+
+        /**
+         * @note odd = name
+         * @note even = description
+         */
         std::vector<std::string_view> argsDescriptions;
-        //void* pData = nullptr;
 
         Command();
-        Command(const std::string_view& name, unsigned char minArgs, unsigned char maxArgs, CommandCallback callback, const std::string_view& usage, const std::vector<std::string_view>& argsDescriptions/*, void* pData=nullptr*/);
+        Command(const std::string_view& name, unsigned char minArgs, unsigned char maxArgs, CommandCallback callback, const std::string_view& description, const std::vector<std::string_view>& argsDescriptions);
     
+        void printDescription();
+
+        /**
+         * @brief prints name + argsDescriptions but only the names
+         * 
+         */
         void printUsage();
+
+        /**
+         * @brief prints usage, description and argsDescriptions all like a data tree
+         */
+        void printAsDataTree();
     };
 }
