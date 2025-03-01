@@ -31,11 +31,10 @@ void sci::echo_command(sci::SweatContext& ctx) {
 }
 
 void sci::var_command(sci::SweatContext& ctx) {
-    if (ctx.arguments.arguments.size() == 1) {
+    if (ctx.arguments.arguments.size() == 1)
         ctx.consoleVariables[ctx.arguments.getString()] = "";
-    } else {
-
-    }
+    else
+        ctx.consoleVariables[ctx.arguments.getString()] = ctx.arguments.getString();
 }
 
 void sci::registerCommands(sci::SweatContext& ctx) {
