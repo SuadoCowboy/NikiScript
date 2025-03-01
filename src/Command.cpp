@@ -10,7 +10,7 @@ sci::Command::Command(const std::string_view& name, unsigned char minArgs, unsig
     CommandCallback callback, const std::string_view& description, const std::vector<std::string_view>& argsDescriptions)
   : name(name), minArgs(minArgs), maxArgs(maxArgs), callback(callback), description(description), argsDescriptions(argsDescriptions) {}
 
-void sci::Command::printArgumentsNames() {
+std::string sci::Command::getArgumentsNames() {
     std::stringstream oss;
     bool isName = true;
 
@@ -20,26 +20,22 @@ void sci::Command::printArgumentsNames() {
 
         isName = !isName;
     }
-    oss << '\n';
 
-    sci::print(PrintLevel::ECHO,  oss.str());
+    std::string out = oss.str();
+    out.erase(out.size()-1);
+
+    return out;
 }
 
-void sci::Command::printUsage() {
-    std::stringstream usage;
+std::string sci::Command::getUsage() {
+    std::stringstream usageOss;
+    
+    usageOss << name << ' ' << getArgumentsNames() << '\n';
+    
+    std::string usage = usageOss.str();
+    usage.erase(usage.size()-1);
 
-    usage << "Usage: " << name << ' ';
-    bool isName = true;
-    for (uint64_t i = 0; i < argsDescriptions.size(); ++i) {
-        if (isName) {
-            usage << argsDescriptions[i] << ' ';
-        }
-
-        isName = !isName;
-    }
-    usage << '\n';
-
-    sci::print(PrintLevel::ECHO, usage.str());
+    return usage;
 }
 
 void sci::Command::printAsDataTree() {

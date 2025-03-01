@@ -17,7 +17,7 @@ void sci::handleCommandCall(SweatContext& ctx) {
         else
             sci::printf(sci::PrintLevel::ERROR, "Expected arguments between [{}, {}] but received {} argument(s)\n", static_cast<uint16_t>(ctx.pCommand->minArgs), static_cast<uint16_t>(ctx.pCommand->maxArgs), ctx.arguments.arguments.size());
 
-        ctx.pCommand->printArgumentsNames();
+        sci::printf(sci::PrintLevel::ECHO, "{} {}", ctx.pCommand->name, ctx.pCommand->getArgumentsNames());
         return;
     }
 
