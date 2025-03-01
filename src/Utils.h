@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stdint.h>
 #include <string>
 #include <sstream>
 
@@ -54,4 +55,27 @@ namespace sci {
 
         return out.str();
     }
+
+    /**
+     * @brief trim from start (in place)
+     * 
+     * @param s string to trim the end
+     */
+    void ltrim(std::string &s);
+    
+    /**
+     * @brief trim from end (in place)
+     * 
+     * @param s string to trim the end
+     */
+    void rtrim(std::string &s);
+    
+    /**
+     * @brief trim from start and end
+     * 
+     * @param s string to trim
+     * @see sci::trim
+     * @see sci::rtrim
+     */
+    void trim(std::string& s);
 }
