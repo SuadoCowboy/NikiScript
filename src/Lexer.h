@@ -46,10 +46,10 @@ namespace sci {
 		 * @see Lexer::advance
 		 */
 		void advanceUntil(uint8_t flags);
-	
+
 		/**
 		 * @brief Sets the value of the token
-		 * 
+		 *
 		 * @return uint64_t next input initial position(either whitespace, EOS or END)
 		 * @see Lexer::setTokenType
 		 */
