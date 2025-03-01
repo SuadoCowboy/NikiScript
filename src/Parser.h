@@ -4,6 +4,11 @@
 
 namespace sci {
     /**
+     * @brief clear anything related to the current lexer statement and goes to the next one
+     */
+    void clearStatementData(SweatContext& ctx);
+
+    /**
      * @brief called in parse function when EOS or END is reached
      * @note sets ctx.pCommand to nullptr
      * @note ctx.pCommand should point to a valid Command object

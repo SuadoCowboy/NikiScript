@@ -4,6 +4,13 @@
 
 uint64_t sci::maxConsoleVariableCalls = 10000;
 
+void sci::clearStatementData(SweatContext& ctx) {
+    ctx.pCommand = nullptr;
+    ctx.pData = nullptr;
+    ctx.arguments.arguments.clear();
+    ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
+}
+
 void sci::handleCommandCall(SweatContext& ctx) {
     if (ctx.pCommand == nullptr)
         return;
@@ -28,9 +35,7 @@ void sci::handleCommandCall(SweatContext& ctx) {
     }
 
     ctx.pCommand->callback(ctx);
-    ctx.arguments.arguments.clear();
-    ctx.pCommand = nullptr;
-    ctx.pData = nullptr;
+    clearStatementData(ctx);
 }
 
 void sci::handleStringToken(SweatContext& ctx) {
@@ -42,7 +47,8 @@ void sci::handleStringToken(SweatContext& ctx) {
         try {
             std::stoi(ctx.pLexer->token.value);
         } catch (...) {
-            sci::printf(PrintLevel::ERROR, "{} -> type not matched(expected integer number)\n", arg);
+            sci::printf(PrintLevel::ERROR, "{} -> Type not matched: expected integer number\n", arg);
+            clearStatementData(ctx);
         }
         break;
 
@@ -50,7 +56,8 @@ void sci::handleStringToken(SweatContext& ctx) {
         try {
             std::stof(ctx.pLexer->token.value);
         } catch (...) {
-            sci::printf(PrintLevel::ERROR, "{} -> type not matched(expected decimal number)\n", arg);
+            sci::printf(PrintLevel::ERROR, "{} -> Type not matched: expected decimal number\n", arg);
+            clearStatementData(ctx);
         }
         break;
 
@@ -58,8 +65,10 @@ void sci::handleStringToken(SweatContext& ctx) {
         break;
 
     case 'v':
-        if (!ctx.programVariables.count(ctx.pLexer->token.value) == 0 && ctx.consoleVariables.count(ctx.pLexer->token.value) == 0)    
-            sci::printf(PrintLevel::ERROR, "{} -> type not matched(variable console expected)\n", arg);
+        if (!ctx.programVariables.count(ctx.pLexer->token.value) == 0 && ctx.consoleVariables.count(ctx.pLexer->token.value) == 0) {
+            sci::printf(PrintLevel::ERROR, "{} -> Type not matched: variable expected\n", arg);
+            clearStatementData(ctx);
+        }
         break;
 
     default: // should never happen
