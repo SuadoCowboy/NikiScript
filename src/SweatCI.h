@@ -4,6 +4,13 @@
 
 namespace sci {
     /**
+     * @brief shows command usage
+     * 
+     * @param ctx 
+     */
+    void help_command(sci::SweatContext& ctx);
+
+    /**
      * @brief prints all the arguments passed to the console
      * @param message
      */
