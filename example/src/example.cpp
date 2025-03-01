@@ -105,12 +105,13 @@ int main(int, char**) {
     //   return EXIT_FAILURE;
     // }
 
-    std::string input = "var a \"echo jasiod; a; echo b\"; var b \"a fuck this should not appear; echo hum\"; b"; //"var test \"echo \\\"Gay Sex\\\" funny jajaajaj\"; echo test = \\\"${test}\\\";   test   ";
+    std::string input = "var b \"Hello everynyan\"; echo ${b";
     // for (int i = 1; i < argc; ++i)
     //    input += std::string(argv[i]) + " ";
 
     sci::SweatContext ctx;
     sci::registerCommands(ctx);
+    ctx.programVariables["penes"] = {};
 
     sci::Lexer lexer{input};
     ctx.pLexer = &lexer;

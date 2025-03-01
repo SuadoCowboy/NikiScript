@@ -47,7 +47,7 @@ uint64_t sci::Lexer::setTokenValue() {
     */
     unsigned char flags = 0;
 
-    while (nextTokenPosition < input.size() && (position == nextTokenPosition || ((input[nextTokenPosition] != ' ' && input[nextTokenPosition] != SWEATCI_STATEMENT_SEPARATOR) || (flags & 1)))) {
+    while (nextTokenPosition < input.size() && (position == nextTokenPosition || ((input[nextTokenPosition] != ' ' && (input[nextTokenPosition] != SWEATCI_STATEMENT_SEPARATOR || (flags & 2))) || (flags & 1)))) {
         if (flags & 2) {
             flags &= ~2;
             result << input[nextTokenPosition++];
@@ -62,18 +62,24 @@ uint64_t sci::Lexer::setTokenValue() {
         } else if (input[nextTokenPosition] == SWEATCI_REFERENCE && nextTokenPosition+1 < input.size() && input[nextTokenPosition+1] == SWEATCI_REFERENCE_OPEN) {
             std::stringstream referenceStream;
 
-            nextTokenPosition += 2;
-            for (; nextTokenPosition < input.size() && input[nextTokenPosition] != ' '; ++nextTokenPosition) {
-                if (input[nextTokenPosition] == '}') {
-                    ++nextTokenPosition;
+            uint64_t tempIndex = nextTokenPosition+2;
+            
+            bool foundCloseReference = false;
+            for (; tempIndex < input.size() && input[tempIndex] != ' '; ++tempIndex) {
+                if (input[tempIndex] == SWEATCI_REFERENCE_CLOSE) {
+                    ++tempIndex;
+                    foundCloseReference = true;
                     break;
                 }
 
-                referenceStream << input[nextTokenPosition];
+                referenceStream << input[tempIndex];
             }
 
-            token.references[result.str().size()] = referenceStream.str();
-            continue;
+            if (foundCloseReference) {
+                token.references[result.str().size()] = referenceStream.str();
+                nextTokenPosition = tempIndex;
+                continue;
+            }
         }
         
         if (input[nextTokenPosition] == '"') {
