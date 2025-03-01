@@ -1,13 +1,17 @@
 #include "SweatCI.h"
 
+#include <sstream>
+
 #include "Utils.h"
 
 void sci::help_command(sci::SweatContext& ctx) {
-    if (ctx.arguments.arguments.size() == 0)
+    if (ctx.arguments.arguments.size() == 0) {
+        std::stringstream oss;
         for (auto& command : ctx.commands.commands)
-            command.second.printUsage();
+            oss << command.second.getUsage() << '\n';
 
-    else {
+        sci::print(sci::PrintLevel::ECHO, oss.str());
+    } else {
         std::string& commandName = ctx.arguments.getString();
         trim(commandName);
 
@@ -24,6 +28,14 @@ void sci::help_command(sci::SweatContext& ctx) {
 
 void sci::echo_command(sci::SweatContext& ctx) {
     sci::printf(sci::PrintLevel::ECHO, "{}\n", ctx.arguments.getString());
+}
+
+void sci::var_command(sci::SweatContext& ctx) {
+    if (ctx.arguments.arguments.size() == 1) {
+        ctx.variables[ctx.arguments.getString()] = Variable();
+    } else {
+
+    }
 }
 
 void sci::registerCommands(sci::SweatContext& ctx) {

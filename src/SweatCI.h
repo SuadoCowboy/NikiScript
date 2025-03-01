@@ -5,16 +5,17 @@
 namespace sci {
     /**
      * @brief shows command usage
-     * 
-     * @param ctx 
+     * @param command s[command?]
      */
     void help_command(sci::SweatContext& ctx);
 
     /**
-     * @brief prints all the arguments passed to the console
-     * @param message
+     * @brief prints all the arguments passed
+     * @param message s[message]
      */
     void echo_command(sci::SweatContext& ctx);
+
+    void var_command(sci::SweatContext& ctx);
 
     /**
      * @brief adds default commands such as echo
