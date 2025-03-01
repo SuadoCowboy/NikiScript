@@ -11,6 +11,9 @@ sci::Command::Command(const std::string_view& name, unsigned char minArgs, unsig
   : name(name), minArgs(minArgs), maxArgs(maxArgs), callback(callback), description(description), argsDescriptions(argsDescriptions) {}
 
 std::string sci::Command::getArgumentsNames() {
+    if (argsDescriptions.size() == 0)
+        return "";
+
     std::stringstream oss;
     bool isName = true;
 
