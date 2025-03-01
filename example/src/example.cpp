@@ -102,7 +102,7 @@ int main(int, char**) {
     //   return EXIT_FAILURE;
     //}
 
-    std::string input = "help echo";
+    std::string input = "help \"       echo    \"";
     //for (int i = 1; i < argc; ++i)
     //    input += std::string(argv[i]) + " ";
 
