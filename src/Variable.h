@@ -1,24 +1,29 @@
 #pragma once
 
 #include <stdint.h>
+#include <string_view>
 #include <string>
 #include <unordered_map>
 
 namespace sci {
-    typedef std::string(*variableToString)();
-    typedef void(*parseStringToVariable)(const std::string& str);
+    struct Variable;
+
+    typedef std::string_view(*GetVariable)(const Variable& var);
+    typedef void(*SetVariable)(Variable& var, const std::string& str);
 
     struct Variable {
+        std::string_view name;
         void* pVariable = nullptr;
-        std::string name = nullptr;
 
-        parseStringToVariable parseString = nullptr;
-        variableToString toString = nullptr;
+        GetVariable get = nullptr;
+        SetVariable set = nullptr;
 
         Variable();
-        Variable(const parseStringToVariable& parseString, const variableToString& toString,
-            const std::string& name, void* pVariable);
+        Variable(const std::string_view& name, void* pVariable, const GetVariable& get, const SetVariable& set);
     };
 
     typedef std::unordered_map<std::string, Variable> Variables;
+
+    std::string getString(const Variable& var);
+    void setString(Variable& var, const std::string& str);
 }
