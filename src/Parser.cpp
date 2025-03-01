@@ -34,28 +34,26 @@ void sci::handleCommandCall(SweatContext& ctx) {
 }
 
 void sci::handleStringToken(SweatContext& ctx) {
-    size_t offset = 0;
-    for (auto& reference : ctx.pLexer->token.references) {
-        if (ctx.consoleVariables.count(reference.second) != 0) { // console variable
-            ctx.pLexer->token.value = ctx.pLexer->token.value.insert(offset+reference.first, ctx.consoleVariables[reference.second]);
-            offset += ctx.consoleVariables[reference.second].size();
+    expandStringToken(ctx, ctx.pLexer->token);
 
-        } else if (ctx.programVariables.count(reference.second) != 0) { // program variable
-            ProgramVariable& var = ctx.programVariables[reference.second];
-            std::string value = var.get(&var);
+    char type = 0;
+    bool isName = true;
+    type = ctx.pCommand->argsDescriptions[ctx.arguments.arguments.size()*2][0];
 
-            ctx.pLexer->token.value = ctx.pLexer->token.value.insert(offset+reference.first, value);
-            offset += value.size();
-        
-        } else {
-            ctx.pLexer->token.value = ctx.pLexer->token.value.insert(reference.first, formatString("{}{}{}{}", SWEATCI_REFERENCE, SWEATCI_REFERENCE_OPEN, reference.second, SWEATCI_REFERENCE_CLOSE));
-            offset += reference.second.size()+3;
+    for (auto& arg : ctx.pCommand->argsDescriptions) {
+        if (isName && !arg.empty()) {
+            
         }
+
+        isName = !isName;
     }
 
     // TODO: if parameter should be number (or reference and string is not a reference) then print usage and explain
     // TODO: if is reference, check if reference is number if parameter should be number
-    ctx.arguments.arguments.push_back(ctx.pLexer->token.value);
+    if (ctx.pCommand->maxArgs == 1 && !ctx.arguments.arguments.empty())
+        ctx.arguments.arguments[0] += ctx.pLexer->token.value;
+    else
+        ctx.arguments.arguments.push_back(ctx.pLexer->token.value);
 }
 
 void sci::handleConsoleVariableCall(SweatContext& ctx) {
