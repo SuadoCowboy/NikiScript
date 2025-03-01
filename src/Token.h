@@ -6,7 +6,7 @@
 namespace sci {
     enum class TokenType : uint8_t {
         NONE = 0,
-        IDENTIFIER = 1, ///< If it's the first token after an EOS, END or NONE
+        IDENTIFIER = 1, ///< If it's the first token after an EOS, END or NONE. Should be either a variable or command
         STRING = 4, ///< If lexer could not convert to integer and an identifier was already caught up
         NUMBER = 8, ///< If lexer was able to convert to integer
         EOS = 16, ///< End Of Statement
