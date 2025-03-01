@@ -12,7 +12,7 @@ sci::Command::Command(const std::string_view& name, unsigned char minArgs, unsig
   : name(name), minArgs(minArgs), maxArgs(maxArgs), callback(callback), description(description), argsDescriptions(argsDescriptions) {
 	assert(minArgs <= maxArgs);
 	assert(argsDescriptions.size() % 2 == 0);
-	assert(argsDescriptions.size()/2 == maxArgs);
+	assert(argsDescriptions.size() / 2 == maxArgs);
 	
 	bool isName = true;
 	for (uint64_t i = 0; i < argsDescriptions.size(); ++i) {
