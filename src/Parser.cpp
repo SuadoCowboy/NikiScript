@@ -2,7 +2,13 @@
 
 #include "PrintCallback.h"
 
+uint64_t sci::maxConsoleVariableCalls = 0;
+
 void sci::handleCommandCall(SweatContext& ctx) {
+    if (ctx.pCommand == nullptr)
+        return;
+
+    ctx.arguments.offset = 0;
     if (ctx.pCommand->maxArgs == 1 && ctx.arguments.arguments.size() > 1) {
         std::string argument = "";
         for (const auto& arg : ctx.arguments.arguments)
@@ -23,18 +29,37 @@ void sci::handleCommandCall(SweatContext& ctx) {
 
     ctx.pCommand->callback(ctx);
     ctx.arguments.arguments.clear();
+    ctx.pCommand = nullptr;
 }
 
-void sci::parse(SweatContext& ctx) {
-    if (ctx.pLexer == nullptr)
-        return;
+void sci::handleStringToken(SweatContext& ctx) {
+    // TODO: if parameter should be number (or reference and string is not a reference) then print usage and explain
+    // TODO: if is reference, check if reference is number if parameter should be number
+    ctx.arguments.arguments.push_back(ctx.pLexer->token.value);
+}
 
+void sci::handleConsoleVariableCall(SweatContext& ctx) {
+    Lexer* pOriginalLexer = ctx.pLexer;
+    
+    // TODO: actually that's not how source engine does I think...
+    // I've been wrong this whole time. Source engine probably just adds the alias value to a job system
+    // each game tick updates this job system and because the alias would call another alias, it add this new alias
+    // to the job system. It's not recursive and that's why the loop works.
+
+    std::vector<Lexer> tempLexers;
+    tempLexers.emplace_back(ctx.consoleVariables[ctx.pLexer->token.value]);
+    
+    ctx.pLexer = &tempLexers.back();
     ctx.pLexer->advance();
+    
+    //ctx.runningFrom |= ALIAS;
+
     while (ctx.pLexer->token.type != TokenType::END) {
         switch (ctx.pLexer->token.type) {
-        case TokenType::IDENTIFIER: { // can be either variable or command
-            if (ctx.variables.count(ctx.pLexer->token.value) != 0) {
-                ctx.variables[ctx.pLexer->token.value]; // TODO
+        case TokenType::IDENTIFIER: {
+            if (ctx.consoleVariables.count(ctx.pLexer->token.value) != 0) {
+                tempLexers.emplace_back(ctx.consoleVariables[ctx.pLexer->token.value]);
+                ctx.pLexer = &tempLexers.back();
                 break;
             }
 
@@ -55,9 +80,69 @@ void sci::parse(SweatContext& ctx) {
             break;
 
         case TokenType::STRING:
-            // TODO: if parameter should be number (or reference and string is not a reference) then print usage and explain
-            // TODO: if is reference, check if reference is number if parameter should be number
+            handleStringToken(ctx);
+            break;
+
+        default:
+            break;
+        }
+    
+        ctx.pLexer->advance();
+
+        if (maxConsoleVariableCalls != 0 && tempLexers.size() >= maxConsoleVariableCalls) {
+            tempLexers.clear();
+            sci::print(sci::PrintLevel::ERROR, "Max console variable calls reached\n");
+            break;
+        }
+
+        while (ctx.pLexer->token.type == TokenType::END && tempLexers.size() != 0) {
+            ctx.pLexer = &tempLexers.back();
+            ctx.pLexer->advance();
+
+            tempLexers.pop_back();
+        }
+    }
+
+    handleCommandCall(ctx);
+
+    //ctx.runningFrom &= ~ALIAS;
+    ctx.pLexer = pOriginalLexer;
+    
+    // if there's something between the alias and the end of statement, we don't care!
+    ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
+}
+
+void sci::parse(SweatContext& ctx) {
+    if (ctx.pLexer == nullptr)
+        return;
+
+    ctx.pLexer->advance();
+    while (ctx.pLexer->token.type != TokenType::END) {
+        switch (ctx.pLexer->token.type) {
+        case TokenType::IDENTIFIER: { // can be either variable or command
+            if (ctx.consoleVariables.count(ctx.pLexer->token.value) != 0) {
+                handleConsoleVariableCall(ctx);
+                break;
+            }
+
+            ctx.pCommand = ctx.commands.get(ctx.pLexer->token.value);
+            if (ctx.pCommand == nullptr) {
+                sci::printf(PrintLevel::ERROR, "Unknown identifier \"{}\"\n", ctx.pLexer->token.value);
+                ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
+            }
+            break;
+        }
+
+        case TokenType::EOS:
+            handleCommandCall(ctx);
+            break;
+
+        case TokenType::NUMBER:
             ctx.arguments.arguments.push_back(ctx.pLexer->token.value);
+            break;
+
+        case TokenType::STRING:
+            handleStringToken(ctx);
             break;
 
         default:
