@@ -40,11 +40,6 @@ void sci::handleStringToken(SweatContext& ctx) {
 
 void sci::handleConsoleVariableCall(SweatContext& ctx) {
     Lexer* pOriginalLexer = ctx.pLexer;
-    
-    // TODO: actually that's not how source engine does I think...
-    // I've been wrong this whole time. Source engine probably just adds the alias value to a job system
-    // each game tick updates this job system and because the alias would call another alias, it add this new alias
-    // to the job system. It's not recursive and that's why the loop works.
 
     std::vector<Lexer> tempLexers;
     tempLexers.emplace_back(ctx.consoleVariables[ctx.pLexer->token.value]);
