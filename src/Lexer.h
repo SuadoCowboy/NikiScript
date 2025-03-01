@@ -26,11 +26,26 @@ namespace sci {
     public:
         std::string input;
         uint64_t position = 0;
+        /**
+         * @brief this variable is where advance stores the token
+         * @see Lexer::advance
+         */
         Token token = {TokenType::NONE};
 
         Lexer(const std::string& input);
 
-        Token advance();
+        /**
+         * @brief stores the token in the token member
+         * @see Lexer::token
+         */
+        void advance();
+
+        /**
+         * @brief advances tokens until it reaches one of the flags
+         * @param flags TokenType
+         * @see Lexer::advance
+         */
+        void advanceUntil(uint8_t flags);
     
         /**
          * @brief Sets the value of the token
