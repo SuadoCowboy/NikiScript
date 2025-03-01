@@ -10,3 +10,5 @@
 - throw error when parameter type is not recognized
 
 - lua for plugin system?
+
+- add more context to SweatContext: runningFrom, filePath, lineIndex, columnIndex, lineCount
