@@ -42,15 +42,15 @@ void sci::handleStringToken(SweatContext& ctx) {
         try {
             std::stoi(ctx.pLexer->token.value);
         } catch (...) {
-            sci::printf(PrintLevel::ERROR, "{} -> type not matched(expected integer)\n", arg);
+            sci::printf(PrintLevel::ERROR, "{} -> type not matched(expected integer number)\n", arg);
         }
         break;
 
-    case 'f':
+    case 'd':
         try {
             std::stof(ctx.pLexer->token.value);
         } catch (...) {
-            sci::printf(PrintLevel::ERROR, "{} -> type not matched(expected float)\n", arg);
+            sci::printf(PrintLevel::ERROR, "{} -> type not matched(expected decimal number)\n", arg);
         }
         break;
 
