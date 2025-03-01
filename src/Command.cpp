@@ -24,5 +24,5 @@ void sci::Command::printUsage() {
         isName = !isName;
     }
 
-    sci::printf(PrintLevel::WARNING, "Usage: {}\nArguments: {}", usage, oss.str());
+    sci::printf(PrintLevel::WARNING, "Usage: {}\nArguments: {}\n", usage, oss.str());
 }
