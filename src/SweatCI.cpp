@@ -32,7 +32,7 @@ void sci::echo_command(sci::SweatContext& ctx) {
 
 void sci::var_command(sci::SweatContext& ctx) {
     if (ctx.arguments.arguments.size() == 1) {
-        ctx.variables[ctx.arguments.getString()] = Variable();
+        ctx.consoleVariables[ctx.arguments.getString()] = "";
     } else {
 
     }
