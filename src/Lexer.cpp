@@ -42,12 +42,12 @@ uint64_t sci::Lexer::setTokenValue() {
     std::stringstream result;
 
     /*
-    1 = allow white space
+    1 = allow white space and SWEATCI_STATEMENT_SEPARATOR
     2 = escape quotes allowed
     */
     unsigned char flags = 0;
 
-    while (nextTokenPosition < input.size() && (position == nextTokenPosition || ((input[nextTokenPosition] != ' ' || (flags & 1)) && input[nextTokenPosition] != SWEATCI_STATEMENT_SEPARATOR))) {
+    while (nextTokenPosition < input.size() && (position == nextTokenPosition || ((input[nextTokenPosition] != ' ' && input[nextTokenPosition] != SWEATCI_STATEMENT_SEPARATOR) || (flags & 1)))) {
         if (flags & 2) {
             flags &= ~2;
             result << input[nextTokenPosition++];
