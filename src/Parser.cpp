@@ -2,7 +2,7 @@
 
 #include "PrintCallback.h"
 
-uint64_t sci::maxConsoleVariableCalls = 0;
+uint64_t sci::maxConsoleVariableCalls = 10000;
 
 void sci::handleCommandCall(SweatContext& ctx) {
     if (ctx.pCommand == nullptr)
@@ -49,23 +49,27 @@ void sci::handleConsoleVariableCall(SweatContext& ctx) {
     
     //ctx.runningFrom |= ALIAS;
 
-    while (ctx.pLexer->token.type != TokenType::END) {
-        switch (ctx.pLexer->token.type) {
-        case TokenType::IDENTIFIER: {
+    while (tempLexers.size() != 0) {
+        if (ctx.pLexer->token.type == TokenType::IDENTIFIER) {
             if (ctx.consoleVariables.count(ctx.pLexer->token.value) != 0) {
-                tempLexers.emplace_back(ctx.consoleVariables[ctx.pLexer->token.value]);
-                ctx.pLexer = &tempLexers.back();
-                break;
-            }
+                if (maxConsoleVariableCalls != 0 && tempLexers.size() >= maxConsoleVariableCalls) {
+                    ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
+                } else {
+                    tempLexers.emplace_back(ctx.consoleVariables[ctx.pLexer->token.value]);
+                    ctx.pLexer = &tempLexers.back();
+                }
 
-            ctx.pCommand = ctx.commands.get(ctx.pLexer->token.value);
-            if (ctx.pCommand == nullptr) {
-                sci::printf(PrintLevel::ERROR, "Unknown identifier \"{}\"\n", ctx.pLexer->token.value);
-                ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
+            } else {
+                ctx.pCommand = ctx.commands.get(ctx.pLexer->token.value);
+
+                if (ctx.pCommand == nullptr) {
+                    sci::printf(PrintLevel::ERROR, "Unknown identifier \"{}\"\n", ctx.pLexer->token.value);
+                    ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
+                }
             }
-            break;
         }
 
+        switch (ctx.pLexer->token.type) {
         case TokenType::EOS:
             handleCommandCall(ctx);
             break;
@@ -81,20 +85,17 @@ void sci::handleConsoleVariableCall(SweatContext& ctx) {
         default:
             break;
         }
-    
+
         ctx.pLexer->advance();
-
-        if (maxConsoleVariableCalls != 0 && tempLexers.size() >= maxConsoleVariableCalls) {
-            tempLexers.clear();
-            sci::print(sci::PrintLevel::ERROR, "Max console variable calls reached\n");
-            break;
-        }
-
-        while (ctx.pLexer->token.type == TokenType::END && tempLexers.size() != 0) {
-            ctx.pLexer = &tempLexers.back();
-            ctx.pLexer->advance();
+        while (ctx.pLexer->token.type == TokenType::END) {
+            handleCommandCall(ctx);
 
             tempLexers.pop_back();
+            if (tempLexers.size() == 0)
+                break;
+
+            ctx.pLexer = &tempLexers.back();
+            ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
         }
     }
 
