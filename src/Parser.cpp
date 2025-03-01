@@ -169,6 +169,7 @@ void sci::parse(SweatContext& ctx) {
             if (ctx.consoleVariables.count(ctx.pLexer->token.value) != 0) {
                 handleConsoleVariableCall(ctx);
                 break;
+
             } else if (ctx.programVariables.count(ctx.pLexer->token.value) != 0) {
                 ctx.pCommand = ctx.commands.get("_program_variable_callback");
                 if (ctx.pCommand != nullptr)
@@ -183,12 +184,12 @@ void sci::parse(SweatContext& ctx) {
             }
             break;
 
-        case TokenType::EOS:
-            handleCommandCall(ctx);
-            break;
-
         case TokenType::ARGUMENT:
             handleArgumentToken(ctx);
+            break;
+
+        case TokenType::EOS:
+            handleCommandCall(ctx);
             break;
 
         default:
