@@ -3,11 +3,12 @@
 #include <vector>
 #include <stdint.h>
 #include <string>
+#include <unordered_map>
 
 #include "Command.h"
 #include "CommandHandler.h"
 #include "PrintCallback.h"
-#include "Variable.h"
+#include "ProgramVariable.h"
 #include "Lexer.h"
 
 namespace sci {
@@ -30,13 +31,16 @@ namespace sci {
 #endif
     };
 
+    typedef std::unordered_map<std::string, std::string> ConsoleVariables;
+
     struct SweatContext {
         Lexer* pLexer = nullptr;
-        //void* pData = nullptr;
         Command* pCommand = nullptr;
         Arguments arguments;
 
-        Variables variables;
+        ConsoleVariables consoleVariables;
+        ProgramVariables programVariables;
+
         CommandHandler commands;
     };
 }
