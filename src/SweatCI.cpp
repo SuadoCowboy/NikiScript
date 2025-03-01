@@ -6,7 +6,7 @@ void sci::help_command(sci::SweatContext& ctx) {
     if (ctx.arguments.arguments.size() == 0)
         for (auto& command : ctx.commands.commands)
             command.second.printUsage();
-    
+
     else {
         std::string& commandName = ctx.arguments.getString();
         trim(commandName);
@@ -18,7 +18,7 @@ void sci::help_command(sci::SweatContext& ctx) {
             return;
         }
 
-        pCommand->printUsage();
+        pCommand->printAsDataTree();
     }
 }
 
