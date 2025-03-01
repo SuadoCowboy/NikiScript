@@ -94,17 +94,17 @@ std::string tokenToString(const sci::Token& token) {
     return out.str().substr(0, out.str().size()-2)+"}) -> " + formatted;
 }
 
-int main(int argc, char** argv) {
+int main(int, char**) {
     sci::setPrintCallback(nullptr, sweatciPrintCallback);
 
-    if (argc <= 1) {
-       sci::printf(sci::PrintLevel::ERROR, "Usage: \"{}\" <input>\n", argv[0]);
-       return EXIT_FAILURE;
-    }
+    //if (argc <= 1) {
+    //   sci::printf(sci::PrintLevel::ERROR, "Usage: \"{}\" <input>\n", argv[0]);
+    //   return EXIT_FAILURE;
+    //}
 
-    std::string input;
-    for (int i = 1; i < argc; ++i)
-        input += std::string(argv[i]) + " ";
+    std::string input = "help echo";
+    //for (int i = 1; i < argc; ++i)
+    //    input += std::string(argv[i]) + " ";
 
     sci::SweatContext ctx;
     sci::registerCommands(ctx);
