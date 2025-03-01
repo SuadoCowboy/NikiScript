@@ -91,19 +91,22 @@ std::string tokenToString(const sci::Token& token) {
         formatted.insert(ref.first, ref.second);
     }
 
-    return out.str().substr(0, out.str().size()-2)+"}) -> " + formatted;
+    std::string outString = out.str();
+    outString.replace(outString.begin()+outString.size()-2, outString.begin()+outString.size()-1, "}) -> ");
+
+    return outString + formatted;
 }
 
 int main(int, char**) {
     sci::setPrintCallback(nullptr, sweatciPrintCallback);
 
-    //if (argc <= 1) {
+    // if (argc <= 1) {
     //   sci::printf(sci::PrintLevel::ERROR, "Usage: \"{}\" <input>\n", argv[0]);
     //   return EXIT_FAILURE;
-    //}
+    // }
 
-    std::string input = "help \"       echo    \"";
-    //for (int i = 1; i < argc; ++i)
+    std::string input = "var a \"echo jasiod; a; echo b\"; var b \"a fuck this should not appear; echo hum\"; b"; //"var test \"echo \\\"Gay Sex\\\" funny jajaajaj\"; echo test = \\\"${test}\\\";   test   ";
+    // for (int i = 1; i < argc; ++i)
     //    input += std::string(argv[i]) + " ";
 
     sci::SweatContext ctx;
@@ -112,7 +115,5 @@ int main(int, char**) {
     sci::Lexer lexer{input};
     ctx.pLexer = &lexer;
 
-    while (lexer.token.type != sci::TokenType::END) {
-        sci::parse(ctx);
-    }
+    sci::parse(ctx);
 }
