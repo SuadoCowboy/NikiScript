@@ -3,45 +3,57 @@
 #include <stdint.h>
 #include <sstream>
 
-/*struct Color {
+struct Color {
     uint8_t r=0,g=0,b=0,a=255;
-};*/
+};
 
-//#define SWEATCI_ARGUMENTS_EXTRA Color getColor();
+#define SWEATCI_ARGUMENTS_EXTRA bool getColor(SweatContext& ctx, Color& output);
 
 #include <SweatCI.h>
 #include <PrintCallback.h>
 #include <SweatContext.h>
 #include <Token.h>
 #include <Lexer.h>
+#include <Parser.h>
 
-/*Color sci::Arguments::getColor() {
-    std::string& arg = getString();
+bool parseStringToColor(const std::string& str, Color& buf, bool printError) {
+    Color color = {0,0,0,255};
 
-    uint64_t argOffset = 0;
-    Variable* pVariable = nullptr;
-    char* c = nullptr;
-    
-    std::stringstream oss;
-    while (true) {
-        uint8_t i = arg.getCharOrVariable(argOffset, pVariable, c);
-        if (i == 2)
-            break;
-
-        switch (i) {
-        case 0: // char
-            oss << c;
-            c = nullptr;
-            break;
-
-        case 1: // variable
-            pVariable->name;
-
-        default:
-            break;
+    try {
+        size_t secondCommaIdx;
+        {
+            size_t firstCommaIdx = str.find(",");
+            color.r = std::stoi(str.substr(0, firstCommaIdx));
+            
+            secondCommaIdx = str.find(",", firstCommaIdx+1);
+            color.g = std::stoi(str.substr(firstCommaIdx+1, secondCommaIdx-firstCommaIdx-1));
         }
+
+        size_t thirdCommaIdx = str.find(",", secondCommaIdx+1);
+
+        color.b = std::stoi(str.substr(secondCommaIdx+1, thirdCommaIdx-secondCommaIdx-1));
+        if (thirdCommaIdx != std::string::npos)
+            color.a = std::stoi(str.substr(thirdCommaIdx+1));
+
+        buf = color;
+        return true;
+
+    } catch (...) {
+        if (printError)
+            sci::printf(sci::PrintLevel::ERROR, "expected \"RRR,GGG,BBB\" or \"RRR,GGG,BBB,AAA\" but received \"{}\"\n", str);
+
+        return false;
     }
-}*/
+}
+
+bool sci::Arguments::getColor(SweatContext& ctx, Color& output) {
+    if (!parseStringToColor(arguments[offset++], output, false)) {
+        sci::printf(sci::PrintLevel::ERROR, "\"{}\" is not a valid color. Argument #{}: {}\n", arguments[offset-1], offset-1, ctx.pCommand->maxArgs == 1? ctx.pCommand->argsDescriptions[0] : ctx.pCommand->argsDescriptions[offset-1]);
+        return false;
+    }
+
+    return true;
+}
 
 void sweatciPrintCallback(void*, sci::PrintLevel level, const std::string& msg) {
     std::cout << sci::printLevelToString(level) << ": " << msg;
@@ -51,8 +63,8 @@ std::string tokenTypeToString(const sci::TokenType& type) {
     switch (type) {
     case sci::TokenType::NONE:
         return "NONE";
-    case sci::TokenType::COMMAND:
-        return "COMMAND";
+    case sci::TokenType::IDENTIFIER:
+        return "IDENTIFIER";
     case sci::TokenType::STRING:
         return "STRING";
     case sci::TokenType::NUMBER:
@@ -82,25 +94,25 @@ std::string tokenToString(const sci::Token& token) {
     return out.str().substr(0, out.str().size()-2)+"}) -> " + formatted;
 }
 
-int main(int, char**) {
+int main(int argc, char** argv) {
     sci::setPrintCallback(nullptr, sweatciPrintCallback);
 
-    //if (argc <= 1) {
-    //    sci::printf(sci::PrintLevel::ERROR, "Usage: \"{}\" <input>\n", argv[0]);
-    //    return EXIT_FAILURE;
-    //}
+    if (argc <= 1) {
+       sci::printf(sci::PrintLevel::ERROR, "Usage: \"{}\" <input>\n", argv[0]);
+       return EXIT_FAILURE;
+    }
 
-    std::string input = "echo \"${name}\"";
-    //for (int i = 1; i < argc; ++i)
-    //    input += std::string(argv[i]) + " ";
+    std::string input;
+    for (int i = 1; i < argc; ++i)
+        input += std::string(argv[i]) + " ";
 
     sci::SweatContext ctx;
     sci::registerCommands(ctx);
 
     sci::Lexer lexer{input};
-    sci::Token token = {sci::TokenType::NONE};
-    while (token.type != sci::TokenType::END) {
-        token = lexer.advance();
-        std::cout << tokenToString(token) << '\n';
+    ctx.pLexer = &lexer;
+
+    while (lexer.token.type != sci::TokenType::END) {
+        sci::parse(ctx);
     }
 }
