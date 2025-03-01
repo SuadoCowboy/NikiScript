@@ -23,6 +23,13 @@ namespace sci {
         Token(TokenType type);
         Token(TokenType type, const std::string& value);
     };
+
+    struct SweatContext;
+
+    /**
+     * @brief inserts all references in the value
+     */
+    void expandStringToken(SweatContext& ctx, Token& token);
 }
 
 uint8_t operator|(sci::TokenType l, sci::TokenType r);
