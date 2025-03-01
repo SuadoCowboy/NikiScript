@@ -17,9 +17,10 @@ void sci::setString(ProgramVariable* pVar, const std::string& str) {
 }
 
 void sci::ProgramVariable::callback(SweatContext& ctx) {
-    ProgramVariable* pVar = static_cast<ProgramVariable*>(ctx.pData);
-    if (pVar == nullptr)
+    if (ctx.pData == nullptr)
         return;
+
+    ProgramVariable* pVar = static_cast<ProgramVariable*>(ctx.pData);
 
     if (ctx.arguments.arguments.size() == 1)
         pVar->set(pVar, ctx.arguments.getString());
