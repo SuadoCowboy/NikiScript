@@ -21,10 +21,12 @@ namespace sci {
         std::string& getString();
 
         template<typename T>
-        bool getInteger(SweatContext& ctx, T& output);
+        T getInteger();
+        template<typename T>
+        T getUnsignedInteger();
 
-        bool getFloat(SweatContext& ctx, float& output);
-        bool getDouble(SweatContext& ctx, double& output);
+        float getFloat();
+        double getDouble();
 
 #ifdef SWEATCI_ARGUMENTS_EXTRA
         SWEATCI_ARGUMENTS_EXTRA
@@ -35,8 +37,10 @@ namespace sci {
 
     struct SweatContext {
         Lexer* pLexer = nullptr;
+
         Command* pCommand = nullptr;
         void* pData = nullptr; ///< command data
+
         Arguments arguments;
 
         ConsoleVariables consoleVariables;
@@ -47,14 +51,11 @@ namespace sci {
 }
 
 template<typename T>
-bool sci::Arguments::getInteger(SweatContext& ctx, T& output) {
-    const std::string& str = arguments[offset++];
+T sci::Arguments::getInteger() {
+    return std::stoll(arguments[offset++]);
+}
 
-    try {
-        output = (T)std::stoi(str);
-        return true;
-    } catch (...) {
-        sci::printf(sci::PrintLevel::ERROR, "\"{}\" is not a valid integer. Argument #{}: {}\n", str, offset-1, ctx.pCommand->maxArgs == 1? ctx.pCommand->argsDescriptions[0] : ctx.pCommand->argsDescriptions[offset-1]);
-        return false;
-    }
+template <typename T>
+T sci::Arguments::getUnsignedInteger() {
+    return std::stoull(arguments[offset++]);
 }
