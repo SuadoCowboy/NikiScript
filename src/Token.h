@@ -6,11 +6,11 @@
 namespace sci {
     enum class TokenType : uint8_t {
         NONE = 0,
-        IDENTIFIER = 1,
-        STRING = 4,
-        NUMBER = 8,
-        EOS = 16, // End Of Statement
-        END = 32
+        IDENTIFIER = 1, ///< If it's the first token after an EOS, END or NONE
+        STRING = 4, ///< If lexer could not convert to integer and an identifier was already caught up
+        NUMBER = 8, ///< If lexer was able to convert to integer
+        EOS = 16, ///< End Of Statement
+        END = 32 ///< End of input data
     };
 
     /// @brief either keep the original char array alive so that value won't have issues, or allocate to value
