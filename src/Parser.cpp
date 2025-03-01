@@ -30,9 +30,29 @@ void sci::handleCommandCall(SweatContext& ctx) {
     ctx.pCommand->callback(ctx);
     ctx.arguments.arguments.clear();
     ctx.pCommand = nullptr;
+    ctx.pData = nullptr;
 }
 
 void sci::handleStringToken(SweatContext& ctx) {
+    size_t offset = 0;
+    for (auto& reference : ctx.pLexer->token.references) {
+        if (ctx.consoleVariables.count(reference.second) != 0) { // console variable
+            ctx.pLexer->token.value = ctx.pLexer->token.value.insert(offset+reference.first, ctx.consoleVariables[reference.second]);
+            offset += ctx.consoleVariables[reference.second].size();
+
+        } else if (ctx.programVariables.count(reference.second) != 0) { // program variable
+            ProgramVariable& var = ctx.programVariables[reference.second];
+            std::string value = var.get(&var);
+
+            ctx.pLexer->token.value = ctx.pLexer->token.value.insert(offset+reference.first, value);
+            offset += value.size();
+        
+        } else {
+            ctx.pLexer->token.value = ctx.pLexer->token.value.insert(reference.first, formatString("{}{}{}{}", SWEATCI_REFERENCE, SWEATCI_REFERENCE_OPEN, reference.second, SWEATCI_REFERENCE_CLOSE));
+            offset += reference.second.size()+3;
+        }
+    }
+
     // TODO: if parameter should be number (or reference and string is not a reference) then print usage and explain
     // TODO: if is reference, check if reference is number if parameter should be number
     ctx.arguments.arguments.push_back(ctx.pLexer->token.value);
@@ -118,6 +138,11 @@ void sci::parse(SweatContext& ctx) {
         case TokenType::IDENTIFIER: // can be either variable or command
             if (ctx.consoleVariables.count(ctx.pLexer->token.value) != 0) {
                 handleConsoleVariableCall(ctx);
+                break;
+            } else if (ctx.programVariables.count(ctx.pLexer->token.value) != 0) {
+                ctx.pCommand = ctx.commands.get("_program_variable_callback");
+                if (ctx.pCommand != nullptr)
+                    ctx.pData = &ctx.programVariables[ctx.pLexer->token.value];
                 break;
             }
 
