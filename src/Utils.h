@@ -56,17 +56,28 @@ namespace sci {
         return out.str();
     }
 
+
     /**
-     * @brief trim from start (in place)
-     * 
-     * @param s string to trim the end
-     */
+      * @brief trim from start
+      * 
+      * @param s string to trim the beginning
+      * 
+      * @see sci::trim
+      * @see sci::rtrim
+      * 
+      * @note https://stackoverflow.com/questions/216823/how-to-trim-a-stdstring
+      */
     void ltrim(std::string &s);
     
     /**
-     * @brief trim from end (in place)
+     * @brief trim from end
      * 
      * @param s string to trim the end
+     * 
+     * @see sci::trim
+     * @see sci::ltrim
+     * 
+     * @note https://stackoverflow.com/questions/216823/how-to-trim-a-stdstring
      */
     void rtrim(std::string &s);
     
@@ -74,8 +85,11 @@ namespace sci {
      * @brief trim from start and end
      * 
      * @param s string to trim
-     * @see sci::trim
+     * 
+     * @see sci::ltrim
      * @see sci::rtrim
+     * 
+     * @note https://stackoverflow.com/questions/216823/how-to-trim-a-stdstring
      */
     void trim(std::string& s);
 }
