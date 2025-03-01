@@ -4,7 +4,8 @@
 
 namespace sci {
     /**
-     * @brief clear anything related to the current lexer statement and goes to the next one
+     * @brief clear anything related to the current lexer statement
+     * @note it does not go to the next EOS
      */
     void clearStatementData(SweatContext& ctx);
 

@@ -8,7 +8,6 @@ void sci::clearStatementData(SweatContext& ctx) {
     ctx.pCommand = nullptr;
     ctx.pData = nullptr;
     ctx.arguments.arguments.clear();
-    ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 }
 
 void sci::handleCommandCall(SweatContext& ctx) {
@@ -41,7 +40,10 @@ void sci::handleCommandCall(SweatContext& ctx) {
 void sci::handleArgumentToken(SweatContext& ctx) {
     insertReferencesInToken(ctx, ctx.pLexer->token);
 
-    //if (ctx.arguments.arguments.size() > ctx.pCommand->maxArgs)
+    if (ctx.arguments.arguments.size() == ctx.pCommand->maxArgs) {
+        ctx.pLexer->token.value = ctx.arguments.arguments.back()+' '+ctx.pLexer->token.value;
+        ctx.arguments.arguments.pop_back();
+    }
 
     const std::string_view& arg = ctx.pCommand->argsDescriptions[ctx.arguments.arguments.size()*2];
     switch (arg[0]) {
@@ -51,6 +53,7 @@ void sci::handleArgumentToken(SweatContext& ctx) {
         } catch (...) {
             sci::printf(PrintLevel::ERROR, "{} -> Type not matched: expected integer number\n", arg);
             clearStatementData(ctx);
+            ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
         }
         break;
 
@@ -60,6 +63,7 @@ void sci::handleArgumentToken(SweatContext& ctx) {
         } catch (...) {
             sci::printf(PrintLevel::ERROR, "{} -> Type not matched: expected decimal number\n", arg);
             clearStatementData(ctx);
+            ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
         }
         break;
 
@@ -70,6 +74,7 @@ void sci::handleArgumentToken(SweatContext& ctx) {
         if (!ctx.programVariables.count(ctx.pLexer->token.value) == 0 && ctx.consoleVariables.count(ctx.pLexer->token.value) == 0) {
             sci::printf(PrintLevel::ERROR, "{} -> Type not matched: variable expected\n", arg);
             clearStatementData(ctx);
+            ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
         }
         break;
 
@@ -77,10 +82,7 @@ void sci::handleArgumentToken(SweatContext& ctx) {
         break;
     }
 
-    if (ctx.pCommand->maxArgs == 1 && !ctx.arguments.arguments.empty())
-        ctx.arguments.arguments[0] += ctx.pLexer->token.value;
-    else
-        ctx.arguments.arguments.push_back(ctx.pLexer->token.value);
+    ctx.arguments.arguments.push_back(ctx.pLexer->token.value);
 }
 
 void sci::handleConsoleVariableCall(SweatContext& ctx) {
