@@ -80,7 +80,7 @@ void sci::registerCommands(sci::SweatContext& ctx) {
 	ctx.commands.add(Command("help", 0,1, help_command, "prints a list of commands with their usages or the usage of a specified command", {"s[command?]", "command to see usage"}));
 	ctx.commands.add(Command("var", 1,2, var_command, "creates a variable", {"s[name]", "variable name", "s[value?]", "if value is not specified, variable becomes an empty string"}));
 	ctx.commands.add(Command("delvar", 1,1, delvar_command, "deletes a variable", {"v[variable]", "variable to delete"}));
-	ctx.commands.add(Command("math", 2,2, math_command, "parses math expressions", {
+	ctx.commands.add(Command("math", 1,2, math_command, "parses math expressions", {
 		"s[expression]", "expression",
 		"v[output?]", "variable to store expression result. If blank, prints to result to console"
 	}));
