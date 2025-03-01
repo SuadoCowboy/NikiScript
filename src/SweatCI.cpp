@@ -5,5 +5,5 @@ void sci::echo_command(sci::SweatContext& ctx) {
 }
 
 void sci::registerCommands(sci::SweatContext& ctx) {
-    ctx.commands.add(Command("echo", 1, 1, echo_command, "prints the passed message to console", {"message", "content to print to console"}));
+    ctx.commands.add(Command("echo", 1, 1, echo_command, "prints the passed message to console", {"s[message]", "content to print to console"}));
 }
