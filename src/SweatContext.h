@@ -36,6 +36,7 @@ namespace sci {
     struct SweatContext {
         Lexer* pLexer = nullptr;
         Command* pCommand = nullptr;
+        void* pData = nullptr; ///< command data
         Arguments arguments;
 
         ConsoleVariables consoleVariables;

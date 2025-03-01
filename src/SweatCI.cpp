@@ -60,4 +60,9 @@ void sci::registerCommands(sci::SweatContext& ctx) {
     ctx.commands.add(Command("echo", 1, 1, echo_command, "prints the passed message to console", {"s[message]", "content to print to console"}));
     ctx.commands.add(Command("help", 0,1, help_command, "prints a list of commands with their usages or the usage of a specified command", {"s[command?]", "command to see usage"}));
     ctx.commands.add(Command("var", 1,2, var_command, "creates a variable", {"s[name]", "variable name", "s[value?]", "if value is not specified, variable becomes an empty string"}));
+    ctx.commands.add(Command("_program_variable_callback", 1,1, ProgramVariable::callback, "gets/sets a variable", {"s[value?]", "new variable value"}));
+}
+
+void sci::registerVariable(sci::SweatContext& ctx, const std::string& name, void* pVar, const GetProgramVariableValue& get, const SetProgramVariableValue& set) {
+    ctx.programVariables[name] = ProgramVariable(pVar, get, set);
 }

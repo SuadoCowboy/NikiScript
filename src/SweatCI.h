@@ -23,4 +23,6 @@ namespace sci {
      * @see echo_command
      */
     void registerCommands(sci::SweatContext& ctx);
+
+    void registerVariable(sci::SweatContext& ctx, const std::string& name, void* pVar, const GetProgramVariableValue& get, const SetProgramVariableValue& set);
 }
