@@ -3,12 +3,12 @@
 #include "PrintCallback.h"
 
 void sci::handleCommandCall(SweatContext& ctx) {
-    if (ctx.pCommand->maxArgs == 1 && !ctx.arguments.arguments.empty()) {
+    if (ctx.pCommand->maxArgs == 1 && ctx.arguments.arguments.size() > 1) {
         std::string argument = "";
         for (const auto& arg : ctx.arguments.arguments)
             argument += arg+' ';
 
-        ctx.arguments.arguments = {argument};
+        ctx.arguments.arguments = {argument.substr(0, argument.size()-1)};
     }
 
     if (ctx.pCommand->minArgs > ctx.arguments.arguments.size() || ctx.arguments.arguments.size() > ctx.pCommand->maxArgs) {
