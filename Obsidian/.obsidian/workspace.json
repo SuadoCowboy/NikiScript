@@ -13,15 +13,15 @@
             "state": {
               "type": "canvas",
               "state": {
-                "file": "Implementation.canvas",
+                "file": "Concept.canvas",
                 "viewState": {
-                  "x": 436.712117993742,
-                  "y": -633.1356425957513,
-                  "zoom": -0.1576928416908313
+                  "x": -198.32538251700282,
+                  "y": 50.21458674197564,
+                  "zoom": -0.3349071417467843
                 }
               },
               "icon": "lucide-layout-dashboard",
-              "title": "Implementation"
+              "title": "Concept"
             }
           }
         ]
@@ -173,8 +173,8 @@
   },
   "active": "6d76a675270c48d4",
   "lastOpenFiles": [
-    "Concept.canvas",
     "Implementation.canvas",
+    "Concept.canvas",
     "Maybe not use uint64_t for strings and made them smaller.md",
     "Untitled 1.canvas",
     "2025-02-02.md",
