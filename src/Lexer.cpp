@@ -6,28 +6,7 @@
 
 sci::Lexer::Lexer(const std::string& input) : input(input) {}
 
-sci::Token sci::Lexer::advance() {
-    /*
-    BASICS:
-    Let's say a string "a b c; d" goes into the lexer.
-    "a" is passed as a command with "b" "c" as parameters.
-    ";" is identified as a EOS(End Of Statement) and therefore
-    identifies "d" as a command with no arguments.
-
-    NOTE: The lexer only gives information to the parser.
-    WHO DECIDES HOW THE ARGUMENTS ARE PASSED IS THE PARSER
-    Example 1: echo "Hello! How are you ${name}?" -> {IDENTIFIER, STRING, REFERENCE, STRING} -> {IDENTIFIER, STRING}
-    
-    Example 2: echo ${name} -> {IDENTIFIER, REFERENCE} -> {IDENTIFIER, STRING}
-
-    Example 3: incrementvar ${myNumber} 0 10 1 -> {IDENTIFIER, REFERENCE, NUMBER, NUMBER, NUMBER} -> {IDENTIFIER, REFERENCE, NUMBER, NUMBER, NUMBER}
-
-    All depends on what the command itself is asking for. If a REFENRECE conversion is not possible, print usage of the command
-    WE ARE ONLY CHECKING REFERENCES AND NOT ALL TYPES
-    
-    TODO: split code into functions
-    */
-
+void sci::Lexer::advance() {
     token.references.clear();
     while (position < input.size() && input[position] == ' ')
         ++position;
@@ -35,7 +14,7 @@ sci::Token sci::Lexer::advance() {
     if (position >= input.size()) {
         token.type = TokenType::END;
         token.value = "";
-        return token;
+        return;
     }
 
     uint64_t nextTokenPosition = setTokenValue();
@@ -48,7 +27,14 @@ sci::Token sci::Lexer::advance() {
     */
 
     position = nextTokenPosition;
-    return token;
+}
+
+void sci::Lexer::advanceUntil(uint8_t flags) {
+    flags |= static_cast<uint8_t>(TokenType::END);
+
+    advance();
+    while (!(flags & token.type))
+        advance();
 }
 
 uint64_t sci::Lexer::setTokenValue() {
