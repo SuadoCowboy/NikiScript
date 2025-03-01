@@ -7,10 +7,10 @@
 
 namespace sci {
     enum class PrintLevel : uint8_t {
-        DEFAULT = 0, // text that is not involved by user interaction
-        ECHO, // any text that came from a command that is not an error
-        WARNING,
-        ERROR, // anything that went wrong
+        DEFAULT = 0, ///< any user input
+        ECHO, ///< any text that came from a command that is not an error
+        WARNING, ///< anything that is wrong but can continue
+        ERROR, ///< anything that went wrong and can not continue
     };
 
     std::string printLevelToString(PrintLevel level);
