@@ -12,8 +12,8 @@ void sci::handleCommandCall(SweatContext& ctx) {
     }
 
     if (ctx.pCommand->minArgs > ctx.arguments.arguments.size() || ctx.arguments.arguments.size() > ctx.pCommand->maxArgs) {
-        sci::printf(sci::PrintLevel::ERROR, "Expected arguments between [{}, {}] but received {}\n", ctx.pCommand->minArgs, ctx.pCommand->maxArgs, ctx.arguments.arguments.size());
-        ctx.pCommand->printUsage();
+        sci::printf(sci::PrintLevel::ERROR, "Expected arguments between [{}, {}] but received {} arguments\n", static_cast<uint16_t>(ctx.pCommand->minArgs), static_cast<uint16_t>(ctx.pCommand->maxArgs), ctx.arguments.arguments.size());
+        ctx.pCommand->printArgumentsNames();
         return;
     }
 
