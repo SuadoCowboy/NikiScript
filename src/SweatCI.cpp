@@ -1,12 +1,16 @@
 #include "SweatCI.h"
 
+#include "Utils.h"
+
 void sci::help_command(sci::SweatContext& ctx) {
     if (ctx.arguments.arguments.size() == 0)
         for (auto& command : ctx.commands.commands)
             command.second.printUsage();
     
     else {
-        const std::string& commandName = ctx.arguments.getString();
+        std::string& commandName = ctx.arguments.getString();
+        trim(commandName);
+
         Command* pCommand = ctx.commands.get(commandName);
 
         if (pCommand == nullptr) {
