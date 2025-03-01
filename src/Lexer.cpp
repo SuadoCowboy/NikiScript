@@ -109,12 +109,6 @@ void sci::Lexer::setTokenType() {
     } else if (!token.value.empty() && token.value[0] == SWEATCI_STATEMENT_SEPARATOR) {
         token.type = TokenType::EOS;
 
-    } else if ((TokenType::IDENTIFIER|TokenType::STRING|TokenType::NUMBER) & token.type) {
-        try {
-            std::stoi(token.value);
-            token.type = TokenType::NUMBER;
-        } catch (...) {
-            token.type = TokenType::STRING;
-        }
-    }
+    } else if ((TokenType::IDENTIFIER|TokenType::ARGUMENT) & token.type)
+        token.type = TokenType::ARGUMENT;
 }

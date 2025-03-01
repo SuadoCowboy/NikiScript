@@ -31,7 +31,7 @@
 namespace SweatCI {
     enum TokenType {
         NOTHING = 0,
-        STRING,
+        ARGUMENT,
         COMMAND,
         _EOF,
         EOS

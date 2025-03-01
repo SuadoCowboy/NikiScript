@@ -31,8 +31,8 @@
 namespace SweatCI {
     std::string tokenTypeToString(const TokenType& type) {
         switch (type) {
-        case STRING:
-            return "STRING";
+        case ARGUMENT:
+            return "ARGUMENT";
         case COMMAND:
             return "COMMAND";
         case _EOF:
@@ -430,7 +430,7 @@ namespace SweatCI {
         if (isCommand(tokenValue) && (lastToken.getType() == TokenType::NOTHING || lastToken.getType() != TokenType::COMMAND))
             return Token(TokenType::COMMAND, tokenValue);
         else
-            return Token(TokenType::STRING, tokenValue);
+            return Token(TokenType::ARGUMENT, tokenValue);
     }
 
     Token Lexer::parseString() {
@@ -455,7 +455,7 @@ namespace SweatCI {
         if (input[position] == '"')
             nextPosition(); // Skip the last double quote if exists
 
-        return Token(TokenType::STRING, tokenValue);
+        return Token(TokenType::ARGUMENT, tokenValue);
     }
 
     void Utils::Cvar::setString(void* pData, const std::string& value) {
@@ -641,7 +641,7 @@ namespace SweatCI {
             if (currentToken.getType() == TokenType::COMMAND)
                 arguments.push_back(currentToken.getValue());
             
-            else if (currentToken.getType() == TokenType::STRING) {
+            else if (currentToken.getType() == TokenType::ARGUMENT) {
                 std::string result = "";
                 size_t position = 0;
                 
@@ -805,7 +805,7 @@ namespace SweatCI {
             else if (currentToken.getType() == TokenType::COMMAND)
                 handleCommandToken();
 
-            else if (currentToken.getType() == TokenType::STRING) {
+            else if (currentToken.getType() == TokenType::ARGUMENT) {
                 printUnknownCommand(currentToken.getValue());
                 advanceUntil({ TokenType::EOS });
             }
@@ -848,7 +848,7 @@ namespace SweatCI {
             else if (currentToken.getType() == TokenType::COMMAND)
                 handleCommandToken();
 
-            else if (currentToken.getType() == TokenType::STRING) {
+            else if (currentToken.getType() == TokenType::ARGUMENT) {
                 printUnknownCommand(currentToken.getValue());
                 advanceUntil({ TokenType::EOS });
             }

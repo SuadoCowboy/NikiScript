@@ -65,10 +65,8 @@ std::string tokenTypeToString(const sci::TokenType& type) {
         return "NONE";
     case sci::TokenType::IDENTIFIER:
         return "IDENTIFIER";
-    case sci::TokenType::STRING:
-        return "STRING";
-    case sci::TokenType::NUMBER:
-        return "NUMBER";
+    case sci::TokenType::ARGUMENT:
+        return "ARGUMENT";
     case sci::TokenType::EOS:
         return "EOS";
     case sci::TokenType::END:
@@ -105,13 +103,15 @@ int main(int, char**) {
     //   return EXIT_FAILURE;
     // }
 
-    std::string input = "var b \"Hello everynyan\"; echo ${b";
+    std::string input = "test 5 abasad";
     // for (int i = 1; i < argc; ++i)
     //    input += std::string(argv[i]) + " ";
 
     sci::SweatContext ctx;
     sci::registerCommands(ctx);
-    ctx.programVariables["penes"] = {};
+
+    std::string penes = "Penes";
+    sci::registerVariable(ctx, "penes", &penes, sci::getString, sci::setString);
 
     sci::Lexer lexer{input};
     ctx.pLexer = &lexer;
