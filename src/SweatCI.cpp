@@ -45,6 +45,11 @@ void sci::var_command(sci::SweatContext& ctx) {
         return;
     }
 
+    if (ctx.programVariables.count(name) != 0) {
+        sci::print(PrintLevel::ERROR, "A program variable already uses this name and therefore can not be replaced\n");
+        return;
+    }
+
     if (ctx.arguments.arguments.size() == 1)
         ctx.consoleVariables[name] = "";
     else
