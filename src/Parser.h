@@ -12,7 +12,7 @@ namespace sci {
     void handleCommandCall(SweatContext& ctx);
 
     /**
-     * @brief Handles commands and variables as well as their arguments
+     * @brief Parses and interpret scripts: handles commands and variables as well as their arguments
      * 
      * @param ctx 
      */
