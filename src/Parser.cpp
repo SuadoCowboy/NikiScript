@@ -25,9 +25,9 @@ void sci::handleCommandCall(SweatContext& ctx) {
 
     if (ctx.pCommand->minArgs > ctx.arguments.arguments.size()) {
         if (ctx.pCommand->minArgs == ctx.pCommand->maxArgs)
-            sci::printf(sci::PrintLevel::ERROR, "Expected {} argument(s) but received {} argument(s)\n", static_cast<uint16_t>(ctx.pCommand->minArgs), ctx.arguments.arguments.size());
+            sci::printf(sci::PrintLevel::ERROR, "Expected {} arguments but received {} arguments\n", static_cast<uint16_t>(ctx.pCommand->minArgs), ctx.arguments.arguments.size());
         else
-            sci::printf(sci::PrintLevel::ERROR, "Expected arguments between [{}, {}] but received {} argument(s)\n", static_cast<uint16_t>(ctx.pCommand->minArgs), static_cast<uint16_t>(ctx.pCommand->maxArgs), ctx.arguments.arguments.size());
+            sci::printf(sci::PrintLevel::ERROR, "Expected arguments between [{}, {}] but received {} arguments\n", static_cast<uint16_t>(ctx.pCommand->minArgs), static_cast<uint16_t>(ctx.pCommand->maxArgs), ctx.arguments.arguments.size());
 
         sci::printf(sci::PrintLevel::ECHO, "{} {}\n", ctx.pCommand->name, ctx.pCommand->getArgumentsNames());
         return;
@@ -40,6 +40,13 @@ void sci::handleCommandCall(SweatContext& ctx) {
 void sci::handleArgumentToken(SweatContext& ctx) {
     insertReferencesInToken(ctx, ctx.pLexer->token);
 
+    if (ctx.pCommand->maxArgs == 0) {
+        sci::printf(sci::PrintLevel::ERROR, "Expected 0 arguments for {} command\n", ctx.pCommand->name);
+        clearStatementData(ctx);
+        ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
+        return;
+    }
+
     if (ctx.arguments.arguments.size() == ctx.pCommand->maxArgs) {
         ctx.pLexer->token.value = ctx.arguments.arguments.back()+' '+ctx.pLexer->token.value;
         ctx.arguments.arguments.pop_back();
@@ -51,7 +58,7 @@ void sci::handleArgumentToken(SweatContext& ctx) {
         try {
             std::stoi(ctx.pLexer->token.value);
         } catch (...) {
-            sci::printf(PrintLevel::ERROR, "{} -> Type not matched: expected integer number\n", arg);
+            sci::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (i)nteger number\n", arg);
             clearStatementData(ctx);
             ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
         }
@@ -61,7 +68,7 @@ void sci::handleArgumentToken(SweatContext& ctx) {
         try {
             std::stof(ctx.pLexer->token.value);
         } catch (...) {
-            sci::printf(PrintLevel::ERROR, "{} -> Type not matched: expected decimal number\n", arg);
+            sci::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (d)ecimal number\n", arg);
             clearStatementData(ctx);
             ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
         }
@@ -71,8 +78,8 @@ void sci::handleArgumentToken(SweatContext& ctx) {
         break;
 
     case 'v':
-        if (!ctx.programVariables.count(ctx.pLexer->token.value) == 0 && ctx.consoleVariables.count(ctx.pLexer->token.value) == 0) {
-            sci::printf(PrintLevel::ERROR, "{} -> Type not matched: variable expected\n", arg);
+        if (ctx.programVariables.count(ctx.pLexer->token.value) == 0 && ctx.consoleVariables.count(ctx.pLexer->token.value) == 0) {
+            sci::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (v)ariable\n", arg);
             clearStatementData(ctx);
             ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
         }
