@@ -103,7 +103,7 @@ int main(int, char**) {
 	//   return EXIT_FAILURE;
 	// }
 
-	std::string input = "test 123 penes; echo ${penes}; var pp \"HEY THEEERE\"; test 123 pp; echo ${pp}; test 123 abc";
+	std::string input = "penes; var pp \"HEY THEEERE\"; pp";
 	// for (int i = 1; i < argc; ++i)
 	//    input += std::string(argv[i]) + " ";
 
