@@ -4,35 +4,35 @@
 #include <string_view>
 
 namespace sci {
-    struct SweatContext;
+	struct SweatContext;
 
-    typedef void(*CommandCallback)(SweatContext& ctx);
+	typedef void(*CommandCallback)(SweatContext& ctx);
 
-    struct Command {
-        std::string_view name;
-        unsigned char minArgs = 0, maxArgs = 0;
-        CommandCallback callback = nullptr;
-        std::string_view description;
+	struct Command {
+		std::string_view name;
+		unsigned char minArgs = 0, maxArgs = 0;
+		CommandCallback callback = nullptr;
+		std::string_view description;
 
-        /**
-         * @note odd = name
-         * @note even = description
-         */
-        std::vector<std::string_view> argsDescriptions;
+		/**
+		 * @note odd = name
+		 * @note even = description
+		 */
+		std::vector<std::string_view> argsDescriptions;
 
-        Command();
-        Command(const std::string_view& name, unsigned char minArgs, unsigned char maxArgs, CommandCallback callback, const std::string_view& description, const std::vector<std::string_view>& argsDescriptions);
-    
-        std::string getArgumentsNames();
+		Command();
+		Command(const std::string_view& name, unsigned char minArgs, unsigned char maxArgs, CommandCallback callback, const std::string_view& description, const std::vector<std::string_view>& argsDescriptions);
+	
+		std::string getArgumentsNames();
 
-        /**
-         * @return name + argsDescriptions(but only their names)
-         */
-        std::string getUsage();
+		/**
+		 * @return name + argsDescriptions(but only their names)
+		 */
+		std::string getUsage();
 
-        /**
-         * @brief prints usage, description and argsDescriptions all like a data tree
-         */
-        void printAsDataTree();
-    };
+		/**
+		 * @brief prints usage, description and argsDescriptions all like a data tree
+		 */
+		void printAsDataTree();
+	};
 }
