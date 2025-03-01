@@ -20,7 +20,5 @@ namespace sci {
          * @return false if command with this name already exists
          */
         bool add(const Command& command);
-
-        static void call(SweatContext& ctx, Command& command);
     };
 }
