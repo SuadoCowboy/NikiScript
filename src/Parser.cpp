@@ -23,7 +23,7 @@ void sci::handleCommandCall(SweatContext& ctx) {
         else
             sci::printf(sci::PrintLevel::ERROR, "Expected arguments between [{}, {}] but received {} argument(s)\n", static_cast<uint16_t>(ctx.pCommand->minArgs), static_cast<uint16_t>(ctx.pCommand->maxArgs), ctx.arguments.arguments.size());
 
-        sci::printf(sci::PrintLevel::ECHO, "{} {}", ctx.pCommand->name, ctx.pCommand->getArgumentsNames());
+        sci::printf(sci::PrintLevel::ECHO, "{} {}\n", ctx.pCommand->name, ctx.pCommand->getArgumentsNames());
         return;
     }
 
@@ -115,7 +115,7 @@ void sci::parse(SweatContext& ctx) {
     ctx.pLexer->advance();
     while (ctx.pLexer->token.type != TokenType::END) {
         switch (ctx.pLexer->token.type) {
-        case TokenType::IDENTIFIER: { // can be either variable or command
+        case TokenType::IDENTIFIER: // can be either variable or command
             if (ctx.consoleVariables.count(ctx.pLexer->token.value) != 0) {
                 handleConsoleVariableCall(ctx);
                 break;
@@ -127,7 +127,6 @@ void sci::parse(SweatContext& ctx) {
                 ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
             }
             break;
-        }
 
         case TokenType::EOS:
             handleCommandCall(ctx);
