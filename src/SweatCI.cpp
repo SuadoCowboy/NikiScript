@@ -4,7 +4,7 @@
 
 #include "Utils.h"
 
-void sci::help_command(sci::SweatContext& ctx) {
+void sci::help_command(SweatContext& ctx) {
     if (ctx.arguments.arguments.size() == 0) {
         std::stringstream oss;
         for (auto& command : ctx.commands.commands)
@@ -26,11 +26,11 @@ void sci::help_command(sci::SweatContext& ctx) {
     }
 }
 
-void sci::echo_command(sci::SweatContext& ctx) {
+void sci::echo_command(SweatContext& ctx) {
     sci::printf(sci::PrintLevel::ECHO, "{}\n", ctx.arguments.getString());
 }
 
-void sci::var_command(sci::SweatContext& ctx) {
+void sci::var_command(SweatContext& ctx) {
     std::string& name = ctx.arguments.getString();
 
     for (auto& c : name) {
@@ -56,10 +56,28 @@ void sci::var_command(sci::SweatContext& ctx) {
         ctx.consoleVariables[name] = ctx.arguments.getString();
 }
 
+static void test_command(sci::SweatContext& ctx) {
+    float i = ctx.arguments.getFloat();
+    const std::string& varName = ctx.arguments.getString();
+
+    std::string varValue;
+    if (ctx.consoleVariables.count(varName) != 0) {
+        varValue = ctx.consoleVariables[varName];
+        ctx.consoleVariables[varName] = "NEVER KNOW HAHAHAHA";
+    } else {
+        sci::ProgramVariable* pVar = &ctx.programVariables[varName];
+        varValue = pVar->get(pVar);
+        pVar->set(pVar, "NEVER KNOW HAHAHAHA");
+    }
+
+    sci::printf(sci::PrintLevel::ECHO, "{} {}\n", varValue, i);
+}
+
 void sci::registerCommands(sci::SweatContext& ctx) {
     ctx.commands.add(Command("echo", 1, 1, echo_command, "prints the passed message to console", {"s[message]", "content to print to console"}));
     ctx.commands.add(Command("help", 0,1, help_command, "prints a list of commands with their usages or the usage of a specified command", {"s[command?]", "command to see usage"}));
     ctx.commands.add(Command("var", 1,2, var_command, "creates a variable", {"s[name]", "variable name", "s[value?]", "if value is not specified, variable becomes an empty string"}));
+    ctx.commands.add(Command("test", 2,2, test_command, "", {"d[number]", "", "v[variable]", ""}));
     ctx.commands.add(Command("_program_variable_callback", 1,1, ProgramVariable::callback, "gets/sets a variable", {"s[value?]", "new variable value"}));
 }
 
