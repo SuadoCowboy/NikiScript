@@ -16,6 +16,9 @@ namespace sci {
 	void echo_command(sci::SweatContext& ctx);
 
 	void var_command(sci::SweatContext& ctx);
+	void delvar_command(sci::SweatContext& ctx);
+
+    void math_command(sci::SweatContext& ctx);
 
 	/**
 	 * @brief adds default commands such as echo
