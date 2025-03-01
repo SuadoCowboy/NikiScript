@@ -24,7 +24,7 @@ void sci::handleCommandCall(SweatContext& ctx) {
         ctx.arguments.arguments = {argument.substr(0, argument.size()-1)};
     }
 
-    if (ctx.pCommand->minArgs > ctx.arguments.arguments.size() || ctx.arguments.arguments.size() > ctx.pCommand->maxArgs) {
+    if (ctx.pCommand->minArgs > ctx.arguments.arguments.size()) {
         if (ctx.pCommand->minArgs == ctx.pCommand->maxArgs)
             sci::printf(sci::PrintLevel::ERROR, "Expected {} argument(s) but received {} argument(s)\n", static_cast<uint16_t>(ctx.pCommand->minArgs), ctx.arguments.arguments.size());
         else
@@ -38,8 +38,10 @@ void sci::handleCommandCall(SweatContext& ctx) {
     clearStatementData(ctx);
 }
 
-void sci::handleStringToken(SweatContext& ctx) {
-    expandStringToken(ctx, ctx.pLexer->token);
+void sci::handleArgumentToken(SweatContext& ctx) {
+    insertReferencesInToken(ctx, ctx.pLexer->token);
+
+    //if (ctx.arguments.arguments.size() > ctx.pCommand->maxArgs)
 
     const std::string_view& arg = ctx.pCommand->argsDescriptions[ctx.arguments.arguments.size()*2];
     switch (arg[0]) {
@@ -117,12 +119,8 @@ void sci::handleConsoleVariableCall(SweatContext& ctx) {
             handleCommandCall(ctx);
             break;
 
-        case TokenType::NUMBER:
-            ctx.arguments.arguments.push_back(ctx.pLexer->token.value);
-            break;
-
-        case TokenType::STRING:
-            handleStringToken(ctx);
+        case TokenType::ARGUMENT:
+            handleArgumentToken(ctx);
             break;
 
         default:
@@ -180,12 +178,8 @@ void sci::parse(SweatContext& ctx) {
             handleCommandCall(ctx);
             break;
 
-        case TokenType::NUMBER:
-            ctx.arguments.arguments.push_back(ctx.pLexer->token.value);
-            break;
-
-        case TokenType::STRING:
-            handleStringToken(ctx);
+        case TokenType::ARGUMENT:
+            handleArgumentToken(ctx);
             break;
 
         default:

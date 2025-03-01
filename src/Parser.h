@@ -21,7 +21,7 @@ namespace sci {
      * @brief handles references in the string and checks if the parameter matches the type
      * 
      */
-    void handleStringToken(SweatContext& ctx);
+    void handleArgumentToken(SweatContext& ctx);
     
     extern uint64_t maxConsoleVariableCalls; ///< 0 = unlimited
 
