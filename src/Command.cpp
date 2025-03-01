@@ -10,20 +10,19 @@ sci::Command::Command(const std::string_view& name, unsigned char minArgs, unsig
     CommandCallback callback, const std::string_view& description, const std::vector<std::string_view>& argsDescriptions)
   : name(name), minArgs(minArgs), maxArgs(maxArgs), callback(callback), description(description), argsDescriptions(argsDescriptions) {}
 
-void sci::Command::printDescription() {
+void sci::Command::printArgumentsNames() {
     std::stringstream oss;
     bool isName = true;
 
     for (uint64_t i = 0; i < argsDescriptions.size(); ++i) {
         if (isName)
-            oss << argsDescriptions[i] << ": ";
-        else
-            oss << argsDescriptions[i] << ';';
+            oss << argsDescriptions[i] << ' ';
 
         isName = !isName;
     }
+    oss << '\n';
 
-    sci::printf(PrintLevel::ECHO, "Description: {}\nArguments: {}\n", description, oss.str());
+    sci::print(PrintLevel::ECHO,  oss.str());
 }
 
 void sci::Command::printUsage() {

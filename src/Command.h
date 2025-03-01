@@ -23,7 +23,7 @@ namespace sci {
         Command();
         Command(const std::string_view& name, unsigned char minArgs, unsigned char maxArgs, CommandCallback callback, const std::string_view& description, const std::vector<std::string_view>& argsDescriptions);
     
-        void printDescription();
+        void printArgumentsNames();
 
         /**
          * @brief prints name + argsDescriptions but only the names
