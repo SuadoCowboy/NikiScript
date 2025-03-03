@@ -14,14 +14,6 @@ void sci::handleCommandCall(SweatContext& ctx) {
 	if (ctx.pCommand == nullptr)
 		return;
 
-	if (ctx.pCommand->maxArgs == 1 && ctx.arguments.arguments.size() > 1) {
-		std::string argument = "";
-		for (const auto& arg : ctx.arguments.arguments)
-			argument += arg+' ';
-
-		ctx.arguments.arguments = {argument.substr(0, argument.size()-1)};
-	}
-
 	if (ctx.pCommand->minArgs > ctx.arguments.arguments.size()) {
 		if (ctx.pCommand->minArgs == ctx.pCommand->maxArgs)
 			sci::printf(sci::PrintLevel::ERROR, "Expected {} argument(s) but received {} arguments\n", static_cast<uint16_t>(ctx.pCommand->minArgs), ctx.arguments.arguments.size());
@@ -150,6 +142,14 @@ void sci::handleConsoleVariableCall(SweatContext& ctx) {
 
 	//ctx.runningFrom &= ~VARIABLE;
 	ctx.pLexer = pOriginalLexer;
+}
+
+void sci::updateLoopVariables(sci::SweatContext& ctx) {
+	for (auto& pVar : ctx.loopVariablesRunning) {
+		ctx.pLexer->clear();
+		ctx.pLexer->input = pVar->second;
+		parse(ctx);
+	}
 }
 
 void sci::parse(SweatContext& ctx) {
