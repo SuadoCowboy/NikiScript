@@ -33,16 +33,16 @@ void sci::echo_command(SweatContext& ctx) {
 void sci::var_command(SweatContext& ctx) {
 	std::string& name = ctx.arguments.getString();
 
+	if (name.empty()) {
+		sci::print(PrintLevel::ERROR, "Variable name can not be empty\n");
+		return;
+	}
+
 	for (auto& c : name) {
 		if (isspace(c)) {
 			sci::print(PrintLevel::ERROR, "Variable name can not contain whitespace\n");
 			return;
 		}
-	}
-
-	if (name.empty()) {
-		sci::print(PrintLevel::ERROR, "Variable name can not be empty\n");
-		return;
 	}
 
 	if (ctx.programVariables.count(name) != 0) {
@@ -68,6 +68,20 @@ void sci::delvar_command(SweatContext& ctx) {
 	if (ctx.consoleVariables.count(varName) == 0) {
 		sci::printf(PrintLevel::ERROR, "Expected console variable\n");
 		return;
+	}
+
+	for (size_t i = 0; i < ctx.loopVariablesRunning.size(); ++i) {
+		if (ctx.loopVariablesRunning[i]->first == varName) {
+			ctx.loopVariablesRunning.erase(ctx.loopVariablesRunning.begin()+i);
+			break;
+		}
+	}
+
+	for (size_t i = 0; i < ctx.toggleVariablesRunning.size(); ++i) {
+		if (ctx.toggleVariablesRunning[i]->first == varName) {
+			ctx.toggleVariablesRunning.erase(ctx.toggleVariablesRunning.begin()+i);
+			break;
+		}
 	}
 
 	ctx.consoleVariables.erase(varName);
