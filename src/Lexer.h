@@ -63,5 +63,10 @@ namespace sci {
 		 * @see Lexer::setTokenValue
 		 */
 		void setTokenType();
+
+		/**
+		 * @brief resets members
+		 */
+		void clear();
 	};
 }

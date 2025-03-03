@@ -113,3 +113,9 @@ void sci::Lexer::setTokenType() {
 	} else if ((TokenType::IDENTIFIER|TokenType::ARGUMENT) & token.type)
 		token.type = TokenType::ARGUMENT;
 }
+
+void sci::Lexer::clear() {
+	input.clear();
+	position = 0;
+	token = {TokenType::NONE};
+}
