@@ -7,14 +7,13 @@ uint64_t sci::maxConsoleVariableCalls = 10000;
 void sci::clearStatementData(SweatContext& ctx) {
 	ctx.pCommand = nullptr;
 	ctx.pData = nullptr;
-	ctx.arguments.arguments.clear();
+	ctx.arguments.clear();
 }
 
 void sci::handleCommandCall(SweatContext& ctx) {
 	if (ctx.pCommand == nullptr)
 		return;
 
-	ctx.arguments.offset = 0;
 	if (ctx.pCommand->maxArgs == 1 && ctx.arguments.arguments.size() > 1) {
 		std::string argument = "";
 		for (const auto& arg : ctx.arguments.arguments)

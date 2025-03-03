@@ -11,3 +11,8 @@ float sci::Arguments::getFloat() {
 double sci::Arguments::getDouble() {
 	return std::stod(arguments[offset++]);
 }
+
+void sci::Arguments::clear() {
+	arguments.clear();
+	offset = 0;
+}

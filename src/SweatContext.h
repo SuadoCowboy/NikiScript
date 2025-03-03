@@ -28,6 +28,11 @@ namespace sci {
 		float getFloat();
 		double getDouble();
 
+		/**
+		 * @brief clears arguments vector and sets offset to 0
+		 */
+		void clear();
+
 #ifdef SWEATCI_ARGUMENTS_EXTRA
 		SWEATCI_ARGUMENTS_EXTRA
 #endif
