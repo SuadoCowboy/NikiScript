@@ -182,10 +182,11 @@ void sci::handleConsoleVariableCall(SweatContext& ctx) {
 void sci::updateLoopVariables(sci::SweatContext& ctx) {
 	//ctx.runningFrom |= VARIABLE|VARIABLE_LOOP;
 
+	ctx.pLexer->clear();
 	for (auto& pVar : ctx.loopVariablesRunning) {
-		ctx.pLexer->clear();
 		ctx.pLexer->input = pVar->second;
 		parse(ctx);
+		ctx.pLexer->clear();
 	}
 	
 	//ctx.runningFrom &= ~VARIABLE;
@@ -232,8 +233,16 @@ void sci::parse(SweatContext& ctx) {
 					break;
 				}
 
-				case SWEATCI_LOOP_VARIABLE:
+				case SWEATCI_LOOP_VARIABLE: {
+					ConsoleVariables::pointer pVar = &*ctx.consoleVariables.find(ctx.pLexer->token.value);
+
+					auto it = std::find(ctx.loopVariablesRunning.begin(), ctx.loopVariablesRunning.end(), pVar);
+					if (it == ctx.loopVariablesRunning.end())
+						ctx.loopVariablesRunning.push_back(pVar);
+					else
+						ctx.loopVariablesRunning.erase(it);
 					break;
+				}
 
 				default:
 					handleConsoleVariableCall(ctx);
