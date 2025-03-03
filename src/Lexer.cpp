@@ -39,12 +39,17 @@ void sci::Lexer::advanceUntil(uint8_t flags) {
 }
 
 uint64_t sci::Lexer::setTokenValue() {
+	if (input[position] == SWEATCI_STATEMENT_SEPARATOR) {
+		token.value = SWEATCI_STATEMENT_SEPARATOR;
+		return position+1;
+	}
+
 	uint64_t nextTokenPosition = position;
 	std::stringstream result;
 
 	/*
 	1 = allow white space and SWEATCI_STATEMENT_SEPARATOR
-	2 = escape quotes allowed
+	2 = escape next char
 	*/
 	unsigned char flags = 0;
 
@@ -104,11 +109,11 @@ uint64_t sci::Lexer::setTokenValue() {
 }
 
 void sci::Lexer::setTokenType() {
-	if (token.type == TokenType::NONE || ((TokenType::EOS|TokenType::END) & token.type)) { // if the lexer just started
-		token.type = TokenType::IDENTIFIER;
-
-	} else if (!token.value.empty() && token.value[0] == SWEATCI_STATEMENT_SEPARATOR) {
+	if (!token.value.empty() && token.value[0] == SWEATCI_STATEMENT_SEPARATOR) {
 		token.type = TokenType::EOS;
+
+	} else if (token.type == TokenType::NONE || ((TokenType::EOS|TokenType::END) & token.type)) { // if the lexer just started and is not EOS
+		token.type = TokenType::IDENTIFIER;
 
 	} else if ((TokenType::IDENTIFIER|TokenType::ARGUMENT) & token.type)
 		token.type = TokenType::ARGUMENT;
