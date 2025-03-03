@@ -27,7 +27,7 @@ void sci::handleCommandCall(SweatContext& ctx) {
 	}
 
 	switch (ctx.pCommand->name[0]) {
-	case '+': {
+	case SWEATCI_TOGGLE_ON: {
 		auto it = std::find(ctx.toggleCommandsRunning.begin(), ctx.toggleCommandsRunning.end(), ctx.pCommand);
 
 		if (it == ctx.toggleCommandsRunning.end())
@@ -41,8 +41,8 @@ void sci::handleCommandCall(SweatContext& ctx) {
 		break;
 	}
 	
-	case '-': {
-		Command* pPlusCommand = ctx.commands.get("+"+std::string(ctx.pCommand->name.substr(1)));
+	case SWEATCI_TOGGLE_OFF: {
+		Command* pPlusCommand = ctx.commands.get('+'+std::string(ctx.pCommand->name.substr(1)));
 		if (pPlusCommand == nullptr)
 			break;
 
@@ -123,10 +123,10 @@ void sci::handleConsoleVariableCall(SweatContext& ctx) {
 
 	std::vector<Lexer> tempLexers;
 	tempLexers.emplace_back(ctx.consoleVariables[ctx.pLexer->token.value]);
-	
+
 	ctx.pLexer = &tempLexers.back();
 	ctx.pLexer->advance();
-	
+
 	//ctx.runningFrom |= VARIABLE;
 
 	while (tempLexers.size() != 0) {
@@ -201,25 +201,63 @@ void sci::parse(SweatContext& ctx) {
 		switch (ctx.pLexer->token.type) {
 		case TokenType::IDENTIFIER: // can be either variable or command
 			if (ctx.consoleVariables.count(ctx.pLexer->token.value) != 0) {
-				handleConsoleVariableCall(ctx);
+				switch (ctx.pLexer->token.value[0]) {
+				case SWEATCI_TOGGLE_ON: {
+					ConsoleVariables::pointer pVarPair = &*ctx.consoleVariables.find(ctx.pLexer->token.value);
+					auto it = std::find(ctx.toggleVariablesRunning.begin(), ctx.toggleVariablesRunning.end(), pVarPair);
+
+					if (it == ctx.toggleVariablesRunning.end()) {
+						ctx.toggleVariablesRunning.push_back(pVarPair);
+						handleConsoleVariableCall(ctx);
+					}
+
+					break;
+				}
+
+				case SWEATCI_TOGGLE_OFF: {
+					ConsoleVariables::pointer pPlusVariable = nullptr;
+					{
+						auto it = ctx.consoleVariables.find('+'+ctx.pLexer->token.value.substr(1));
+						if (it == ctx.consoleVariables.end())
+							break;
+	
+						pPlusVariable = &*it;
+					}
+
+					auto it = std::find(ctx.toggleVariablesRunning.begin(), ctx.toggleVariablesRunning.end(), pPlusVariable);
+					if (it != ctx.toggleVariablesRunning.end()) {
+						ctx.toggleVariablesRunning.erase(it);
+						handleConsoleVariableCall(ctx);
+					}
+					break;
+				}
+
+				case SWEATCI_LOOP_VARIABLE:
+					break;
+
+				default:
+					handleConsoleVariableCall(ctx);
+				}
+
 				ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
-				break;
 
 			} else if (ctx.programVariables.count(ctx.pLexer->token.value) != 0) {
+				// TODO: make this with other method rather than getting a command like this
 				ctx.pCommand = ctx.commands.get("_program_variable_callback");
 				if (ctx.pCommand != nullptr)
 					ctx.pData = &ctx.programVariables[ctx.pLexer->token.value];
 
 				ctx.pLexer->advance();
-				break;
 			}
 
-			ctx.pCommand = ctx.commands.get(ctx.pLexer->token.value);
-			if (ctx.pCommand == nullptr) {
-				sci::printf(PrintLevel::ERROR, "Unknown identifier \"{}\"\n", ctx.pLexer->token.value);
-				ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
-			} else
-				ctx.pLexer->advance();
+			else {
+				ctx.pCommand = ctx.commands.get(ctx.pLexer->token.value);
+				if (ctx.pCommand == nullptr) {
+					sci::printf(PrintLevel::ERROR, "Unknown identifier \"{}\"\n", ctx.pLexer->token.value);
+					ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
+				} else
+					ctx.pLexer->advance();
+			}
 
 			break;
 
