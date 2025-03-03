@@ -47,17 +47,6 @@ std::string sci::Command::getArgumentsNames() {
 	return out;
 }
 
-std::string sci::Command::getUsage() {
-	std::stringstream usageOss;
-	
-	usageOss << name << ' ' << getArgumentsNames() << '\n';
-	
-	std::string usage = usageOss.str();
-	usage.erase(usage.size()-1);
-
-	return usage;
-}
-
 void sci::Command::printAsDataTree() {
 	std::stringstream descriptions;
 	std::stringstream usage;

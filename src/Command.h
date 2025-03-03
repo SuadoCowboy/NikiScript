@@ -26,11 +26,6 @@ namespace sci {
 		std::string getArgumentsNames();
 
 		/**
-		 * @return name + argsDescriptions(but only their names)
-		 */
-		std::string getUsage();
-
-		/**
 		 * @brief prints usage, description and argsDescriptions all like a data tree
 		 */
 		void printAsDataTree();
