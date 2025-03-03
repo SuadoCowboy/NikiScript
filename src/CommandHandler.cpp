@@ -14,3 +14,14 @@ bool sci::CommandHandler::add(const Command& command) {
 
 	return true;
 }
+
+void sci::CommandHandler::remove(const std::string_view& name, SweatContext& ctx) {
+	for (size_t i = 0; i < ctx.toggleCommandsRunning.size(); ++i) {
+		if (name == ctx.toggleCommandsRunning[i]->name) {
+			ctx.toggleCommandsRunning.erase(ctx.toggleCommandsRunning.begin()+i);
+			break;
+		}
+	}
+
+	commands.erase(name);
+}

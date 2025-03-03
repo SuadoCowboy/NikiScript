@@ -20,5 +20,7 @@ namespace sci {
 		 * @return false if command with this name already exists
 		 */
 		bool add(const Command& command);
+
+		void remove(const std::string_view& name, SweatContext& ctx);
 	};
 }
