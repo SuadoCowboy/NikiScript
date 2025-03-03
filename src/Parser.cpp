@@ -180,11 +180,16 @@ void sci::handleConsoleVariableCall(SweatContext& ctx) {
 }
 
 void sci::updateLoopVariables(sci::SweatContext& ctx) {
+	//ctx.runningFrom |= VARIABLE|VARIABLE_LOOP;
+
 	for (auto& pVar : ctx.loopVariablesRunning) {
 		ctx.pLexer->clear();
 		ctx.pLexer->input = pVar->second;
 		parse(ctx);
 	}
+	
+	//ctx.runningFrom &= ~VARIABLE;
+	//ctx.runningFrom &= ~VARIABLE_LOOP;
 }
 
 void sci::parse(SweatContext& ctx) {
