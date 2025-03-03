@@ -12,11 +12,10 @@ namespace sci {
 		END = 8 ///< End of input data
 	};
 
-	/// @brief either keep the original char array alive so that value won't have issues, or allocate to value
 	struct Token {
 		TokenType type = TokenType::NONE;
 		std::string value;
-		std::unordered_map<uint64_t, std::string> references;
+		std::unordered_map<uint64_t, std::string> references; ///< References identified in Token::value. **pair.first** = index where should insert the reference but _does not count with previous inserted references_
 
 		Token();
 		Token(TokenType type);
