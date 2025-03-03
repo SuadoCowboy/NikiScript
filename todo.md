@@ -10,3 +10,4 @@
 - add more context to SweatContext: runningFrom, filePath, lineIndex, columnIndex, lineCount
 
 - loop variables: `var !a "echo 4ever lmao"`
+- toggle variables and commands: `var +a "echo hi"; var -a "echo bye"`
