@@ -15,10 +15,14 @@ sci::Command::Command(const std::string_view& name, unsigned char minArgs, unsig
 	assert(argsDescriptions.size() / 2 == maxArgs);
 	
 	bool isName = true;
-	for (const auto& arg : argsDescriptions) {
+	for (uint8_t i = 0; i < argsDescriptions.size(); ++i) {
+		const std::string_view& arg = argsDescriptions[i];
+
 		if (isName) {
-			assert(!arg.empty());
+			assert(arg.size() > 3);
 			assert(arg[0] == 's' || arg[0] == 'i' || arg[0] == 'd' || arg[0] == 'v');
+			if (i >= minArgs*2)
+				assert(arg[arg.size()-2] == '?');
 		}
 
 		isName = !isName;
