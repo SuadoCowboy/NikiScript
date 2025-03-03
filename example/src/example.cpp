@@ -18,14 +18,29 @@ struct Color {
 
 bool parseStringToColor(const std::string& str, Color& buf, bool printError) {
 	Color color = {0,0,0,255};
+	constexpr const char* errorFormat = "expected \"RRR,GGG,BBB\" or \"RRR,GGG,BBB,AAA\" but received \"{}\"\n";
 
 	try {
 		size_t secondCommaIdx;
 		{
 			size_t firstCommaIdx = str.find(",");
+			if (firstCommaIdx == std::string::npos) {
+				if (printError)
+					sci::printf(sci::PrintLevel::ERROR, errorFormat, str);
+
+				return false;
+			}
+
 			color.r = std::stoi(str.substr(0, firstCommaIdx));
-			
+
 			secondCommaIdx = str.find(",", firstCommaIdx+1);
+			if (secondCommaIdx == std::string::npos) {
+				if (printError)
+					sci::printf(sci::PrintLevel::ERROR, errorFormat, str);
+
+				return false;
+			}
+
 			color.g = std::stoi(str.substr(firstCommaIdx+1, secondCommaIdx-firstCommaIdx-1));
 		}
 
@@ -40,7 +55,7 @@ bool parseStringToColor(const std::string& str, Color& buf, bool printError) {
 
 	} catch (...) {
 		if (printError)
-			sci::printf(sci::PrintLevel::ERROR, "expected \"RRR,GGG,BBB\" or \"RRR,GGG,BBB,AAA\" but received \"{}\"\n", str);
+			sci::printf(sci::PrintLevel::ERROR, errorFormat, str);
 
 		return false;
 	}
@@ -112,6 +127,22 @@ static void minus_test_command(sci::SweatContext&) {
 	sci::print(sci::PrintLevel::ECHO, "-test called!\n");
 }
 
+static std::string colorToString(const Color& color) {
+	return sci::formatString("({}, {}, {}, {})",
+		static_cast<uint16_t>(color.r),
+		static_cast<uint16_t>(color.g),
+		static_cast<uint16_t>(color.b),
+		static_cast<uint16_t>(color.a));
+}
+
+static std::string getColor(sci::ProgramVariable* pVar) {
+	return colorToString(*static_cast<Color*>(pVar->pValue));
+}
+
+static void setColor(sci::ProgramVariable* pVar, const std::string& str) {
+	parseStringToColor(str, *static_cast<Color*>(pVar->pValue), true);
+}
+
 int main(int, char**) {
 	sci::setPrintCallback(nullptr, sweatciPrintCallback);
 
@@ -120,6 +151,8 @@ int main(int, char**) {
 
 	std::string penes = "Penes";
 	sci::registerVariable(ctx, "penes", &penes, sci::getString, sci::setString);
+	Color preto = {0,0,0,255};
+	sci::registerVariable(ctx, "preto", &preto, getColor, setColor);
 
 	sci::Lexer lexer;
 	ctx.pLexer = &lexer;
