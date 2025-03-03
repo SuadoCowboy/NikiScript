@@ -13,3 +13,5 @@
 - toggle variables and commands: `var +a "echo hi"; var -a "echo bye"`
 
 - in parse function, get variables in another way rather than using a command and then remove the pData variable from SweatContext
+
+- add SweatContext::runningFrom variable right after making a good file exec function/struct/class
