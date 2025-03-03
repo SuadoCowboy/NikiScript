@@ -63,7 +63,7 @@ bool parseStringToColor(const std::string& str, Color& buf, bool printError) {
 
 bool sci::Arguments::getColor(SweatContext& ctx, Color& output) {
 	if (!parseStringToColor(arguments[offset++], output, false)) {
-		sci::printf(sci::PrintLevel::ERROR, "\"{}\" is not a valid color. Argument #{}: {}\n", arguments[offset-1], offset-1, ctx.pCommand->maxArgs == 1? ctx.pCommand->argsDescriptions[0] : ctx.pCommand->argsDescriptions[offset-1]);
+		sci::printf(sci::PrintLevel::ERROR, "\"{}\" is not a valid color. Argument #{}: {}\n", arguments[offset-1], offset-1, ctx.pCommand->argsDescriptions[offset-1]);
 		return false;
 	}
 
@@ -143,6 +143,14 @@ static void setColor(sci::ProgramVariable* pVar, const std::string& str) {
 	parseStringToColor(str, *static_cast<Color*>(pVar->pValue), true);
 }
 
+static void print_color_command(sci::SweatContext& ctx) {
+	Color c;
+	if (!ctx.arguments.getColor(ctx, c))
+		return;
+
+	sci::print(sci::PrintLevel::ECHO, colorToString(c)+'\n');
+}
+
 int main(int, char**) {
 	sci::setPrintCallback(nullptr, sweatciPrintCallback);
 
@@ -161,6 +169,8 @@ int main(int, char**) {
 
 	ctx.commands.add(sci::Command("+test", 0,1, plus_test_command, "", {"s[?]", ""}));
 	ctx.commands.add(sci::Command("-test", 0,0, minus_test_command, "", {}));
+
+	ctx.commands.add(sci::Command("print_color", 1,1, print_color_command, "prints color in rgb format", {"s[color]", "color to be printed"}));
 
 	running = true;
 	while (running) {
