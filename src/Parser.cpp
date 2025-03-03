@@ -100,7 +100,7 @@ void sci::handleConsoleVariableCall(SweatContext& ctx) {
 	ctx.pLexer = &tempLexers.back();
 	ctx.pLexer->advance();
 	
-	//ctx.runningFrom |= ALIAS;
+	//ctx.runningFrom |= VARIABLE;
 
 	while (tempLexers.size() != 0) {
 		if (ctx.pLexer->token.type == TokenType::IDENTIFIER) {
@@ -148,13 +148,8 @@ void sci::handleConsoleVariableCall(SweatContext& ctx) {
 		}
 	}
 
-	handleCommandCall(ctx);
-
-	//ctx.runningFrom &= ~ALIAS;
+	//ctx.runningFrom &= ~VARIABLE;
 	ctx.pLexer = pOriginalLexer;
-	
-	// if there's something between the alias and the end of statement, we don't care!
-	ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 }
 
 void sci::parse(SweatContext& ctx) {
@@ -167,12 +162,15 @@ void sci::parse(SweatContext& ctx) {
 		case TokenType::IDENTIFIER: // can be either variable or command
 			if (ctx.consoleVariables.count(ctx.pLexer->token.value) != 0) {
 				handleConsoleVariableCall(ctx);
+				ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 				break;
 
 			} else if (ctx.programVariables.count(ctx.pLexer->token.value) != 0) {
 				ctx.pCommand = ctx.commands.get("_program_variable_callback");
 				if (ctx.pCommand != nullptr)
 					ctx.pData = &ctx.programVariables[ctx.pLexer->token.value];
+
+				ctx.pLexer->advance();
 				break;
 			}
 
@@ -180,22 +178,25 @@ void sci::parse(SweatContext& ctx) {
 			if (ctx.pCommand == nullptr) {
 				sci::printf(PrintLevel::ERROR, "Unknown identifier \"{}\"\n", ctx.pLexer->token.value);
 				ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
-			}
+			} else
+				ctx.pLexer->advance();
+
 			break;
 
 		case TokenType::ARGUMENT:
 			handleArgumentToken(ctx);
+			ctx.pLexer->advance();
 			break;
 
 		case TokenType::EOS:
 			handleCommandCall(ctx);
+			ctx.pLexer->advance();
 			break;
 
 		default:
+			ctx.pLexer->advance();
 			break;
 		}
-	
-		ctx.pLexer->advance();
 	}
 
 	handleCommandCall(ctx);
