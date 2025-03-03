@@ -13,7 +13,7 @@ sci::Command::Command(const std::string_view& name, unsigned char minArgs, unsig
 	assert(minArgs <= maxArgs);
 	assert(argsDescriptions.size() % 2 == 0);
 	assert(argsDescriptions.size() / 2 == maxArgs);
-	
+
 	bool isName = true;
 	for (uint8_t i = 0; i < argsDescriptions.size(); ++i) {
 		const std::string_view& arg = argsDescriptions[i];
@@ -29,7 +29,7 @@ sci::Command::Command(const std::string_view& name, unsigned char minArgs, unsig
 	}
 
 	assert(callback != nullptr);
-  }
+}
 
 std::string sci::Command::getArgumentsNames() {
 	if (argsDescriptions.size() == 0)
