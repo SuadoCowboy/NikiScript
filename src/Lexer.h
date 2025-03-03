@@ -21,18 +21,6 @@
 #define SWEATCI_REFERENCE_CLOSE '}'
 #endif
 
-#ifndef SWEATCI_LOOP_VARIABLE
-#define SWEATCI_LOOP_VARIABLE '!'
-#endif
-
-#ifndef SWEATCI_TOGGLE_ON_VARIABLE
-#define SWEATCI_TOGGLE_ON_VARIABLE '+'
-#endif
-
-#ifndef SWEATCI_TOGGLE_OFF_VARIABLE
-#define SWEATCI_TOGGLE_OFF_VARIABLE '-'
-#endif
-
 namespace sci {
 	struct Lexer {
 		std::string input;
