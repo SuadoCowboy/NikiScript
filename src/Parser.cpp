@@ -1,5 +1,7 @@
 #include "Parser.h"
 
+#include <algorithm>
+
 #include "PrintCallback.h"
 
 uint64_t sci::maxConsoleVariableCalls = 10000;
@@ -23,6 +25,52 @@ void sci::handleCommandCall(SweatContext& ctx) {
 		sci::printf(sci::PrintLevel::ECHO, "{} {}\n", ctx.pCommand->name, ctx.pCommand->getArgumentsNames());
 		return;
 	}
+
+	switch (ctx.pCommand->name[0]) {
+	case '+': {
+		auto it = std::find(ctx.toggleCommandsRunning.begin(), ctx.toggleCommandsRunning.end(), ctx.pCommand);
+
+		if (it == ctx.toggleCommandsRunning.end())
+			ctx.toggleCommandsRunning.push_back(ctx.pCommand);
+
+		else {
+			clearStatementData(ctx);
+			return;
+		}
+
+		break;
+	}
+	
+	case '-': {
+		Command* pPlusCommand = ctx.commands.get("+"+std::string(ctx.pCommand->name.substr(1)));
+		if (pPlusCommand == nullptr)
+			break;
+
+		auto it = std::find(ctx.toggleCommandsRunning.begin(), ctx.toggleCommandsRunning.end(), pPlusCommand);
+
+		if (it == ctx.toggleCommandsRunning.end()) {
+			clearStatementData(ctx);
+			return;
+
+		} else
+			ctx.toggleCommandsRunning.erase(it);
+
+		break;
+	}
+	}
+
+	// if (ctx.pCommand->name[0] == '+' || ctx.pCommand->name[0] == '-') {
+	// 	Command* pToggleCommand = nullptr;
+
+	// 	auto it = std::find(ctx.toggleCommandsRunning.begin(), ctx.toggleCommandsRunning.end(), pToggleCommand);
+
+	// 	if (it == ctx.toggleCommandsRunning.end()) // if '+': add, else: ignore
+	// 		if (ctx.pCommand->name[0] == '+') // INTENDED nested if condition
+	// 			ctx.toggleCommandsRunning.push_back(pToggleCommand);
+	// 		else {
+	// 			clearStatementData(ctx);
+	// 			return;
+	// 		}
 
 	ctx.pCommand->callback(ctx);
 	clearStatementData(ctx);
