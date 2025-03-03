@@ -50,6 +50,11 @@ void sci::var_command(SweatContext& ctx) {
 		return;
 	}
 
+	if (ctx.commands.commands.count(name) != 0) {
+		sci::print(PrintLevel::ERROR, "A command already uses this name and therefore can not be replaced\n");
+		return;
+	}
+
 	if (ctx.arguments.arguments.size() == 1)
 		ctx.consoleVariables[name] = "";
 	else
