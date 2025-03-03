@@ -44,10 +44,8 @@ namespace sci {
 	// for SweatContext so that this won't happen.
 
 	typedef std::unordered_map<std::string, std::string> ConsoleVariables;
-	// TODO: when deleting a variable, check if it's in here and then delete from this vector
 	typedef std::vector<ConsoleVariables::pointer> LoopVariablesRunning;
-	// TODO: when deleting a variable, check if it's in here and then delete from this vector
-	typedef std::vector<ConsoleVariables::pointer> ToggleVariablesRunning;
+	typedef std::vector<ConsoleVariables::pointer> ToggleVariablesRunning; ///< This is unecessary to be a pointer but I like the idea of using only 8 bytes instead of the same bytes as the var name
 	typedef std::vector<Command*> ToggleCommandsRunning;
 
 	struct SweatContext {
