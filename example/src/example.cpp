@@ -101,6 +101,17 @@ static void quit_command(sci::SweatContext&) {
 	running = false;
 }
 
+static void plus_test_command(sci::SweatContext& ctx) {
+	if (ctx.arguments.arguments.size() != 0)
+		sci::printf(sci::PrintLevel::ECHO, "+test called! {}\n", ctx.arguments.getString());
+	else
+		sci::print(sci::PrintLevel::ECHO, "+test called!\n");
+}
+
+static void minus_test_command(sci::SweatContext&) {
+	sci::print(sci::PrintLevel::ECHO, "-test called!\n");
+}
+
 int main(int, char**) {
 	sci::setPrintCallback(nullptr, sweatciPrintCallback);
 
@@ -115,6 +126,9 @@ int main(int, char**) {
 
 	ctx.commands.add(sci::Command("quit", 0, 1, quit_command, "stops the main loop from running", {"s[?]", ""}));
 
+	ctx.commands.add(sci::Command("+test", 0,1, plus_test_command, "", {"s[?]", ""}));
+	ctx.commands.add(sci::Command("-test", 0,0, minus_test_command, "", {}));
+
 	running = true;
 	while (running) {
 		std::string input;
@@ -125,5 +139,7 @@ int main(int, char**) {
 		lexer.input = input;
 		sci::parse(ctx);
 		lexer.clear();
+
+		sci::updateLoopVariables(ctx);
 	}
 }
