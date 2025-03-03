@@ -95,17 +95,14 @@ std::string tokenToString(const sci::Token& token) {
 	return outString + formatted;
 }
 
+bool running = false;
+
+static void quit_command(sci::SweatContext&) {
+	running = false;
+}
+
 int main(int, char**) {
 	sci::setPrintCallback(nullptr, sweatciPrintCallback);
-
-	// if (argc <= 1) {
-	//   sci::printf(sci::PrintLevel::ERROR, "Usage: \"{}\" <input>\n", argv[0]);
-	//   return EXIT_FAILURE;
-	// }
-
-	std::string input = "penes; var pp \"HEY THEEERE\"; pp";
-	// for (int i = 1; i < argc; ++i)
-	//    input += std::string(argv[i]) + " ";
 
 	sci::SweatContext ctx;
 	sci::registerCommands(ctx);
@@ -113,8 +110,20 @@ int main(int, char**) {
 	std::string penes = "Penes";
 	sci::registerVariable(ctx, "penes", &penes, sci::getString, sci::setString);
 
-	sci::Lexer lexer{input};
+	sci::Lexer lexer;
 	ctx.pLexer = &lexer;
 
-	sci::parse(ctx);
+	ctx.commands.add(sci::Command("quit", 0, 1, quit_command, "stops the main loop from running", {"s[?]", ""}));
+
+	running = true;
+	while (running) {
+		std::string input;
+
+		std::cout << "> ";
+		std::getline(std::cin, input);
+
+		lexer.input = input;
+		sci::parse(ctx);
+		lexer.clear();
+	}
 }
