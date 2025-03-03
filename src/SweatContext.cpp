@@ -1,7 +1,5 @@
 #include "SweatContext.h"
 
-#include <algorithm>
-
 std::string& sci::Arguments::getString() {
 	return arguments[offset++];
 }
