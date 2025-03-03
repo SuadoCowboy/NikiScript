@@ -8,15 +8,15 @@ void sci::help_command(SweatContext& ctx) {
 	if (ctx.arguments.arguments.size() == 0) {
 		std::stringstream oss;
 		for (auto& command : ctx.commands.commands)
-			oss << command.second.getUsage() << '\n';
+			oss << command.second.name << ' ' << command.second.getArgumentsNames() << '\n';
 
 		sci::print(sci::PrintLevel::ECHO, oss.str());
+
 	} else {
 		std::string& commandName = ctx.arguments.getString();
 		trim(commandName);
 
 		Command* pCommand = ctx.commands.get(commandName);
-
 		if (pCommand == nullptr) {
 			sci::printf(sci::PrintLevel::ERROR, "Command \"{}\" not found\n", commandName);
 			return;
@@ -68,29 +68,51 @@ void sci::delvar_command(SweatContext& ctx) {
 	ctx.consoleVariables.erase(varName);
 }
 
-void sci::math_command(sci::SweatContext&) {
+void sci::math_command(SweatContext&) {
 	// TODO: create math expression parser
 	// TODO: +,-, *,^, /,%
+	return;
+}
+
+void sci::toggle_command(sci::SweatContext& ctx) {
+	const std::string& varName = ctx.arguments.getString();
+	const std::string& option1 = ctx.arguments.getString();
+	const std::string& option2 = ctx.arguments.getString();
+	ctx.arguments.clear();
+
+	if (ctx.consoleVariables.count(varName) != 0) {
+		std::string& varValue = ctx.consoleVariables[varName];
+
+		if (varValue == option1)
+			varValue = option2;
+		else
+			varValue = option1;
+
+		return;
+	}
+
+	sci::ProgramVariable& var = ctx.programVariables[varName];
+	std::string varValue = var.get(&var);
+
+	if (varValue == option1)
+		var.set(&var, option2);
+	else
+		var.set(&var, option1);
 }
 
 void sci::registerCommands(sci::SweatContext& ctx) {
 	ctx.commands.add(Command("_program_variable_callback", 0,1, ProgramVariable::callback, "gets/sets a variable", {"s[value?]", "new variable value"}));
 
 	ctx.commands.add(Command("echo", 1, 1, echo_command, "prints the passed message to console", {"s[message]", "content to print to console"}));
-	ctx.commands.add(Command("help", 0,1, help_command, "prints a list of commands with their usages or the usage of a specified command", {"s[command?]", "command to see usage"}));
+	ctx.commands.add(Command("help", 0,1, help_command, "prints a list of commands with their usages or the usage of the specified command", {"s[command?]", "command to see usage"}));
 	ctx.commands.add(Command("var", 1,2, var_command, "creates a variable", {"s[name]", "variable name", "s[value?]", "if value is not specified, variable becomes an empty string"}));
 	ctx.commands.add(Command("delvar", 1,1, delvar_command, "deletes a variable", {"v[variable]", "variable to delete"}));
-	ctx.commands.add(Command("math", 1,2, math_command, "parses math expressions", {
-		"s[expression]", "expression",
-		"v[output?]", "variable to store expression result. If blank, prints to result to console"
-	}));
-
-	// registerCommand("help", 0, 1, help, "<command> - shows the usage of the command specified");
-	// registerCommand("commands", 0, 0, commands, "- shows a list of commands with their usages");
-	// registerCommand("echo", 1, 1, echo, "<message> - echoes a message to the console");
-	// registerCommand("incrementvar", 4, 4, incrementvar, "<var|cvar> <minValue> <maxValue> <delta> - increments the value of a variable", pVariables);
+	// ctx.commands.add(Command("math", 1,2, math_command, "parses math expressions", {
+	// 	"s[expression]", "expression",
+	// 	"v[output?]", "variable to store expression result. If blank, prints to result to console"
+	// }));
+	ctx.commands.add(Command("toggle", 3,3, toggle_command, "toggles value between option1 and option2", {"v[variable]", "variable to modify value", "s[option1]", "option to set variable in case variable value is option2", "s[option2]", "option to set variable in case variable value is option1"}));
 	// registerCommand("exec", 1, 1, exec, "- executes a .cfg file that contains SweatCI script", pVariables);
-	// registerCommand("toggle", 3, 3, toggle, "<var|cvar> <option1> <option2> - toggles value between option1 and option2", pVariables);
 }
 
 void sci::registerVariable(sci::SweatContext& ctx, const std::string& name, void* pVar, const GetProgramVariableValue& get, const SetProgramVariableValue& set) {
