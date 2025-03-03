@@ -22,8 +22,7 @@
 #endif
 
 namespace sci {
-	class Lexer {
-	public:
+	struct Lexer {
 		std::string input;
 		uint64_t position = 0;
 		/**
@@ -32,6 +31,7 @@ namespace sci {
 		 */
 		Token token = {TokenType::NONE};
 
+		Lexer();
 		Lexer(const std::string& input);
 
 		/**

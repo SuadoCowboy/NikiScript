@@ -4,6 +4,7 @@
 
 #include "PrintCallback.h"
 
+sci::Lexer::Lexer() {}
 sci::Lexer::Lexer(const std::string& input) : input(input) {}
 
 void sci::Lexer::advance() {
