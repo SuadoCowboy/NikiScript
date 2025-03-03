@@ -10,7 +10,6 @@
 - add more context to SweatContext: runningFrom, filePath, lineIndex, columnIndex, lineCount
 
 - loop variables: `var !a "echo 4ever lmao"`
-- toggle variables and commands: `var +a "echo hi"; var -a "echo bye"`
 
 - in parse function, get variables in another way rather than using a command and then remove the pData variable from SweatContext
 
