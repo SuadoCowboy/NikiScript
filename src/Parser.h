@@ -6,12 +6,12 @@
 #define SWEATCI_LOOP_VARIABLE '!'
 #endif
 
-#ifndef SWEATCI_TOGGLE_ON_VARIABLE
-#define SWEATCI_TOGGLE_ON_VARIABLE '+'
+#ifndef SWEATCI_TOGGLE_ON
+#define SWEATCI_TOGGLE_ON '+'
 #endif
 
-#ifndef SWEATCI_TOGGLE_OFF_VARIABLE
-#define SWEATCI_TOGGLE_OFF_VARIABLE '-'
+#ifndef SWEATCI_TOGGLE_OFF
+#define SWEATCI_TOGGLE_OFF '-'
 #endif
 
 namespace sci {
