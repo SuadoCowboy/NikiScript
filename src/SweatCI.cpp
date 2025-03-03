@@ -62,7 +62,7 @@ void sci::var_command(SweatContext& ctx) {
 }
 
 void sci::delvar_command(SweatContext& ctx) {
-	// TODO: when runningFrom is implemented: make this function unable to be called in aliases? Why?
+	// TODO: when runningFrom is implemented: make this function unable to be called in variables? Why?
 	const std::string& varName = ctx.arguments.getString();
 
 	if (ctx.consoleVariables.count(varName) == 0) {
