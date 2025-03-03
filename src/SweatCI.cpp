@@ -77,10 +77,14 @@ void sci::delvar_command(SweatContext& ctx) {
 		}
 	}
 
-	for (size_t i = 0; i < ctx.toggleVariablesRunning.size(); ++i) {
-		if (ctx.toggleVariablesRunning[i]->first == varName) {
-			ctx.toggleVariablesRunning.erase(ctx.toggleVariablesRunning.begin()+i);
-			break;
+	if (varName.size() > 1 && varName[0] == '+') {
+		std::string toggleVarName = varName.substr(1);
+
+		for (size_t i = 0; i < ctx.toggleVariablesRunning.size(); ++i) {
+			if (ctx.toggleVariablesRunning[i]->first == toggleVarName) {
+				ctx.toggleVariablesRunning.erase(ctx.toggleVariablesRunning.begin()+i);
+				break;
+			}
 		}
 	}
 
