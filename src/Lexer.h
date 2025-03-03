@@ -27,7 +27,7 @@ namespace sci {
 		std::string input;
 		uint64_t position = 0;
 		/**
-		 * @brief this variable is where advance stores the token
+		 * @brief This variable is where advance stores the token
 		 * @see Lexer::advance
 		 */
 		Token token = {TokenType::NONE};
@@ -35,28 +35,31 @@ namespace sci {
 		Lexer(const std::string& input);
 
 		/**
-		 * @brief stores the token in the token member
+		 * @brief Gets the next token in the input
+		 * @note Position is set to the **next** token position in the end of this function
 		 * @see Lexer::token
+		 * @see Lexer::setTokenValue
+		 * @see Lexer::setTokenType
 		 */
 		void advance();
 
 		/**
-		 * @brief advances tokens until it reaches one of the flags
-		 * @param flags TokenType
+		 * @brief Advances tokens until it reaches one of the flags
+		 * @param flags Bitwise TokenType
 		 * @see Lexer::advance
 		 */
 		void advanceUntil(uint8_t flags);
 
 		/**
-		 * @brief Sets the value of the token
+		 * @brief Gets token value by checking where a whitespace is found
 		 *
-		 * @return uint64_t next input initial position(either whitespace, EOS or END)
+		 * @return Next input's initial position. Either whitespace, EOS or END
 		 * @see Lexer::setTokenType
 		 */
 		uint64_t setTokenValue();
 
 		/**
-		 * @brief Checks if the last token type was any of those and search which type current token should be
+		 * @brief Identifies token type by checking the previous token type
 		 * @see Lexer::setTokenValue
 		 */
 		void setTokenType();
