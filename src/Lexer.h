@@ -21,10 +21,24 @@
 #define NIKISCRIPT_REFERENCE_CLOSE '}'
 #endif
 
+#ifndef NIKISCRIPT_ARGUMENTS_SEPARATOR
+#define NIKISCRIPT_ARGUMENTS_SEPARATOR ','
+#endif
+
+#ifndef NIKISCRIPT_ARGUMENTS_OPEN
+#define NIKISCRIPT_ARGUMENTS_OPEN '('
+#endif
+
+#ifndef NIKISCRIPT_ARGUMENTS_CLOSE
+#define NIKISCRIPT_ARGUMENTS_CLOSE ')'
+#endif
+
 namespace ns {
 	struct Lexer {
 		std::string input;
 		uint64_t position = 0;
+		size_t openArguments = 0; ///< how many times NIKISCRIPT_ARGUMENTS_OPEN was found
+
 		/**
 		 * @brief This variable is where advance stores the token
 		 * @see Lexer::advance

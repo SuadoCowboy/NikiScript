@@ -51,7 +51,7 @@ uint64_t ns::Lexer::setTokenValue() {
 	1 = allow white space and NIKISCRIPT_STATEMENT_SEPARATOR
 	2 = escape next char
 	*/
-	unsigned char flags = 0;
+	unsigned char flags = openArguments == 0? 0 : 1;
 
 	while (nextTokenPosition < input.size() && (position == nextTokenPosition || ((input[nextTokenPosition] != ' ' && (input[nextTokenPosition] != NIKISCRIPT_STATEMENT_SEPARATOR || (flags & 2))) || (flags & 1)))) {
 		if (flags & 2) {
@@ -60,11 +60,32 @@ uint64_t ns::Lexer::setTokenValue() {
 			continue;
 		}
 
+		if (input[nextTokenPosition] == NIKISCRIPT_ARGUMENTS_OPEN) {
+			++openArguments;
+			flags |= 1;
+
+			if (openArguments == 1) {
+				++nextTokenPosition;
+				continue;
+			}
+
+		} else if (input[nextTokenPosition] == NIKISCRIPT_ARGUMENTS_SEPARATOR && openArguments == 1) {
+			++nextTokenPosition;
+			break;
+
+		} else if (input[nextTokenPosition] == NIKISCRIPT_ARGUMENTS_CLOSE && openArguments != 0) {
+			--openArguments;
+			if (openArguments == 0) {
+				++nextTokenPosition;
+				break;
+			}
+		}
+
 		if (input[nextTokenPosition] == '\\') {
 			flags |= 2;
 			++nextTokenPosition;
 			continue;
-		
+
 		} else if (input[nextTokenPosition] == NIKISCRIPT_REFERENCE && nextTokenPosition+1 < input.size() && input[nextTokenPosition+1] == NIKISCRIPT_REFERENCE_OPEN) {
 			std::stringstream referenceStream;
 
@@ -86,9 +107,8 @@ uint64_t ns::Lexer::setTokenValue() {
 				nextTokenPosition = tempIndex;
 				continue;
 			}
-		}
 		
-		if (input[nextTokenPosition] == '"') {
+		} else if (input[nextTokenPosition] == '"') {
 			++nextTokenPosition;
 			
 			if (flags & 1) {
@@ -123,4 +143,5 @@ void ns::Lexer::clear() {
 	input.clear();
 	position = 0;
 	token = {TokenType::NONE};
+	openArguments = 0;
 }
