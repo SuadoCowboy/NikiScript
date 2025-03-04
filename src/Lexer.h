@@ -42,6 +42,8 @@
 #endif
 
 namespace ns {
+	struct Context;
+
 	struct Lexer {
 		std::string input;
 		uint64_t position = 0;
@@ -63,7 +65,7 @@ namespace ns {
 		 * @see Lexer::setTokenValue
 		 * @see Lexer::setTokenType
 		 */
-		void advance();
+		void advance(Context& ctx);
 
 		/**
 		 * @brief Advances tokens until it reaches one of the flags

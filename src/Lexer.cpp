@@ -3,11 +3,12 @@
 #include <sstream>
 
 #include "PrintCallback.h"
+#include "Context.h"
 
 ns::Lexer::Lexer() {}
 ns::Lexer::Lexer(const std::string& input) : input(input) {}
 
-void ns::Lexer::advance() {
+void ns::Lexer::advance(Context& ctx) {
 	token.references.clear();
 	while (position < input.size() && input[position] == ' ')
 		++position;
@@ -15,6 +16,12 @@ void ns::Lexer::advance() {
 	if (position >= input.size()) {
 		token.type = TokenType::END;
 		token.value = "";
+		return;
+	}
+
+	if (input[position] == '\n') {
+		ctx.lineIndex++;
+		ctx.columnIndex = 0;
 		return;
 	}
 
@@ -54,7 +61,7 @@ uint64_t ns::Lexer::setTokenValue() {
 	*/
 	unsigned char flags = openArguments == 0? 0 : 1;
 
-	while (nextTokenPosition < input.size() && (position == nextTokenPosition || ((input[nextTokenPosition] != ' ' && (input[nextTokenPosition] != NIKISCRIPT_STATEMENT_SEPARATOR || (flags & 2))) || (flags & 1)))) {
+	while (nextTokenPosition < input.size() && (input[nextTokenPosition] == '\n' || position == nextTokenPosition || ((input[nextTokenPosition] != ' ' && (input[nextTokenPosition] != NIKISCRIPT_STATEMENT_SEPARATOR || (flags & 2))) || (flags & 1)))) {
 		if (flags & 2) {
 			flags &= ~2;
 			result << input[nextTokenPosition++];
