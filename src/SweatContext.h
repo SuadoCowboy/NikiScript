@@ -52,7 +52,6 @@ namespace sci {
 		Lexer* pLexer = nullptr;
 
 		Command* pCommand = nullptr;
-		void* pData = nullptr; ///< command data
 
 		Arguments arguments;
 

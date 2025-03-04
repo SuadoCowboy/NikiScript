@@ -17,8 +17,6 @@ namespace sci {
 		GetProgramVariableValue get = nullptr;
 		SetProgramVariableValue set = nullptr;
 
-		static void callback(SweatContext& ctx);
-
 		ProgramVariable();
 		ProgramVariable(void* pVariable, const GetProgramVariableValue& get, const SetProgramVariableValue& set);
 	};

@@ -8,11 +8,20 @@ uint64_t sci::maxConsoleVariableCalls = 10000;
 
 void sci::clearStatementData(SweatContext& ctx) {
 	ctx.pCommand = nullptr;
-	ctx.pData = nullptr;
 	ctx.arguments.clear();
 }
 
-void sci::handleCommandCall(SweatContext& ctx) {
+void sci::handleCommandCall(SweatContext& ctx, ProgramVariable*& pProgramVar) {
+	if (pProgramVar != nullptr) {
+		if (ctx.arguments.arguments.size() == 0)
+			sci::printf(sci::PrintLevel::ECHO, "Value: {}\n", pProgramVar->get(pProgramVar));
+		else
+			pProgramVar->set(pProgramVar, ctx.arguments.arguments[0]);
+
+		clearStatementData(ctx);
+		return;
+	}
+
 	if (ctx.pCommand == nullptr)
 		return;
 
@@ -23,6 +32,7 @@ void sci::handleCommandCall(SweatContext& ctx) {
 			sci::printf(sci::PrintLevel::ERROR, "Expected arguments between [{}, {}] but received {} arguments\n", static_cast<uint16_t>(ctx.pCommand->minArgs), static_cast<uint16_t>(ctx.pCommand->maxArgs), ctx.arguments.arguments.size());
 
 		sci::printf(sci::PrintLevel::ECHO, "{} {}\n", ctx.pCommand->name, ctx.pCommand->getArgumentsNames());
+		clearStatementData(ctx);
 		return;
 	}
 
@@ -65,6 +75,14 @@ void sci::handleCommandCall(SweatContext& ctx) {
 
 void sci::handleArgumentToken(SweatContext& ctx) {
 	insertReferencesInToken(ctx, ctx.pLexer->token);
+
+	if (ctx.pCommand == nullptr) { // if command is nullptr then just append arguments to a single one. This is useful for ProgramVariable
+		if (ctx.arguments.arguments.size() == 0)
+			ctx.arguments.arguments.push_back(ctx.pLexer->token.value);
+		else
+			ctx.arguments.arguments.back() += ' '+ctx.pLexer->token.value;
+		return;
+	}
 
 	if (ctx.pCommand->maxArgs == 0) {
 		sci::printf(sci::PrintLevel::ERROR, "Expected 0 arguments for {} command\n", ctx.pCommand->name);
@@ -118,7 +136,7 @@ void sci::handleArgumentToken(SweatContext& ctx) {
 	ctx.arguments.arguments.push_back(ctx.pLexer->token.value);
 }
 
-void sci::handleConsoleVariableCall(SweatContext& ctx) {
+void sci::handleConsoleVariableCall(SweatContext& ctx, ProgramVariable*& pProgramVar) {
 	Lexer* pOriginalLexer = ctx.pLexer;
 
 	std::vector<Lexer> tempLexers;
@@ -151,7 +169,7 @@ void sci::handleConsoleVariableCall(SweatContext& ctx) {
 
 		switch (ctx.pLexer->token.type) {
 		case TokenType::EOS:
-			handleCommandCall(ctx);
+			handleCommandCall(ctx, pProgramVar);
 			break;
 
 		case TokenType::ARGUMENT:
@@ -164,7 +182,7 @@ void sci::handleConsoleVariableCall(SweatContext& ctx) {
 
 		ctx.pLexer->advance();
 		while (ctx.pLexer->token.type == TokenType::END) {
-			handleCommandCall(ctx);
+			handleCommandCall(ctx, pProgramVar);
 
 			tempLexers.pop_back();
 			if (tempLexers.size() == 0)
@@ -197,6 +215,8 @@ void sci::parse(SweatContext& ctx) {
 	if (ctx.pLexer == nullptr)
 		return;
 
+	ProgramVariable* pProgramVar = nullptr;
+
 	ctx.pLexer->advance();
 	while (ctx.pLexer->token.type != TokenType::END) {
 		switch (ctx.pLexer->token.type) {
@@ -209,7 +229,7 @@ void sci::parse(SweatContext& ctx) {
 
 					if (it == ctx.toggleVariablesRunning.end()) {
 						ctx.toggleVariablesRunning.push_back(pVarPair);
-						handleConsoleVariableCall(ctx);
+						handleConsoleVariableCall(ctx, pProgramVar);
 					}
 
 					break;
@@ -228,7 +248,7 @@ void sci::parse(SweatContext& ctx) {
 					auto it = std::find(ctx.toggleVariablesRunning.begin(), ctx.toggleVariablesRunning.end(), pPlusVariable);
 					if (it != ctx.toggleVariablesRunning.end()) {
 						ctx.toggleVariablesRunning.erase(it);
-						handleConsoleVariableCall(ctx);
+						handleConsoleVariableCall(ctx, pProgramVar);
 					}
 					break;
 				}
@@ -245,21 +265,16 @@ void sci::parse(SweatContext& ctx) {
 				}
 
 				default:
-					handleConsoleVariableCall(ctx);
+					handleConsoleVariableCall(ctx, pProgramVar);
 				}
 
 				ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 
 			} else if (ctx.programVariables.count(ctx.pLexer->token.value) != 0) {
-				// TODO: make this with other method rather than getting a command like this
-				ctx.pCommand = ctx.commands.get("_program_variable_callback");
-				if (ctx.pCommand != nullptr)
-					ctx.pData = &ctx.programVariables[ctx.pLexer->token.value];
-
+				pProgramVar = &ctx.programVariables[ctx.pLexer->token.value];
 				ctx.pLexer->advance();
-			}
 
-			else {
+			} else {
 				ctx.pCommand = ctx.commands.get(ctx.pLexer->token.value);
 				if (ctx.pCommand == nullptr) {
 					sci::printf(PrintLevel::ERROR, "Unknown identifier \"{}\"\n", ctx.pLexer->token.value);
@@ -276,7 +291,7 @@ void sci::parse(SweatContext& ctx) {
 			break;
 
 		case TokenType::EOS:
-			handleCommandCall(ctx);
+			handleCommandCall(ctx, pProgramVar);
 			ctx.pLexer->advance();
 			break;
 
@@ -286,5 +301,5 @@ void sci::parse(SweatContext& ctx) {
 		}
 	}
 
-	handleCommandCall(ctx);
+	handleCommandCall(ctx, pProgramVar);
 }

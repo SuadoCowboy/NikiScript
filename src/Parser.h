@@ -26,9 +26,10 @@ namespace sci {
 	 * @note Sets ctx.pCommand to nullptr
 	 * @note ctx.pCommand should point to a valid Command object
 	 * @param ctx
+	 * @param pProgramVar if not null: sets/gets program variable
 	 * @see sci::parse
 	 */
-	void handleCommandCall(SweatContext& ctx);
+	void handleCommandCall(SweatContext& ctx, ProgramVariable*& pProgramVar);
 
 	/**
 	 * @brief Handles references in the string and checks if the parameter matches the argument type
@@ -44,7 +45,7 @@ namespace sci {
 	 * @see sci::maxRecursiveCalls
 	 * @param ctx
 	 */
-	void handleConsoleVariableCall(SweatContext& ctx);
+	void handleConsoleVariableCall(SweatContext& ctx, ProgramVariable*& pProgramVar);
 
 	/**
 	 * @brief if a loop variable is active, its script is ran here

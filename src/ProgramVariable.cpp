@@ -15,15 +15,3 @@ std::string sci::getString(ProgramVariable* pVar) {
 void sci::setString(ProgramVariable* pVar, const std::string& str) {
 	*static_cast<std::string*>(pVar->pValue) = str;
 }
-
-void sci::ProgramVariable::callback(SweatContext& ctx) {
-	if (ctx.pData == nullptr)
-		return;
-
-	ProgramVariable* pVar = static_cast<ProgramVariable*>(ctx.pData);
-
-	if (ctx.arguments.arguments.size() == 1)
-		pVar->set(pVar, ctx.arguments.getString());
-	else
-		sci::printf(PrintLevel::ECHO, "Value: {}\n", pVar->get(pVar));
-}
