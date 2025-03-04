@@ -80,7 +80,7 @@ namespace ns {
 		 * @return Next input's initial position. Either whitespace, EOS or END
 		 * @see Lexer::setTokenType
 		 */
-		uint64_t setTokenValue(Context& ctx);
+		uint64_t setTokenValue();
 
 		/**
 		 * @brief Identifies token type by checking the previous token type
