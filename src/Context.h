@@ -12,6 +12,19 @@
 #include "Lexer.h"
 
 namespace ns {
+	/**
+	 * @warning **DO NOT** rearrange this enum. ns::handleConsoleVariableCall uses bit logic on VARIABLE related to VARIABLE_IN_VARIABLE
+	 */
+	enum class OriginType : uint8_t {
+		COMMAND = 1, ///< if a command is calling another command
+		VARIABLE = 2, ///< any variable
+		VARIABLE_IN_VARIABLE = 4, ///< var x that calls var y
+		VARIABLE_LOOP = 8, ///< '!'
+		VARIABLE_TOGGLE = 16, ///< '+' or '-'
+		FILE = 32, ///< ns::parseFile or exec command
+		INTERNAL = 64, ///< raw script generated from C++ code and not from a file or variable or anything else
+	};
+
 	struct Context;
 
 	struct Arguments {
@@ -38,11 +51,6 @@ namespace ns {
 #endif
 	};
 
-	// TODO: it's not safe to store those pointers below...
-	// If it ever happen for Context to be cloned, the references will
-	// still be pointing to the old references. maybe make a copy function
-	// for Context so that this won't happen.
-
 	typedef std::unordered_map<std::string, std::string> ConsoleVariables;
 	typedef std::vector<ConsoleVariables::pointer> LoopVariablesRunning;
 	typedef std::vector<ConsoleVariables::pointer> ToggleVariablesRunning; ///< This is unecessary to be a pointer but I like the idea of using only 8 bytes instead of the same bytes as the var name
@@ -63,6 +71,11 @@ namespace ns {
 		LoopVariablesRunning loopVariablesRunning;
 		ToggleVariablesRunning toggleVariablesRunning;
 		ToggleCommandsRunning toggleCommandsRunning;
+
+		std::string filePath; ///< when running script from a file
+		size_t lineIndex = 0, columnIndex = 0, lineCount = 0;
+
+		uint8_t origin; ///< this is used so that the command knows where he's running in. See ns::OriginType
 	};
 
 	/**
@@ -85,3 +98,12 @@ template <typename T>
 T ns::Arguments::getUnsignedInteger() {
 	return std::stoull(arguments[offset++]);
 }
+
+uint8_t operator|(ns::OriginType l, ns::OriginType r);
+uint8_t operator|(uint8_t l, ns::OriginType r);
+uint8_t operator|(ns::OriginType l, uint8_t r);
+uint8_t operator|=(uint8_t l, ns::OriginType r);
+uint8_t operator&(uint8_t l, ns::OriginType r);
+uint8_t operator&(ns::OriginType l, uint8_t r);
+uint8_t operator&=(uint8_t l, ns::OriginType r);
+uint8_t operator~(ns::OriginType l);

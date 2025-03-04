@@ -31,3 +31,37 @@ ns::Context ns::copyContext(const Context& source) {
 
 	return copy;
 }
+
+uint8_t operator|(ns::OriginType l, ns::OriginType r) {
+	return static_cast<uint8_t>(l)|static_cast<uint8_t>(r);
+}
+
+uint8_t operator|(uint8_t l, ns::OriginType r) {
+	return l|static_cast<uint8_t>(r);
+}
+
+uint8_t operator|(ns::OriginType l, uint8_t r) {
+	return static_cast<uint8_t>(l)|r;
+}
+
+uint8_t operator|=(uint8_t l, ns::OriginType r) {
+	l = l|r;
+	return l;
+}
+
+uint8_t operator&(uint8_t l, ns::OriginType r) {
+	return l&static_cast<uint8_t>(r);
+}
+
+uint8_t operator&(ns::OriginType l, uint8_t r) {
+	return static_cast<uint8_t>(l)&r;
+}
+
+uint8_t operator&=(uint8_t l, ns::OriginType r) {
+	l = l & r;
+	return l;
+}
+
+uint8_t operator~(ns::OriginType l) {
+	return ~static_cast<uint8_t>(l);
+}
