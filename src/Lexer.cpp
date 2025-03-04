@@ -19,10 +19,8 @@ void ns::Lexer::advance(Context& ctx) {
 		return;
 	}
 
-	if (input[position] == '\n') {
+	if (input[position] == '\n')
 		ctx.lineIndex++;
-		return;
-	}
 
 	uint64_t nextTokenPosition = setTokenValue();
 	setTokenType();
@@ -45,7 +43,7 @@ void ns::Lexer::advanceUntil(Context& ctx, uint8_t flags) {
 }
 
 uint64_t ns::Lexer::setTokenValue() {
-	if (input[position] == NIKISCRIPT_STATEMENT_SEPARATOR) {
+	if (input[position] == NIKISCRIPT_STATEMENT_SEPARATOR || input[position] == '\n') {
 		token.value = NIKISCRIPT_STATEMENT_SEPARATOR;
 		return position+1;
 	}
