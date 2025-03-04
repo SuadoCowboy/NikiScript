@@ -69,7 +69,13 @@ uint64_t ns::Lexer::setTokenValue() {
 
 		if (nextTokenPosition+1 < input.size() && input[nextTokenPosition] == NIKISCRIPT_COMMENT_LINE) {
 			if (input[nextTokenPosition+1] == NIKISCRIPT_COMMENT_LINE) {
-				nextTokenPosition = input.size();
+				size_t i = nextTokenPosition;
+				for (; i < input.size(); ++i) {
+					if (input[i] == '\n')
+						break;
+				}
+
+				nextTokenPosition = i;
 				break;
 			}
 
