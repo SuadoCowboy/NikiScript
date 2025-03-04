@@ -4,7 +4,7 @@
 #include <string>
 #include <sstream>
 
-namespace sci {
+namespace ns {
 	/// @warning this function is not meant to be used outside this header
 	template<typename ...>
 	static void _formatStringValue(const std::string& format, std::stringstream& buf) {
@@ -37,8 +37,8 @@ namespace sci {
 	  * 
 	  * @param s string to trim the beginning
 	  * 
-	  * @see sci::trim
-	  * @see sci::rtrim
+	  * @see ns::trim
+	  * @see ns::rtrim
 	  * 
 	  * @note https://stackoverflow.com/questions/216823/how-to-trim-a-stdstring
 	  */
@@ -49,8 +49,8 @@ namespace sci {
 	 * 
 	 * @param s string to trim the end
 	 * 
-	 * @see sci::trim
-	 * @see sci::ltrim
+	 * @see ns::trim
+	 * @see ns::ltrim
 	 * 
 	 * @note https://stackoverflow.com/questions/216823/how-to-trim-a-stdstring
 	 */
@@ -61,8 +61,8 @@ namespace sci {
 	 * 
 	 * @param s string to trim
 	 * 
-	 * @see sci::ltrim
-	 * @see sci::rtrim
+	 * @see ns::ltrim
+	 * @see ns::rtrim
 	 * 
 	 * @note https://stackoverflow.com/questions/216823/how-to-trim-a-stdstring
 	 */

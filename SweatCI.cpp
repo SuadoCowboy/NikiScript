@@ -22,13 +22,13 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include "SweatCI.h"
+#include "NikiScript.h"
 
 #include <regex>
 #include <algorithm>
 #include <fstream>
 
-namespace SweatCI {
+namespace NikiScript {
     std::string tokenTypeToString(const TokenType& type) {
         switch (type) {
         case ARGUMENT:
@@ -159,7 +159,7 @@ namespace SweatCI {
         registerCommand("variables", 0, 0, getVariables, "- list of variables", pVariables);
         registerCommand("variable", 1, 1, variable, "- shows variable value", pVariables);
         registerCommand("incrementvar", 4, 4, incrementvar, "<var|cvar> <minValue> <maxValue> <delta> - increments the value of a variable", pVariables);
-        registerCommand("exec", 1, 1, exec, "- executes a .cfg file that contains SweatCI script", pVariables);
+        registerCommand("exec", 1, 1, exec, "- executes a .cfg file that contains NikiScript script", pVariables);
         registerCommand("toggle", 3, 3, toggle, "<var|cvar> <option1> <option2> - toggles value between option1 and option2", pVariables);
     }
 
@@ -195,7 +195,7 @@ namespace SweatCI {
         
         if (ctx.args.size() == 1) {
             if (pVariables->count(ctx.args[0]) == 0) {
-                SweatCI::printf(SweatCI::_ERROR, "\"{}\" variable not found\n", ctx.args[0]);
+                NikiScript::printf(NikiScript::_ERROR, "\"{}\" variable not found\n", ctx.args[0]);
                 return;
             }
 

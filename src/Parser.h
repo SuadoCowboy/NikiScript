@@ -1,25 +1,25 @@
 #pragma once
 
-#include "SweatContext.h"
+#include "Context.h"
 
-#ifndef SWEATCI_LOOP_VARIABLE
-#define SWEATCI_LOOP_VARIABLE '!'
+#ifndef NIKISCRIPT_LOOP_VARIABLE
+#define NIKISCRIPT_LOOP_VARIABLE '!'
 #endif
 
-#ifndef SWEATCI_TOGGLE_ON
-#define SWEATCI_TOGGLE_ON '+'
+#ifndef NIKISCRIPT_TOGGLE_ON
+#define NIKISCRIPT_TOGGLE_ON '+'
 #endif
 
-#ifndef SWEATCI_TOGGLE_OFF
-#define SWEATCI_TOGGLE_OFF '-'
+#ifndef NIKISCRIPT_TOGGLE_OFF
+#define NIKISCRIPT_TOGGLE_OFF '-'
 #endif
 
-namespace sci {
+namespace ns {
 	/**
 	 * @brief Clear anything related to the current lexer statement
 	 * @note It does not go to the next EOS
 	 */
-	void clearStatementData(SweatContext& ctx);
+	void clearStatementData(Context& ctx);
 
 	/**
 	 * @brief Called in parse function when EOS or END is reached
@@ -27,35 +27,35 @@ namespace sci {
 	 * @note ctx.pCommand should point to a valid Command object
 	 * @param ctx
 	 * @param pProgramVar if not null: sets/gets program variable
-	 * @see sci::parse
+	 * @see ns::parse
 	 */
-	void handleCommandCall(SweatContext& ctx, ProgramVariable*& pProgramVar);
+	void handleCommandCall(Context& ctx, ProgramVariable*& pProgramVar);
 
 	/**
 	 * @brief Handles references in the string and checks if the parameter matches the argument type
 	 * @note Possible argument types: s = string, i = integer, d = decimal, v = variable
 	 */
-	void handleArgumentToken(SweatContext& ctx);
+	void handleArgumentToken(Context& ctx);
 	
 	extern uint64_t maxConsoleVariableCalls; ///< 0 = unlimited
 
 	/**
 	 * @brief Called in parse function when an ConsoleVariable is passed as a IDENTIFIER
 	 * @note I find this algorithm very interesting and fun(it creates a bunch of lexers for each variable call instead of recursive calling)
-	 * @see sci::maxRecursiveCalls
+	 * @see ns::maxRecursiveCalls
 	 * @param ctx
 	 */
-	void handleConsoleVariableCall(SweatContext& ctx, ProgramVariable*& pProgramVar);
+	void handleConsoleVariableCall(Context& ctx, ProgramVariable*& pProgramVar);
 
 	/**
 	 * @brief if a loop variable is active, its script is ran here
 	 * @param ctx
 	 */
-	void updateLoopVariables(sci::SweatContext& ctx);
+	void updateLoopVariables(ns::Context& ctx);
 
 	/**
 	 * @brief Parses and interpret scripts: handles commands and variables as well as their arguments
 	 * @param ctx
 	 */
-	void parse(SweatContext& ctx);
+	void parse(Context& ctx);
 }

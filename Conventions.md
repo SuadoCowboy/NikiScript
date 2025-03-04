@@ -2,7 +2,7 @@
 Start with a uppercased letter but does not end with a period.
 
 - **Example:**
-sci::printf("Could not get \"{}\" from table");
+ns::printf("Could not get \"{}\" from table");
 
 # Naming
 
@@ -23,11 +23,11 @@ void* pMyPointer = nullptr;
 ## Commands
 **Code:**
 ```cpp
-void my_awesome_command(sci::SweatContext& ctx) {
+void my_awesome_command(ns::Context& ctx) {
     ...
 }
 
-void quit_command(sci::SweatContext& ctx) {
+void quit_command(ns::Context& ctx) {
     ...
 }
 ```

@@ -7,11 +7,11 @@ struct Color {
 	uint8_t r=0,g=0,b=0,a=255;
 };
 
-#define SWEATCI_ARGUMENTS_EXTRA bool getColor(SweatContext& ctx, Color& output);
+#define NIKISCRIPT_ARGUMENTS_EXTRA bool getColor(Context& ctx, Color& output);
 
-#include <SweatCI.h>
+#include <NikiScript.h>
 #include <PrintCallback.h>
-#include <SweatContext.h>
+#include <Context.h>
 #include <Token.h>
 #include <Lexer.h>
 #include <Parser.h>
@@ -26,7 +26,7 @@ bool parseStringToColor(const std::string& str, Color& buf, bool printError) {
 			size_t firstCommaIdx = str.find(",");
 			if (firstCommaIdx == std::string::npos) {
 				if (printError)
-					sci::printf(sci::PrintLevel::ERROR, errorFormat, str);
+					ns::printf(ns::PrintLevel::ERROR, errorFormat, str);
 
 				return false;
 			}
@@ -36,7 +36,7 @@ bool parseStringToColor(const std::string& str, Color& buf, bool printError) {
 			secondCommaIdx = str.find(",", firstCommaIdx+1);
 			if (secondCommaIdx == std::string::npos) {
 				if (printError)
-					sci::printf(sci::PrintLevel::ERROR, errorFormat, str);
+					ns::printf(ns::PrintLevel::ERROR, errorFormat, str);
 
 				return false;
 			}
@@ -55,43 +55,43 @@ bool parseStringToColor(const std::string& str, Color& buf, bool printError) {
 
 	} catch (...) {
 		if (printError)
-			sci::printf(sci::PrintLevel::ERROR, errorFormat, str);
+			ns::printf(ns::PrintLevel::ERROR, errorFormat, str);
 
 		return false;
 	}
 }
 
-bool sci::Arguments::getColor(SweatContext& ctx, Color& output) {
+bool ns::Arguments::getColor(Context& ctx, Color& output) {
 	if (!parseStringToColor(arguments[offset++], output, false)) {
-		sci::printf(sci::PrintLevel::ERROR, "\"{}\" is not a valid color. Argument #{}: {}\n", arguments[offset-1], offset-1, ctx.pCommand->argsDescriptions[offset-1]);
+		ns::printf(ns::PrintLevel::ERROR, "\"{}\" is not a valid color. Argument #{}: {}\n", arguments[offset-1], offset-1, ctx.pCommand->argsDescriptions[offset-1]);
 		return false;
 	}
 
 	return true;
 }
 
-void sweatciPrintCallback(void*, sci::PrintLevel level, const std::string& msg) {
-	std::cout << sci::printLevelToString(level) << ": " << msg;
+void nikiScriptPrintCallback(void*, ns::PrintLevel level, const std::string& msg) {
+	std::cout << ns::printLevelToString(level) << ": " << msg;
 }
 
-std::string tokenTypeToString(const sci::TokenType& type) {
+std::string tokenTypeToString(const ns::TokenType& type) {
 	switch (type) {
-	case sci::TokenType::NONE:
+	case ns::TokenType::NONE:
 		return "NONE";
-	case sci::TokenType::IDENTIFIER:
+	case ns::TokenType::IDENTIFIER:
 		return "IDENTIFIER";
-	case sci::TokenType::ARGUMENT:
+	case ns::TokenType::ARGUMENT:
 		return "ARGUMENT";
-	case sci::TokenType::EOS:
+	case ns::TokenType::EOS:
 		return "EOS";
-	case sci::TokenType::END:
+	case ns::TokenType::END:
 		return "END";
 	default:
 		return "UNKNOWN";
 	}
 }
 
-std::string tokenToString(const sci::Token& token) {
+std::string tokenToString(const ns::Token& token) {
 	std::stringstream out;
 	out << '(' << tokenTypeToString(token.type) << ", \"" << token.value << "\", REFS: {";
 
@@ -112,65 +112,65 @@ std::string tokenToString(const sci::Token& token) {
 
 bool running = false;
 
-static void quit_command(sci::SweatContext&) {
+static void quit_command(ns::Context&) {
 	running = false;
 }
 
-static void plus_test_command(sci::SweatContext& ctx) {
+static void plus_test_command(ns::Context& ctx) {
 	if (ctx.arguments.arguments.size() != 0)
-		sci::printf(sci::PrintLevel::ECHO, "+test called! {}\n", ctx.arguments.getString());
+		ns::printf(ns::PrintLevel::ECHO, "+test called! {}\n", ctx.arguments.getString());
 	else
-		sci::print(sci::PrintLevel::ECHO, "+test called!\n");
+		ns::print(ns::PrintLevel::ECHO, "+test called!\n");
 }
 
-static void minus_test_command(sci::SweatContext&) {
-	sci::print(sci::PrintLevel::ECHO, "-test called!\n");
+static void minus_test_command(ns::Context&) {
+	ns::print(ns::PrintLevel::ECHO, "-test called!\n");
 }
 
 static std::string colorToString(const Color& color) {
-	return sci::formatString("({}, {}, {}, {})",
+	return ns::formatString("({}, {}, {}, {})",
 		static_cast<uint16_t>(color.r),
 		static_cast<uint16_t>(color.g),
 		static_cast<uint16_t>(color.b),
 		static_cast<uint16_t>(color.a));
 }
 
-static std::string getColor(sci::ProgramVariable* pVar) {
+static std::string getColor(ns::ProgramVariable* pVar) {
 	return colorToString(*static_cast<Color*>(pVar->pValue));
 }
 
-static void setColor(sci::ProgramVariable* pVar, const std::string& str) {
+static void setColor(ns::ProgramVariable* pVar, const std::string& str) {
 	parseStringToColor(str, *static_cast<Color*>(pVar->pValue), true);
 }
 
-static void print_color_command(sci::SweatContext& ctx) {
+static void print_color_command(ns::Context& ctx) {
 	Color c;
 	if (!ctx.arguments.getColor(ctx, c))
 		return;
 
-	sci::print(sci::PrintLevel::ECHO, colorToString(c)+'\n');
+	ns::print(ns::PrintLevel::ECHO, colorToString(c)+'\n');
 }
 
 int main(int, char**) {
-	sci::setPrintCallback(nullptr, sweatciPrintCallback);
+	ns::setPrintCallback(nullptr, nikiScriptPrintCallback);
 
-	sci::SweatContext ctx;
-	sci::registerCommands(ctx);
+	ns::Context ctx;
+	ns::registerCommands(ctx);
 
 	std::string penes = "Penes";
-	sci::registerVariable(ctx, "penes", &penes, sci::getString, sci::setString);
+	ns::registerVariable(ctx, "penes", &penes, ns::getString, ns::setString);
 	Color preto = {0,0,0,255};
-	sci::registerVariable(ctx, "preto", &preto, getColor, setColor);
+	ns::registerVariable(ctx, "preto", &preto, getColor, setColor);
 
-	sci::Lexer lexer;
+	ns::Lexer lexer;
 	ctx.pLexer = &lexer;
 
-	ctx.commands.add(sci::Command("quit", 0, 1, quit_command, "stops the main loop from running", {"s[?]", ""}));
+	ctx.commands.add(ns::Command("quit", 0, 1, quit_command, "stops the main loop from running", {"s[?]", ""}));
 
-	ctx.commands.add(sci::Command("+test", 0,1, plus_test_command, "", {"s[?]", ""}));
-	ctx.commands.add(sci::Command("-test", 0,0, minus_test_command, "", {}));
+	ctx.commands.add(ns::Command("+test", 0,1, plus_test_command, "", {"s[?]", ""}));
+	ctx.commands.add(ns::Command("-test", 0,0, minus_test_command, "", {}));
 
-	ctx.commands.add(sci::Command("print_color", 1,1, print_color_command, "prints color in rgb format", {"s[color]", "color to be printed"}));
+	ctx.commands.add(ns::Command("print_color", 1,1, print_color_command, "prints color in rgb format", {"s[color]", "color to be printed"}));
 
 	running = true;
 	while (running) {
@@ -180,9 +180,9 @@ int main(int, char**) {
 		std::getline(std::cin, input);
 
 		lexer.input = input;
-		sci::parse(ctx);
+		ns::parse(ctx);
 		lexer.clear();
 
-		sci::updateLoopVariables(ctx);
+		ns::updateLoopVariables(ctx);
 	}
 }

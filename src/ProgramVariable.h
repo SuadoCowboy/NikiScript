@@ -3,13 +3,13 @@
 #include <string>
 #include <unordered_map>
 
-namespace sci {
+namespace ns {
 	struct ProgramVariable;
 	
 	typedef std::string(*GetProgramVariableValue)(ProgramVariable* pVar);
 	typedef void(*SetProgramVariableValue)(ProgramVariable* pVar, const std::string& str);
 	
-	struct SweatContext;
+	struct Context;
 
 	struct ProgramVariable {
 		void* pValue = nullptr;

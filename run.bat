@@ -1,4 +1,4 @@
 @cd build
-copy libSweatCI.dll example
+copy libNikiScript.dll example
 @cd example
 .\example.exe %*

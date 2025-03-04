@@ -9,19 +9,19 @@ set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror")
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
-project(SweatCI VERSION 0.0.1 LANGUAGES CXX)
+project(NikiScript VERSION 0.0.1 LANGUAGES CXX)
 
 option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
 
 file(GLOB SOURCES ${PROJECT_SOURCE_DIR}/src/*.cpp)
 
 if(BUILD_SHARED_LIBS)
-    add_library(SweatCI SHARED ${SOURCES})
-    set_target_properties(SweatCI PROPERTIES VERSION ${PROJECT_VERSION} POSITION_INDEPENDENT_CODE 1)
+    add_library(NikiScript SHARED ${SOURCES})
+    set_target_properties(NikiScript PROPERTIES VERSION ${PROJECT_VERSION} POSITION_INDEPENDENT_CODE 1)
 else()
-    add_library(SweatCI STATIC ${SOURCES})
+    add_library(NikiScript STATIC ${SOURCES})
 endif()
 
-target_include_directories(SweatCI PRIVATE ${PROJECT_SOURCE_DIR})
+target_include_directories(NikiScript PRIVATE ${PROJECT_SOURCE_DIR})
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/example)

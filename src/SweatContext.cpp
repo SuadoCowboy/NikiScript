@@ -1,24 +1,24 @@
-#include "SweatContext.h"
+#include "Context.h"
 
-std::string& sci::Arguments::getString() {
+std::string& ns::Arguments::getString() {
 	return arguments[offset++];
 }
 
-float sci::Arguments::getFloat() {
+float ns::Arguments::getFloat() {
 	return std::stof(arguments[offset++]);
 }
 
-double sci::Arguments::getDouble() {
+double ns::Arguments::getDouble() {
 	return std::stod(arguments[offset++]);
 }
 
-void sci::Arguments::clear() {
+void ns::Arguments::clear() {
 	arguments.clear();
 	offset = 0;
 }
 
-sci::SweatContext sci::copySweatContext(const SweatContext& source) {
-	SweatContext copy{source};
+ns::Context ns::copyContext(const Context& source) {
+	Context copy{source};
 
 	for (size_t i = 0; i < copy.loopVariablesRunning.size(); ++i)
 		copy.loopVariablesRunning[i] = &*copy.consoleVariables.find(copy.loopVariablesRunning[i]->first);

@@ -5,23 +5,23 @@
 
 #include "Token.h"
 
-#ifndef SWEATCI_STATEMENT_SEPARATOR
-#define SWEATCI_STATEMENT_SEPARATOR ';'
+#ifndef NIKISCRIPT_STATEMENT_SEPARATOR
+#define NIKISCRIPT_STATEMENT_SEPARATOR ';'
 #endif
 
-#ifndef SWEATCI_REFERENCE
-#define SWEATCI_REFERENCE '$'
+#ifndef NIKISCRIPT_REFERENCE
+#define NIKISCRIPT_REFERENCE '$'
 #endif
 
-#ifndef SWEATCI_REFERENCE_OPEN
-#define SWEATCI_REFERENCE_OPEN '{'
+#ifndef NIKISCRIPT_REFERENCE_OPEN
+#define NIKISCRIPT_REFERENCE_OPEN '{'
 #endif
 
-#ifndef SWEATCI_REFERENCE_CLOSE
-#define SWEATCI_REFERENCE_CLOSE '}'
+#ifndef NIKISCRIPT_REFERENCE_CLOSE
+#define NIKISCRIPT_REFERENCE_CLOSE '}'
 #endif
 
-namespace sci {
+namespace ns {
 	struct Lexer {
 		std::string input;
 		uint64_t position = 0;

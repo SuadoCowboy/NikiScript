@@ -3,7 +3,7 @@
 #include <string>
 #include <unordered_map>
 
-namespace sci {
+namespace ns {
 	enum class TokenType : uint8_t {
 		NONE = 0,
 		IDENTIFIER = 1, ///< If it's the first token after an EOS, END or NONE. Should be either a variable or command
@@ -22,16 +22,16 @@ namespace sci {
 		Token(TokenType type, const std::string& value);
 	};
 
-	struct SweatContext;
+	struct Context;
 
 	/**
 	 * @brief inserts all references in the value
 	 */
-	void insertReferencesInToken(SweatContext& ctx, Token& token);
+	void insertReferencesInToken(Context& ctx, Token& token);
 }
 
-uint8_t operator|(sci::TokenType l, sci::TokenType r);
-uint8_t operator|(uint8_t l, sci::TokenType r);
-uint8_t operator|(sci::TokenType l, uint8_t r);
-uint8_t operator&(uint8_t l, sci::TokenType r);
-uint8_t operator&(sci::TokenType l, uint8_t r);
+uint8_t operator|(ns::TokenType l, ns::TokenType r);
+uint8_t operator|(uint8_t l, ns::TokenType r);
+uint8_t operator|(ns::TokenType l, uint8_t r);
+uint8_t operator&(uint8_t l, ns::TokenType r);
+uint8_t operator&(ns::TokenType l, uint8_t r);

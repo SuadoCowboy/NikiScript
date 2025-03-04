@@ -3,10 +3,10 @@
 #include <vector>
 #include <string_view>
 
-namespace sci {
-	struct SweatContext;
+namespace ns {
+	struct Context;
 
-	typedef void(*CommandCallback)(SweatContext& ctx);
+	typedef void(*CommandCallback)(Context& ctx);
 
 	struct Command {
 		std::string_view name;
@@ -28,7 +28,7 @@ namespace sci {
 		 * @param callback
 		 * @param description Command description
 		 * @param argsDescriptions Arguments description. Should have 2 strings for each argument, where the first one is argument name and the second is argument description.
-		 * @see sci::registerCommands for code example
+		 * @see ns::registerCommands for code example
 		 */
 		Command(const std::string_view& name, unsigned char minArgs, unsigned char maxArgs, CommandCallback callback, const std::string_view& description, const std::vector<std::string_view>& argsDescriptions);
 	

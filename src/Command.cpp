@@ -5,9 +5,9 @@
 
 #include "PrintCallback.h"
 
-sci::Command::Command() {}
+ns::Command::Command() {}
 
-sci::Command::Command(const std::string_view& name, unsigned char minArgs, unsigned char maxArgs,
+ns::Command::Command(const std::string_view& name, unsigned char minArgs, unsigned char maxArgs,
 	CommandCallback callback, const std::string_view& description, const std::vector<std::string_view>& argsDescriptions)
 	: name(name), minArgs(minArgs), maxArgs(maxArgs), callback(callback), description(description), argsDescriptions(argsDescriptions) {
 	assert(!name.empty());
@@ -32,7 +32,7 @@ sci::Command::Command(const std::string_view& name, unsigned char minArgs, unsig
 	assert(callback != nullptr);
 }
 
-std::string sci::Command::getArgumentsNames() {
+std::string ns::Command::getArgumentsNames() {
 	if (argsDescriptions.size() == 0)
 		return "";
 
@@ -52,7 +52,7 @@ std::string sci::Command::getArgumentsNames() {
 	return out;
 }
 
-void sci::Command::printAsDataTree() {
+void ns::Command::printAsDataTree() {
 	std::stringstream descriptions;
 	std::stringstream usage;
 	bool isName = true;
@@ -71,5 +71,5 @@ void sci::Command::printAsDataTree() {
 	}
 	usage << '\n' << descriptions.str();
 
-	sci::print(PrintLevel::ECHO, usage.str());
+	ns::print(PrintLevel::ECHO, usage.str());
 }

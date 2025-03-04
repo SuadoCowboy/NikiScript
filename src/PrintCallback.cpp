@@ -1,9 +1,9 @@
 #include "PrintCallback.h"
 
-sci::PrintCallback sci::printCallback = nullptr;
-void* sci::pPrintCallbackData = nullptr;
+ns::PrintCallback ns::printCallback = nullptr;
+void* ns::pPrintCallbackData = nullptr;
 
-std::string sci::printLevelToString(PrintLevel level) {
+std::string ns::printLevelToString(PrintLevel level) {
 	switch (level) {
 	case PrintLevel::DEFAULT:
 		return std::string("DEFAULT");
@@ -19,15 +19,15 @@ std::string sci::printLevelToString(PrintLevel level) {
 
 }
 
-void sci::setPrintCallback(void* pData, PrintCallback callback) {
+void ns::setPrintCallback(void* pData, PrintCallback callback) {
 	printCallback = callback;
 	pPrintCallbackData = pData;
 }
 
-void sci::print(const sci::PrintLevel &level, const std::string& str) {
+void ns::print(const ns::PrintLevel &level, const std::string& str) {
 	printCallback(pPrintCallbackData, level, str);
 }
 
-void sci::printUnknownCommand(const std::string& command) {
+void ns::printUnknownCommand(const std::string& command) {
 	printf(PrintLevel::ERROR, "Unknown command \"{}\"\n", command);
 }

@@ -1,7 +1,7 @@
 /**
 
 Doxygen Awesome
-https://github.com/SuadoCowboy/SweatCIRemake
+https://github.com/SuadoCowboy/NikiScriptRemake
 
 MIT License
 

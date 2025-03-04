@@ -5,8 +5,8 @@
 
 #include "Command.h"
 
-namespace sci {
-	struct SweatContext;
+namespace ns {
+	struct Context;
 
 	struct CommandHandler {
 		std::unordered_map<std::string_view, Command> commands;
@@ -21,6 +21,6 @@ namespace sci {
 		 */
 		bool add(const Command& command);
 
-		void remove(const std::string_view& name, SweatContext& ctx);
+		void remove(const std::string_view& name, Context& ctx);
 	};
 }
