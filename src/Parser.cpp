@@ -152,10 +152,10 @@ uint8_t ns::handleIdentifierToken(Context& ctx, ProgramVariable*& pProgramVar) {
 }
 
 void ns::handleArgumentToken(Context& ctx) {
+	insertReferencesInToken(ctx, ctx.pLexer->token);
+
 	if (ctx.pLexer->token.value.empty())
 		return;
-
-	insertReferencesInToken(ctx, ctx.pLexer->token);
 
 	if (ctx.pCommand == nullptr) { // if command is nullptr then just append arguments to a single one. This is useful for ProgramVariable
 		if (ctx.arguments.arguments.size() == 0)
