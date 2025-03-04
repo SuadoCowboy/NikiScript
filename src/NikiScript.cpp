@@ -3,6 +3,8 @@
 #include <sstream>
 
 #include "Utils.h"
+#include "Parser.h"
+#include "Lexer.h"
 
 void ns::help_command(Context& ctx) {
 	if (ctx.arguments.arguments.size() == 0) {
@@ -38,9 +40,57 @@ void ns::var_command(Context& ctx) {
 		return;
 	}
 
-	for (auto& c : name) {
-		if (isspace(c)) {
+	for (size_t i = 0; i < name.size(); ++i) {
+		if (isspace(name[i])) {
 			ns::print(PrintLevel::ERROR, "Variable name can not contain whitespace\n");
+			return;
+		}
+
+		switch (name[i]) {
+		case NIKISCRIPT_LOOP_VARIABLE:
+			if (i == 0 && name.size() > 1)
+				break;
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name alone or after the first character\n", NIKISCRIPT_LOOP_VARIABLE);
+			return;
+
+		case NIKISCRIPT_TOGGLE_ON:
+			if (i == 0 && name.size() > 1)
+				break;
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name alone or after the first character\n", NIKISCRIPT_TOGGLE_ON);
+			return;
+
+		case NIKISCRIPT_TOGGLE_OFF:
+			if (i == 0 && name.size() > 1)
+				break;
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name alone or after the first character\n", NIKISCRIPT_TOGGLE_OFF);
+			return;
+
+		case NIKISCRIPT_REFERENCE:
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_REFERENCE);
+			return;
+
+		case NIKISCRIPT_REFERENCE_OPEN:
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_REFERENCE_OPEN);
+			return;
+
+		case NIKISCRIPT_REFERENCE_CLOSE:
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_REFERENCE_CLOSE);
+			return;
+
+		case NIKISCRIPT_ARGUMENTS_SEPARATOR:
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_ARGUMENTS_SEPARATOR);
+			return;
+
+		case NIKISCRIPT_ARGUMENTS_CLOSE:
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_ARGUMENTS_CLOSE);
+			return;
+
+		case NIKISCRIPT_ARGUMENTS_OPEN:
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_ARGUMENTS_OPEN);
+			return;
+
+		case NIKISCRIPT_STATEMENT_SEPARATOR:
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_STATEMENT_SEPARATOR);
 			return;
 		}
 	}
