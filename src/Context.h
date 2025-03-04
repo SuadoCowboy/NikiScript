@@ -73,7 +73,7 @@ namespace ns {
 		ToggleCommandsRunning toggleCommandsRunning;
 
 		std::string filePath; ///< when running script from a file
-		size_t lineIndex = 0, columnIndex = 0, lineCount = 0;
+		size_t lineIndex = 0, lineCount = 0;
 
 		uint8_t origin; ///< this is used so that the command knows where he's running in. See ns::OriginType
 	};
