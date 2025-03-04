@@ -22,6 +22,17 @@ namespace ns {
 	void clearStatementData(Context& ctx);
 
 	/**
+	 * @brief if variable is a toggle variable and its allowed to run or if it's a common variable.
+	 * It's also mandatory to call this function so that it updates those special variables
+	 *
+	 * @note loop variables are only appended/erased from Context::LoopVariablesRunning
+	 * @param ctx
+	 * @see ns::parse
+	 * @see ns::handleIdentifierToken
+	 */
+	bool canRunVariable(Context& ctx);
+
+	/**
 	 * @brief Called in parse function when EOS or END is reached
 	 * @note Sets ctx.pCommand to nullptr
 	 * @note ctx.pCommand should point to a valid Command object
@@ -32,8 +43,20 @@ namespace ns {
 	void handleCommandCall(Context& ctx, ProgramVariable*& pProgramVar);
 
 	/**
+	 * @brief Called in parse function when IDENTIFIER token is passed
+	 * 
+	 * @param ctx
+	 * @param pProgramVar
+	 * @return 1 = should call pLexer->advance() 2 = if it's a variable and should run it
+	 * @see ns::parse
+	 * @see ns::canRunVariable
+	 */
+	uint8_t handleIdentifierToken(Context& ctx, ProgramVariable*& pProgramVar);
+
+	/**
 	 * @brief Handles references in the string and checks if the parameter matches the argument type
 	 * @note Possible argument types: s = string, i = integer, d = decimal, v = variable
+	 * @see ns::parse
 	 */
 	void handleArgumentToken(Context& ctx);
 	
@@ -51,7 +74,7 @@ namespace ns {
 	 * @brief if a loop variable is active, its script is ran here
 	 * @param ctx
 	 */
-	void updateLoopVariables(ns::Context& ctx);
+	void updateLoopVariables(Context& ctx);
 
 	/**
 	 * @brief Parses and interpret scripts: handles commands and variables as well as their arguments

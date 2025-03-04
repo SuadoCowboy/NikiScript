@@ -11,6 +11,56 @@ void ns::clearStatementData(Context& ctx) {
 	ctx.arguments.clear();
 }
 
+bool ns::canRunVariable(Context& ctx) {
+	switch (ctx.pLexer->token.value[0]) {
+	case NIKISCRIPT_TOGGLE_ON: {
+		ConsoleVariables::pointer pVarPair = &*ctx.consoleVariables.find(ctx.pLexer->token.value);
+		auto it = std::find(ctx.toggleVariablesRunning.begin(), ctx.toggleVariablesRunning.end(), pVarPair);
+
+		if (it == ctx.toggleVariablesRunning.end()) {
+			ctx.toggleVariablesRunning.push_back(pVarPair);
+
+			return true;
+		}
+
+		return false;
+	}
+
+	case NIKISCRIPT_TOGGLE_OFF: {
+		ConsoleVariables::pointer pPlusVariable = nullptr;
+		{
+			auto it = ctx.consoleVariables.find('+'+ctx.pLexer->token.value.substr(1));
+			if (it == ctx.consoleVariables.end())
+				return false;
+
+			pPlusVariable = &*it;
+		}
+
+		auto it = std::find(ctx.toggleVariablesRunning.begin(), ctx.toggleVariablesRunning.end(), pPlusVariable);
+		if (it != ctx.toggleVariablesRunning.end()) {
+			ctx.toggleVariablesRunning.erase(it);
+
+			return true;
+		}
+		return false;
+	}
+
+	case NIKISCRIPT_LOOP_VARIABLE: {
+		ConsoleVariables::pointer pVar = &*ctx.consoleVariables.find(ctx.pLexer->token.value);
+
+		auto it = std::find(ctx.loopVariablesRunning.begin(), ctx.loopVariablesRunning.end(), pVar);
+		if (it == ctx.loopVariablesRunning.end())
+			ctx.loopVariablesRunning.push_back(pVar);
+		else
+			ctx.loopVariablesRunning.erase(it);
+		return false;
+	}
+
+	default:
+		return true;
+	}
+}
+
 void ns::handleCommandCall(Context& ctx, ProgramVariable*& pProgramVar) {
 	if (pProgramVar != nullptr) {
 		if (ctx.arguments.arguments.size() == 0)
@@ -71,6 +121,32 @@ void ns::handleCommandCall(Context& ctx, ProgramVariable*& pProgramVar) {
 
 	ctx.pCommand->callback(ctx);
 	clearStatementData(ctx);
+}
+
+uint8_t ns::handleIdentifierToken(Context& ctx, ProgramVariable*& pProgramVar) {
+	if (ctx.consoleVariables.count(ctx.pLexer->token.value) != 0) {
+		if (canRunVariable(ctx))
+			return 2;
+
+		ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
+		return 0;
+
+	} else if (ctx.programVariables.count(ctx.pLexer->token.value) != 0) {
+		pProgramVar = &ctx.programVariables[ctx.pLexer->token.value];
+		return 1;
+
+	} else {
+		ctx.pCommand = ctx.commands.get(ctx.pLexer->token.value);
+
+		if (ctx.pCommand == nullptr) {
+			ns::printf(PrintLevel::ERROR, "Unknown identifier \"{}\"\n", ctx.pLexer->token.value);
+			ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
+			return 0;
+		} else
+			return 1;
+	}
+
+	return false;
 }
 
 void ns::handleArgumentToken(Context& ctx) {
@@ -148,26 +224,19 @@ void ns::handleConsoleVariableCall(Context& ctx, ProgramVariable*& pProgramVar) 
 	//ctx.runningFrom |= VARIABLE;
 
 	while (tempLexers.size() != 0) {
-		if (ctx.pLexer->token.type == TokenType::IDENTIFIER) {
-			if (ctx.consoleVariables.count(ctx.pLexer->token.value) != 0) {
+		switch (ctx.pLexer->token.type) {
+		case TokenType::IDENTIFIER:
+			if (handleIdentifierToken(ctx, pProgramVar) == 2) {
 				if (maxConsoleVariableCalls != 0 && tempLexers.size() >= maxConsoleVariableCalls) {
 					ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
-				} else {
-					tempLexers.emplace_back(ctx.consoleVariables[ctx.pLexer->token.value]);
-					ctx.pLexer = &tempLexers.back();
+					break;
 				}
 
-			} else {
-				ctx.pCommand = ctx.commands.get(ctx.pLexer->token.value);
-
-				if (ctx.pCommand == nullptr) {
-					ns::printf(PrintLevel::ERROR, "Unknown identifier \"{}\"\n", ctx.pLexer->token.value);
-					ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
-				}
+				tempLexers.emplace_back(ctx.consoleVariables[ctx.pLexer->token.value]);
+				ctx.pLexer = &tempLexers.back();
 			}
-		}
+			break;
 
-		switch (ctx.pLexer->token.type) {
 		case TokenType::EOS:
 			handleCommandCall(ctx, pProgramVar);
 			break;
@@ -197,7 +266,7 @@ void ns::handleConsoleVariableCall(Context& ctx, ProgramVariable*& pProgramVar) 
 	ctx.pLexer = pOriginalLexer;
 }
 
-void ns::updateLoopVariables(ns::Context& ctx) {
+void ns::updateLoopVariables(Context& ctx) {
 	//ctx.runningFrom |= VARIABLE|VARIABLE_LOOP;
 
 	ctx.pLexer->clear();
@@ -220,70 +289,15 @@ void ns::parse(Context& ctx) {
 	ctx.pLexer->advance();
 	while (ctx.pLexer->token.type != TokenType::END) {
 		switch (ctx.pLexer->token.type) {
-		case TokenType::IDENTIFIER: // can be either variable or command
-			if (ctx.consoleVariables.count(ctx.pLexer->token.value) != 0) {
-				switch (ctx.pLexer->token.value[0]) {
-				case NIKISCRIPT_TOGGLE_ON: {
-					ConsoleVariables::pointer pVarPair = &*ctx.consoleVariables.find(ctx.pLexer->token.value);
-					auto it = std::find(ctx.toggleVariablesRunning.begin(), ctx.toggleVariablesRunning.end(), pVarPair);
-
-					if (it == ctx.toggleVariablesRunning.end()) {
-						ctx.toggleVariablesRunning.push_back(pVarPair);
-						handleConsoleVariableCall(ctx, pProgramVar);
-					}
-
-					break;
-				}
-
-				case NIKISCRIPT_TOGGLE_OFF: {
-					ConsoleVariables::pointer pPlusVariable = nullptr;
-					{
-						auto it = ctx.consoleVariables.find('+'+ctx.pLexer->token.value.substr(1));
-						if (it == ctx.consoleVariables.end())
-							break;
-	
-						pPlusVariable = &*it;
-					}
-
-					auto it = std::find(ctx.toggleVariablesRunning.begin(), ctx.toggleVariablesRunning.end(), pPlusVariable);
-					if (it != ctx.toggleVariablesRunning.end()) {
-						ctx.toggleVariablesRunning.erase(it);
-						handleConsoleVariableCall(ctx, pProgramVar);
-					}
-					break;
-				}
-
-				case NIKISCRIPT_LOOP_VARIABLE: {
-					ConsoleVariables::pointer pVar = &*ctx.consoleVariables.find(ctx.pLexer->token.value);
-
-					auto it = std::find(ctx.loopVariablesRunning.begin(), ctx.loopVariablesRunning.end(), pVar);
-					if (it == ctx.loopVariablesRunning.end())
-						ctx.loopVariablesRunning.push_back(pVar);
-					else
-						ctx.loopVariablesRunning.erase(it);
-					break;
-				}
-
-				default:
-					handleConsoleVariableCall(ctx, pProgramVar);
-				}
-
+		case TokenType::IDENTIFIER: { // can be either variable or command
+			uint8_t result = handleIdentifierToken(ctx, pProgramVar);
+			if (result == 2) {
+				handleConsoleVariableCall(ctx, pProgramVar);
 				ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
-
-			} else if (ctx.programVariables.count(ctx.pLexer->token.value) != 0) {
-				pProgramVar = &ctx.programVariables[ctx.pLexer->token.value];
+			} else if (result == 1)
 				ctx.pLexer->advance();
-
-			} else {
-				ctx.pCommand = ctx.commands.get(ctx.pLexer->token.value);
-				if (ctx.pCommand == nullptr) {
-					ns::printf(PrintLevel::ERROR, "Unknown identifier \"{}\"\n", ctx.pLexer->token.value);
-					ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
-				} else
-					ctx.pLexer->advance();
-			}
-
 			break;
+		}
 
 		case TokenType::ARGUMENT:
 			handleArgumentToken(ctx);
