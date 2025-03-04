@@ -22,6 +22,8 @@ namespace ns {
 
 	void toggle_command(Context& ctx);
 
+	void exec_command(Context& ctx);
+
 	/**
 	 * @brief adds default commands such as echo
 	 * @param ctx 
