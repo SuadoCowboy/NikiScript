@@ -50,6 +50,7 @@ uint64_t ns::Lexer::setTokenValue() {
 	/*
 	1 = allow white space and NIKISCRIPT_STATEMENT_SEPARATOR
 	2 = escape next char
+	4 = skipping all until NIKISCRIPT_COMMENT_LINES+NIKISCRIPT_COMMENT_LINE is found
 	*/
 	unsigned char flags = openArguments == 0? 0 : 1;
 
@@ -58,6 +59,27 @@ uint64_t ns::Lexer::setTokenValue() {
 			flags &= ~2;
 			result << input[nextTokenPosition++];
 			continue;
+		}
+
+		if (flags & 4) {
+			if (input[nextTokenPosition] == NIKISCRIPT_COMMENT_LINE && input[nextTokenPosition-1] == NIKISCRIPT_COMMENT_LINES)
+				flags &= ~5;
+
+			++nextTokenPosition;
+			continue;
+		}
+
+		if (nextTokenPosition+1 < input.size() && input[nextTokenPosition] == NIKISCRIPT_COMMENT_LINE) {
+			if (input[nextTokenPosition+1] == NIKISCRIPT_COMMENT_LINE) {
+				nextTokenPosition = input.size();
+				break;
+			}
+
+			if (input[nextTokenPosition+1] == NIKISCRIPT_COMMENT_LINES) {
+				flags |= 5;
+				nextTokenPosition += 3;
+				continue;
+			}
 		}
 
 		if (input[nextTokenPosition] == NIKISCRIPT_ARGUMENTS_OPEN) {

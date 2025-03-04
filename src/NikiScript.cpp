@@ -92,6 +92,14 @@ void ns::var_command(Context& ctx) {
 		case NIKISCRIPT_STATEMENT_SEPARATOR:
 			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_STATEMENT_SEPARATOR);
 			return;
+
+		case NIKISCRIPT_COMMENT_LINE:
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_COMMENT_LINE);
+			return;
+
+		case NIKISCRIPT_COMMENT_LINES:
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_COMMENT_LINES);
+			return;
 		}
 	}
 

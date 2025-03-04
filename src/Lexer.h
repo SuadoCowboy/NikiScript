@@ -33,6 +33,14 @@
 #define NIKISCRIPT_ARGUMENTS_CLOSE ')'
 #endif
 
+#ifndef NIKISCRIPT_COMMENT_LINE
+#define NIKISCRIPT_COMMENT_LINE '/'
+#endif
+
+#ifndef NIKISCRIPT_COMMENT_LINES // Joined together with NIKISCRIPT_COMMENT_LINE -> /* This is a comment */
+#define NIKISCRIPT_COMMENT_LINES '*'
+#endif
+
 namespace ns {
 	struct Lexer {
 		std::string input;
