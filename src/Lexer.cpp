@@ -25,12 +25,6 @@ void ns::Lexer::advance(Context& ctx) {
 	uint64_t nextTokenPosition = setTokenValue();
 	setTokenType();
 
-	/*
-	echo "This is a quoted string"
-	echo This is not a quoted string
-	"what happens" if I do this? // I belive the output would be: Unknown Command: "what
-	*/
-
 	position = nextTokenPosition;
 }
 
