@@ -1,9 +1,9 @@
 # Meet NikiScript
 NikiScript is a command interpreter **highly** inspired by the console interpreter in games like Half-Life 2, Team Fortress 2(which are both made in the Source Engine) and DDNet(or Teeworlds but I did not play that version)
 
-# How aliases works
+# How variables works
 ```cpp
-alias !echo4EvrLmao "echo ez banana"
+ !echo4EvrLmao "echo ez banana"
 > !echo4EvrLmao
 > ez banana
 > ez banana
@@ -15,9 +15,9 @@ alias !echo4EvrLmao "echo ez banana"
 > // stopped spamming "ez banana"
 ```
 
-## in the console, the toggle alias is useless
+## in the console, the toggle variable is useless
 ```cpp
-> alias +a "echo on"; alias -a "echo off"
+> var +a "echo on"; var -a "echo off"
 > +a
 > on
 >
@@ -27,14 +27,13 @@ alias !echo4EvrLmao "echo ez banana"
 
 ## but in-game it's very important
 ```cpp
-> alias +forward "echo walking forward"; alias -forward "echo stopped walking forward"
+> var +forward "echo walking forward"; var -forward "echo stopped walking forward"
 > bind w +forward
-> w pressed
+(w pressed)
 > walking forward
->
-> w released
+(w released)
 > stopped walking forward
-> // it works on events: onKeyPress and onKeyRelease
+// it works on events: onKeyPress and onKeyRelease
 ```
 
 > NOTE: console might be better off in a separate thread of the game
