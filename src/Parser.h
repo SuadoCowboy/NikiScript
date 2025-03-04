@@ -81,4 +81,6 @@ namespace ns {
 	 * @param ctx
 	 */
 	void parse(Context& ctx);
+
+	bool parseFile(Context& ctx, const char* filePath, bool printError);
 }

@@ -1,6 +1,8 @@
 #include "Parser.h"
 
 #include <algorithm>
+#include <fstream>
+#include <sstream>
 
 #include "PrintCallback.h"
 
@@ -128,7 +130,7 @@ uint8_t ns::handleIdentifierToken(Context& ctx, ProgramVariable*& pProgramVar) {
 		if (canRunVariable(ctx))
 			return 2;
 
-		ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
+		ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
 		return 0;
 
 	} else if (ctx.programVariables.count(ctx.pLexer->token.value) != 0) {
@@ -140,7 +142,7 @@ uint8_t ns::handleIdentifierToken(Context& ctx, ProgramVariable*& pProgramVar) {
 
 		if (ctx.pCommand == nullptr) {
 			ns::printf(PrintLevel::ERROR, "Unknown identifier \"{}\"\n", ctx.pLexer->token.value);
-			ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
+			ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
 			return 0;
 		} else
 			return 1;
@@ -163,7 +165,7 @@ void ns::handleArgumentToken(Context& ctx) {
 	if (ctx.pCommand->maxArgs == 0) {
 		ns::printf(ns::PrintLevel::ERROR, "Expected 0 arguments for {} command\n", ctx.pCommand->name);
 		clearStatementData(ctx);
-		ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
+		ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
 		return;
 	}
 
@@ -180,7 +182,7 @@ void ns::handleArgumentToken(Context& ctx) {
 		} catch (...) {
 			ns::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (i)nteger number\n", arg);
 			clearStatementData(ctx);
-			ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
+			ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
 		}
 		break;
 
@@ -190,7 +192,7 @@ void ns::handleArgumentToken(Context& ctx) {
 		} catch (...) {
 			ns::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (d)ecimal number\n", arg);
 			clearStatementData(ctx);
-			ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
+			ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
 		}
 		break;
 
@@ -201,7 +203,7 @@ void ns::handleArgumentToken(Context& ctx) {
 		if (ctx.programVariables.count(ctx.pLexer->token.value) == 0 && ctx.consoleVariables.count(ctx.pLexer->token.value) == 0) {
 			ns::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (v)ariable\n", arg);
 			clearStatementData(ctx);
-			ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
+			ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
 		}
 		break;
 
@@ -219,21 +221,23 @@ void ns::handleConsoleVariableCall(Context& ctx, ProgramVariable*& pProgramVar) 
 	tempLexers.emplace_back(ctx.consoleVariables[ctx.pLexer->token.value]);
 
 	ctx.pLexer = &tempLexers.back();
-	ctx.pLexer->advance();
+	ctx.pLexer->advance(ctx);
 
-	//ctx.runningFrom |= VARIABLE;
+	ctx.origin |= (ctx.origin & OriginType::VARIABLE)<<1; // if (ctx.origin & VARIABLE(2)) ctx.origin |= VARIABLE_IN_VARIABLE(4)
+	ctx.origin |= OriginType::VARIABLE;
 
 	while (tempLexers.size() != 0) {
 		switch (ctx.pLexer->token.type) {
 		case TokenType::IDENTIFIER:
 			if (handleIdentifierToken(ctx, pProgramVar) == 2) {
 				if (maxConsoleVariableCalls != 0 && tempLexers.size() >= maxConsoleVariableCalls) {
-					ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
+					ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
 					break;
 				}
 
 				tempLexers.emplace_back(ctx.consoleVariables[ctx.pLexer->token.value]);
 				ctx.pLexer = &tempLexers.back();
+				ctx.origin |= OriginType::VARIABLE_IN_VARIABLE;
 			}
 			break;
 
@@ -249,25 +253,29 @@ void ns::handleConsoleVariableCall(Context& ctx, ProgramVariable*& pProgramVar) 
 			break;
 		}
 
-		ctx.pLexer->advance();
+		ctx.pLexer->advance(ctx);
 		while (ctx.pLexer->token.type == TokenType::END) {
 			handleCommandCall(ctx, pProgramVar);
 
 			tempLexers.pop_back();
 			if (tempLexers.size() == 0)
 				break;
+			else if (tempLexers.size() == 1 && !(ctx.origin & OriginType::VARIABLE_LOOP))
+				ctx.origin &= ~OriginType::VARIABLE_IN_VARIABLE;
 
 			ctx.pLexer = &tempLexers.back();
-			ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
+			ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
 		}
 	}
 
-	//ctx.runningFrom &= ~VARIABLE;
+	if (!(ctx.origin & OriginType::VARIABLE_LOOP))
+		ctx.origin &= ~OriginType::VARIABLE;
+
 	ctx.pLexer = pOriginalLexer;
 }
 
 void ns::updateLoopVariables(Context& ctx) {
-	//ctx.runningFrom |= VARIABLE|VARIABLE_LOOP;
+	ctx.origin |= OriginType::VARIABLE|OriginType::VARIABLE_LOOP;
 
 	ctx.pLexer->clear();
 	for (auto& pVar : ctx.loopVariablesRunning) {
@@ -276,8 +284,7 @@ void ns::updateLoopVariables(Context& ctx) {
 		ctx.pLexer->clear();
 	}
 	
-	//ctx.runningFrom &= ~VARIABLE;
-	//ctx.runningFrom &= ~VARIABLE_LOOP;
+	ctx.origin &= ~(OriginType::VARIABLE|OriginType::VARIABLE_LOOP);
 }
 
 void ns::parse(Context& ctx) {
@@ -286,34 +293,84 @@ void ns::parse(Context& ctx) {
 
 	ProgramVariable* pProgramVar = nullptr;
 
-	ctx.pLexer->advance();
+	ctx.pLexer->advance(ctx);
 	while (ctx.pLexer->token.type != TokenType::END) {
 		switch (ctx.pLexer->token.type) {
 		case TokenType::IDENTIFIER: { // can be either variable or command
 			uint8_t result = handleIdentifierToken(ctx, pProgramVar);
 			if (result == 2) {
 				handleConsoleVariableCall(ctx, pProgramVar);
-				ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
+				ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
 			} else if (result == 1)
-				ctx.pLexer->advance();
+				ctx.pLexer->advance(ctx);
 			break;
 		}
 
 		case TokenType::ARGUMENT:
 			handleArgumentToken(ctx);
-			ctx.pLexer->advance();
+			ctx.pLexer->advance(ctx);
 			break;
 
 		case TokenType::EOS:
 			handleCommandCall(ctx, pProgramVar);
-			ctx.pLexer->advance();
+			ctx.pLexer->advance(ctx);
 			break;
 
 		default:
-			ctx.pLexer->advance();
+			ctx.pLexer->advance(ctx);
 			break;
 		}
 	}
 
 	handleCommandCall(ctx, pProgramVar);
+}
+
+bool ns::parseFile(Context& ctx, const char* filePath, bool printError) {
+	std::ifstream file{filePath};
+
+	if (!file) {
+		if (printError)
+			printf(PrintLevel::ERROR, "Could not load file \"{}\"\n", filePath);
+		return false;
+	}
+
+	bool runningFromAnotherFile = (ctx.origin & OriginType::FILE);
+	if (!runningFromAnotherFile)
+		ctx.origin |= OriginType::FILE;
+
+	std::string originalFilePath = ctx.filePath;
+	ctx.filePath = filePath;
+
+	std::stringstream script;
+	while (file.good()) {
+		std::string line;
+		std::getline(file, line);
+
+		if (!line.empty())
+			script << line << '\n';
+	}
+
+	Arguments originalArguments = ctx.arguments;
+	ctx.arguments.clear();
+
+	Lexer* pOriginalLexer = ctx.pLexer;
+	Command* pOriginalCommand = ctx.pCommand;
+
+	size_t originalLineIndex = ctx.lineIndex, originalLineCount = ctx.lineCount;
+
+	Lexer lexer{script.str()};
+	ctx.pLexer = &lexer;
+	parse(ctx);
+	ctx.pLexer = pOriginalLexer;
+
+	ctx.lineCount = originalLineCount;
+	ctx.lineIndex = originalLineIndex;
+	ctx.pCommand = pOriginalCommand;
+	ctx.arguments = originalArguments;
+	ctx.filePath = originalFilePath;
+
+	if (!runningFromAnotherFile)
+		ctx.origin &= ~OriginType::FILE;
+
+	return true;
 }
