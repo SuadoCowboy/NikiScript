@@ -72,7 +72,7 @@ namespace ns {
 		 * @param flags Bitwise TokenType
 		 * @see Lexer::advance
 		 */
-		void advanceUntil(uint8_t flags);
+		void advanceUntil(Context& ctx, uint8_t flags);
 
 		/**
 		 * @brief Gets token value by checking where a whitespace is found

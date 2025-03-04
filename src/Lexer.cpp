@@ -21,7 +21,6 @@ void ns::Lexer::advance(Context& ctx) {
 
 	if (input[position] == '\n') {
 		ctx.lineIndex++;
-		ctx.columnIndex = 0;
 		return;
 	}
 
@@ -37,12 +36,12 @@ void ns::Lexer::advance(Context& ctx) {
 	position = nextTokenPosition;
 }
 
-void ns::Lexer::advanceUntil(uint8_t flags) {
+void ns::Lexer::advanceUntil(Context& ctx, uint8_t flags) {
 	flags |= static_cast<uint8_t>(TokenType::END);
 
-	advance();
+	advance(ctx);
 	while (!(flags & token.type))
-		advance();
+		advance(ctx);
 }
 
 uint64_t ns::Lexer::setTokenValue() {
@@ -61,7 +60,7 @@ uint64_t ns::Lexer::setTokenValue() {
 	*/
 	unsigned char flags = openArguments == 0? 0 : 1;
 
-	while (nextTokenPosition < input.size() && (input[nextTokenPosition] == '\n' || position == nextTokenPosition || ((input[nextTokenPosition] != ' ' && (input[nextTokenPosition] != NIKISCRIPT_STATEMENT_SEPARATOR || (flags & 2))) || (flags & 1)))) {
+	while (nextTokenPosition < input.size() && input[nextTokenPosition] != '\n' && (position == nextTokenPosition || ((input[nextTokenPosition] != ' ' && (input[nextTokenPosition] != NIKISCRIPT_STATEMENT_SEPARATOR || (flags & 2))) || (flags & 1)))) {
 		if (flags & 2) {
 			flags &= ~2;
 			result << input[nextTokenPosition++];
