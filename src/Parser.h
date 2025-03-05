@@ -65,7 +65,7 @@ namespace ns {
 	/**
 	 * @brief Called in parse function when an ConsoleVariable is passed as a IDENTIFIER
 	 * @note I find this algorithm very interesting and fun(it creates a bunch of lexers for each variable call instead of recursive calling)
-	 * @see ns::maxRecursiveCalls
+	 * @see ns::maxConsoleVariableCalls
 	 * @param ctx
 	 */
 	void handleConsoleVariableCall(Context& ctx, ProgramVariable*& pProgramVar);
