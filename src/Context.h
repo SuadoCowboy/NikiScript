@@ -75,7 +75,7 @@ namespace ns {
 		std::string filePath; ///< when running script from a file
 		size_t lineIndex = 0, lineCount = 0;
 
-		uint8_t origin; ///< this is used so that the command knows where he's running in. See ns::OriginType
+		uint8_t origin = 0; ///< this is used so that the command knows where he's running in. See ns::OriginType
 	};
 
 	/**
@@ -102,8 +102,8 @@ T ns::Arguments::getUnsignedInteger() {
 uint8_t operator|(ns::OriginType l, ns::OriginType r);
 uint8_t operator|(uint8_t l, ns::OriginType r);
 uint8_t operator|(ns::OriginType l, uint8_t r);
-uint8_t operator|=(uint8_t l, ns::OriginType r);
+uint8_t& operator|=(uint8_t& l, ns::OriginType r);
 uint8_t operator&(uint8_t l, ns::OriginType r);
 uint8_t operator&(ns::OriginType l, uint8_t r);
-uint8_t operator&=(uint8_t l, ns::OriginType r);
+uint8_t& operator&=(uint8_t& l, ns::OriginType r);
 uint8_t operator~(ns::OriginType l);

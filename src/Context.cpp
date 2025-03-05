@@ -44,7 +44,7 @@ uint8_t operator|(ns::OriginType l, uint8_t r) {
 	return static_cast<uint8_t>(l)|r;
 }
 
-uint8_t operator|=(uint8_t l, ns::OriginType r) {
+uint8_t& operator|=(uint8_t& l, ns::OriginType r) {
 	l = l|r;
 	return l;
 }
@@ -57,7 +57,7 @@ uint8_t operator&(ns::OriginType l, uint8_t r) {
 	return static_cast<uint8_t>(l)&r;
 }
 
-uint8_t operator&=(uint8_t l, ns::OriginType r) {
+uint8_t& operator&=(uint8_t& l, ns::OriginType r) {
 	l = l & r;
 	return l;
 }
