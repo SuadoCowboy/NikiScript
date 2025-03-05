@@ -191,6 +191,7 @@ void ns::handleArgumentToken(Context& ctx) {
 			ns::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (i)nteger number\n", arg);
 			clearStatementData(ctx);
 			ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
+			return;
 		}
 		break;
 
@@ -201,6 +202,7 @@ void ns::handleArgumentToken(Context& ctx) {
 			ns::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (d)ecimal number\n", arg);
 			clearStatementData(ctx);
 			ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
+			return;
 		}
 		break;
 
@@ -212,6 +214,7 @@ void ns::handleArgumentToken(Context& ctx) {
 			ns::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (v)ariable\n", arg);
 			clearStatementData(ctx);
 			ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
+			return;
 		}
 		break;
 
