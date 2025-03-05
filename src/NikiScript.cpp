@@ -120,7 +120,6 @@ void ns::var_command(Context& ctx) {
 }
 
 void ns::delvar_command(Context& ctx) {
-	// TODO: when runningFrom is implemented: make this function unable to be called in variables? Why?
 	const std::string& varName = ctx.arguments.getString();
 
 	if (ctx.consoleVariables.count(varName) == 0) {
