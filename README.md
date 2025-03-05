@@ -36,4 +36,4 @@ NikiScript is a command interpreter **highly** inspired by the console interpret
 // it works on events: onKeyPress and onKeyRelease
 ```
 
-> NOTE: console might be better off in a separate thread of the game
+**NOTE:** console might be better off in a separate thread of the game

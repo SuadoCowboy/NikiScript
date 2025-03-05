@@ -1,7 +1,7 @@
 /**
 
 Doxygen Awesome
-https://github.com/SuadoCowboy/NikiScriptRemake
+https://github.com/SuadoCowboy/NikiScript
 
 MIT License
 
