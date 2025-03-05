@@ -1,0 +1,407 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="NikiScript" />
+<meta property="og:image" content="" />
+<meta property="og:description" content="Commandline Interpreter inspired on Valve's source engine and DDRaceNetwork" />
+<meta property="og:url" content="https://suadocowboy.github.io/NikiScript/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="" />
+<meta name="twitter:title" content="NikiScript" />
+<meta name="twitter:description" content="Commandline Interpreter inspired on Valve's source engine and DDRaceNetwork" />
+<!-- END twitter metadata -->
+<title>NikiScript Remake: ns::Lexer Struct Reference</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.png"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/SuadoCowboy/NikiScript" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">NikiScript Remake
+   &#160;<span id="projectnumber">v0.0.1</span>
+   </div>
+   <div id="projectbrief">Yet another commandline language</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('structns_1_1_lexer.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="structns_1_1_lexer-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">ns::Lexer Struct Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_lexer_8h_source.html">Lexer.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:aa1a0d144197b718d800c8f3d067aa01c" id="r_aa1a0d144197b718d800c8f3d067aa01c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1a0d144197b718d800c8f3d067aa01c">Lexer</a> ()</td></tr>
+<tr class="separator:aa1a0d144197b718d800c8f3d067aa01c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae82b1fe4bed348d2211b769e263755ee" id="r_ae82b1fe4bed348d2211b769e263755ee"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae82b1fe4bed348d2211b769e263755ee">Lexer</a> (const std::string &amp;<a class="el" href="#abea163c3702c10878df5bc7a95b5de7a">input</a>)</td></tr>
+<tr class="separator:ae82b1fe4bed348d2211b769e263755ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1203b73546fba121aa86b49c6d046b5f" id="r_a1203b73546fba121aa86b49c6d046b5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1203b73546fba121aa86b49c6d046b5f">advance</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx)</td></tr>
+<tr class="memdesc:a1203b73546fba121aa86b49c6d046b5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the next token in the input.  <br /></td></tr>
+<tr class="separator:a1203b73546fba121aa86b49c6d046b5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada05696a0f008108fc094e25773ce945" id="r_ada05696a0f008108fc094e25773ce945"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada05696a0f008108fc094e25773ce945">advanceUntil</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, uint8_t flags)</td></tr>
+<tr class="memdesc:ada05696a0f008108fc094e25773ce945"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advances tokens until it reaches one of the flags.  <br /></td></tr>
+<tr class="separator:ada05696a0f008108fc094e25773ce945"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11856a37dec73cb4bf845c1d1c4fdd02" id="r_a11856a37dec73cb4bf845c1d1c4fdd02"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11856a37dec73cb4bf845c1d1c4fdd02">setTokenValue</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx)</td></tr>
+<tr class="memdesc:a11856a37dec73cb4bf845c1d1c4fdd02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets token value by checking where a whitespace is found.  <br /></td></tr>
+<tr class="separator:a11856a37dec73cb4bf845c1d1c4fdd02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af94430738655fd9259ff5df3c0fd41c5" id="r_af94430738655fd9259ff5df3c0fd41c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af94430738655fd9259ff5df3c0fd41c5">setTokenType</a> ()</td></tr>
+<tr class="memdesc:af94430738655fd9259ff5df3c0fd41c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifies token type by checking the previous token type.  <br /></td></tr>
+<tr class="separator:af94430738655fd9259ff5df3c0fd41c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51a26b62b16f2616bd71fba4a3906fb2" id="r_a51a26b62b16f2616bd71fba4a3906fb2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51a26b62b16f2616bd71fba4a3906fb2">clear</a> ()</td></tr>
+<tr class="memdesc:a51a26b62b16f2616bd71fba4a3906fb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">resets members  <br /></td></tr>
+<tr class="separator:a51a26b62b16f2616bd71fba4a3906fb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:abea163c3702c10878df5bc7a95b5de7a" id="r_abea163c3702c10878df5bc7a95b5de7a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abea163c3702c10878df5bc7a95b5de7a">input</a></td></tr>
+<tr class="separator:abea163c3702c10878df5bc7a95b5de7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab9be7a3f8882e0e8e06568a0377f419" id="r_aab9be7a3f8882e0e8e06568a0377f419"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab9be7a3f8882e0e8e06568a0377f419">position</a> = 0</td></tr>
+<tr class="separator:aab9be7a3f8882e0e8e06568a0377f419"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5aacea360b719d1a44658b9c691ed4ce" id="r_a5aacea360b719d1a44658b9c691ed4ce"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5aacea360b719d1a44658b9c691ed4ce">openArguments</a> = 0</td></tr>
+<tr class="memdesc:a5aacea360b719d1a44658b9c691ed4ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">how many times NIKISCRIPT_ARGUMENTS_OPEN was found  <br /></td></tr>
+<tr class="separator:a5aacea360b719d1a44658b9c691ed4ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9de269c6557b9900790bdb3b4d680b0f" id="r_a9de269c6557b9900790bdb3b4d680b0f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structns_1_1_token.html">Token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9de269c6557b9900790bdb3b4d680b0f">token</a> = {<a class="el" href="namespacens.html#aa14753c33e3be27071db8a32655ac924ab50339a10e1de285ac99d4c3990b8693">TokenType::NONE</a>}</td></tr>
+<tr class="memdesc:a9de269c6557b9900790bdb3b4d680b0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">This variable is where advance stores the token.  <br /></td></tr>
+<tr class="separator:a9de269c6557b9900790bdb3b4d680b0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aa1a0d144197b718d800c8f3d067aa01c" name="aa1a0d144197b718d800c8f3d067aa01c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1a0d144197b718d800c8f3d067aa01c">&#9670;&#160;</a></span>Lexer() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ns::Lexer::Lexer </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae82b1fe4bed348d2211b769e263755ee" name="ae82b1fe4bed348d2211b769e263755ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae82b1fe4bed348d2211b769e263755ee">&#9670;&#160;</a></span>Lexer() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ns::Lexer::Lexer </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>input</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a1203b73546fba121aa86b49c6d046b5f" name="a1203b73546fba121aa86b49c6d046b5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1203b73546fba121aa86b49c6d046b5f">&#9670;&#160;</a></span>advance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ns::Lexer::advance </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structns_1_1_context.html">Context</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the next token in the input. </p>
+<dl class="section note"><dt>Note</dt><dd>Position is set to the <b>next</b> token position in the end of this function </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a9de269c6557b9900790bdb3b4d680b0f" title="This variable is where advance stores the token.">Lexer::token</a> </dd>
+<dd>
+<a class="el" href="#a11856a37dec73cb4bf845c1d1c4fdd02" title="Gets token value by checking where a whitespace is found.">Lexer::setTokenValue</a> </dd>
+<dd>
+<a class="el" href="#af94430738655fd9259ff5df3c0fd41c5" title="Identifies token type by checking the previous token type.">Lexer::setTokenType</a> </dd></dl>
+
+</div>
+</div>
+<a id="ada05696a0f008108fc094e25773ce945" name="ada05696a0f008108fc094e25773ce945"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada05696a0f008108fc094e25773ce945">&#9670;&#160;</a></span>advanceUntil()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ns::Lexer::advanceUntil </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structns_1_1_context.html">Context</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>flags</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Advances tokens until it reaches one of the flags. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flags</td><td>Bitwise <a class="el" href="namespacens.html#aa14753c33e3be27071db8a32655ac924">TokenType</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a1203b73546fba121aa86b49c6d046b5f" title="Gets the next token in the input.">Lexer::advance</a> </dd></dl>
+
+</div>
+</div>
+<a id="a51a26b62b16f2616bd71fba4a3906fb2" name="a51a26b62b16f2616bd71fba4a3906fb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51a26b62b16f2616bd71fba4a3906fb2">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ns::Lexer::clear </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>resets members </p>
+
+</div>
+</div>
+<a id="af94430738655fd9259ff5df3c0fd41c5" name="af94430738655fd9259ff5df3c0fd41c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af94430738655fd9259ff5df3c0fd41c5">&#9670;&#160;</a></span>setTokenType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ns::Lexer::setTokenType </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Identifies token type by checking the previous token type. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a11856a37dec73cb4bf845c1d1c4fdd02" title="Gets token value by checking where a whitespace is found.">Lexer::setTokenValue</a> </dd></dl>
+
+</div>
+</div>
+<a id="a11856a37dec73cb4bf845c1d1c4fdd02" name="a11856a37dec73cb4bf845c1d1c4fdd02"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11856a37dec73cb4bf845c1d1c4fdd02">&#9670;&#160;</a></span>setTokenValue()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t ns::Lexer::setTokenValue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structns_1_1_context.html">Context</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets token value by checking where a whitespace is found. </p>
+<dl class="section return"><dt>Returns</dt><dd>Next input's initial position. Either whitespace, EOS or END </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#af94430738655fd9259ff5df3c0fd41c5" title="Identifies token type by checking the previous token type.">Lexer::setTokenType</a> </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="abea163c3702c10878df5bc7a95b5de7a" name="abea163c3702c10878df5bc7a95b5de7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abea163c3702c10878df5bc7a95b5de7a">&#9670;&#160;</a></span>input</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ns::Lexer::input</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5aacea360b719d1a44658b9c691ed4ce" name="a5aacea360b719d1a44658b9c691ed4ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5aacea360b719d1a44658b9c691ed4ce">&#9670;&#160;</a></span>openArguments</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t ns::Lexer::openArguments = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>how many times NIKISCRIPT_ARGUMENTS_OPEN was found </p>
+
+</div>
+</div>
+<a id="aab9be7a3f8882e0e8e06568a0377f419" name="aab9be7a3f8882e0e8e06568a0377f419"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab9be7a3f8882e0e8e06568a0377f419">&#9670;&#160;</a></span>position</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t ns::Lexer::position = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9de269c6557b9900790bdb3b4d680b0f" name="a9de269c6557b9900790bdb3b4d680b0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9de269c6557b9900790bdb3b4d680b0f">&#9670;&#160;</a></span>token</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structns_1_1_token.html">Token</a> ns::Lexer::token = {<a class="el" href="namespacens.html#aa14753c33e3be27071db8a32655ac924ab50339a10e1de285ac99d4c3990b8693">TokenType::NONE</a>}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This variable is where advance stores the token. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a1203b73546fba121aa86b49c6d046b5f" title="Gets the next token in the input.">Lexer::advance</a> </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following files:<ul>
+<li>C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/src/<a class="el" href="_lexer_8h_source.html">Lexer.h</a></li>
+<li>C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/src/<a class="el" href="_lexer_8cpp.html">Lexer.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacens.html">ns</a></li><li class="navelem"><a class="el" href="structns_1_1_lexer.html">Lexer</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>
