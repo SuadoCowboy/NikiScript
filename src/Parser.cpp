@@ -346,8 +346,7 @@ bool ns::parseFile(Context& ctx, const char* filePath, bool printError) {
 	}
 
 	bool runningFromAnotherFile = (ctx.origin & OriginType::FILE);
-	if (!runningFromAnotherFile)
-		ctx.origin |= OriginType::FILE;
+	ctx.origin |= OriginType::FILE;
 
 	std::string originalFilePath = ctx.filePath;
 	ctx.filePath = filePath;
