@@ -1,7 +1,7 @@
 /**
 
 Doxygen Awesome
-https://github.com/SuadoCowboy/NikiScript
+https://github.com/jothepro/doxygen-awesome-css/
 
 MIT License
 
