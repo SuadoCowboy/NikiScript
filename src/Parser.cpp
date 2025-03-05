@@ -126,6 +126,11 @@ void ns::handleCommandCall(Context& ctx, ProgramVariable*& pProgramVar) {
 }
 
 uint8_t ns::handleIdentifierToken(Context& ctx, ProgramVariable*& pProgramVar) {
+	if (ctx.pLexer->token.value.empty()) {
+		ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
+		return 1;
+	}
+
 	if (ctx.consoleVariables.count(ctx.pLexer->token.value) != 0) {
 		if (canRunVariable(ctx))
 			return 2;

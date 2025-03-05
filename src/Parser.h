@@ -47,7 +47,7 @@ namespace ns {
 	 * 
 	 * @param ctx
 	 * @param pProgramVar
-	 * @return 1 = should call pLexer->advance() 2 = if it's a variable and should run it
+	 * @return 0 = it called advanceUntil(EOS) 1 = should call pLexer->advance() 2 = if it's a variable and should run it
 	 * @see ns::parse
 	 * @see ns::canRunVariable
 	 */
