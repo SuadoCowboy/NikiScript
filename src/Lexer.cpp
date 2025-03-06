@@ -101,7 +101,7 @@ uint64_t ns::Lexer::setTokenValue(Context& ctx) {
 				continue;
 			}
 
-		} else if (input[nextTokenPosition] == NIKISCRIPT_ARGUMENTS_SEPARATOR && openArguments == 1) {
+		} else if (input[nextTokenPosition] == NIKISCRIPT_ARGUMENTS_SEPARATOR && openArguments == 1 && !(flags & 1)) {
 			++nextTokenPosition;
 			break;
 
