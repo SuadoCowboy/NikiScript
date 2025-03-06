@@ -2,9 +2,9 @@
 
 # Print
 Start with a uppercased letter but does not end with a period.
-
-- **Example:**
+```cpp
 ns::printf("Could not get \"{}\" from table");
+```
 
 # Naming
 
