@@ -58,6 +58,7 @@ static void quit_command(ns::Context&) {
 
 int main(int, char**) {
 	ns::setPrintCallback(nullptr, nikiScriptPrintCallback);
+	ns::maxConsoleVariableCalls = 10;
 
 	ns::Context ctx;
 	ns::registerCommands(ctx);
