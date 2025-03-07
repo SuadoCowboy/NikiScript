@@ -5,8 +5,8 @@
 
 ns::ProgramVariable::ProgramVariable() {}
 
-ns::ProgramVariable::ProgramVariable(void* pVariable, const GetProgramVariableValue& get, const SetProgramVariableValue& set)
- : pValue(pVariable), get(get), set(set) {}
+ns::ProgramVariable::ProgramVariable(void* pVariable, const std::string_view& description, const GetProgramVariableValue& get, const SetProgramVariableValue& set)
+ : pValue(pVariable), description(description), get(get), set(set) {}
 
 std::string ns::getString(ProgramVariable* pVar) {
 	return *static_cast<std::string*>(pVar->pValue);

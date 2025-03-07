@@ -66,7 +66,7 @@ bool ns::canRunVariable(Context& ctx) {
 void ns::handleCommandCall(Context& ctx, ProgramVariable*& pProgramVar) {
 	if (pProgramVar != nullptr) {
 		if (ctx.arguments.arguments.size() == 0)
-			ns::printf(ns::PrintLevel::ECHO, "Value: {}\n", pProgramVar->get(pProgramVar));
+			ns::printf(ns::PrintLevel::ECHO, "Value: {}\n{}\n", pProgramVar->get(pProgramVar), pProgramVar->description);
 		else
 			pProgramVar->set(pProgramVar, ctx.arguments.arguments[0]);
 

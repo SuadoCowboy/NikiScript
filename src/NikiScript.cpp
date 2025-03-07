@@ -187,6 +187,6 @@ void ns::registerCommands(ns::Context& ctx) {
 	ctx.commands.add(Command("exec", 1,1, exec_command, "parses a script file", {"s[filePath]", "path to the file"}));
 }
 
-void ns::registerVariable(ns::Context& ctx, const std::string& name, void* pVar, const GetProgramVariableValue& get, const SetProgramVariableValue& set) {
-	ctx.programVariables[name] = ProgramVariable(pVar, get, set);
+void ns::registerVariable(ns::Context& ctx, const std::string& name, const std::string_view& description, void* pVar, const GetProgramVariableValue& get, const SetProgramVariableValue& set) {
+	ctx.programVariables[name] = ProgramVariable(pVar, description, get, set);
 }
