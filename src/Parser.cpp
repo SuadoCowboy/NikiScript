@@ -71,6 +71,7 @@ void ns::handleCommandCall(Context& ctx, ProgramVariable*& pProgramVar) {
 			pProgramVar->set(pProgramVar, ctx.arguments.arguments[0]);
 
 		clearStatementData(ctx);
+		pProgramVar = nullptr;
 		return;
 	}
 
