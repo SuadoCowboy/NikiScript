@@ -68,24 +68,6 @@ int main(int, char**) {
 
 	ctx.commands.add(ns::Command("quit", 0, 1, quit_command, "stops the main loop from running", {"s[?]", ""}));
 
-	// var (hello, var (b, Hello there!); echo \${b})
-	// var = IDENTIFIER
-	// ( = open();
-
-	// read until , or )
-	// , => return hello = ARGUMENT
-
-	// ( => ignore because it's already inside one
-
-	// read until , or )
-
-	// , => ignore because we're ignoring the previous (
-
-	// read until , or )
-
-	// ) => ignore because this is together with the previous (
-	// ) => var (b, Hello there!) = ARGUMENT
-
 	running = true;
 	while (running) {
 		std::string input;
