@@ -177,6 +177,10 @@ void ns::exec_command(Context& ctx) {
 	parseFile(ctx, ctx.arguments.getString().c_str(), true);
 }
 
+void ns::incrementvar_command(Context&) {
+
+}
+
 void ns::registerCommands(ns::Context& ctx) {
 	ctx.commands.add(Command("echo", 1, 1, echo_command, "prints the passed message to console", {"s[message]", "content to print to console"}));
 	ctx.commands.add(Command("help", 0,1, help_command, "prints a list of commands with their usages or the usage of the specified command", {"s[command?]", "command to see usage"}));
@@ -184,6 +188,7 @@ void ns::registerCommands(ns::Context& ctx) {
 	ctx.commands.add(Command("delvar", 1,1, delvar_command, "deletes a variable", {"v[variable]", "variable to delete"}));
 	ctx.commands.add(Command("toggle", 3,3, toggle_command, "toggles value between option1 and option2", {"v[variable]", "variable to modify value", "s[option1]", "option to set variable in case variable value is option2", "s[option2]", "option to set variable in case variable value is option1"}));
 	ctx.commands.add(Command("exec", 1,1, exec_command, "parses a script file", {"s[filePath]", "path to the file"}));
+	ctx.commands.add(Command("incrementvar", 3,4, incrementvar_command, "do value + delta, when value > max: value = min", {"v[variable]", "variable to modify value", "i[min]", "minimum value possible", "i[max]", "maximum possible value", "i[delta]", "to increase value with -> value + delta"}));
 }
 
 void ns::registerVariable(ns::Context& ctx, const std::string& name, const std::string_view& description, void* pVar, const GetProgramVariableValue& get, const SetProgramVariableValue& set) {

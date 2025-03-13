@@ -47,6 +47,13 @@ namespace ns {
 	void exec_command(Context& ctx);
 
 	/**
+	 * @brief increments a variable value
+	 * @param ctx
+	 * @note v[variable] n[min] n[max] n[delta?]
+	 */
+	void incrementvar_command(Context& ctx);
+
+	/**
 	 * @brief adds default commands such as echo
 	 * @param ctx
 	 * @see echo_command
