@@ -12,6 +12,10 @@ double ns::Arguments::getDouble() {
 	return std::stod(arguments[offset++]);
 }
 
+long double ns::Arguments::getLongDouble() {
+	return std::stold(arguments[offset++]);
+}
+
 void ns::Arguments::clear() {
 	arguments.clear();
 	offset = 0;

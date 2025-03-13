@@ -40,6 +40,7 @@ namespace ns {
 
 		float getFloat();
 		double getDouble();
+		long double getLongDouble();
 
 		/**
 		 * @brief clears arguments vector and sets offset to 0
