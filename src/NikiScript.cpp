@@ -177,8 +177,46 @@ void ns::exec_command(Context& ctx) {
 	parseFile(ctx, ctx.arguments.getString().c_str(), true);
 }
 
-void ns::incrementvar_command(Context&) {
+void ns::incrementvar_command(Context& ctx) {
+	const std::string& variableName = ctx.arguments.getString();
 
+	float min = ctx.arguments.getFloat();
+	float max = ctx.arguments.getFloat();
+	if (min > max) {
+		ns::printf(ns::ERROR, "max({}) should be higher than min({})\n", max, min);
+		return;
+	}
+
+	float delta = ctx.arguments.getFloat();
+
+	float value = 0.0;
+	if (ctx.consoleVariables.count(variableName) != 0) {
+		try {
+			value = std::stof(ctx.consoleVariables[variableName]);
+		} catch (...) {
+			ns::printf(ns::ERROR, "\"{}\" is not a number\n", ctx.consoleVariables[variableName]);
+			return;
+		}
+	} else {
+		try {
+			value = std::stof(ctx.programVariables[variableName].get(ctx, &ctx.programVariables[variableName]));
+		} catch (...) {
+			ns::printf(ns::ERROR, "\"{}\" is not a number\n", ctx.consoleVariables[variableName]);
+			return;
+		}
+	}
+
+	value += delta;
+	if (value > max)
+		value = min;
+
+	if (value < min)
+		value = min;
+
+	if (ctx.consoleVariables.count(variableName) != 0) {
+		ctx.consoleVariables[variableName] = std::to_string(value);
+	} else
+		ctx.programVariables[variableName].set(ctx, &ctx.programVariables[variableName], std::to_string(value));
 }
 
 void ns::registerCommands(ns::Context& ctx) {
@@ -188,7 +226,7 @@ void ns::registerCommands(ns::Context& ctx) {
 	ctx.commands.add(Command("delvar", 1,1, delvar_command, "deletes a variable", {"v[variable]", "variable to delete"}));
 	ctx.commands.add(Command("toggle", 3,3, toggle_command, "toggles value between option1 and option2", {"v[variable]", "variable to modify value", "s[option1]", "option to set variable in case variable value is option2", "s[option2]", "option to set variable in case variable value is option1"}));
 	ctx.commands.add(Command("exec", 1,1, exec_command, "parses a script file", {"s[filePath]", "path to the file"}));
-	ctx.commands.add(Command("incrementvar", 3,4, incrementvar_command, "do value + delta, when value > max: value = min", {"v[variable]", "variable to modify value", "i[min]", "minimum value possible", "i[max]", "maximum possible value", "i[delta]", "to increase value with -> value + delta"}));
+	ctx.commands.add(Command("incrementvar", 3,4, incrementvar_command, "do value + delta, when value > max: value = min", {"v[variable]", "variable to modify value", "d[min]", "minimum value possible", "d[max]", "maximum possible value", "d[delta?]", "to increase value with -> value + delta"}));
 }
 
 void ns::registerVariable(ns::Context& ctx, const std::string& name, const std::string_view& description, void* pVar, const GetProgramVariableValue& get, const SetProgramVariableValue& set) {
