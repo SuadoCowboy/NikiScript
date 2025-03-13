@@ -198,7 +198,7 @@ void ns::handleArgumentToken(Context& ctx) {
 
 	case 'd':
 		try {
-			std::stof(ctx.pLexer->token.value);
+			std::stold(ctx.pLexer->token.value);
 		} catch (...) {
 			ns::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (d)ecimal number\n", arg);
 			clearStatementData(ctx);
