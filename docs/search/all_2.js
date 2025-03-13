@@ -13,7 +13,7 @@ var searchData=
   ['commandhandler_2ecpp_10',['CommandHandler.cpp',['../_command_handler_8cpp.html',1,'']]],
   ['commandhandler_2eh_11',['CommandHandler.h',['../_command_handler_8h.html',1,'']]],
   ['commands_12',['Commands',['../md__c_1_2_users_2emilly_2_documents_2_lucca_2_projetos_2_cpp_2_niki_script_2_conventions.html#autotoc_md5',1,'']]],
-  ['commands_13',['commands',['../structns_1_1_command_handler.html#adfe86ae09eab91677d0dd996817dffac',1,'ns::CommandHandler::commands'],['../structns_1_1_context.html#af0d9a4ca5512cd4da3283e61c2a0c320',1,'ns::Context::commands']]],
+  ['commands_13',['commands',['../structns_1_1_context.html#af0d9a4ca5512cd4da3283e61c2a0c320',1,'ns::Context::commands'],['../structns_1_1_command_handler.html#adfe86ae09eab91677d0dd996817dffac',1,'ns::CommandHandler::commands']]],
   ['console_20the_20toggle_20variable_20is_20useless_14',['in the console, the toggle variable is useless',['../index.html#autotoc_md8',1,'']]],
   ['consolevariables_15',['ConsoleVariables',['../namespacens.html#a41c19c013ca599941451dfff7770a84f',1,'ns']]],
   ['consolevariables_16',['consoleVariables',['../structns_1_1_context.html#aedf036ea4707a97e3706b53d9847f4e3',1,'ns::Context']]],

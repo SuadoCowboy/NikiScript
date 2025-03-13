@@ -54,7 +54,6 @@ var namespacens =
     [ "help_command", "namespacens.html#a8cdaa9d3b16f6c69f7edf2ed75b41a95", null ],
     [ "insertReferencesInToken", "namespacens.html#aab61615180a6c7d83d347c1fdb446daa", null ],
     [ "ltrim", "namespacens.html#aa38612c1876386101d82733bcc9d8fd1", null ],
-    [ "math_command", "namespacens.html#aa2abfdb20dcca4ce3b7adec0973150e4", null ],
     [ "parse", "namespacens.html#ad0d3d4abbeb212d6c51e9eaa8652152e", null ],
     [ "parseFile", "namespacens.html#a765477cb266c6fb3e82b1b85867bca56", null ],
     [ "print", "namespacens.html#a402821a8624abd3268dc911fb9dcfab3", null ],
@@ -81,5 +80,5 @@ var namespacens =
     [ "var_command", "namespacens.html#a8d945efbeb71a8c00ee1f3dfbacfb61c", null ],
     [ "maxConsoleVariableCalls", "namespacens.html#abbea509386571ee71c847ed086479f16", null ],
     [ "pPrintCallbackData", "namespacens.html#a3e371c29b0a8f6a406e98e9f375803ef", null ],
-    [ "printCallback", "namespacens.html#af8310aae05bbb4bff576e98bfc83873d", null ]
+    [ "printCallback", "namespacens.html#ac9714f3f6e3075cac4d0d58ca97bcfc7", null ]
 ];

@@ -34,11 +34,13 @@ namespace ns {
 		return std::to_string(*static_cast<T*>(pVar->pValue));
 	}
 
-	/// @brief uses std::stoul so any number below that can be used
-	/// @tparam T number type
-	/// @param ctx
-	/// @param pVar 
-	/// @param str 
+	/**
+	 * @brief uses std::stoul so any number below that can be used
+	 * @tparam T number type
+	 * @param ctx
+	 * @param pVar 
+	 * @param str
+	 */
 	template<typename T>
 	void setUnsigned(Context&, ProgramVariable* pVar, const std::string& str) {
 		try {
