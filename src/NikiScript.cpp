@@ -152,7 +152,6 @@ void ns::toggle_command(ns::Context& ctx) {
 	const std::string& varName = ctx.arguments.getString();
 	const std::string& option1 = ctx.arguments.getString();
 	const std::string& option2 = ctx.arguments.getString();
-	ctx.arguments.clear();
 
 	if (ctx.consoleVariables.count(varName) != 0) {
 		std::string& varValue = ctx.consoleVariables[varName];
