@@ -68,39 +68,37 @@ int main(int, char**) {
 
 	ctx.commands.add(ns::Command("quit", 0, 1, quit_command, "stops the main loop from running", {"s[?]", ""}));
 
-	{ // signed numbers
-		int8_t int8 = 0;
-		ns::registerVariable(ctx, "int8", "", &int8, ns::getNumber<int8_t>, ns::setChar);
-	
-		int16_t int16 = 0;
-		ns::registerVariable(ctx, "int16", "", &int16, ns::getNumber<int16_t>, ns::setShort);
-	
-		int32_t int32 = 0;
-		ns::registerVariable(ctx, "int32", "", &int32, ns::getNumber<int32_t>, ns::setInteger);
-	
-		int64_t int64 = 0;
-		ns::registerVariable(ctx, "int64", "", &int64, ns::getNumber<int64_t>, ns::setLong);
+	// signed numbers
+	int8_t int8 = 0;
+	ns::registerVariable(ctx, "int8", "", &int8, ns::getNumber<int8_t>, ns::setChar);
 
-		long long int128 = 0;
-		ns::registerVariable(ctx, "int128", "", &int128, ns::getNumber<long long>, ns::setLongLong);
-	}
+	int16_t int16 = 0;
+	ns::registerVariable(ctx, "int16", "", &int16, ns::getNumber<int16_t>, ns::setShort);
 
-	{ // unsigned numbers
-		uint8_t uint8 = 0;
-		ns::registerVariable(ctx, "uint8", "", &uint8, ns::getNumber<uint8_t>, ns::setUnsigned<uint8_t>);
-	
-		uint16_t uint16 = 0;
-		ns::registerVariable(ctx, "uint16", "", &uint16, ns::getNumber<uint16_t>, ns::setUnsigned<uint16_t>);
-	
-		uint32_t uint32 = 0;
-		ns::registerVariable(ctx, "uint32", "", &uint32, ns::getNumber<uint32_t>, ns::setUnsigned<uint32_t>);
-	
-		uint64_t uint64 = 0;
-		ns::registerVariable(ctx, "uint64", "", &uint64, ns::getNumber<uint64_t>, ns::setUnsigned<uint64_t>);
+	int32_t int32 = 0;
+	ns::registerVariable(ctx, "int32", "", &int32, ns::getNumber<int32_t>, ns::setInteger);
 
-		long long uint128 = 0;
-		ns::registerVariable(ctx, "uint128", "", &uint128, ns::getNumber<long long>, ns::setUnsignedLongLong);
-	}
+	int64_t int64 = 0;
+	ns::registerVariable(ctx, "int64", "", &int64, ns::getNumber<int64_t>, ns::setLong);
+
+	long long int128 = 0;
+	ns::registerVariable(ctx, "int128", "", &int128, ns::getNumber<long long>, ns::setLongLong);
+
+	// unsigned numbers
+	uint8_t uint8 = 0;
+	ns::registerVariable(ctx, "uint8", "", &uint8, ns::getNumber<uint8_t>, ns::setUnsigned<uint8_t>);
+
+	uint16_t uint16 = 0;
+	ns::registerVariable(ctx, "uint16", "", &uint16, ns::getNumber<uint16_t>, ns::setUnsigned<uint16_t>);
+
+	uint32_t uint32 = 0;
+	ns::registerVariable(ctx, "uint32", "", &uint32, ns::getNumber<uint32_t>, ns::setUnsigned<uint32_t>);
+
+	uint64_t uint64 = 0;
+	ns::registerVariable(ctx, "uint64", "", &uint64, ns::getNumber<uint64_t>, ns::setUnsigned<uint64_t>);
+
+	long long uint128 = 0;
+	ns::registerVariable(ctx, "uint128", "", &uint128, ns::getNumber<long long>, ns::setUnsignedLongLong);
 
 	running = true;
 	while (running) {
