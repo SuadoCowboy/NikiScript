@@ -35,7 +35,7 @@ void ns::insertReferencesInToken(Context& ctx, Token& token) {
 
 		} else if (ctx.programVariables.count(reference.second) != 0) { // program variable
 			ProgramVariable& var = ctx.programVariables[reference.second];
-			std::string value = var.get(&var);
+			std::string value = var.get(ctx, &var);
 
 			token.value = token.value.insert(offset+reference.first, value);
 			offset += value.size();

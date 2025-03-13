@@ -66,9 +66,9 @@ bool ns::canRunVariable(Context& ctx) {
 void ns::handleCommandCall(Context& ctx, ProgramVariable*& pProgramVar) {
 	if (pProgramVar != nullptr) {
 		if (ctx.arguments.arguments.size() == 0)
-			ns::printf(ns::PrintLevel::ECHO, "Value: {}\n{}\n", pProgramVar->get(pProgramVar), pProgramVar->description);
+			ns::printf(ns::ECHO, "Value: {}\n{}\n", pProgramVar->get(ctx, pProgramVar), pProgramVar->description);
 		else
-			pProgramVar->set(pProgramVar, ctx.arguments.arguments[0]);
+			pProgramVar->set(ctx, pProgramVar, ctx.arguments.arguments[0]);
 
 		clearStatementData(ctx);
 		pProgramVar = nullptr;
@@ -80,11 +80,11 @@ void ns::handleCommandCall(Context& ctx, ProgramVariable*& pProgramVar) {
 
 	if (ctx.pCommand->minArgs > ctx.arguments.arguments.size()) {
 		if (ctx.pCommand->minArgs == ctx.pCommand->maxArgs)
-			ns::printf(ns::PrintLevel::ERROR, "Expected {} argument(s) but received {} arguments\n", static_cast<uint16_t>(ctx.pCommand->minArgs), ctx.arguments.arguments.size());
+			ns::printf(ns::ERROR, "Expected {} argument(s) but received {} arguments\n", static_cast<uint16_t>(ctx.pCommand->minArgs), ctx.arguments.arguments.size());
 		else
-			ns::printf(ns::PrintLevel::ERROR, "Expected arguments between [{}, {}] but received {} arguments\n", static_cast<uint16_t>(ctx.pCommand->minArgs), static_cast<uint16_t>(ctx.pCommand->maxArgs), ctx.arguments.arguments.size());
+			ns::printf(ns::ERROR, "Expected arguments between [{}, {}] but received {} arguments\n", static_cast<uint16_t>(ctx.pCommand->minArgs), static_cast<uint16_t>(ctx.pCommand->maxArgs), ctx.arguments.arguments.size());
 
-		ns::printf(ns::PrintLevel::ECHO, "{} {}\n", ctx.pCommand->name, ctx.pCommand->getArgumentsNames());
+		ns::printf(ns::ECHO, "{} {}\n", ctx.pCommand->name, ctx.pCommand->getArgumentsNames());
 		clearStatementData(ctx);
 		return;
 	}
@@ -172,7 +172,7 @@ void ns::handleArgumentToken(Context& ctx) {
 	}
 
 	if (ctx.pCommand->maxArgs == 0) {
-		ns::printf(ns::PrintLevel::ERROR, "Expected 0 arguments for {} command\n", ctx.pCommand->name);
+		ns::printf(ns::ERROR, "Expected 0 arguments for {} command\n", ctx.pCommand->name);
 		clearStatementData(ctx);
 		ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
 		return;

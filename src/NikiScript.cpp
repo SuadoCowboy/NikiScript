@@ -12,7 +12,7 @@ void ns::help_command(Context& ctx) {
 		for (auto& command : ctx.commands.commands)
 			oss << command.second.name << ' ' << command.second.getArgumentsNames() << '\n';
 
-		ns::print(ns::PrintLevel::ECHO, oss.str());
+		ns::print(ns::ECHO, oss.str());
 
 	} else {
 		std::string& commandName = ctx.arguments.getString();
@@ -20,7 +20,7 @@ void ns::help_command(Context& ctx) {
 
 		Command* pCommand = ctx.commands.get(commandName);
 		if (pCommand == nullptr) {
-			ns::printf(ns::PrintLevel::ERROR, "Command \"{}\" not found\n", commandName);
+			ns::printf(ns::ERROR, "Command \"{}\" not found\n", commandName);
 			return;
 		}
 
@@ -29,7 +29,7 @@ void ns::help_command(Context& ctx) {
 }
 
 void ns::echo_command(Context& ctx) {
-	ns::printf(ns::PrintLevel::ECHO, "{}\n", ctx.arguments.getString());
+	ns::printf(ns::ECHO, "{}\n", ctx.arguments.getString());
 }
 
 void ns::var_command(Context& ctx) {
@@ -166,12 +166,12 @@ void ns::toggle_command(ns::Context& ctx) {
 	}
 
 	ns::ProgramVariable& var = ctx.programVariables[varName];
-	std::string varValue = var.get(&var);
+	std::string varValue = var.get(ctx, &var);
 
 	if (varValue == option1)
-		var.set(&var, option2);
+		var.set(ctx, &var, option2);
 	else
-		var.set(&var, option1);
+		var.set(ctx, &var, option1);
 }
 
 void ns::exec_command(Context& ctx) {
