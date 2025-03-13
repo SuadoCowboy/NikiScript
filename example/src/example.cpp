@@ -68,6 +68,16 @@ int main(int, char**) {
 
 	ctx.commands.add(ns::Command("quit", 0, 1, quit_command, "stops the main loop from running", {"s[?]", ""}));
 
+	// decimal numbers
+	float floatNumber = 0;
+	ns::registerVariable(ctx, "float", "", &floatNumber, ns::getNumber<float>, ns::setFloat);
+
+	double doubleNumber = 0;
+	ns::registerVariable(ctx, "double", "", &doubleNumber, ns::getNumber<double>, ns::setDouble);
+
+	long double lDoubleNumber = 0;
+	ns::registerVariable(ctx, "ldouble", "", &lDoubleNumber, ns::getNumber<long double>, ns::setLongDouble);
+
 	// signed numbers
 	int8_t int8 = 0;
 	ns::registerVariable(ctx, "int8", "", &int8, ns::getNumber<int8_t>, ns::setChar);
