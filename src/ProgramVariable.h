@@ -32,8 +32,7 @@ namespace ns {
 
 	template<typename T>
 	std::string getNumber(Context&, ProgramVariable* pVar) {
-		std::stringstream oss;
-		return oss << *static_cast<T*>(pVar->pValue);
+		return std::to_string(*static_cast<T*>(pVar->pValue));
 	}
 
 	/**
