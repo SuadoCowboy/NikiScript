@@ -187,7 +187,7 @@ void ns::handleArgumentToken(Context& ctx) {
 	switch (arg[0]) {
 	case 'i':
 		try {
-			std::stoi(ctx.pLexer->token.value);
+			std::stoll(ctx.pLexer->token.value);
 		} catch (...) {
 			ns::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (i)nteger number\n", arg);
 			clearStatementData(ctx);
