@@ -17,6 +17,13 @@ void ns::setString(Context&, ProgramVariable* pVar, const std::string& str) {
 }
 
 
+void ns::setUnsignedLongLong(Context&, ProgramVariable* pVar, const std::string& str) {
+	try {
+		*static_cast<unsigned long long*>(pVar->pValue) = std::stoull(str);
+	} catch (...) {}
+}
+
+
 void ns::setFloat(Context&, ProgramVariable* pVar, const std::string& str) {
 	try {
 		*static_cast<float*>(pVar->pValue) = std::stof(str);
@@ -29,12 +36,12 @@ void ns::setDouble(Context&, ProgramVariable* pVar, const std::string& str) {
 	} catch (...) {}
 }
 
-
 void ns::setLongDouble(Context&, ProgramVariable* pVar, const std::string& str) {
 	try {
 		*static_cast<long double*>(pVar->pValue) = std::stold(str);
 	} catch (...) {}
 }
+
 
 void ns::setChar(Context&, ProgramVariable* pVar, const std::string& str) {
 	try {
@@ -63,12 +70,5 @@ void ns::setLong(Context&, ProgramVariable* pVar, const std::string& str) {
 void ns::setLongLong(Context&, ProgramVariable* pVar, const std::string& str) {
 	try {
 		*static_cast<long long*>(pVar->pValue) = std::stoll(str);
-	} catch (...) {}
-}
-
-
-void ns::setUnsignedLongLong(Context&, ProgramVariable* pVar, const std::string& str) {
-	try {
-		*static_cast<unsigned long long*>(pVar->pValue) = std::stoull(str);
 	} catch (...) {}
 }
