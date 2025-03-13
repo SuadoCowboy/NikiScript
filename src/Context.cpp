@@ -4,6 +4,12 @@ std::string& ns::Arguments::getString() {
 	return arguments[offset++];
 }
 
+
+unsigned long long ns::Arguments::getUnsignedLongLong() {
+	return std::stoull(arguments[offset++]);
+}
+
+
 float ns::Arguments::getFloat() {
 	return std::stof(arguments[offset++]);
 }
@@ -15,6 +21,15 @@ double ns::Arguments::getDouble() {
 long double ns::Arguments::getLongDouble() {
 	return std::stold(arguments[offset++]);
 }
+
+long ns::Arguments::getLong() {
+	return std::stol(arguments[offset++]);
+}
+
+long long ns::Arguments::getLongLong() {
+	return std::stoll(arguments[offset++]);
+}
+
 
 void ns::Arguments::clear() {
 	arguments.clear();
