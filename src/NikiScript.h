@@ -32,8 +32,6 @@ namespace ns {
 	 */
 	void delvar_command(Context& ctx);
 
-    //void math_command(Context& ctx);
-
 	/**
 	 * @brief toggles a variable value between option1 and option2
 	 * @param ctx
