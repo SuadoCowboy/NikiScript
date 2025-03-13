@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!-- BEGIN opengraph metadata -->
+<meta property="og:title" content="NikiScript" />
+<meta property="og:image" content="" />
+<meta property="og:description" content="Commandline Interpreter inspired on Valve's source engine and DDRaceNetwork" />
+<meta property="og:url" content="https://suadocowboy.github.io/NikiScript/" />
+<!-- END opengraph metadata -->
+<!-- BEGIN twitter metadata -->
+<meta name="twitter:image:src" content="" />
+<meta name="twitter:title" content="NikiScript" />
+<meta name="twitter:description" content="Commandline Interpreter inspired on Valve's source engine and DDRaceNetwork" />
+<!-- END twitter metadata -->
+<title>NikiScript Remake: C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/src/Lexer.h Source File</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link rel="icon" type="image/svg+xml" href="logo.png"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="doxygen-awesome-tabs.js"></script>
+<script type="text/javascript" src="toggle-alternative-theme.js"></script>
+<script type="text/javascript">
+    DoxygenAwesomeFragmentCopyButton.init()
+    DoxygenAwesomeDarkModeToggle.init()
+    DoxygenAwesomeParagraphLink.init()
+    DoxygenAwesomeInteractiveToc.init()
+    DoxygenAwesomeTabs.init()
+</script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- https://tholman.com/github-corners/ -->
+<a href="https://github.com/SuadoCowboy/NikiScript" class="github-corner" title="View source on GitHub" target="_blank" rel="noopener noreferrer">
+    <svg viewBox="0 0 250 250" width="40" height="40" style="position: absolute; top: 0; border: 0; right: 0; z-index: 99;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">NikiScript Remake
+   &#160;<span id="projectnumber">v0.0.1</span>
+   </div>
+   <div id="projectbrief">Yet another commandline language</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generated by Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('_lexer_8h_source.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Lexer.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_lexer_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="_token_8h.html">Token.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#ifndef NIKISCRIPT_STATEMENT_SEPARATOR</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="_lexer_8h.html#afc050624ca40bb2ca84f2ed504d2d817">    9</a></span><span class="preprocessor">#define NIKISCRIPT_STATEMENT_SEPARATOR &#39;;&#39;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef NIKISCRIPT_REFERENCE</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="_lexer_8h.html#a140f97a15a67dc1632a0cd99570b1237">   13</a></span><span class="preprocessor">#define NIKISCRIPT_REFERENCE &#39;$&#39;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#ifndef NIKISCRIPT_REFERENCE_OPEN</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="_lexer_8h.html#a9eb39fe323f8f26fb62da8910e783131">   17</a></span><span class="preprocessor">#define NIKISCRIPT_REFERENCE_OPEN &#39;{&#39;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#ifndef NIKISCRIPT_REFERENCE_CLOSE</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="_lexer_8h.html#a73db599c11ddd285d3e4c6fda5b411eb">   21</a></span><span class="preprocessor">#define NIKISCRIPT_REFERENCE_CLOSE &#39;}&#39;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#ifndef NIKISCRIPT_ARGUMENTS_SEPARATOR</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="_lexer_8h.html#a938e0c54bce5620731ceb5dad0ebe38f">   25</a></span><span class="preprocessor">#define NIKISCRIPT_ARGUMENTS_SEPARATOR &#39;,&#39;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#ifndef NIKISCRIPT_ARGUMENTS_OPEN</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="_lexer_8h.html#a21313d174c74f83b82921bb068cea7c5">   29</a></span><span class="preprocessor">#define NIKISCRIPT_ARGUMENTS_OPEN &#39;(&#39;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#ifndef NIKISCRIPT_ARGUMENTS_CLOSE</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="_lexer_8h.html#a5042a03bf36366aa4a35500151b70b8d">   33</a></span><span class="preprocessor">#define NIKISCRIPT_ARGUMENTS_CLOSE &#39;)&#39;</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#ifndef NIKISCRIPT_COMMENT_LINE</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="_lexer_8h.html#a5f319f20a61b040e1db3cb439fbc8cdc">   37</a></span><span class="preprocessor">#define NIKISCRIPT_COMMENT_LINE &#39;/&#39;</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#ifndef NIKISCRIPT_COMMENT_LINES </span><span class="comment">// Joined together with NIKISCRIPT_COMMENT_LINE -&gt; /* This is a comment */</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="_lexer_8h.html#a705cdff96b9490454cad94d63759823c">   41</a></span><span class="preprocessor">#define NIKISCRIPT_COMMENT_LINES &#39;*&#39;</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacens.html">ns</a> {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">struct </span>Context;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="};">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="structns_1_1_lexer.html">   47</a></span>    <span class="keyword">struct </span><a class="code hl_function" href="structns_1_1_lexer.html#aa1a0d144197b718d800c8f3d067aa01c">Lexer</a> {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="structns_1_1_lexer.html#abea163c3702c10878df5bc7a95b5de7a">   48</a></span>        std::string <a class="code hl_variable" href="structns_1_1_lexer.html#abea163c3702c10878df5bc7a95b5de7a">input</a>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="structns_1_1_lexer.html#aab9be7a3f8882e0e8e06568a0377f419">   49</a></span>        uint64_t <a class="code hl_variable" href="structns_1_1_lexer.html#aab9be7a3f8882e0e8e06568a0377f419">position</a> = 0;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="structns_1_1_lexer.html#a5aacea360b719d1a44658b9c691ed4ce">   50</a></span>        <span class="keywordtype">size_t</span> <a class="code hl_variable" href="structns_1_1_lexer.html#a5aacea360b719d1a44658b9c691ed4ce">openArguments</a> = 0; </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="structns_1_1_lexer.html#a9de269c6557b9900790bdb3b4d680b0f">   56</a></span>        <a class="code hl_struct" href="structns_1_1_token.html">Token</a> <a class="code hl_variable" href="structns_1_1_lexer.html#a9de269c6557b9900790bdb3b4d680b0f">token</a> = {<a class="code hl_enumvalue" href="namespacens.html#aa14753c33e3be27071db8a32655ac924af55b8b7bff5a0a87e9d38cbffbdbeab7">TokenType::NONE</a>};</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <a class="code hl_function" href="structns_1_1_lexer.html#aa1a0d144197b718d800c8f3d067aa01c">Lexer</a>();</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <a class="code hl_function" href="structns_1_1_lexer.html#aa1a0d144197b718d800c8f3d067aa01c">Lexer</a>(<span class="keyword">const</span> std::string&amp; <a class="code hl_variable" href="structns_1_1_lexer.html#abea163c3702c10878df5bc7a95b5de7a">input</a>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="structns_1_1_lexer.html#a1203b73546fba121aa86b49c6d046b5f">advance</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>&amp; ctx);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="structns_1_1_lexer.html#ada05696a0f008108fc094e25773ce945">advanceUntil</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>&amp; ctx, uint8_t flags);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        uint64_t <a class="code hl_function" href="structns_1_1_lexer.html#a11856a37dec73cb4bf845c1d1c4fdd02">setTokenValue</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>&amp; ctx);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="structns_1_1_lexer.html#af94430738655fd9259ff5df3c0fd41c5">setTokenType</a>();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="structns_1_1_lexer.html#a51a26b62b16f2616bd71fba4a3906fb2">clear</a>();</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    };</div>
+</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>}</div>
+<div class="ttc" id="a_token_8h_html"><div class="ttname"><a href="_token_8h.html">Token.h</a></div></div>
+<div class="ttc" id="anamespacens_html"><div class="ttname"><a href="namespacens.html">ns</a></div><div class="ttdef"><b>Definition</b> Command.h:6</div></div>
+<div class="ttc" id="anamespacens_html_aa14753c33e3be27071db8a32655ac924af55b8b7bff5a0a87e9d38cbffbdbeab7"><div class="ttname"><a href="namespacens.html#aa14753c33e3be27071db8a32655ac924af55b8b7bff5a0a87e9d38cbffbdbeab7">ns::NONE</a></div><div class="ttdeci">@ NONE</div><div class="ttdef"><b>Definition</b> Token.h:8</div></div>
+<div class="ttc" id="astructns_1_1_context_html"><div class="ttname"><a href="structns_1_1_context.html">ns::Context</a></div><div class="ttdef"><b>Definition</b> Context.h:59</div></div>
+<div class="ttc" id="astructns_1_1_lexer_html_a11856a37dec73cb4bf845c1d1c4fdd02"><div class="ttname"><a href="structns_1_1_lexer.html#a11856a37dec73cb4bf845c1d1c4fdd02">ns::Lexer::setTokenValue</a></div><div class="ttdeci">uint64_t setTokenValue(Context &amp;ctx)</div><div class="ttdoc">Gets token value by checking where a whitespace is found.</div><div class="ttdef"><b>Definition</b> Lexer.cpp:39</div></div>
+<div class="ttc" id="astructns_1_1_lexer_html_a1203b73546fba121aa86b49c6d046b5f"><div class="ttname"><a href="structns_1_1_lexer.html#a1203b73546fba121aa86b49c6d046b5f">ns::Lexer::advance</a></div><div class="ttdeci">void advance(Context &amp;ctx)</div><div class="ttdoc">Gets the next token in the input.</div><div class="ttdef"><b>Definition</b> Lexer.cpp:11</div></div>
+<div class="ttc" id="astructns_1_1_lexer_html_a51a26b62b16f2616bd71fba4a3906fb2"><div class="ttname"><a href="structns_1_1_lexer.html#a51a26b62b16f2616bd71fba4a3906fb2">ns::Lexer::clear</a></div><div class="ttdeci">void clear()</div><div class="ttdoc">resets members</div><div class="ttdef"><b>Definition</b> Lexer.cpp:173</div></div>
+<div class="ttc" id="astructns_1_1_lexer_html_a5aacea360b719d1a44658b9c691ed4ce"><div class="ttname"><a href="structns_1_1_lexer.html#a5aacea360b719d1a44658b9c691ed4ce">ns::Lexer::openArguments</a></div><div class="ttdeci">size_t openArguments</div><div class="ttdoc">how many times NIKISCRIPT_ARGUMENTS_OPEN was found</div><div class="ttdef"><b>Definition</b> Lexer.h:50</div></div>
+<div class="ttc" id="astructns_1_1_lexer_html_a9de269c6557b9900790bdb3b4d680b0f"><div class="ttname"><a href="structns_1_1_lexer.html#a9de269c6557b9900790bdb3b4d680b0f">ns::Lexer::token</a></div><div class="ttdeci">Token token</div><div class="ttdoc">This variable is where advance stores the token.</div><div class="ttdef"><b>Definition</b> Lexer.h:56</div></div>
+<div class="ttc" id="astructns_1_1_lexer_html_aa1a0d144197b718d800c8f3d067aa01c"><div class="ttname"><a href="structns_1_1_lexer.html#aa1a0d144197b718d800c8f3d067aa01c">ns::Lexer::Lexer</a></div><div class="ttdeci">Lexer()</div><div class="ttdef"><b>Definition</b> Lexer.cpp:8</div></div>
+<div class="ttc" id="astructns_1_1_lexer_html_aab9be7a3f8882e0e8e06568a0377f419"><div class="ttname"><a href="structns_1_1_lexer.html#aab9be7a3f8882e0e8e06568a0377f419">ns::Lexer::position</a></div><div class="ttdeci">uint64_t position</div><div class="ttdef"><b>Definition</b> Lexer.h:49</div></div>
+<div class="ttc" id="astructns_1_1_lexer_html_abea163c3702c10878df5bc7a95b5de7a"><div class="ttname"><a href="structns_1_1_lexer.html#abea163c3702c10878df5bc7a95b5de7a">ns::Lexer::input</a></div><div class="ttdeci">std::string input</div><div class="ttdef"><b>Definition</b> Lexer.h:48</div></div>
+<div class="ttc" id="astructns_1_1_lexer_html_ada05696a0f008108fc094e25773ce945"><div class="ttname"><a href="structns_1_1_lexer.html#ada05696a0f008108fc094e25773ce945">ns::Lexer::advanceUntil</a></div><div class="ttdeci">void advanceUntil(Context &amp;ctx, uint8_t flags)</div><div class="ttdoc">Advances tokens until it reaches one of the flags.</div><div class="ttdef"><b>Definition</b> Lexer.cpp:31</div></div>
+<div class="ttc" id="astructns_1_1_lexer_html_af94430738655fd9259ff5df3c0fd41c5"><div class="ttname"><a href="structns_1_1_lexer.html#af94430738655fd9259ff5df3c0fd41c5">ns::Lexer::setTokenType</a></div><div class="ttdeci">void setTokenType()</div><div class="ttdoc">Identifies token type by checking the previous token type.</div><div class="ttdef"><b>Definition</b> Lexer.cpp:162</div></div>
+<div class="ttc" id="astructns_1_1_token_html"><div class="ttname"><a href="structns_1_1_token.html">ns::Token</a></div><div class="ttdef"><b>Definition</b> Token.h:15</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_lexer_8h.html">Lexer.h</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>
