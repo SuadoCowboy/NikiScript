@@ -93,6 +93,9 @@ uint64_t ns::Lexer::setTokenValue(Context& ctx) {
 		}
 
 		if (input[nextTokenPosition] == NIKISCRIPT_ARGUMENTS_OPEN) {
+			if (token.type == TokenType::NONE || ((TokenType::EOS|TokenType::END) & token.type))
+				break;
+
 			++openArguments;
 			flags |= 1;
 
