@@ -52,6 +52,7 @@ var namespacens =
     [ "handleConsoleVariableCall", "namespacens.html#aa9a89a5bd98bb05f3ef0ac9cd4cf7bd1", null ],
     [ "handleIdentifierToken", "namespacens.html#ae0e2e6a5b8e4a56be1f022174b14b7c1", null ],
     [ "help_command", "namespacens.html#a8cdaa9d3b16f6c69f7edf2ed75b41a95", null ],
+    [ "incrementvar_command", "namespacens.html#a799b896e23c08756a3d83896f0129ca8", null ],
     [ "insertReferencesInToken", "namespacens.html#aab61615180a6c7d83d347c1fdb446daa", null ],
     [ "ltrim", "namespacens.html#aa38612c1876386101d82733bcc9d8fd1", null ],
     [ "parse", "namespacens.html#ad0d3d4abbeb212d6c51e9eaa8652152e", null ],
