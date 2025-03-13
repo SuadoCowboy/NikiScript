@@ -15,7 +15,7 @@ namespace ns {
 	/**
 	 * @warning **DO NOT** rearrange this enum. ns::handleConsoleVariableCall uses bit logic on VARIABLE related to VARIABLE_IN_VARIABLE
 	 */
-	enum class OriginType : uint8_t {
+	enum OriginType : uint8_t {
 		COMMAND = 1, ///< if a command is calling another command
 		VARIABLE = 2, ///< any variable
 		VARIABLE_IN_VARIABLE = 4, ///< var x that calls var y
