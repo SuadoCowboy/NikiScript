@@ -22,6 +22,7 @@ ns::Command::Command(const std::string_view& name, unsigned char minArgs, unsign
 		if (isName) {
 			assert(arg.size() > 3);
 			assert(arg[0] == 's' || arg[0] == 'i' || arg[0] == 'd' || arg[0] == 'v');
+			assert(arg[1] == '[' && arg[arg.size()-1] == ']');
 			if (i >= minArgs*2)
 				assert(arg[arg.size()-2] == '?');
 		}
