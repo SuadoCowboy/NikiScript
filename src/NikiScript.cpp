@@ -8,7 +8,7 @@
 
 void ns::help_command(Context& ctx) {
 	if (ctx.arguments.arguments.size() == 0) {
-		std::stringstream oss;
+		std::stringstream oss{};
 		for (auto& command : ctx.commands.commands)
 			oss << command.second.name << ' ' << command.second.getArgumentsNames() << '\n';
 

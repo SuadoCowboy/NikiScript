@@ -37,7 +37,7 @@ std::string ns::Command::getArgumentsNames() {
 	if (argsDescriptions.size() == 0)
 		return "";
 
-	std::stringstream oss;
+	std::stringstream oss{};
 	bool isName = true;
 
 	for (uint64_t i = 0; i < argsDescriptions.size(); ++i) {
@@ -54,8 +54,8 @@ std::string ns::Command::getArgumentsNames() {
 }
 
 void ns::Command::printAsDataTree() {
-	std::stringstream descriptions;
-	std::stringstream usage;
+	std::stringstream descriptions{};
+	std::stringstream usage{};
 	bool isName = true;
 
 	usage << "- Usage: " << name << ' ';

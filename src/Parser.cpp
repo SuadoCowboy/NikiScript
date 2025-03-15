@@ -352,7 +352,7 @@ bool ns::parseFile(Context& ctx, const char* filePath, bool printError) {
 	std::string originalFilePath = ctx.filePath;
 	ctx.filePath = filePath;
 
-	std::stringstream script;
+	std::stringstream script{};
 	while (file.good()) {
 		std::string line;
 		std::getline(file, line);
@@ -365,7 +365,9 @@ bool ns::parseFile(Context& ctx, const char* filePath, bool printError) {
 	ctx.arguments.clear();
 
 	Lexer* pOriginalLexer = ctx.pLexer;
+
 	Command* pOriginalCommand = ctx.pCommand;
+	ctx.pCommand = nullptr;
 
 	size_t originalLineIndex = ctx.lineIndex, originalLineCount = ctx.lineCount;
 

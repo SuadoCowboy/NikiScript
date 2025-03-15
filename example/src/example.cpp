@@ -32,7 +32,7 @@ std::string tokenTypeToString(const ns::TokenType& type) {
 }
 
 std::string tokenToString(const ns::Token& token) {
-	std::stringstream out;
+	std::stringstream out{};
 	out << '(' << tokenTypeToString(token.type) << ", \"" << token.value << "\", REFS: {";
 
 	std::string formatted = token.value;

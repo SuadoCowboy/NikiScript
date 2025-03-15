@@ -42,8 +42,8 @@ uint64_t ns::Lexer::setTokenValue(Context& ctx) {
 		return position+1;
 	}
 
-	uint64_t nextTokenPosition = position;
-	std::stringstream result;
+	uint64_t nextTokenPosition = position{};
+	std::stringstream result{};
 
 	/*
 	1 = allow white space and NIKISCRIPT_STATEMENT_SEPARATOR
