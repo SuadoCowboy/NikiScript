@@ -10,7 +10,7 @@ ns::Lexer::Lexer(const std::string& input) : input(input) {}
 
 void ns::Lexer::advance(Context& ctx) {
 	token.references.clear();
-	while (position < input.size() && input[position] == ' ')
+	while (position < input.size() && isspace(input[position]))
 		++position;
 
 	if (position >= input.size()) {
@@ -52,7 +52,7 @@ uint64_t ns::Lexer::setTokenValue(Context& ctx) {
 	*/
 	unsigned char flags = openArguments == 0? 0 : 1;
 
-	while (nextTokenPosition < input.size() && (position == nextTokenPosition || ((input[nextTokenPosition] != ' ' && (input[nextTokenPosition] != NIKISCRIPT_STATEMENT_SEPARATOR || (flags & 2))) || (flags & 1)))) {
+	while (nextTokenPosition < input.size() && (position == nextTokenPosition || ((!isspace(input[nextTokenPosition]) && (input[nextTokenPosition] != NIKISCRIPT_STATEMENT_SEPARATOR || (flags & 2))) || (flags & 1)))) {
 		if (flags & 2) {
 			flags &= ~2;
 			result << input[nextTokenPosition++];
@@ -127,7 +127,7 @@ uint64_t ns::Lexer::setTokenValue(Context& ctx) {
 			uint64_t tempIndex = nextTokenPosition+2;
 			
 			bool foundCloseReference = false;
-			for (; tempIndex < input.size() && input[tempIndex] != ' '; ++tempIndex) {
+			for (; tempIndex < input.size() && !isspace(input[tempIndex]); ++tempIndex) {
 				if (input[tempIndex] == NIKISCRIPT_REFERENCE_CLOSE) {
 					++tempIndex;
 					foundCloseReference = true;
