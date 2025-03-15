@@ -10,7 +10,7 @@ var indexSectionsWithContent =
   7: "opt",
   8: "acdefinvw",
   9: "n",
-  10: "cmn"
+  10: "cmnt"
 };
 
 var indexSectionNames =

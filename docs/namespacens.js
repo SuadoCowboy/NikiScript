@@ -54,6 +54,7 @@ var namespacens =
     [ "help_command", "namespacens.html#a8cdaa9d3b16f6c69f7edf2ed75b41a95", null ],
     [ "incrementvar_command", "namespacens.html#a799b896e23c08756a3d83896f0129ca8", null ],
     [ "insertReferencesInToken", "namespacens.html#aab61615180a6c7d83d347c1fdb446daa", null ],
+    [ "isSpaceNotNewline", "namespacens.html#a0bf029c40ad72088261a139d9907b90f", null ],
     [ "ltrim", "namespacens.html#aa38612c1876386101d82733bcc9d8fd1", null ],
     [ "parse", "namespacens.html#ad0d3d4abbeb212d6c51e9eaa8652152e", null ],
     [ "parseFile", "namespacens.html#a765477cb266c6fb3e82b1b85867bca56", null ],
