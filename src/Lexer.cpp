@@ -116,7 +116,7 @@ uint64_t ns::Lexer::setTokenValue(Context& ctx) {
 			}
 		}
 
-		if (input[nextTokenPosition] == '\\') {
+		if (input[nextTokenPosition] == NIKISCRIPT_ESCAPE_NEXT_CHAR) {
 			flags |= 2;
 			++nextTokenPosition;
 			continue;
@@ -138,12 +138,12 @@ uint64_t ns::Lexer::setTokenValue(Context& ctx) {
 			}
 
 			if (foundCloseReference) {
-				token.references[result.str().size()] = referenceStream.str();
+				token.references.emplace_back(result.str().size(), referenceStream.str());
 				nextTokenPosition = tempIndex;
 				continue;
 			}
 		
-		} else if (input[nextTokenPosition] == '"' && openArguments == 0) {
+		} else if (input[nextTokenPosition] == NIKISCRIPT_ARGUMENTS_QUOTE && openArguments == 0) {
 			++nextTokenPosition;
 			
 			if (flags & 1) {
