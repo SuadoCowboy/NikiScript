@@ -28,7 +28,7 @@ namespace ns {
 	struct Context;
 
 	struct Arguments {
-		std::vector<std::string> arguments;
+		std::vector<std::string> arguments{};
 		uint8_t offset = 0;
 
 		std::string& getString();
