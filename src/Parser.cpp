@@ -128,7 +128,7 @@ void ns::handleCommandCall(Context& ctx, ProgramVariable*& pProgramVar) {
 
 uint8_t ns::handleIdentifierToken(Context& ctx, ProgramVariable*& pProgramVar) {
 	if (ctx.pLexer->token.value.empty()) {
-		ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
+		ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 		return 1;
 	}
 
@@ -136,7 +136,7 @@ uint8_t ns::handleIdentifierToken(Context& ctx, ProgramVariable*& pProgramVar) {
 		if (canRunVariable(ctx))
 			return 2;
 
-		ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
+		ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 		return 0;
 
 	} else if (ctx.programVariables.count(ctx.pLexer->token.value) != 0) {
@@ -148,7 +148,7 @@ uint8_t ns::handleIdentifierToken(Context& ctx, ProgramVariable*& pProgramVar) {
 
 		if (ctx.pCommand == nullptr) {
 			ns::printf(PrintLevel::ERROR, "Unknown identifier \"{}\"\n", ctx.pLexer->token.value);
-			ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
+			ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 			return 0;
 		} else
 			return 1;
@@ -174,7 +174,7 @@ void ns::handleArgumentToken(Context& ctx) {
 	if (ctx.pCommand->maxArgs == 0) {
 		ns::printf(ns::ERROR, "Expected 0 arguments for {} command\n", ctx.pCommand->name);
 		clearStatementData(ctx);
-		ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
+		ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 		return;
 	}
 
@@ -191,7 +191,7 @@ void ns::handleArgumentToken(Context& ctx) {
 		} catch (...) {
 			ns::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (i)nteger number\n", arg);
 			clearStatementData(ctx);
-			ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
+			ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 			return;
 		}
 		break;
@@ -202,7 +202,7 @@ void ns::handleArgumentToken(Context& ctx) {
 		} catch (...) {
 			ns::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (d)ecimal number\n", arg);
 			clearStatementData(ctx);
-			ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
+			ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 			return;
 		}
 		break;
@@ -214,7 +214,7 @@ void ns::handleArgumentToken(Context& ctx) {
 		if (ctx.programVariables.count(ctx.pLexer->token.value) == 0 && ctx.consoleVariables.count(ctx.pLexer->token.value) == 0) {
 			ns::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (v)ariable\n", arg);
 			clearStatementData(ctx);
-			ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
+			ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 			return;
 		}
 		break;
@@ -233,7 +233,7 @@ void ns::handleConsoleVariableCall(Context& ctx, ProgramVariable*& pProgramVar) 
 	tempLexers.emplace_back(ctx.consoleVariables[ctx.pLexer->token.value]);
 
 	ctx.pLexer = &tempLexers.back();
-	ctx.pLexer->advance(ctx);
+	ctx.pLexer->advance();
 
 	ctx.origin |= (ctx.origin & OriginType::VARIABLE)<<1; // if (ctx.origin & VARIABLE(2)) ctx.origin |= VARIABLE_IN_VARIABLE(4)
 	ctx.origin |= OriginType::VARIABLE;
@@ -243,7 +243,7 @@ void ns::handleConsoleVariableCall(Context& ctx, ProgramVariable*& pProgramVar) 
 		case TokenType::IDENTIFIER:
 			if (handleIdentifierToken(ctx, pProgramVar) == 2) {
 				if (maxConsoleVariableCalls != 0 && tempLexers.size() >= maxConsoleVariableCalls) {
-					ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
+					ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 					break;
 				}
 
@@ -265,7 +265,7 @@ void ns::handleConsoleVariableCall(Context& ctx, ProgramVariable*& pProgramVar) 
 			break;
 		}
 
-		ctx.pLexer->advance(ctx);
+		ctx.pLexer->advance();
 		while (ctx.pLexer->token.type == TokenType::END) {
 			handleCommandCall(ctx, pProgramVar);
 
@@ -276,7 +276,7 @@ void ns::handleConsoleVariableCall(Context& ctx, ProgramVariable*& pProgramVar) 
 				ctx.origin &= ~OriginType::VARIABLE_IN_VARIABLE;
 
 			ctx.pLexer = &tempLexers.back();
-			ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
+			ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 		}
 	}
 
@@ -305,31 +305,31 @@ void ns::parse(Context& ctx) {
 
 	ProgramVariable* pProgramVar = nullptr;
 
-	ctx.pLexer->advance(ctx);
+	ctx.pLexer->advance();
 	while (ctx.pLexer->token.type != TokenType::END) {
 		switch (ctx.pLexer->token.type) {
 		case TokenType::IDENTIFIER: { // can be either variable or command
 			uint8_t result = handleIdentifierToken(ctx, pProgramVar);
 			if (result == 2) {
 				handleConsoleVariableCall(ctx, pProgramVar);
-				ctx.pLexer->advanceUntil(ctx, static_cast<uint8_t>(TokenType::EOS));
+				ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 			} else if (result == 1)
-				ctx.pLexer->advance(ctx);
+				ctx.pLexer->advance();
 			break;
 		}
 
 		case TokenType::ARGUMENT:
 			handleArgumentToken(ctx);
-			ctx.pLexer->advance(ctx);
+			ctx.pLexer->advance();
 			break;
 
 		case TokenType::EOS:
 			handleCommandCall(ctx, pProgramVar);
-			ctx.pLexer->advance(ctx);
+			ctx.pLexer->advance();
 			break;
 
 		default:
-			ctx.pLexer->advance(ctx);
+			ctx.pLexer->advance();
 			break;
 		}
 	}
@@ -369,7 +369,7 @@ bool ns::parseFile(Context& ctx, const char* filePath, bool printError) {
 	Command* pOriginalCommand = ctx.pCommand;
 	ctx.pCommand = nullptr;
 
-	size_t originalLineIndex = ctx.lineIndex, originalLineCount = ctx.lineCount;
+	size_t originalLineCount = ctx.lineCount;
 
 	Lexer lexer{script.str()};
 	ctx.pLexer = &lexer;
@@ -377,7 +377,6 @@ bool ns::parseFile(Context& ctx, const char* filePath, bool printError) {
 	ctx.pLexer = pOriginalLexer;
 
 	ctx.lineCount = originalLineCount;
-	ctx.lineIndex = originalLineIndex;
 	ctx.pCommand = pOriginalCommand;
 	ctx.arguments = originalArguments;
 	ctx.filePath = originalFilePath;

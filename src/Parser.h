@@ -84,4 +84,10 @@ namespace ns {
 	void parse(Context& ctx);
 
 	bool parseFile(Context& ctx, const char* filePath, bool printError);
+
+	/**
+	 * @brief Parses and interpret scripts: handles commands and variables as well as their arguments
+	 * @param ctx
+	 */
+	void parseTokens(Context& ctx);
 }

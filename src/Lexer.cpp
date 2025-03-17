@@ -2,13 +2,12 @@
 
 #include <sstream>
 
-#include "PrintCallback.h"
-#include "Context.h"
+#include "Utils.h"
 
 ns::Lexer::Lexer() {}
 ns::Lexer::Lexer(const std::string& input) : input(input) {}
 
-void ns::Lexer::advance(Context& ctx) {
+void ns::Lexer::advance() {
 	token.references.clear();
 	while (position < input.size() && isSpaceNotNewline(input[position]))
 		++position;
@@ -20,23 +19,23 @@ void ns::Lexer::advance(Context& ctx) {
 	}
 
 	if (input[position] == '\n')
-		ctx.lineIndex++;
+		lineIndex++;
 
-	uint64_t nextTokenPosition = setTokenValue(ctx);
+	uint64_t nextTokenPosition = setTokenValue();
 	setTokenType();
 
 	position = nextTokenPosition;
 }
 
-void ns::Lexer::advanceUntil(Context& ctx, uint8_t flags) {
+void ns::Lexer::advanceUntil(uint8_t flags) {
 	flags |= static_cast<uint8_t>(TokenType::END);
 
-	advance(ctx);
+	advance();
 	while (!(flags & token.type))
-		advance(ctx);
+		advance();
 }
 
-uint64_t ns::Lexer::setTokenValue(Context& ctx) {
+uint64_t ns::Lexer::setTokenValue() {
 	if (input[position] == NIKISCRIPT_STATEMENT_SEPARATOR || input[position] == '\n') {
 		token.value = NIKISCRIPT_STATEMENT_SEPARATOR;
 		return position+1;
@@ -61,7 +60,7 @@ uint64_t ns::Lexer::setTokenValue(Context& ctx) {
 
 		if (flags & 4) {
 			if (input[nextTokenPosition] == '\n')
-				++ctx.lineIndex;
+				++lineIndex;
 
 			if (input[nextTokenPosition] == NIKISCRIPT_COMMENT_LINE && input[nextTokenPosition-1] == NIKISCRIPT_COMMENT_LINES)
 				flags &= ~5;
@@ -178,4 +177,5 @@ void ns::Lexer::clear() {
 	position = 0;
 	token = {TokenType::NONE};
 	openArguments = 0;
+	lineIndex = 0;
 }
