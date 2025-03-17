@@ -1,1 +1,1 @@
-- create a parser version that uses next() or something(see BindHandler on JikaruEngine to have an idea)
+- create a parser version that uses next() or something(see BindHandler::bind on JikaruEngine to have an idea)
