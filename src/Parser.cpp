@@ -126,7 +126,7 @@ void ns::handleCommandCall(Context& ctx, ProgramVariable*& pProgramVar) {
 	clearStatementData(ctx);
 }
 
-uint8_t ns::handleIdentifierToken(Context& ctx, ProgramVariable*& pProgramVar) {
+uint8_t ns::handleIdentifierToken(Context& ctx, ProgramVariable*& pProgramVar, bool printError) {
 	if (ctx.pLexer->token.value.empty()) {
 		ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 		return 1;
@@ -147,7 +147,8 @@ uint8_t ns::handleIdentifierToken(Context& ctx, ProgramVariable*& pProgramVar) {
 		ctx.pCommand = ctx.commands.get(ctx.pLexer->token.value);
 
 		if (ctx.pCommand == nullptr) {
-			ns::printf(PrintLevel::ERROR, "Unknown identifier \"{}\"\n", ctx.pLexer->token.value);
+			if (printError)
+				ns::printf(PrintLevel::ERROR, "Unknown identifier \"{}\"\n", ctx.pLexer->token.value);
 			ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 			return 0;
 		} else
@@ -157,7 +158,7 @@ uint8_t ns::handleIdentifierToken(Context& ctx, ProgramVariable*& pProgramVar) {
 	return false;
 }
 
-void ns::handleArgumentToken(Context& ctx) {
+void ns::handleArgumentToken(Context& ctx, bool printError) {
 	insertReferencesInToken(ctx, ctx.pLexer->token);
 
 	if (ctx.pLexer->token.value.empty())
@@ -172,7 +173,8 @@ void ns::handleArgumentToken(Context& ctx) {
 	}
 
 	if (ctx.pCommand->maxArgs == 0) {
-		ns::printf(ns::ERROR, "Expected 0 arguments for {} command\n", ctx.pCommand->name);
+		if (printError)
+			ns::printf(ns::ERROR, "Expected 0 arguments for {} command\n", ctx.pCommand->name);
 		clearStatementData(ctx);
 		ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 		return;
@@ -189,7 +191,8 @@ void ns::handleArgumentToken(Context& ctx) {
 		try {
 			std::stoll(ctx.pLexer->token.value);
 		} catch (...) {
-			ns::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (i)nteger number\n", arg);
+			if (printError)
+				ns::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (i)nteger number\n", arg);
 			clearStatementData(ctx);
 			ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 			return;
@@ -200,7 +203,8 @@ void ns::handleArgumentToken(Context& ctx) {
 		try {
 			std::stold(ctx.pLexer->token.value);
 		} catch (...) {
-			ns::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (d)ecimal number\n", arg);
+			if (printError)
+				ns::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (d)ecimal number\n", arg);
 			clearStatementData(ctx);
 			ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 			return;
@@ -212,7 +216,8 @@ void ns::handleArgumentToken(Context& ctx) {
 
 	case 'v':
 		if (ctx.programVariables.count(ctx.pLexer->token.value) == 0 && ctx.consoleVariables.count(ctx.pLexer->token.value) == 0) {
-			ns::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (v)ariable\n", arg);
+			if (printError)
+				ns::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (v)ariable\n", arg);
 			clearStatementData(ctx);
 			ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 			return;
@@ -226,7 +231,7 @@ void ns::handleArgumentToken(Context& ctx) {
 	ctx.arguments.arguments.push_back(ctx.pLexer->token.value);
 }
 
-void ns::handleConsoleVariableCall(Context& ctx, ProgramVariable*& pProgramVar) {
+void ns::handleConsoleVariableCall(Context& ctx, ProgramVariable*& pProgramVar, bool printError) {
 	Lexer* pOriginalLexer = ctx.pLexer;
 
 	std::vector<Lexer> tempLexers;
@@ -241,7 +246,7 @@ void ns::handleConsoleVariableCall(Context& ctx, ProgramVariable*& pProgramVar) 
 	while (tempLexers.size() != 0) {
 		switch (ctx.pLexer->token.type) {
 		case TokenType::IDENTIFIER:
-			if (handleIdentifierToken(ctx, pProgramVar) == 2) {
+			if (handleIdentifierToken(ctx, pProgramVar, printError) == 2) {
 				if (maxConsoleVariableCalls != 0 && tempLexers.size() >= maxConsoleVariableCalls) {
 					ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 					break;
@@ -258,7 +263,7 @@ void ns::handleConsoleVariableCall(Context& ctx, ProgramVariable*& pProgramVar) 
 			break;
 
 		case TokenType::ARGUMENT:
-			handleArgumentToken(ctx);
+			handleArgumentToken(ctx, printError);
 			break;
 
 		default:
@@ -299,7 +304,7 @@ void ns::updateLoopVariables(Context& ctx) {
 	ctx.origin &= ~(OriginType::VARIABLE|OriginType::VARIABLE_LOOP);
 }
 
-void ns::parse(Context& ctx) {
+void ns::parse(Context& ctx, bool printError) {
 	if (ctx.pLexer == nullptr)
 		return;
 
@@ -309,9 +314,9 @@ void ns::parse(Context& ctx) {
 	while (ctx.pLexer->token.type != TokenType::END) {
 		switch (ctx.pLexer->token.type) {
 		case TokenType::IDENTIFIER: { // can be either variable or command
-			uint8_t result = handleIdentifierToken(ctx, pProgramVar);
+			uint8_t result = handleIdentifierToken(ctx, pProgramVar, printError);
 			if (result == 2) {
-				handleConsoleVariableCall(ctx, pProgramVar);
+				handleConsoleVariableCall(ctx, pProgramVar, printError);
 				ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 			} else if (result == 1)
 				ctx.pLexer->advance();
@@ -319,7 +324,7 @@ void ns::parse(Context& ctx) {
 		}
 
 		case TokenType::ARGUMENT:
-			handleArgumentToken(ctx);
+			handleArgumentToken(ctx, printError);
 			ctx.pLexer->advance();
 			break;
 
