@@ -7,7 +7,7 @@
 #include "Lexer.h"
 
 void ns::help_command(Context& ctx) {
-	if (ctx.arguments.arguments.size() == 0) {
+	if (ctx.args.arguments.size() == 0) {
 		std::stringstream oss{};
 		for (auto& command : ctx.commands.commands)
 			oss << command.second.name << ' ' << command.second.getArgumentsNames() << '\n';
@@ -15,7 +15,7 @@ void ns::help_command(Context& ctx) {
 		ns::print(ns::ECHO, oss.str());
 
 	} else {
-		std::string& commandName = ctx.arguments.getString();
+		std::string& commandName = ctx.args.getString(0);
 		trim(commandName);
 
 		Command* pCommand = ctx.commands.get(commandName);
@@ -29,11 +29,11 @@ void ns::help_command(Context& ctx) {
 }
 
 void ns::echo_command(Context& ctx) {
-	ns::printf(ns::ECHO, "{}\n", ctx.arguments.getString());
+	ns::printf(ns::ECHO, "{}\n", ctx.args.getString(0));
 }
 
 void ns::var_command(Context& ctx) {
-	std::string& name = ctx.arguments.getString();
+	std::string& name = ctx.args.getString(0);
 
 	if (name.empty()) {
 		ns::print(PrintLevel::ERROR, "Variable name can not be empty\n");
@@ -113,14 +113,14 @@ void ns::var_command(Context& ctx) {
 		return;
 	}
 
-	if (ctx.arguments.arguments.size() == 1)
+	if (ctx.args.arguments.size() == 1)
 		ctx.consoleVariables[name] = "";
 	else
-		ctx.consoleVariables[name] = ctx.arguments.getString();
+		ctx.consoleVariables[name] = ctx.args.getString(1);
 }
 
 void ns::delvar_command(Context& ctx) {
-	const std::string& varName = ctx.arguments.getString();
+	const std::string& varName = ctx.args.getString(0);
 
 	if (ctx.consoleVariables.count(varName) == 0) {
 		ns::printf(PrintLevel::ERROR, "Expected console variable\n");
@@ -149,9 +149,9 @@ void ns::delvar_command(Context& ctx) {
 }
 
 void ns::toggle_command(ns::Context& ctx) {
-	const std::string& varName = ctx.arguments.getString();
-	const std::string& option1 = ctx.arguments.getString();
-	const std::string& option2 = ctx.arguments.getString();
+	const std::string& varName = ctx.args.getString(0);
+	const std::string& option1 = ctx.args.getString(1);
+	const std::string& option2 = ctx.args.getString(2);
 
 	if (ctx.consoleVariables.count(varName) != 0) {
 		std::string& varValue = ctx.consoleVariables[varName];
@@ -174,20 +174,20 @@ void ns::toggle_command(ns::Context& ctx) {
 }
 
 void ns::exec_command(Context& ctx) {
-	parseFile(ctx, ctx.arguments.getString().c_str(), true);
+	parseFile(ctx, ctx.args.getString(0).c_str(), true);
 }
 
 void ns::incrementvar_command(Context& ctx) {
-	const std::string& variableName = ctx.arguments.getString();
+	const std::string& variableName = ctx.args.getString(0);
 
-	float min = ctx.arguments.getFloat();
-	float max = ctx.arguments.getFloat();
+	float min = ctx.args.getFloat(1);
+	float max = ctx.args.getFloat(2);
 	if (min > max) {
 		ns::printf(ns::ERROR, "max({}) should be higher than min({})\n", max, min);
 		return;
 	}
 
-	float delta = ctx.arguments.getFloat();
+	float delta = ctx.args.getFloat(3);
 
 	float value = 0.0;
 	if (ctx.consoleVariables.count(variableName) != 0) {

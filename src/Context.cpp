@@ -1,39 +1,32 @@
 #include "Context.h"
 
-std::string& ns::Arguments::getString() {
-	return arguments[offset++];
+std::string& ns::Arguments::getString(size_t index) {
+	return arguments[index];
+}
+
+unsigned long long ns::Arguments::getUnsignedLongLong(size_t index) {
+	return std::stoull(arguments[index]);
 }
 
 
-unsigned long long ns::Arguments::getUnsignedLongLong() {
-	return std::stoull(arguments[offset++]);
+float ns::Arguments::getFloat(size_t index) {
+	return std::stof(arguments[index]);
 }
 
-
-float ns::Arguments::getFloat() {
-	return std::stof(arguments[offset++]);
+double ns::Arguments::getDouble(size_t index) {
+	return std::stod(arguments[index]);
 }
 
-double ns::Arguments::getDouble() {
-	return std::stod(arguments[offset++]);
+long double ns::Arguments::getLongDouble(size_t index) {
+	return std::stold(arguments[index]);
 }
 
-long double ns::Arguments::getLongDouble() {
-	return std::stold(arguments[offset++]);
+long ns::Arguments::getLong(size_t index) {
+	return std::stol(arguments[index]);
 }
 
-long ns::Arguments::getLong() {
-	return std::stol(arguments[offset++]);
-}
-
-long long ns::Arguments::getLongLong() {
-	return std::stoll(arguments[offset++]);
-}
-
-
-void ns::Arguments::clear() {
-	arguments.clear();
-	offset = 0;
+long long ns::Arguments::getLongLong(size_t index) {
+	return std::stoll(arguments[index]);
 }
 
 ns::Context ns::copyContext(const Context& source) {

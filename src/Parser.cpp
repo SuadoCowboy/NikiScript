@@ -10,7 +10,7 @@ uint64_t ns::maxConsoleVariableCalls = 10000;
 
 void ns::clearStatementData(Context& ctx) {
 	ctx.pCommand = nullptr;
-	ctx.arguments.clear();
+	ctx.args.arguments.clear();
 }
 
 bool ns::canRunVariable(Context& ctx) {
@@ -65,10 +65,10 @@ bool ns::canRunVariable(Context& ctx) {
 
 void ns::handleCommandCall(Context& ctx, ProgramVariable*& pProgramVar) {
 	if (pProgramVar != nullptr) {
-		if (ctx.arguments.arguments.size() == 0)
+		if (ctx.args.arguments.size() == 0)
 			ns::printf(ns::ECHO, "Value: {}\n{}\n", pProgramVar->get(ctx, pProgramVar), pProgramVar->description);
 		else
-			pProgramVar->set(ctx, pProgramVar, ctx.arguments.arguments[0]);
+			pProgramVar->set(ctx, pProgramVar, ctx.args.arguments[0]);
 
 		clearStatementData(ctx);
 		pProgramVar = nullptr;
@@ -78,11 +78,11 @@ void ns::handleCommandCall(Context& ctx, ProgramVariable*& pProgramVar) {
 	if (ctx.pCommand == nullptr)
 		return;
 
-	if (ctx.pCommand->minArgs > ctx.arguments.arguments.size()) {
+	if (ctx.pCommand->minArgs > ctx.args.arguments.size()) {
 		if (ctx.pCommand->minArgs == ctx.pCommand->maxArgs)
-			ns::printf(ns::ERROR, "Expected {} argument(s) but received {} arguments\n", static_cast<uint16_t>(ctx.pCommand->minArgs), ctx.arguments.arguments.size());
+			ns::printf(ns::ERROR, "Expected {} argument(s) but received {} arguments\n", static_cast<uint16_t>(ctx.pCommand->minArgs), ctx.args.arguments.size());
 		else
-			ns::printf(ns::ERROR, "Expected arguments between [{}, {}] but received {} arguments\n", static_cast<uint16_t>(ctx.pCommand->minArgs), static_cast<uint16_t>(ctx.pCommand->maxArgs), ctx.arguments.arguments.size());
+			ns::printf(ns::ERROR, "Expected arguments between [{}, {}] but received {} arguments\n", static_cast<uint16_t>(ctx.pCommand->minArgs), static_cast<uint16_t>(ctx.pCommand->maxArgs), ctx.args.arguments.size());
 
 		ns::printf(ns::ECHO, "{} {}\n", ctx.pCommand->name, ctx.pCommand->getArgumentsNames());
 		clearStatementData(ctx);
@@ -165,10 +165,10 @@ void ns::handleArgumentToken(Context& ctx, bool printError) {
 		return;
 
 	if (ctx.pCommand == nullptr) { // if command is nullptr then just append arguments to a single one. This is useful for ProgramVariable
-		if (ctx.arguments.arguments.size() == 0)
-			ctx.arguments.arguments.push_back(ctx.pLexer->token.value);
+		if (ctx.args.arguments.size() == 0)
+			ctx.args.arguments.push_back(ctx.pLexer->token.value);
 		else
-			ctx.arguments.arguments.back() += ' '+ctx.pLexer->token.value;
+			ctx.args.arguments.back() += ' '+ctx.pLexer->token.value;
 		return;
 	}
 
@@ -180,12 +180,12 @@ void ns::handleArgumentToken(Context& ctx, bool printError) {
 		return;
 	}
 
-	if (ctx.arguments.arguments.size() == ctx.pCommand->maxArgs) {
-		ctx.pLexer->token.value = ctx.arguments.arguments.back()+' '+ctx.pLexer->token.value;
-		ctx.arguments.arguments.pop_back();
+	if (ctx.args.arguments.size() == ctx.pCommand->maxArgs) {
+		ctx.pLexer->token.value = ctx.args.arguments.back()+' '+ctx.pLexer->token.value;
+		ctx.args.arguments.pop_back();
 	}
 
-	const std::string_view& arg = ctx.pCommand->argsDescriptions[ctx.arguments.arguments.size()*2];
+	const std::string_view& arg = ctx.pCommand->argsDescriptions[ctx.args.arguments.size()*2];
 	switch (arg[0]) {
 	case 'i':
 		try {
@@ -228,7 +228,7 @@ void ns::handleArgumentToken(Context& ctx, bool printError) {
 		break;
 	}
 
-	ctx.arguments.arguments.push_back(ctx.pLexer->token.value);
+	ctx.args.arguments.push_back(ctx.pLexer->token.value);
 }
 
 void ns::handleConsoleVariableCall(Context& ctx, ProgramVariable*& pProgramVar, bool printError) {
@@ -366,8 +366,8 @@ bool ns::parseFile(Context& ctx, const char* filePath, bool printError) {
 			script << line << '\n';
 	}
 
-	Arguments originalArguments = ctx.arguments;
-	ctx.arguments.clear();
+	Arguments originalArguments = ctx.args;
+	ctx.args.arguments.clear();
 
 	Lexer* pOriginalLexer = ctx.pLexer;
 
@@ -383,7 +383,7 @@ bool ns::parseFile(Context& ctx, const char* filePath, bool printError) {
 
 	ctx.lineCount = originalLineCount;
 	ctx.pCommand = pOriginalCommand;
-	ctx.arguments = originalArguments;
+	ctx.args = originalArguments;
 	ctx.filePath = originalFilePath;
 
 	if (!runningFromAnotherFile)
