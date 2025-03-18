@@ -41,7 +41,7 @@ void ns::insertReferencesInToken(Context& ctx, Token& token) {
 			offset += value.size();
 		
 		} else {
-			token.value = token.value.insert(reference.first, formatString("{}{}{}{}", NIKISCRIPT_REFERENCE, NIKISCRIPT_REFERENCE_OPEN, reference.second, NIKISCRIPT_REFERENCE_CLOSE));
+			token.value = token.value.insert(offset+reference.first, formatString("{}{}{}{}", NIKISCRIPT_REFERENCE, NIKISCRIPT_REFERENCE_OPEN, reference.second, NIKISCRIPT_REFERENCE_CLOSE));
 			offset += reference.second.size()+3;
 		}
 	}
