@@ -50,8 +50,17 @@ std::string tokenToString(const ns::Token& token) {
 	return outString + formatted;
 }
 
-bool running = false;
 
+static void test_command(ns::Context& ctx) {
+	ns::Context copy = ns::copyContext(ctx);
+	ns::Lexer lexer{ctx.args.getString(0)};
+	copy.pLexer = &lexer;
+	copy.args.arguments.clear();
+
+	ns::parse(copy);
+}
+
+bool running = false;
 static void quit_command(ns::Context&) {
 	running = false;
 }
@@ -66,7 +75,8 @@ int main(int, char**) {
 	ns::Lexer lexer;
 	ctx.pLexer = &lexer;
 
-	ctx.commands.add(ns::Command("quit", 0, 1, quit_command, "stops the main loop from running", {"s[?]", ""}));
+	ctx.commands.add(ns::Command("quit", 0,1, quit_command, "stops the main loop from running", {"s[?]", ""}));
+	ctx.commands.add(ns::Command("test", 1,1, test_command, "runs script", {"s[script]", "parses to nikiscript"}));
 
 	// decimal numbers
 	float floatNumber = 0;
