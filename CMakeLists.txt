@@ -11,13 +11,18 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
 project(NikiScript VERSION 0.0.1 LANGUAGES CXX)
 
+option(BUILD_64BITS "x64 or x86" ON)
 option(BUILD_SHARED "Whether make it shared or static" ON)
+
+if (BUILD_64BITS)
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m64")
+endif()
 
 file(GLOB SOURCES ${PROJECT_SOURCE_DIR}/src/*.cpp)
 
 if(BUILD_SHARED)
     add_library(NikiScript SHARED ${SOURCES})
-    set_target_properties(NikiScript PROPERTIES VERSION ${PROJECT_VERSION} POSITION_INDEPENDENT_CODE 1)
+    set_target_properties(NikiScript PROPERTIES VERSION ${PROJECT_VERSION} POSITION_INDEPENDENT_CODE ON)
 else()
     add_library(NikiScript STATIC ${SOURCES})
 endif()
