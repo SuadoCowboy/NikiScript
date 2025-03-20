@@ -22,10 +22,6 @@ else()
     add_library(NikiScript STATIC ${SOURCES})
 endif()
 
-if (CMAKE_BUILD_TYPE STREQUAL Release)
-	target_compile_options(NikiScript PUBLIC -static)
-endif()
-
 target_include_directories(NikiScript PRIVATE ${PROJECT_SOURCE_DIR})
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/example)
