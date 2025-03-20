@@ -11,15 +11,19 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
 project(NikiScript VERSION 0.0.1 LANGUAGES CXX)
 
-option(BUILD_SHARED_LIBS "Build using shared libraries" ON)
+option(BUILD_SHARED "Whether make it shared or static" ON)
 
 file(GLOB SOURCES ${PROJECT_SOURCE_DIR}/src/*.cpp)
 
-if(BUILD_SHARED_LIBS)
+if(BUILD_SHARED)
     add_library(NikiScript SHARED ${SOURCES})
     set_target_properties(NikiScript PROPERTIES VERSION ${PROJECT_VERSION} POSITION_INDEPENDENT_CODE 1)
 else()
     add_library(NikiScript STATIC ${SOURCES})
+endif()
+
+if (CMAKE_BUILD_TYPE STREQUAL Release)
+	target_compile_options(NikiScript PUBLIC -static)
 endif()
 
 target_include_directories(NikiScript PRIVATE ${PROJECT_SOURCE_DIR})
