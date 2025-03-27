@@ -46,7 +46,7 @@ namespace ns {
 	 */
 	template<typename T>
 	void setUnsigned(Context&, ProgramVariable* pVar, const std::string& str)
-	#ifdef BUILD_SHARED
+	#if BUILD_SHARED == 1 && BUILD_EXPORT == 1
 	;
 	#else
 	{

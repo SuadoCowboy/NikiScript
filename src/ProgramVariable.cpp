@@ -73,16 +73,14 @@ void ns::setLongLong(Context&, ProgramVariable* pVar, const std::string& str) {
 	} catch (...) {}
 }
 
-#ifdef BUILD_SHARED
+#if BUILD_SHARED == 1 && BUILD_EXPORT == 1
 template<typename T>
 void ns::setUnsigned(Context&, ProgramVariable* pVar, const std::string& str) {
 	try {
 		*static_cast<T*>(pVar->pValue) = (T)std::stoul(str);
 	} catch (...) {}
 }
-#endif
 
-#ifdef BUILD_SHARED
 template void ns::setUnsigned<uint8_t>(Context&, ProgramVariable*, const std::string&);
 template void ns::setUnsigned<uint16_t>(Context&, ProgramVariable*, const std::string&);
 template void ns::setUnsigned<uint32_t>(Context&, ProgramVariable*, const std::string&);

@@ -1,7 +1,15 @@
 #pragma once
 
-#ifdef BUILD_SHARED
-#define NIKIAPI __declspec(dllexport)
+#if BUILD_EXPORT == 1
+	#if BUILD_SHARED == 1
+		#define NIKIAPI __declspec(dllexport)
+	#else
+		#define NIKIAPI
+	#endif
 #else
-#define NIKIAPI __declspec(dllimport)
+	#if !defined(BUILD_SHARED) && !defined(BUILD_EXPORT)
+		#define NIKIAPI __declspec(dllexport)
+	#else
+		#define NIKIAPI
+	#endif
 #endif
