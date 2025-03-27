@@ -6,8 +6,6 @@
 
 #include "PrintCallback.h"
 
-uint64_t ns::maxConsoleVariableCalls = 10000;
-
 void ns::clearStatementData(Context& ctx) {
 	ctx.pCommand = nullptr;
 	ctx.args.arguments.clear();
@@ -247,7 +245,7 @@ void ns::handleConsoleVariableCall(Context& ctx, ProgramVariable*& pProgramVar, 
 		switch (ctx.pLexer->token.type) {
 		case TokenType::IDENTIFIER:
 			if (handleIdentifierToken(ctx, pProgramVar, printError) == 2) {
-				if (maxConsoleVariableCalls != 0 && tempLexers.size() >= maxConsoleVariableCalls) {
+				if (ctx.maxConsoleVariablesRecursiveDepth != 0 && tempLexers.size() >= ctx.maxConsoleVariablesRecursiveDepth) {
 					ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
 					break;
 				}

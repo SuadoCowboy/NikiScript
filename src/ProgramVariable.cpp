@@ -72,3 +72,19 @@ void ns::setLongLong(Context&, ProgramVariable* pVar, const std::string& str) {
 		*static_cast<long long*>(pVar->pValue) = std::stoll(str);
 	} catch (...) {}
 }
+
+#ifdef BUILD_SHARED
+template<typename T>
+void ns::setUnsigned(Context&, ProgramVariable* pVar, const std::string& str) {
+	try {
+		*static_cast<T*>(pVar->pValue) = (T)std::stoul(str);
+	} catch (...) {}
+}
+#endif
+
+#ifdef BUILD_SHARED
+template void ns::setUnsigned<uint8_t>(Context&, ProgramVariable*, const std::string&);
+template void ns::setUnsigned<uint16_t>(Context&, ProgramVariable*, const std::string&);
+template void ns::setUnsigned<uint32_t>(Context&, ProgramVariable*, const std::string&);
+template void ns::setUnsigned<uint64_t>(Context&, ProgramVariable*, const std::string&);
+#endif
