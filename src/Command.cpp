@@ -9,7 +9,7 @@ ns::Command::Command() {}
 
 ns::Command::Command(const std::string_view& name, unsigned char minArgs, unsigned char maxArgs,
 	CommandCallback callback, const std::string_view& description, const std::vector<std::string_view>& argsDescriptions)
-	: name(name), minArgs(minArgs), maxArgs(maxArgs), callback(callback), description(description), argsDescriptions(argsDescriptions) {
+	: name(name), minArgs(minArgs), callback(callback), description(description), argsDescriptions(argsDescriptions) {
 	assert(!name.empty());
 	assert(minArgs <= maxArgs);
 	assert(argsDescriptions.size() % 2 == 0);
