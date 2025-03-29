@@ -77,7 +77,11 @@ void ns::handleCommandCall(Context& ctx, ProgramVariable*& pProgramVar) {
 		return;
 
 	if (ctx.pCommand->minArgs > ctx.args.arguments.size()) {
-		ns::printf(ns::ERROR, "Expected {} argument(s) but received {} arguments\n", static_cast<uint16_t>(ctx.pCommand->minArgs), ctx.args.arguments.size());
+		if (ctx.pCommand->minArgs == ctx.pCommand->maxArgs)
+			ns::printf(ns::ERROR, "Expected {} argument(s) but received {} arguments\n", static_cast<uint16_t>(ctx.pCommand->minArgs), ctx.args.arguments.size());
+		else
+			ns::printf(ns::ERROR, "Expected arguments between [{}, {}] but received {} arguments\n", static_cast<uint16_t>(ctx.pCommand->minArgs), static_cast<uint16_t>(ctx.pCommand->maxArgs), ctx.args.arguments.size());
+
 		ns::printf(ns::ECHO, "{} {}\n", ctx.pCommand->name, ctx.pCommand->getArgumentsNames());
 		clearStatementData(ctx);
 		return;
@@ -166,15 +170,15 @@ void ns::handleArgumentToken(Context& ctx, bool printError) {
 		return;
 	}
 
-	// if (ctx.pCommand->maxArgs == 0) {
-	// 	if (printError)
-	// 		ns::printf(ns::ERROR, "Expected 0 arguments for {} command\n", ctx.pCommand->name);
-	// 	clearStatementData(ctx);
-	// 	ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
-	// 	return;
-	// }
+	if (ctx.pCommand->maxArgs == 0) {
+		if (printError)
+			ns::printf(ns::ERROR, "Expected 0 arguments for {} command\n", ctx.pCommand->name);
+		clearStatementData(ctx);
+		ctx.pLexer->advanceUntil(static_cast<uint8_t>(TokenType::EOS));
+		return;
+	}
 
-	if (ctx.args.arguments.size() > ctx.pCommand->minArgs) {
+	if (ctx.args.arguments.size() == ctx.pCommand->maxArgs) {
 		ctx.pLexer->token.value = ctx.args.arguments.back()+' '+ctx.pLexer->token.value;
 		ctx.args.arguments.pop_back();
 	}

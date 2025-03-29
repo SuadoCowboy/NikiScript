@@ -13,7 +13,7 @@ namespace ns {
 
 	struct NIKIAPI Command {
 		std::string_view name;
-		unsigned char minArgs = 0;
+		unsigned char minArgs = 0, maxArgs = 0;
 		CommandCallback callback = nullptr;
 		std::string_view description;
 
