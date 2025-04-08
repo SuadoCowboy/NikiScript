@@ -26,9 +26,6 @@ namespace ns {
 		print(level, formatString(format, args...));
 	}
 
-	extern PrintCallback printCallback;
-	extern void* pPrintCallbackData;
-
 	NIKIAPI void setPrintCallback(void* pData, PrintCallback callback);
 	NIKIAPI void print(const PrintLevel& level, const std::string& str);
 	NIKIAPI void printUnknownCommand(const std::string& command);
