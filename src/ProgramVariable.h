@@ -42,16 +42,11 @@ namespace ns {
 	 * @param str
 	 */
 	template<typename T>
-	void setUnsigned(Context&, ProgramVariable* pVar, const std::string& str)
-	#if BUILD_SHARED == 1 && BUILD_EXPORT == 1
-	;
-	#else
-	{
+	void setUnsigned(Context&, ProgramVariable* pVar, const std::string& str) {
 		try {
 			*static_cast<T*>(pVar->pValue) = (T)std::stoul(str);
 		} catch (...) {}
 	}
-	#endif
 
 	void setUnsignedLongLong(Context&, ProgramVariable* pVar, const std::string& str);
 

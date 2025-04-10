@@ -73,7 +73,6 @@ void ns::setLongLong(Context&, ProgramVariable* pVar, const std::string& str) {
 	} catch (...) {}
 }
 
-#if BUILD_SHARED == 1 && BUILD_EXPORT == 1
 template<typename T>
 void ns::setUnsigned(Context&, ProgramVariable* pVar, const std::string& str) {
 	try {
@@ -85,4 +84,3 @@ template void ns::setUnsigned<uint8_t>(Context&, ProgramVariable*, const std::st
 template void ns::setUnsigned<uint16_t>(Context&, ProgramVariable*, const std::string&);
 template void ns::setUnsigned<uint32_t>(Context&, ProgramVariable*, const std::string&);
 template void ns::setUnsigned<uint64_t>(Context&, ProgramVariable*, const std::string&);
-#endif
