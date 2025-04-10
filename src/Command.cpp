@@ -7,8 +7,8 @@
 
 ns::Command::Command() {}
 
-ns::Command::Command(const std::string_view& name, unsigned char minArgs, unsigned char maxArgs,
-	CommandCallback callback, const std::string_view& description, const std::vector<std::string_view>& argsDescriptions)
+ns::Command::Command(const std::string& name, uint8_t minArgs, uint8_t maxArgs,
+	CommandCallback callback, const std::string& description, const std::vector<std::string>& argsDescriptions)
 	: name(name), minArgs(minArgs), maxArgs(maxArgs), callback(callback), description(description), argsDescriptions(argsDescriptions) {
 	assert(!name.empty());
 	assert(minArgs <= maxArgs);
@@ -17,7 +17,7 @@ ns::Command::Command(const std::string_view& name, unsigned char minArgs, unsign
 
 	bool isName = true;
 	for (uint8_t i = 0; i < argsDescriptions.size(); ++i) {
-		const std::string_view& arg = argsDescriptions[i];
+		const std::string& arg = argsDescriptions[i];
 
 		if (isName) {
 			assert(arg.size() > 3);
@@ -72,5 +72,5 @@ void ns::Command::printAsDataTree() {
 	}
 	usage << '\n' << descriptions.str();
 
-	ns::print(PrintLevel::ECHO, usage.str());
+	ns::print(PrintLevel::ECHO, usage.str().c_str());
 }

@@ -183,7 +183,7 @@ void ns::handleArgumentToken(Context& ctx, bool printError) {
 		ctx.args.arguments.pop_back();
 	}
 
-	const std::string_view& arg = ctx.pCommand->argsDescriptions[ctx.args.arguments.size()*2];
+	const std::string& arg = ctx.pCommand->argsDescriptions[ctx.args.arguments.size()*2];
 	switch (arg[0]) {
 	case 'i':
 		try {

@@ -12,7 +12,7 @@ void ns::help_command(Context& ctx) {
 		for (auto& command : ctx.commands.commands)
 			oss << command.second.name << ' ' << command.second.getArgumentsNames() << '\n';
 
-		ns::print(ns::ECHO, oss.str());
+		ns::print(ns::ECHO, oss.str().c_str());
 
 	} else {
 		std::string& commandName = ctx.args.getString(0);
@@ -229,6 +229,6 @@ void ns::registerCommands(ns::Context& ctx) {
 	ctx.commands.add(Command("incrementvar", 3,4, incrementvar_command, "do value + delta, when value > max: value = min", {"v[variable]", "variable to modify value", "d[min]", "minimum value possible", "d[max]", "maximum possible value", "d[delta?]", "to increase value with -> value + delta"}));
 }
 
-void ns::registerVariable(ns::Context& ctx, const std::string& name, const std::string_view& description, void* pVar, const GetProgramVariableValue& get, const SetProgramVariableValue& set) {
+void ns::registerVariable(ns::Context& ctx, const std::string& name, const std::string& description, void* pVar, const GetProgramVariableValue& get, const SetProgramVariableValue& set) {
 	ctx.programVariables[name] = ProgramVariable(pVar, description, get, set);
 }

@@ -4,7 +4,7 @@
 
 ns::Token::Token() {}
 ns::Token::Token(TokenType type) : type(type), value("") {}
-ns::Token::Token(TokenType type, const std::string& value) : type(type), value(value) {}
+ns::Token::Token(TokenType type, const char *value) : type(type), value(value) {}
 
 uint8_t operator|(ns::TokenType l, ns::TokenType r) {
 	return static_cast<uint8_t>(l)|static_cast<uint8_t>(r);

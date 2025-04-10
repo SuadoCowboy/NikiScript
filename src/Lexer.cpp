@@ -49,7 +49,7 @@ uint64_t ns::Lexer::setTokenValue() {
 	2 = escape next char
 	4 = skipping all until NIKISCRIPT_COMMENT_LINES+NIKISCRIPT_COMMENT_LINE is found
 	*/
-	unsigned char flags = openArguments == 0? 0 : 1;
+	uint8_t flags = openArguments == 0? 0 : 1;
 
 	while (nextTokenPosition < input.size() && (position == nextTokenPosition || ((!isSpaceNotNewline(input[nextTokenPosition]) && (input[nextTokenPosition] != NIKISCRIPT_STATEMENT_SEPARATOR || (flags & 2))) || (flags & 1)))) {
 		if (flags & 2) {
