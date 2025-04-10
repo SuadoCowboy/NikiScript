@@ -2,7 +2,7 @@
 NikiScript is a command interpreter **highly** inspired by the console interpreter in games like Half-Life 2, Team Fortress 2(which are both made in the Source Engine) and DDNet(or Teeworlds but I did not play that version)
 
 # Wrapper
-the wrapper folder is where you'll find the needed files to make bindings for some languages like C# and Python
+the wrapper folder is where you'll find the needed files to make bindings for some languages like C#
 
 # How variables works
 ```cpp
