@@ -187,7 +187,7 @@ void ns::handleArgumentToken(Context& ctx, bool printError) {
 	switch (arg[0]) {
 	case 'i':
 		try {
-			std::stoll(ctx.pLexer->token.value);
+			(void)std::stoll(ctx.pLexer->token.value);
 		} catch (...) {
 			if (printError)
 				ns::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (i)nteger number\n", arg);
@@ -199,7 +199,7 @@ void ns::handleArgumentToken(Context& ctx, bool printError) {
 
 	case 'd':
 		try {
-			std::stold(ctx.pLexer->token.value);
+			(void)std::stold(ctx.pLexer->token.value);
 		} catch (...) {
 			if (printError)
 				ns::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (d)ecimal number\n", arg);
