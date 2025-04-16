@@ -135,8 +135,7 @@ $(function(){initNavTree('_parser_8h.html',''); initResizable(true); });
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">Parser.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -144,7 +143,7 @@ $(function(){initNavTree('_parser_8h.html',''); initResizable(true); });
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Parser.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_parser_8h__incl.svg" width="864" height="368"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_parser_8h__incl.svg" width="886" height="368"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -179,29 +178,23 @@ Functions</h2></td></tr>
 <tr class="memitem:a2cb4570673469538fdfd4547bf8991cd" id="r_a2cb4570673469538fdfd4547bf8991cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a2cb4570673469538fdfd4547bf8991cd">ns::handleCommandCall</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;pProgramVar)</td></tr>
 <tr class="memdesc:a2cb4570673469538fdfd4547bf8991cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in parse function when EOS or END is reached.  <br /></td></tr>
 <tr class="separator:a2cb4570673469538fdfd4547bf8991cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0e2e6a5b8e4a56be1f022174b14b7c1" id="r_ae0e2e6a5b8e4a56be1f022174b14b7c1"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#ae0e2e6a5b8e4a56be1f022174b14b7c1">ns::handleIdentifierToken</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;pProgramVar)</td></tr>
-<tr class="memdesc:ae0e2e6a5b8e4a56be1f022174b14b7c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in parse function when IDENTIFIER token is passed.  <br /></td></tr>
-<tr class="separator:ae0e2e6a5b8e4a56be1f022174b14b7c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec2ad1c4bf6b81b8930a93fd42f118ec" id="r_aec2ad1c4bf6b81b8930a93fd42f118ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#aec2ad1c4bf6b81b8930a93fd42f118ec">ns::handleArgumentToken</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx)</td></tr>
-<tr class="memdesc:aec2ad1c4bf6b81b8930a93fd42f118ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles references in the string and checks if the parameter matches the argument type.  <br /></td></tr>
-<tr class="separator:aec2ad1c4bf6b81b8930a93fd42f118ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9a89a5bd98bb05f3ef0ac9cd4cf7bd1" id="r_aa9a89a5bd98bb05f3ef0ac9cd4cf7bd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#aa9a89a5bd98bb05f3ef0ac9cd4cf7bd1">ns::handleConsoleVariableCall</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;pProgramVar)</td></tr>
-<tr class="memdesc:aa9a89a5bd98bb05f3ef0ac9cd4cf7bd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in parse function when an ConsoleVariable is passed as a IDENTIFIER.  <br /></td></tr>
-<tr class="separator:aa9a89a5bd98bb05f3ef0ac9cd4cf7bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e708b91ba687e006ea45ff21acc36a6" id="r_a6e708b91ba687e006ea45ff21acc36a6"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a6e708b91ba687e006ea45ff21acc36a6">ns::handleIdentifierToken</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;pProgramVar, bool printError)</td></tr>
+<tr class="memdesc:a6e708b91ba687e006ea45ff21acc36a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in parse function when IDENTIFIER token is passed.  <br /></td></tr>
+<tr class="separator:a6e708b91ba687e006ea45ff21acc36a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa27be0bd43b5a54a8f2468a63855ab53" id="r_aa27be0bd43b5a54a8f2468a63855ab53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#aa27be0bd43b5a54a8f2468a63855ab53">ns::handleArgumentToken</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, bool printError)</td></tr>
+<tr class="memdesc:aa27be0bd43b5a54a8f2468a63855ab53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles references in the string and checks if the parameter matches the argument type.  <br /></td></tr>
+<tr class="separator:aa27be0bd43b5a54a8f2468a63855ab53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1abe3e2b1b7d309dd6ea8419eecdecc1" id="r_a1abe3e2b1b7d309dd6ea8419eecdecc1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a1abe3e2b1b7d309dd6ea8419eecdecc1">ns::handleConsoleVariableCall</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;pProgramVar, bool printError)</td></tr>
+<tr class="memdesc:a1abe3e2b1b7d309dd6ea8419eecdecc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in parse function when an ConsoleVariable is passed as a IDENTIFIER.  <br /></td></tr>
+<tr class="separator:a1abe3e2b1b7d309dd6ea8419eecdecc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50c6d4aa9b61b3e31cac4c85e52aea9c" id="r_a50c6d4aa9b61b3e31cac4c85e52aea9c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a50c6d4aa9b61b3e31cac4c85e52aea9c">ns::updateLoopVariables</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx)</td></tr>
 <tr class="memdesc:a50c6d4aa9b61b3e31cac4c85e52aea9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">if a loop variable is active, its script is ran here  <br /></td></tr>
 <tr class="separator:a50c6d4aa9b61b3e31cac4c85e52aea9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0d3d4abbeb212d6c51e9eaa8652152e" id="r_ad0d3d4abbeb212d6c51e9eaa8652152e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#ad0d3d4abbeb212d6c51e9eaa8652152e">ns::parse</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx)</td></tr>
-<tr class="memdesc:ad0d3d4abbeb212d6c51e9eaa8652152e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses and interpret scripts: handles commands and variables as well as their arguments.  <br /></td></tr>
-<tr class="separator:ad0d3d4abbeb212d6c51e9eaa8652152e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a680665d6c662c728a87ec369de2f03a4" id="r_a680665d6c662c728a87ec369de2f03a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a680665d6c662c728a87ec369de2f03a4">ns::parse</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, bool printError=true)</td></tr>
+<tr class="memdesc:a680665d6c662c728a87ec369de2f03a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses and interpret scripts: handles commands and variables as well as their arguments.  <br /></td></tr>
+<tr class="separator:a680665d6c662c728a87ec369de2f03a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a765477cb266c6fb3e82b1b85867bca56" id="r_a765477cb266c6fb3e82b1b85867bca56"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a765477cb266c6fb3e82b1b85867bca56">ns::parseFile</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, const char *filePath, bool printError)</td></tr>
 <tr class="separator:a765477cb266c6fb3e82b1b85867bca56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:abbea509386571ee71c847ed086479f16" id="r_abbea509386571ee71c847ed086479f16"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#abbea509386571ee71c847ed086479f16">ns::maxConsoleVariableCalls</a> = 10000</td></tr>
-<tr class="memdesc:abbea509386571ee71c847ed086479f16"><td class="mdescLeft">&#160;</td><td class="mdescRight">0 = unlimited  <br /></td></tr>
-<tr class="separator:abbea509386571ee71c847ed086479f16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a043e102456d553490573be5591c586ed" name="a043e102456d553490573be5591c586ed"></a>

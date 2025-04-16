@@ -152,7 +152,7 @@ Include dependency graph for PrintCallback.h:</div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_print_callback_8h__dep__incl.svg" width="2111" height="390"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_print_callback_8h__dep__incl.svg" width="2431" height="390"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="_print_callback_8h_source.html">Go to the source code of this file.</a></p>
@@ -164,8 +164,8 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a6f58eef8d98fadd6c4ad387e6b2c2bdb" id="r_a6f58eef8d98fadd6c4ad387e6b2c2bdb"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a6f58eef8d98fadd6c4ad387e6b2c2bdb">ns::PrintCallback</a>) (void *pData, <a class="el" href="namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level, const std::string &amp;message)</td></tr>
-<tr class="separator:a6f58eef8d98fadd6c4ad387e6b2c2bdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55c233af7a6a03709d59570277dd6e44" id="r_a55c233af7a6a03709d59570277dd6e44"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a55c233af7a6a03709d59570277dd6e44">ns::PrintCallback</a>) (void *pData, <a class="el" href="namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level, const char *message)</td></tr>
+<tr class="separator:a55c233af7a6a03709d59570277dd6e44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -178,18 +178,21 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ad57f5fd2c270bb6f84dab382e8115c7b" id="r_ad57f5fd2c270bb6f84dab382e8115c7b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#ad57f5fd2c270bb6f84dab382e8115c7b">ns::printLevelToString</a> (<a class="el" href="namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level)</td></tr>
-<tr class="separator:ad57f5fd2c270bb6f84dab382e8115c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe84346f014adbb0b28f06bd210d92a8" id="r_afe84346f014adbb0b28f06bd210d92a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#afe84346f014adbb0b28f06bd210d92a8">ns::setPrintCallback</a> (void *pData, <a class="el" href="namespacens.html#a6f58eef8d98fadd6c4ad387e6b2c2bdb">PrintCallback</a> callback)</td></tr>
+<tr class="memitem:af69320371eceb2067268d0d2278ac24b" id="r_af69320371eceb2067268d0d2278ac24b"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#af69320371eceb2067268d0d2278ac24b">ns::levelToString</a> (<a class="el" href="namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level)</td></tr>
+<tr class="separator:af69320371eceb2067268d0d2278ac24b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a718a27e98397219ba3d815add90b6eff" id="r_a718a27e98397219ba3d815add90b6eff"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:a718a27e98397219ba3d815add90b6eff"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacens.html#a718a27e98397219ba3d815add90b6eff">ns::printf</a> (<a class="el" href="namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level, const char *format, Args ... args)</td></tr>
+<tr class="separator:a718a27e98397219ba3d815add90b6eff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe84346f014adbb0b28f06bd210d92a8" id="r_afe84346f014adbb0b28f06bd210d92a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#afe84346f014adbb0b28f06bd210d92a8">ns::setPrintCallback</a> (void *pData, <a class="el" href="namespacens.html#a55c233af7a6a03709d59570277dd6e44">PrintCallback</a> callback)</td></tr>
 <tr class="separator:afe84346f014adbb0b28f06bd210d92a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a402821a8624abd3268dc911fb9dcfab3" id="r_a402821a8624abd3268dc911fb9dcfab3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a402821a8624abd3268dc911fb9dcfab3">ns::print</a> (const <a class="el" href="namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> &amp;level, const std::string &amp;str)</td></tr>
-<tr class="separator:a402821a8624abd3268dc911fb9dcfab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a364074a97b89432e0421f8cc420bbf71" id="r_a364074a97b89432e0421f8cc420bbf71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a364074a97b89432e0421f8cc420bbf71">ns::printUnknownCommand</a> (const std::string &amp;command)</td></tr>
-<tr class="separator:a364074a97b89432e0421f8cc420bbf71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a666e2f7ee47a99728f16c0cd8496f87b" id="r_a666e2f7ee47a99728f16c0cd8496f87b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a666e2f7ee47a99728f16c0cd8496f87b">ns::print</a> (<a class="el" href="namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level, const char *str)</td></tr>
+<tr class="separator:a666e2f7ee47a99728f16c0cd8496f87b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e3ef744b251c2aa8529c33c6c2fd21d" id="r_a1e3ef744b251c2aa8529c33c6c2fd21d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a1e3ef744b251c2aa8529c33c6c2fd21d">ns::printUnknownCommand</a> (const char *command)</td></tr>
+<tr class="separator:a1e3ef744b251c2aa8529c33c6c2fd21d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ac9714f3f6e3075cac4d0d58ca97bcfc7" id="r_ac9714f3f6e3075cac4d0d58ca97bcfc7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacens.html#a6f58eef8d98fadd6c4ad387e6b2c2bdb">PrintCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#ac9714f3f6e3075cac4d0d58ca97bcfc7">ns::printCallback</a> = nullptr</td></tr>
+<tr class="memitem:ac9714f3f6e3075cac4d0d58ca97bcfc7" id="r_ac9714f3f6e3075cac4d0d58ca97bcfc7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacens.html#a55c233af7a6a03709d59570277dd6e44">PrintCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#ac9714f3f6e3075cac4d0d58ca97bcfc7">ns::printCallback</a> = nullptr</td></tr>
 <tr class="separator:ac9714f3f6e3075cac4d0d58ca97bcfc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e371c29b0a8f6a406e98e9f375803ef" id="r_a3e371c29b0a8f6a406e98e9f375803ef"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a3e371c29b0a8f6a406e98e9f375803ef">ns::pPrintCallbackData</a> = nullptr</td></tr>
 <tr class="separator:a3e371c29b0a8f6a406e98e9f375803ef"><td class="memSeparator" colspan="2">&#160;</td></tr>

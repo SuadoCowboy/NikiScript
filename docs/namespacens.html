@@ -161,8 +161,8 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:a6f58eef8d98fadd6c4ad387e6b2c2bdb" id="r_a6f58eef8d98fadd6c4ad387e6b2c2bdb"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f58eef8d98fadd6c4ad387e6b2c2bdb">PrintCallback</a>) (void *pData, <a class="el" href="#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level, const std::string &amp;message)</td></tr>
-<tr class="separator:a6f58eef8d98fadd6c4ad387e6b2c2bdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55c233af7a6a03709d59570277dd6e44" id="r_a55c233af7a6a03709d59570277dd6e44"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55c233af7a6a03709d59570277dd6e44">PrintCallback</a>) (void *pData, <a class="el" href="#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level, const char *message)</td></tr>
+<tr class="separator:a55c233af7a6a03709d59570277dd6e44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41c19c013ca599941451dfff7770a84f" id="r_a41c19c013ca599941451dfff7770a84f"><td class="memItemLeft" align="right" valign="top">typedef std::unordered_map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41c19c013ca599941451dfff7770a84f">ConsoleVariables</a></td></tr>
 <tr class="separator:a41c19c013ca599941451dfff7770a84f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acac0024f454fa3dc64c31ae134b275d1" id="r_acac0024f454fa3dc64c31ae134b275d1"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; ConsoleVariables::pointer &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acac0024f454fa3dc64c31ae134b275d1">LoopVariablesRunning</a></td></tr>
@@ -238,17 +238,20 @@ Functions</h2></td></tr>
 <tr class="memitem:a344e3633da213d1f3854a60b1130c87f" id="r_a344e3633da213d1f3854a60b1130c87f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a344e3633da213d1f3854a60b1130c87f">registerCommands</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx)</td></tr>
 <tr class="memdesc:a344e3633da213d1f3854a60b1130c87f"><td class="mdescLeft">&#160;</td><td class="mdescRight">adds default commands such as echo  <br /></td></tr>
 <tr class="separator:a344e3633da213d1f3854a60b1130c87f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb88b226e0181876607e415210c59638" id="r_aeb88b226e0181876607e415210c59638"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb88b226e0181876607e415210c59638">registerVariable</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, const std::string &amp;name, const std::string_view &amp;description, void *pVar, const <a class="el" href="#a3f8f2b23dd1ab6b8cc50e989f7a09482">GetProgramVariableValue</a> &amp;get, const <a class="el" href="#a904a292a8b7b2e78bb2851d5fd884e56">SetProgramVariableValue</a> &amp;set)</td></tr>
-<tr class="memdesc:aeb88b226e0181876607e415210c59638"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a variable and stores it in <a class="el" href="structns_1_1_context.html#a5479b96c543502cfbb8073eb01281818">ns::Context::programVariables</a>  <br /></td></tr>
-<tr class="separator:aeb88b226e0181876607e415210c59638"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad57f5fd2c270bb6f84dab382e8115c7b" id="r_ad57f5fd2c270bb6f84dab382e8115c7b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad57f5fd2c270bb6f84dab382e8115c7b">printLevelToString</a> (<a class="el" href="#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level)</td></tr>
-<tr class="separator:ad57f5fd2c270bb6f84dab382e8115c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe84346f014adbb0b28f06bd210d92a8" id="r_afe84346f014adbb0b28f06bd210d92a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe84346f014adbb0b28f06bd210d92a8">setPrintCallback</a> (void *pData, <a class="el" href="#a6f58eef8d98fadd6c4ad387e6b2c2bdb">PrintCallback</a> callback)</td></tr>
+<tr class="memitem:a1c1ab326ebd9ab56dc2d964fa179a842" id="r_a1c1ab326ebd9ab56dc2d964fa179a842"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c1ab326ebd9ab56dc2d964fa179a842">registerVariable</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, const std::string &amp;name, const std::string &amp;description, void *pVar, const <a class="el" href="#a3f8f2b23dd1ab6b8cc50e989f7a09482">GetProgramVariableValue</a> &amp;get, const <a class="el" href="#a904a292a8b7b2e78bb2851d5fd884e56">SetProgramVariableValue</a> &amp;set)</td></tr>
+<tr class="memdesc:a1c1ab326ebd9ab56dc2d964fa179a842"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a variable and stores it in <a class="el" href="structns_1_1_context.html#a5479b96c543502cfbb8073eb01281818">ns::Context::programVariables</a>  <br /></td></tr>
+<tr class="separator:a1c1ab326ebd9ab56dc2d964fa179a842"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af69320371eceb2067268d0d2278ac24b" id="r_af69320371eceb2067268d0d2278ac24b"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af69320371eceb2067268d0d2278ac24b">levelToString</a> (<a class="el" href="#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level)</td></tr>
+<tr class="separator:af69320371eceb2067268d0d2278ac24b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a718a27e98397219ba3d815add90b6eff" id="r_a718a27e98397219ba3d815add90b6eff"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:a718a27e98397219ba3d815add90b6eff"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a718a27e98397219ba3d815add90b6eff">printf</a> (<a class="el" href="#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level, const char *format, Args ... args)</td></tr>
+<tr class="separator:a718a27e98397219ba3d815add90b6eff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe84346f014adbb0b28f06bd210d92a8" id="r_afe84346f014adbb0b28f06bd210d92a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe84346f014adbb0b28f06bd210d92a8">setPrintCallback</a> (void *pData, <a class="el" href="#a55c233af7a6a03709d59570277dd6e44">PrintCallback</a> callback)</td></tr>
 <tr class="separator:afe84346f014adbb0b28f06bd210d92a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a402821a8624abd3268dc911fb9dcfab3" id="r_a402821a8624abd3268dc911fb9dcfab3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a402821a8624abd3268dc911fb9dcfab3">print</a> (const <a class="el" href="#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> &amp;level, const std::string &amp;str)</td></tr>
-<tr class="separator:a402821a8624abd3268dc911fb9dcfab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a364074a97b89432e0421f8cc420bbf71" id="r_a364074a97b89432e0421f8cc420bbf71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a364074a97b89432e0421f8cc420bbf71">printUnknownCommand</a> (const std::string &amp;command)</td></tr>
-<tr class="separator:a364074a97b89432e0421f8cc420bbf71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a666e2f7ee47a99728f16c0cd8496f87b" id="r_a666e2f7ee47a99728f16c0cd8496f87b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a666e2f7ee47a99728f16c0cd8496f87b">print</a> (<a class="el" href="#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level, const char *str)</td></tr>
+<tr class="separator:a666e2f7ee47a99728f16c0cd8496f87b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e3ef744b251c2aa8529c33c6c2fd21d" id="r_a1e3ef744b251c2aa8529c33c6c2fd21d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e3ef744b251c2aa8529c33c6c2fd21d">printUnknownCommand</a> (const char *command)</td></tr>
+<tr class="separator:a1e3ef744b251c2aa8529c33c6c2fd21d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0bc26977ca513cbb3640bf66dfe0e53b" id="r_a0bc26977ca513cbb3640bf66dfe0e53b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structns_1_1_context.html">Context</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0bc26977ca513cbb3640bf66dfe0e53b">copyContext</a> (const <a class="el" href="structns_1_1_context.html">Context</a> &amp;source)</td></tr>
 <tr class="memdesc:a0bc26977ca513cbb3640bf66dfe0e53b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Do not copy <a class="el" href="structns_1_1_context.html">Context</a> without calling this function. <a class="el" href="#acac0024f454fa3dc64c31ae134b275d1">LoopVariablesRunning</a> and <a class="el" href="#a2f22f24df1b56351ed6bf8406e21563d" title="This is unecessary to be a pointer but I like the idea of using only 8 bytes instead of the same byte...">ToggleVariablesRunning</a> stores pointers pointed to <a class="el" href="#a41c19c013ca599941451dfff7770a84f">ConsoleVariables</a> as well as toggleCommandsRunning whose pointers are from <a class="el" href="structns_1_1_command_handler.html">CommandHandler</a>. That's why this function exists: It updates all those pointers.  <br /></td></tr>
 <tr class="separator:a0bc26977ca513cbb3640bf66dfe0e53b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -264,21 +267,21 @@ Functions</h2></td></tr>
 <tr class="memitem:a2cb4570673469538fdfd4547bf8991cd" id="r_a2cb4570673469538fdfd4547bf8991cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cb4570673469538fdfd4547bf8991cd">handleCommandCall</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;pProgramVar)</td></tr>
 <tr class="memdesc:a2cb4570673469538fdfd4547bf8991cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in parse function when EOS or END is reached.  <br /></td></tr>
 <tr class="separator:a2cb4570673469538fdfd4547bf8991cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0e2e6a5b8e4a56be1f022174b14b7c1" id="r_ae0e2e6a5b8e4a56be1f022174b14b7c1"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae0e2e6a5b8e4a56be1f022174b14b7c1">handleIdentifierToken</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;pProgramVar)</td></tr>
-<tr class="memdesc:ae0e2e6a5b8e4a56be1f022174b14b7c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in parse function when IDENTIFIER token is passed.  <br /></td></tr>
-<tr class="separator:ae0e2e6a5b8e4a56be1f022174b14b7c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec2ad1c4bf6b81b8930a93fd42f118ec" id="r_aec2ad1c4bf6b81b8930a93fd42f118ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec2ad1c4bf6b81b8930a93fd42f118ec">handleArgumentToken</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx)</td></tr>
-<tr class="memdesc:aec2ad1c4bf6b81b8930a93fd42f118ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles references in the string and checks if the parameter matches the argument type.  <br /></td></tr>
-<tr class="separator:aec2ad1c4bf6b81b8930a93fd42f118ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9a89a5bd98bb05f3ef0ac9cd4cf7bd1" id="r_aa9a89a5bd98bb05f3ef0ac9cd4cf7bd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9a89a5bd98bb05f3ef0ac9cd4cf7bd1">handleConsoleVariableCall</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;pProgramVar)</td></tr>
-<tr class="memdesc:aa9a89a5bd98bb05f3ef0ac9cd4cf7bd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in parse function when an ConsoleVariable is passed as a IDENTIFIER.  <br /></td></tr>
-<tr class="separator:aa9a89a5bd98bb05f3ef0ac9cd4cf7bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e708b91ba687e006ea45ff21acc36a6" id="r_a6e708b91ba687e006ea45ff21acc36a6"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e708b91ba687e006ea45ff21acc36a6">handleIdentifierToken</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;pProgramVar, bool printError)</td></tr>
+<tr class="memdesc:a6e708b91ba687e006ea45ff21acc36a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in parse function when IDENTIFIER token is passed.  <br /></td></tr>
+<tr class="separator:a6e708b91ba687e006ea45ff21acc36a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa27be0bd43b5a54a8f2468a63855ab53" id="r_aa27be0bd43b5a54a8f2468a63855ab53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa27be0bd43b5a54a8f2468a63855ab53">handleArgumentToken</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, bool printError)</td></tr>
+<tr class="memdesc:aa27be0bd43b5a54a8f2468a63855ab53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles references in the string and checks if the parameter matches the argument type.  <br /></td></tr>
+<tr class="separator:aa27be0bd43b5a54a8f2468a63855ab53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1abe3e2b1b7d309dd6ea8419eecdecc1" id="r_a1abe3e2b1b7d309dd6ea8419eecdecc1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1abe3e2b1b7d309dd6ea8419eecdecc1">handleConsoleVariableCall</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;pProgramVar, bool printError)</td></tr>
+<tr class="memdesc:a1abe3e2b1b7d309dd6ea8419eecdecc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in parse function when an ConsoleVariable is passed as a IDENTIFIER.  <br /></td></tr>
+<tr class="separator:a1abe3e2b1b7d309dd6ea8419eecdecc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50c6d4aa9b61b3e31cac4c85e52aea9c" id="r_a50c6d4aa9b61b3e31cac4c85e52aea9c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50c6d4aa9b61b3e31cac4c85e52aea9c">updateLoopVariables</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx)</td></tr>
 <tr class="memdesc:a50c6d4aa9b61b3e31cac4c85e52aea9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">if a loop variable is active, its script is ran here  <br /></td></tr>
 <tr class="separator:a50c6d4aa9b61b3e31cac4c85e52aea9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0d3d4abbeb212d6c51e9eaa8652152e" id="r_ad0d3d4abbeb212d6c51e9eaa8652152e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0d3d4abbeb212d6c51e9eaa8652152e">parse</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx)</td></tr>
-<tr class="memdesc:ad0d3d4abbeb212d6c51e9eaa8652152e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses and interpret scripts: handles commands and variables as well as their arguments.  <br /></td></tr>
-<tr class="separator:ad0d3d4abbeb212d6c51e9eaa8652152e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a680665d6c662c728a87ec369de2f03a4" id="r_a680665d6c662c728a87ec369de2f03a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a680665d6c662c728a87ec369de2f03a4">parse</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, bool printError=true)</td></tr>
+<tr class="memdesc:a680665d6c662c728a87ec369de2f03a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses and interpret scripts: handles commands and variables as well as their arguments.  <br /></td></tr>
+<tr class="separator:a680665d6c662c728a87ec369de2f03a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a765477cb266c6fb3e82b1b85867bca56" id="r_a765477cb266c6fb3e82b1b85867bca56"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a765477cb266c6fb3e82b1b85867bca56">parseFile</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, const char *filePath, bool printError)</td></tr>
 <tr class="separator:a765477cb266c6fb3e82b1b85867bca56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab2de7296213716cce8231e343f4b834" id="r_aab2de7296213716cce8231e343f4b834"><td class="memTemplParams" colspan="2">template&lt;typename ... Args&gt; </td></tr>
@@ -326,16 +329,22 @@ Functions</h2></td></tr>
 <tr class="separator:abe7cb87f52a3d70c1f41133af364b0d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a367436de1412fc6546d0e1ae7774f878" id="r_a367436de1412fc6546d0e1ae7774f878"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a367436de1412fc6546d0e1ae7774f878">setLongLong</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *pVar, const std::string &amp;str)</td></tr>
 <tr class="separator:a367436de1412fc6546d0e1ae7774f878"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b35f842d84da1f06cbedcbf9759ba84" id="r_a4b35f842d84da1f06cbedcbf9759ba84"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b35f842d84da1f06cbedcbf9759ba84">allocStringToCharString</a> (const std::string &amp;src)</td></tr>
+<tr class="memdesc:a4b35f842d84da1f06cbedcbf9759ba84"><td class="mdescLeft">&#160;</td><td class="mdescRight">should be used when a string is created in the function scope and not passed to the function as a parameter  <br /></td></tr>
+<tr class="separator:a4b35f842d84da1f06cbedcbf9759ba84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7977345da2ceb6c406ca6fc67e71d5c6" id="r_a7977345da2ceb6c406ca6fc67e71d5c6"><td class="memTemplParams" colspan="2">template&lt;typename K, typename V&gt; </td></tr>
+<tr class="memitem:a7977345da2ceb6c406ca6fc67e71d5c6"><td class="memTemplItemLeft" align="right" valign="top">K *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a7977345da2ceb6c406ca6fc67e71d5c6">allocUnorderedMapKeys</a> (const std::unordered_map&lt; K, V &gt; &amp;map)</td></tr>
+<tr class="separator:a7977345da2ceb6c406ca6fc67e71d5c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f84d7b771e3b4a03e4d132fc6321df3" id="r_a8f84d7b771e3b4a03e4d132fc6321df3"><td class="memTemplParams" colspan="2">template&lt;typename V&gt; </td></tr>
+<tr class="memitem:a8f84d7b771e3b4a03e4d132fc6321df3"><td class="memTemplItemLeft" align="right" valign="top">const char **&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a8f84d7b771e3b4a03e4d132fc6321df3">allocUnorderedMapStringKeysToCharArray</a> (const std::unordered_map&lt; std::string, V &gt; &amp;map)</td></tr>
+<tr class="separator:a8f84d7b771e3b4a03e4d132fc6321df3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ac9714f3f6e3075cac4d0d58ca97bcfc7" id="r_ac9714f3f6e3075cac4d0d58ca97bcfc7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a6f58eef8d98fadd6c4ad387e6b2c2bdb">PrintCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9714f3f6e3075cac4d0d58ca97bcfc7">printCallback</a> = nullptr</td></tr>
+<tr class="memitem:ac9714f3f6e3075cac4d0d58ca97bcfc7" id="r_ac9714f3f6e3075cac4d0d58ca97bcfc7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a55c233af7a6a03709d59570277dd6e44">PrintCallback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac9714f3f6e3075cac4d0d58ca97bcfc7">printCallback</a> = nullptr</td></tr>
 <tr class="separator:ac9714f3f6e3075cac4d0d58ca97bcfc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e371c29b0a8f6a406e98e9f375803ef" id="r_a3e371c29b0a8f6a406e98e9f375803ef"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3e371c29b0a8f6a406e98e9f375803ef">pPrintCallbackData</a> = nullptr</td></tr>
 <tr class="separator:a3e371c29b0a8f6a406e98e9f375803ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbea509386571ee71c847ed086479f16" id="r_abbea509386571ee71c847ed086479f16"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abbea509386571ee71c847ed086479f16">maxConsoleVariableCalls</a> = 10000</td></tr>
-<tr class="memdesc:abbea509386571ee71c847ed086479f16"><td class="mdescLeft">&#160;</td><td class="mdescRight">0 = unlimited  <br /></td></tr>
-<tr class="separator:abbea509386571ee71c847ed086479f16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a3ac1910ef8066900ee976d96453ea88d" name="a3ac1910ef8066900ee976d96453ea88d"></a>
@@ -394,14 +403,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a6f58eef8d98fadd6c4ad387e6b2c2bdb" name="a6f58eef8d98fadd6c4ad387e6b2c2bdb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f58eef8d98fadd6c4ad387e6b2c2bdb">&#9670;&#160;</a></span>PrintCallback</h2>
+<a id="a55c233af7a6a03709d59570277dd6e44" name="a55c233af7a6a03709d59570277dd6e44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55c233af7a6a03709d59570277dd6e44">&#9670;&#160;</a></span>PrintCallback</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void(* ns::PrintCallback) (void *pData, <a class="el" href="#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level, const std::string &amp;message)</td>
+          <td class="memname">typedef void(* ns::PrintCallback) (void *pData, <a class="el" href="#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level, const char *message)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -478,7 +487,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section warning"><dt>Warning</dt><dd><b>DO NOT</b> rearrange this enum. <a class="el" href="#aa9a89a5bd98bb05f3ef0ac9cd4cf7bd1" title="Called in parse function when an ConsoleVariable is passed as a IDENTIFIER.">ns::handleConsoleVariableCall</a> uses bit logic on VARIABLE related to VARIABLE_IN_VARIABLE </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd><b>DO NOT</b> rearrange this enum. <a class="el" href="#a1abe3e2b1b7d309dd6ea8419eecdecc1" title="Called in parse function when an ConsoleVariable is passed as a IDENTIFIER.">ns::handleConsoleVariableCall</a> uses bit logic on VARIABLE related to VARIABLE_IN_VARIABLE </dd></dl>
 <table class="fieldtable">
 <tr><th colspan="3">Enumerator</th></tr><tr><td class="fieldname"><a id="a8748c664d230e63fda397e022a64a692ae30b7d41fe340ed717a4ce639e07d9d6" name="a8748c664d230e63fda397e022a64a692ae30b7d41fe340ed717a4ce639e07d9d6"></a>COMMAND&#160;</td><td class="fieldinit">1&#160;</td><td class="fielddoc"><p>if a command is calling another command </p>
 </td></tr>
@@ -548,6 +557,84 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a4b35f842d84da1f06cbedcbf9759ba84" name="a4b35f842d84da1f06cbedcbf9759ba84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b35f842d84da1f06cbedcbf9759ba84">&#9670;&#160;</a></span>allocStringToCharString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * ns::allocStringToCharString </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>src</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>should be used when a string is created in the function scope and not passed to the function as a parameter </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>not counting null-terminator as it's added automatically </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7977345da2ceb6c406ca6fc67e71d5c6" name="a7977345da2ceb6c406ca6fc67e71d5c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7977345da2ceb6c406ca6fc67e71d5c6">&#9670;&#160;</a></span>allocUnorderedMapKeys()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename K, typename V&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">K * ns::allocUnorderedMapKeys </td>
+          <td>(</td>
+          <td class="paramtype">const std::unordered_map&lt; K, V &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>map</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">K</td><td>map key </td></tr>
+    <tr><td class="paramname">V</td><td>map value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>allocated array of K pointers(K*) </dd></dl>
+
+</div>
+</div>
+<a id="a8f84d7b771e3b4a03e4d132fc6321df3" name="a8f84d7b771e3b4a03e4d132fc6321df3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f84d7b771e3b4a03e4d132fc6321df3">&#9670;&#160;</a></span>allocUnorderedMapStringKeysToCharArray()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename V&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">const char ** ns::allocUnorderedMapStringKeysToCharArray </td>
+          <td>(</td>
+          <td class="paramtype">const std::unordered_map&lt; std::string, V &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>map</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">V</td><td>map value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>const char** </dd></dl>
+
+</div>
+</div>
 <a id="a40a0a3f7fe6fd5ec89be5d0766ece192" name="a40a0a3f7fe6fd5ec89be5d0766ece192"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a40a0a3f7fe6fd5ec89be5d0766ece192">&#9670;&#160;</a></span>canRunVariable()</h2>
 
@@ -571,9 +658,9 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ad0d3d4abbeb212d6c51e9eaa8652152e" title="Parses and interpret scripts: handles commands and variables as well as their arguments.">ns::parse</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a680665d6c662c728a87ec369de2f03a4" title="Parses and interpret scripts: handles commands and variables as well as their arguments.">ns::parse</a> </dd>
 <dd>
-<a class="el" href="#ae0e2e6a5b8e4a56be1f022174b14b7c1" title="Called in parse function when IDENTIFIER token is passed.">ns::handleIdentifierToken</a> </dd></dl>
+<a class="el" href="#a6e708b91ba687e006ea45ff21acc36a6" title="Called in parse function when IDENTIFIER token is passed.">ns::handleIdentifierToken</a> </dd></dl>
 
 </div>
 </div>
@@ -783,8 +870,8 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
-<a id="aec2ad1c4bf6b81b8930a93fd42f118ec" name="aec2ad1c4bf6b81b8930a93fd42f118ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec2ad1c4bf6b81b8930a93fd42f118ec">&#9670;&#160;</a></span>handleArgumentToken()</h2>
+<a id="aa27be0bd43b5a54a8f2468a63855ab53" name="aa27be0bd43b5a54a8f2468a63855ab53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa27be0bd43b5a54a8f2468a63855ab53">&#9670;&#160;</a></span>handleArgumentToken()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -792,15 +879,19 @@ template&lt;typename T&gt; </div>
         <tr>
           <td class="memname">void ns::handleArgumentToken </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structns_1_1_context.html">Context</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structns_1_1_context.html">Context</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>printError</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Handles references in the string and checks if the parameter matches the argument type. </p>
 <dl class="section note"><dt>Note</dt><dd>Possible argument types: s = string, i = integer, d = decimal, v = variable </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ad0d3d4abbeb212d6c51e9eaa8652152e" title="Parses and interpret scripts: handles commands and variables as well as their arguments.">ns::parse</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a680665d6c662c728a87ec369de2f03a4" title="Parses and interpret scripts: handles commands and variables as well as their arguments.">ns::parse</a> </dd></dl>
 
 </div>
 </div>
@@ -834,12 +925,12 @@ ctx.pCommand should point to a valid <a class="el" href="structns_1_1_command.ht
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ad0d3d4abbeb212d6c51e9eaa8652152e" title="Parses and interpret scripts: handles commands and variables as well as their arguments.">ns::parse</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a680665d6c662c728a87ec369de2f03a4" title="Parses and interpret scripts: handles commands and variables as well as their arguments.">ns::parse</a> </dd></dl>
 
 </div>
 </div>
-<a id="aa9a89a5bd98bb05f3ef0ac9cd4cf7bd1" name="aa9a89a5bd98bb05f3ef0ac9cd4cf7bd1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9a89a5bd98bb05f3ef0ac9cd4cf7bd1">&#9670;&#160;</a></span>handleConsoleVariableCall()</h2>
+<a id="a1abe3e2b1b7d309dd6ea8419eecdecc1" name="a1abe3e2b1b7d309dd6ea8419eecdecc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1abe3e2b1b7d309dd6ea8419eecdecc1">&#9670;&#160;</a></span>handleConsoleVariableCall()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -852,14 +943,19 @@ ctx.pCommand should point to a valid <a class="el" href="structns_1_1_command.ht
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;</td>          <td class="paramname"><span class="paramname"><em>pProgramVar</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;</td>          <td class="paramname"><span class="paramname"><em>pProgramVar</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>printError</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Called in parse function when an ConsoleVariable is passed as a IDENTIFIER. </p>
 <dl class="section note"><dt>Note</dt><dd>I find this algorithm very interesting and fun(it creates a bunch of lexers for each variable call instead of recursive calling) </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#abbea509386571ee71c847ed086479f16" title="0 = unlimited">ns::maxConsoleVariableCalls</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="structns_1_1_context.html#a2125bce9317839a29d1cfd5c955973db" title="How many console variables can be called inside each other.">ns::Context::maxConsoleVariablesRecursiveDepth</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ctx</td><td></td></tr>
@@ -870,8 +966,8 @@ ctx.pCommand should point to a valid <a class="el" href="structns_1_1_command.ht
 
 </div>
 </div>
-<a id="ae0e2e6a5b8e4a56be1f022174b14b7c1" name="ae0e2e6a5b8e4a56be1f022174b14b7c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0e2e6a5b8e4a56be1f022174b14b7c1">&#9670;&#160;</a></span>handleIdentifierToken()</h2>
+<a id="a6e708b91ba687e006ea45ff21acc36a6" name="a6e708b91ba687e006ea45ff21acc36a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e708b91ba687e006ea45ff21acc36a6">&#9670;&#160;</a></span>handleIdentifierToken()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -884,7 +980,12 @@ ctx.pCommand should point to a valid <a class="el" href="structns_1_1_command.ht
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;</td>          <td class="paramname"><span class="paramname"><em>pProgramVar</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;</td>          <td class="paramname"><span class="paramname"><em>pProgramVar</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>printError</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -898,7 +999,7 @@ ctx.pCommand should point to a valid <a class="el" href="structns_1_1_command.ht
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 = it called advanceUntil(EOS) 1 = should call pLexer-&gt;advance() 2 = if it's a variable and should run it </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#ad0d3d4abbeb212d6c51e9eaa8652152e" title="Parses and interpret scripts: handles commands and variables as well as their arguments.">ns::parse</a> </dd>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a680665d6c662c728a87ec369de2f03a4" title="Parses and interpret scripts: handles commands and variables as well as their arguments.">ns::parse</a> </dd>
 <dd>
 <a class="el" href="#a40a0a3f7fe6fd5ec89be5d0766ece192" title="if variable is a toggle variable and its allowed to run or if it&#39;s a common variable....">ns::canRunVariable</a> </dd></dl>
 
@@ -1007,6 +1108,23 @@ false if is not space </dd></dl>
 
 </div>
 </div>
+<a id="af69320371eceb2067268d0d2278ac24b" name="af69320371eceb2067268d0d2278ac24b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af69320371eceb2067268d0d2278ac24b">&#9670;&#160;</a></span>levelToString()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * ns::levelToString </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a></td>          <td class="paramname"><span class="paramname"><em>level</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aa38612c1876386101d82733bcc9d8fd1" name="aa38612c1876386101d82733bcc9d8fd1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa38612c1876386101d82733bcc9d8fd1">&#9670;&#160;</a></span>ltrim()</h2>
 
@@ -1036,8 +1154,8 @@ false if is not space </dd></dl>
 
 </div>
 </div>
-<a id="ad0d3d4abbeb212d6c51e9eaa8652152e" name="ad0d3d4abbeb212d6c51e9eaa8652152e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0d3d4abbeb212d6c51e9eaa8652152e">&#9670;&#160;</a></span>parse()</h2>
+<a id="a680665d6c662c728a87ec369de2f03a4" name="a680665d6c662c728a87ec369de2f03a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a680665d6c662c728a87ec369de2f03a4">&#9670;&#160;</a></span>parse()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1045,8 +1163,12 @@ false if is not space </dd></dl>
         <tr>
           <td class="memname">void ns::parse </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structns_1_1_context.html">Context</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structns_1_1_context.html">Context</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>ctx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>printError</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1087,8 +1209,8 @@ false if is not space </dd></dl>
 
 </div>
 </div>
-<a id="a402821a8624abd3268dc911fb9dcfab3" name="a402821a8624abd3268dc911fb9dcfab3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a402821a8624abd3268dc911fb9dcfab3">&#9670;&#160;</a></span>print()</h2>
+<a id="a666e2f7ee47a99728f16c0cd8496f87b" name="a666e2f7ee47a99728f16c0cd8496f87b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a666e2f7ee47a99728f16c0cd8496f87b">&#9670;&#160;</a></span>print()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1096,37 +1218,48 @@ false if is not space </dd></dl>
         <tr>
           <td class="memname">void ns::print </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>level</em></span>, </td>
+          <td class="paramtype"><a class="el" href="#a4698fdf810ba4a73c738651d5f9c1e4b">ns::PrintLevel</a></td>          <td class="paramname"><span class="paramname"><em>level</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>str</em></span>&#160;)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>str</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="ad57f5fd2c270bb6f84dab382e8115c7b" name="ad57f5fd2c270bb6f84dab382e8115c7b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad57f5fd2c270bb6f84dab382e8115c7b">&#9670;&#160;</a></span>printLevelToString()</h2>
+<a id="a718a27e98397219ba3d815add90b6eff" name="a718a27e98397219ba3d815add90b6eff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a718a27e98397219ba3d815add90b6eff">&#9670;&#160;</a></span>printf()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Args&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">std::string ns::printLevelToString </td>
+          <td class="memname">void ns::printf </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a></td>          <td class="paramname"><span class="paramname"><em>level</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a></td>          <td class="paramname"><span class="paramname"><em>level</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>format</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Args ...</td>          <td class="paramname"><span class="paramname"><em>args</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a364074a97b89432e0421f8cc420bbf71" name="a364074a97b89432e0421f8cc420bbf71"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a364074a97b89432e0421f8cc420bbf71">&#9670;&#160;</a></span>printUnknownCommand()</h2>
+<a id="a1e3ef744b251c2aa8529c33c6c2fd21d" name="a1e3ef744b251c2aa8529c33c6c2fd21d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e3ef744b251c2aa8529c33c6c2fd21d">&#9670;&#160;</a></span>printUnknownCommand()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1134,7 +1267,7 @@ false if is not space </dd></dl>
         <tr>
           <td class="memname">void ns::printUnknownCommand </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>command</em></span></td><td>)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>command</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1168,8 +1301,8 @@ false if is not space </dd></dl>
 
 </div>
 </div>
-<a id="aeb88b226e0181876607e415210c59638" name="aeb88b226e0181876607e415210c59638"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb88b226e0181876607e415210c59638">&#9670;&#160;</a></span>registerVariable()</h2>
+<a id="a1c1ab326ebd9ab56dc2d964fa179a842" name="a1c1ab326ebd9ab56dc2d964fa179a842"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c1ab326ebd9ab56dc2d964fa179a842">&#9670;&#160;</a></span>registerVariable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1187,7 +1320,7 @@ false if is not space </dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string_view &amp;</td>          <td class="paramname"><span class="paramname"><em>description</em></span>, </td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>description</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1447,7 +1580,7 @@ false if is not space </dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="#a6f58eef8d98fadd6c4ad387e6b2c2bdb">PrintCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="#a55c233af7a6a03709d59570277dd6e44">PrintCallback</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1683,30 +1816,6 @@ template&lt;typename T&gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="abbea509386571ee71c847ed086479f16" name="abbea509386571ee71c847ed086479f16"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abbea509386571ee71c847ed086479f16">&#9670;&#160;</a></span>maxConsoleVariableCalls</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint64_t ns::maxConsoleVariableCalls = 10000</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel extern">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>0 = unlimited </p>
-
-</div>
-</div>
 <a id="a3e371c29b0a8f6a406e98e9f375803ef" name="a3e371c29b0a8f6a406e98e9f375803ef"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3e371c29b0a8f6a406e98e9f375803ef">&#9670;&#160;</a></span>pPrintCallbackData</h2>
 
@@ -1739,7 +1848,7 @@ template&lt;typename T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="#a6f58eef8d98fadd6c4ad387e6b2c2bdb">ns::PrintCallback</a> ns::printCallback = nullptr</td>
+          <td class="memname"><a class="el" href="#a55c233af7a6a03709d59570277dd6e44">ns::PrintCallback</a> ns::printCallback = nullptr</td>
         </tr>
       </table>
   </td>

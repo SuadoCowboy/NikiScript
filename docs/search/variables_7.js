@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['maxargs_0',['maxArgs',['../structns_1_1_command.html#a9c38c4664b64423de87b863cb254bf91',1,'ns::Command']]],
-  ['maxconsolevariablecalls_1',['maxConsoleVariableCalls',['../namespacens.html#abbea509386571ee71c847ed086479f16',1,'ns']]],
-  ['minargs_2',['minArgs',['../structns_1_1_command.html#a819feb1fb50e86e0eef30f921d0a215e',1,'ns::Command']]]
+  ['maxargs_0',['maxArgs',['../structns_1_1_command.html#a2916662d1cdf66791b703da600e60c12',1,'ns::Command']]],
+  ['maxconsolevariablesrecursivedepth_1',['maxConsoleVariablesRecursiveDepth',['../structns_1_1_context.html#a2125bce9317839a29d1cfd5c955973db',1,'ns::Context']]],
+  ['minargs_2',['minArgs',['../structns_1_1_command.html#a0a5814545780ce9eaf1c453f11d258ee',1,'ns::Command']]]
 ];

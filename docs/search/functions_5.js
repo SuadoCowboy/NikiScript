@@ -1,15 +1,15 @@
 var searchData=
 [
-  ['get_0',['get',['../structns_1_1_command_handler.html#aabe197cc6e96ed6dd63ec1e266112b13',1,'ns::CommandHandler']]],
+  ['get_0',['get',['../structns_1_1_command_handler.html#af6aba9bc75aee2884c6217e7b3d8768a',1,'ns::CommandHandler']]],
   ['getargumentsnames_1',['getArgumentsNames',['../structns_1_1_command.html#a2c0c267a6887a73454947f631474c9ee',1,'ns::Command']]],
-  ['getdouble_2',['getDouble',['../structns_1_1_arguments.html#af624f4e7988dfdb6c705e0c0717fd67e',1,'ns::Arguments']]],
-  ['getfloat_3',['getFloat',['../structns_1_1_arguments.html#abe5bb48cf9b2ac726b476d07f8ae8962',1,'ns::Arguments']]],
-  ['getlong_4',['getLong',['../structns_1_1_arguments.html#ada7205282b8bdfc8b9598ecdb98cf707',1,'ns::Arguments']]],
-  ['getlongdouble_5',['getLongDouble',['../structns_1_1_arguments.html#a95741785c669a1e277b6935595a0a7f0',1,'ns::Arguments']]],
-  ['getlonglong_6',['getLongLong',['../structns_1_1_arguments.html#a56a0b13fb75782305c92a80401934b1b',1,'ns::Arguments']]],
+  ['getdouble_2',['getDouble',['../structns_1_1_arguments.html#a1cc4c8c2c965fec7cbb92437bcf49576',1,'ns::Arguments']]],
+  ['getfloat_3',['getFloat',['../structns_1_1_arguments.html#a8595397549fc6e76101ac605d52f934f',1,'ns::Arguments']]],
+  ['getlong_4',['getLong',['../structns_1_1_arguments.html#a6ac1d551b421b36370152e0da04bef41',1,'ns::Arguments']]],
+  ['getlongdouble_5',['getLongDouble',['../structns_1_1_arguments.html#ab95f5bb6650c01be3f4fa4915c20ef8b',1,'ns::Arguments']]],
+  ['getlonglong_6',['getLongLong',['../structns_1_1_arguments.html#af7f41c057f3e9807d5d43a88555e4605',1,'ns::Arguments']]],
   ['getnumber_7',['getNumber',['../namespacens.html#a66440ab426bc82a8eb18ab190eee0883',1,'ns']]],
-  ['getsigned_8',['getSigned',['../structns_1_1_arguments.html#a2ef1e7c7d42ceb8f8fc31d4442e627e7',1,'ns::Arguments']]],
-  ['getstring_9',['getString',['../structns_1_1_arguments.html#aef8faf9473379d98d43c3868fc1318c2',1,'ns::Arguments::getString()'],['../namespacens.html#abb66a6f539e5abe4c8fc9f63a1543d95',1,'ns::getString()']]],
-  ['getunsigned_10',['getUnsigned',['../structns_1_1_arguments.html#a5ec06ebd25b022bcb81c8f613c14a71b',1,'ns::Arguments']]],
-  ['getunsignedlonglong_11',['getUnsignedLongLong',['../structns_1_1_arguments.html#a291df6545be99d86f6bb47d121313295',1,'ns::Arguments']]]
+  ['getsigned_8',['getSigned',['../structns_1_1_arguments.html#a0e955eba026d06372c6db711a1a8dd74',1,'ns::Arguments']]],
+  ['getstring_9',['getString',['../structns_1_1_arguments.html#a314f246e9575a46a42611b27415c33e0',1,'ns::Arguments::getString()'],['../namespacens.html#abb66a6f539e5abe4c8fc9f63a1543d95',1,'ns::getString()']]],
+  ['getunsigned_10',['getUnsigned',['../structns_1_1_arguments.html#a84a4190f1cdf39e9e2620e45a7a0c575',1,'ns::Arguments']]],
+  ['getunsignedlonglong_11',['getUnsignedLongLong',['../structns_1_1_arguments.html#a3cb2ab68471f575fc8f5207102beee06',1,'ns::Arguments']]]
 ];
