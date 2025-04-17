@@ -1,5 +1,6 @@
 #include "Parser.h"
 
+#include <filesystem>
 #include <algorithm>
 #include <fstream>
 #include <sstream>
@@ -340,7 +341,17 @@ void ns::parse(Context& ctx, bool printError) {
 	handleCommandCall(ctx, pProgramVar);
 }
 
-bool ns::parseFile(Context& ctx, const char* filePath, bool printError) {
+bool ns::parseFile(Context& ctx, const char* _filePath, bool printError) {
+	std::string filePath{_filePath};
+	{
+		std::filesystem::path _path{filePath};
+		if (!_path.has_extension())
+			filePath += NIKISCRIPT_FILE_EXTENSION;
+
+		if (!_path.has_root_directory())// || _path.root_directory() != NIKISCRIPT_ROOT_DIRECTORY)
+			filePath = std::string(NIKISCRIPT_ROOT_DIRECTORY)+(char)_path.preferred_separator+filePath;
+	}
+
 	std::ifstream file{filePath};
 
 	if (!file) {
