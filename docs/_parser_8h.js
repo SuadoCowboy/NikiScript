@@ -1,6 +1,8 @@
 var _parser_8h =
 [
+    [ "NIKISCRIPT_FILE_EXTENSION", "_parser_8h.html#a3db4230d0b4b7ce1715177aa3f36e86f", null ],
     [ "NIKISCRIPT_LOOP_VARIABLE", "_parser_8h.html#a043e102456d553490573be5591c586ed", null ],
+    [ "NIKISCRIPT_ROOT_DIRECTORY", "_parser_8h.html#a06bb90cf6b7eec551ca34090a3ba2650", null ],
     [ "NIKISCRIPT_TOGGLE_OFF", "_parser_8h.html#ace7ee102d6be89086925b20fa4980401", null ],
     [ "NIKISCRIPT_TOGGLE_ON", "_parser_8h.html#a9dc2b5af60533628db36bded7820fa0d", null ],
     [ "ns::canRunVariable", "namespacens.html#a40a0a3f7fe6fd5ec89be5d0766ece192", null ],

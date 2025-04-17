@@ -154,9 +154,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1382081abfca0757d04476eec9542e5a" id="r_a1382081abfca0757d04476eec9542e5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1382081abfca0757d04476eec9542e5a">advanceUntil</a> (uint8_t flags)</td></tr>
 <tr class="memdesc:a1382081abfca0757d04476eec9542e5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advances tokens until it reaches one of the flags.  <br /></td></tr>
 <tr class="separator:a1382081abfca0757d04476eec9542e5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa2185a1ba19888e8a411dcacea7bc07" id="r_aaa2185a1ba19888e8a411dcacea7bc07"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa2185a1ba19888e8a411dcacea7bc07">setTokenValue</a> ()</td></tr>
-<tr class="memdesc:aaa2185a1ba19888e8a411dcacea7bc07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets token value by checking where a whitespace is found.  <br /></td></tr>
-<tr class="separator:aaa2185a1ba19888e8a411dcacea7bc07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7672049e4a46c6f5c785ad8656883a81" id="r_a7672049e4a46c6f5c785ad8656883a81"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7672049e4a46c6f5c785ad8656883a81">setTokenValue</a> ()</td></tr>
+<tr class="memdesc:a7672049e4a46c6f5c785ad8656883a81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets token value by checking where a whitespace is found.  <br /></td></tr>
+<tr class="separator:a7672049e4a46c6f5c785ad8656883a81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af94430738655fd9259ff5df3c0fd41c5" id="r_af94430738655fd9259ff5df3c0fd41c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af94430738655fd9259ff5df3c0fd41c5">setTokenType</a> ()</td></tr>
 <tr class="memdesc:af94430738655fd9259ff5df3c0fd41c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifies token type by checking the previous token type.  <br /></td></tr>
 <tr class="separator:af94430738655fd9259ff5df3c0fd41c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -168,8 +168,8 @@ Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:abea163c3702c10878df5bc7a95b5de7a" id="r_abea163c3702c10878df5bc7a95b5de7a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abea163c3702c10878df5bc7a95b5de7a">input</a></td></tr>
 <tr class="separator:abea163c3702c10878df5bc7a95b5de7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab9be7a3f8882e0e8e06568a0377f419" id="r_aab9be7a3f8882e0e8e06568a0377f419"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab9be7a3f8882e0e8e06568a0377f419">position</a> = 0</td></tr>
-<tr class="separator:aab9be7a3f8882e0e8e06568a0377f419"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bff3b0ea5231a354732dcd199018bdd" id="r_a9bff3b0ea5231a354732dcd199018bdd"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9bff3b0ea5231a354732dcd199018bdd">position</a> = 0</td></tr>
+<tr class="separator:a9bff3b0ea5231a354732dcd199018bdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5aacea360b719d1a44658b9c691ed4ce" id="r_a5aacea360b719d1a44658b9c691ed4ce"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5aacea360b719d1a44658b9c691ed4ce">openArguments</a> = 0</td></tr>
 <tr class="memdesc:a5aacea360b719d1a44658b9c691ed4ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">how many times NIKISCRIPT_ARGUMENTS_OPEN was found  <br /></td></tr>
 <tr class="separator:a5aacea360b719d1a44658b9c691ed4ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -235,7 +235,7 @@ Public Attributes</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>Position is set to the <b>next</b> token position in the end of this function </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a9de269c6557b9900790bdb3b4d680b0f" title="This variable is where advance stores the token.">Lexer::token</a> </dd>
 <dd>
-<a class="el" href="#aaa2185a1ba19888e8a411dcacea7bc07" title="Gets token value by checking where a whitespace is found.">Lexer::setTokenValue</a> </dd>
+<a class="el" href="#a7672049e4a46c6f5c785ad8656883a81" title="Gets token value by checking where a whitespace is found.">Lexer::setTokenValue</a> </dd>
 <dd>
 <a class="el" href="#af94430738655fd9259ff5df3c0fd41c5" title="Identifies token type by checking the previous token type.">Lexer::setTokenType</a> </dd></dl>
 
@@ -302,18 +302,18 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Identifies token type by checking the previous token type. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#aaa2185a1ba19888e8a411dcacea7bc07" title="Gets token value by checking where a whitespace is found.">Lexer::setTokenValue</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a7672049e4a46c6f5c785ad8656883a81" title="Gets token value by checking where a whitespace is found.">Lexer::setTokenValue</a> </dd></dl>
 
 </div>
 </div>
-<a id="aaa2185a1ba19888e8a411dcacea7bc07" name="aaa2185a1ba19888e8a411dcacea7bc07"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaa2185a1ba19888e8a411dcacea7bc07">&#9670;&#160;</a></span>setTokenValue()</h2>
+<a id="a7672049e4a46c6f5c785ad8656883a81" name="a7672049e4a46c6f5c785ad8656883a81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7672049e4a46c6f5c785ad8656883a81">&#9670;&#160;</a></span>setTokenValue()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t ns::Lexer::setTokenValue </td>
+          <td class="memname">size_t ns::Lexer::setTokenValue </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -374,14 +374,14 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="aab9be7a3f8882e0e8e06568a0377f419" name="aab9be7a3f8882e0e8e06568a0377f419"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab9be7a3f8882e0e8e06568a0377f419">&#9670;&#160;</a></span>position</h2>
+<a id="a9bff3b0ea5231a354732dcd199018bdd" name="a9bff3b0ea5231a354732dcd199018bdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9bff3b0ea5231a354732dcd199018bdd">&#9670;&#160;</a></span>position</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint64_t ns::Lexer::position = 0</td>
+          <td class="memname">size_t ns::Lexer::position = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">

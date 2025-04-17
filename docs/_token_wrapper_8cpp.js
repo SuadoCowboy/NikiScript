@@ -1,10 +1,10 @@
 var _token_wrapper_8cpp =
 [
-    [ "ns_TokenAddReference", "_token_wrapper_8cpp.html#ab497af98968565a3b9120bad674000ef", null ],
+    [ "ns_TokenAddReference", "_token_wrapper_8cpp.html#acc6a0afeae715866451361819f9615b3", null ],
     [ "ns_TokenClearReferences", "_token_wrapper_8cpp.html#ab7f6e6ddf6f395522aeb33a54ad286ae", null ],
     [ "ns_TokenDelete", "_token_wrapper_8cpp.html#a825c93308275cc0398415f97221c5f97", null ],
     [ "ns_TokenGetReferenceCount", "_token_wrapper_8cpp.html#ae83f5d8c121daf08750116f320053169", null ],
-    [ "ns_TokenGetReferenceIndex", "_token_wrapper_8cpp.html#a44249844c8fb8b835fba2f4661ec1505", null ],
+    [ "ns_TokenGetReferenceIndex", "_token_wrapper_8cpp.html#a97b211d9ccdc5ec9ca96ff205a2a2190", null ],
     [ "ns_TokenGetReferenceString", "_token_wrapper_8cpp.html#a265c55dcee7a7d80bc044daf4b4f7089", null ],
     [ "ns_TokenGetType", "_token_wrapper_8cpp.html#a1cf4063c67b0af0b734f086b174ae330", null ],
     [ "ns_TokenGetValue", "_token_wrapper_8cpp.html#af444f75fe27bd2d2a84c4a3ee8e1364c", null ],

@@ -21,5 +21,5 @@ var _program_variable_wrapper_8h =
     [ "ns_ProgramVariableSetValue", "_program_variable_wrapper_8h.html#aa64b6ac7178362cb139e9008d53aee31", null ],
     [ "ns_ProgramVariablesGet", "_program_variable_wrapper_8h.html#aea2b6076e0e5d17c6280523341e85114", null ],
     [ "ns_ProgramVariablesNew", "_program_variable_wrapper_8h.html#a14b4c38f82fba4119b20581ced7f71ad", null ],
-    [ "ns_ProgramVariablesSize", "_program_variable_wrapper_8h.html#a7ee08265e025c7e50d9baa2a7cb14e22", null ]
+    [ "ns_ProgramVariablesSize", "_program_variable_wrapper_8h.html#aaa32f578551b12d6cae97c272a50c6ef", null ]
 ];

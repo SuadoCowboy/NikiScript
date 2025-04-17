@@ -7,5 +7,5 @@ var _command_handler_wrapper_8cpp =
     [ "ns_CommandHandlerErase", "_command_handler_wrapper_8cpp.html#aa3405b4cc3dc3e0c858ba50d148f5b41", null ],
     [ "ns_CommandHandlerGet", "_command_handler_wrapper_8cpp.html#afa30ffd77ada0b974cd07dd21bca290f", null ],
     [ "ns_CommandHandlerNew", "_command_handler_wrapper_8cpp.html#a90bbc8fbd021e5633383a6dd3ba99bba", null ],
-    [ "ns_CommandHandlerSize", "_command_handler_wrapper_8cpp.html#a776e499bc9b2d4a78f30f4e29141b389", null ]
+    [ "ns_CommandHandlerSize", "_command_handler_wrapper_8cpp.html#a3d16b5885d67eb6a620bac7757884e7f", null ]
 ];

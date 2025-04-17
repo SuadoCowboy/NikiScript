@@ -14,7 +14,7 @@ var searchData=
   ['setshort_11',['setShort',['../namespacens.html#ab5626682957acf1ecbf2ef34a7349ca2',1,'ns']]],
   ['setstring_12',['setString',['../namespacens.html#ac758251953def3d7540542f0fc881621',1,'ns']]],
   ['settokentype_13',['setTokenType',['../structns_1_1_lexer.html#af94430738655fd9259ff5df3c0fd41c5',1,'ns::Lexer']]],
-  ['settokenvalue_14',['setTokenValue',['../structns_1_1_lexer.html#aaa2185a1ba19888e8a411dcacea7bc07',1,'ns::Lexer']]],
+  ['settokenvalue_14',['setTokenValue',['../structns_1_1_lexer.html#a7672049e4a46c6f5c785ad8656883a81',1,'ns::Lexer']]],
   ['setunsigned_15',['setUnsigned',['../namespacens.html#a97c72f7c8d40fed08d97c88d902ea95c',1,'ns']]],
   ['setunsignedlonglong_16',['setUnsignedLongLong',['../namespacens.html#ab7f1f94e31a61d941d1b047514d6d1b8',1,'ns']]]
 ];
