@@ -39,6 +39,6 @@ const char** ns_CommandHandlerAllocKeys(ns_CommandHandler *pCommandHandler) {
 	return ns::allocUnorderedMapStringKeysToCharArray(pCommandHandler->commands);
 }
 
-uint64_t ns_CommandHandlerSize(ns_CommandHandler *pCommandHandler) {
+size_t ns_CommandHandlerSize(ns_CommandHandler *pCommandHandler) {
 	return pCommandHandler->commands.size();
 }

@@ -21,7 +21,7 @@ void ns::Lexer::advance() {
 	if (input[position] == '\n')
 		lineIndex++;
 
-	uint64_t nextTokenPosition = setTokenValue();
+	size_t nextTokenPosition = setTokenValue();
 	setTokenType();
 
 	position = nextTokenPosition;
@@ -35,13 +35,13 @@ void ns::Lexer::advanceUntil(uint8_t flags) {
 		advance();
 }
 
-uint64_t ns::Lexer::setTokenValue() {
+size_t ns::Lexer::setTokenValue() {
 	if (input[position] == NIKISCRIPT_STATEMENT_SEPARATOR || input[position] == '\n') {
 		token.value = NIKISCRIPT_STATEMENT_SEPARATOR;
 		return position+1;
 	}
 
-	uint64_t nextTokenPosition = position;
+	size_t nextTokenPosition = position;
 	std::stringstream result{};
 
 	/*
@@ -123,7 +123,7 @@ uint64_t ns::Lexer::setTokenValue() {
 		} else if (input[nextTokenPosition] == NIKISCRIPT_REFERENCE && nextTokenPosition+1 < input.size() && input[nextTokenPosition+1] == NIKISCRIPT_REFERENCE_OPEN) {
 			std::stringstream referenceStream;
 
-			uint64_t tempIndex = nextTokenPosition+2;
+			size_t tempIndex = nextTokenPosition+2;
 			
 			bool foundCloseReference = false;
 			for (; tempIndex < input.size() && !isSpaceNotNewline(input[tempIndex]); ++tempIndex) {

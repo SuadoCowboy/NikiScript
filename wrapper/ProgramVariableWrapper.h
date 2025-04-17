@@ -37,5 +37,5 @@ extern "C" {
 
 	NIKIAPI const char** ns_ProgramVariablesAllocKeys(ns_ProgramVariables *pVars);
 
-	NIKIAPI uint64_t ns_ProgramVariablesSize(ns_ProgramVariables *pVars);
+	NIKIAPI size_t ns_ProgramVariablesSize(ns_ProgramVariables *pVars);
 }

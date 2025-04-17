@@ -19,5 +19,5 @@ extern "C" {
 
 	NIKIAPI const char** ns_CommandHandlerAllocKeys(ns_CommandHandler *pCommandHandler);
 
-	NIKIAPI uint64_t ns_CommandHandlerSize(ns_CommandHandler *pCommandHandler);
+	NIKIAPI size_t ns_CommandHandlerSize(ns_CommandHandler *pCommandHandler);
 }

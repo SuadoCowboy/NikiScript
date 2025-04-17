@@ -42,7 +42,7 @@ namespace ns {
 		if (keys == nullptr)
 			return nullptr;
 
-		uint64_t i = 0;
+		size_t i = 0;
 		for (auto it = map.begin(); it != map.end(); ++it)
 			keys[i++] = it->first.c_str();
 

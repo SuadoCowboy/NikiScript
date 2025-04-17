@@ -27,11 +27,11 @@ NIKIAPI void ns_TokenSetValue(ns_Token* token, const char* value);
 NIKIAPI size_t ns_TokenGetReferenceCount(ns_Token* token);
 
 // Get reference at index
-NIKIAPI uint64_t ns_TokenGetReferenceIndex(ns_Token* token, size_t i);
+NIKIAPI size_t ns_TokenGetReferenceIndex(ns_Token* token, size_t i);
 NIKIAPI const char* ns_TokenGetReferenceString(ns_Token* token, size_t i);
 
 // Add a reference
-NIKIAPI void ns_TokenAddReference(ns_Token* token, uint64_t index, const char* str);
+NIKIAPI void ns_TokenAddReference(ns_Token* token, size_t index, const char* str);
 
 // Clear references
 NIKIAPI void ns_TokenClearReferences(ns_Token* token);

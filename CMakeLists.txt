@@ -8,7 +8,7 @@ if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif()
 
-option(BUILD_SHARED "Whether make it shared or static" ON)
+option(BUILD_SHARED "Whether make it shared or static" OFF)
 
 if(MSVC)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /WX")
@@ -32,14 +32,9 @@ if(BUILD_SHARED)
 	set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS 1)
 	add_library(NikiScript SHARED ${SOURCES})
 	set_target_properties(NikiScript PROPERTIES VERSION ${PROJECT_VERSION} POSITION_INDEPENDENT_CODE ON)
-
-	set(NIKISCRIPT_COMPILE_DEFINITIONS ${NIKISCRIPT_COMPILE_DEFINITIONS} BUILD_SHARED=1)
-	target_compile_definitions(NikiScript PRIVATE ${NIKISCRIPT_COMPILE_DEFINITIONS})
 else()
     add_library(NikiScript STATIC ${SOURCES})
-
-	set(NIKISCRIPT_COMPILE_DEFINITIONS ${NIKISCRIPT_COMPILE_DEFINITIONS} BUILD_SHARED=0)
-	target_compile_definitions(NikiScript PRIVATE ${NIKISCRIPT_COMPILE_DEFINITIONS})
+	set_target_properties(NikiScript PROPERTIES VERSION ${PROJECT_VERSION})
 endif()
 
 target_include_directories(NikiScript PRIVATE ${PROJECT_SOURCE_DIR})

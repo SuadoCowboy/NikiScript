@@ -31,7 +31,7 @@ size_t ns_TokenGetReferenceCount(ns_Token *pToken) {
 	return pToken->references.size();
 }
 
-uint64_t ns_TokenGetReferenceIndex(ns_Token *pToken, size_t i) {
+size_t ns_TokenGetReferenceIndex(ns_Token *pToken, size_t i) {
 	auto& refs = pToken->references;
 	return refs[i].first;
 }
@@ -41,7 +41,7 @@ const char *ns_TokenGetReferenceString(ns_Token *pToken, size_t i) {
 	return refs[i].second.c_str();
 }
 
-void ns_TokenAddReference(ns_Token *pToken, uint64_t index, const char *str) {
+void ns_TokenAddReference(ns_Token *pToken, size_t index, const char *str) {
 	pToken->references.emplace_back(index, str ? std::string(str) : "");
 }
 

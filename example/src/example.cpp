@@ -113,8 +113,8 @@ int main(int, char**) {
 	uint32_t uint32 = 0;
 	ns::registerVariable(ctx, "uint32", "", &uint32, ns::getNumber<uint32_t>, ns::setUnsigned<uint32_t>);
 
-	uint64_t uint64 = 0;
-	ns::registerVariable(ctx, "uint64", "", &uint64, ns::getNumber<uint64_t>, ns::setUnsigned<uint64_t>);
+	size_t usize = 0;
+	ns::registerVariable(ctx, "usize", "", &usize, ns::getNumber<size_t>, ns::setUnsigned<size_t>);
 
 	long long uint128 = 0;
 	ns::registerVariable(ctx, "uint128", "", &uint128, ns::getNumber<long long>, ns::setUnsignedLongLong);

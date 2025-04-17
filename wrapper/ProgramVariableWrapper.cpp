@@ -81,6 +81,6 @@ const char** ns_ProgramVariablesAllocKeys(ns_ProgramVariables *pVars) {
 	return ns::allocUnorderedMapStringKeysToCharArray(*pVars);
 }
 
-uint64_t ns_ProgramVariablesSize(ns_ProgramVariables *pVars) {
+size_t ns_ProgramVariablesSize(ns_ProgramVariables *pVars) {
 	return pVars->size();
 }

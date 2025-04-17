@@ -40,7 +40,7 @@ std::string ns::Command::getArgumentsNames() {
 	std::stringstream oss{};
 	bool isName = true;
 
-	for (uint64_t i = 0; i < argsDescriptions.size(); ++i) {
+	for (size_t i = 0; i < argsDescriptions.size(); ++i) {
 		if (isName)
 			oss << argsDescriptions[i] << ' ';
 
@@ -60,7 +60,7 @@ void ns::Command::printAsDataTree() {
 
 	usage << "- Usage: " << name << ' ';
 	descriptions << "- Description: " << description << "\n- Arguments:\n";
-	for (uint64_t i = 0; i < argsDescriptions.size(); ++i) {
+	for (size_t i = 0; i < argsDescriptions.size(); ++i) {
 		if (isName) {
 			descriptions << "- - " << argsDescriptions[i] << ": ";
 			usage << argsDescriptions[i] << ' ';
