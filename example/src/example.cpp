@@ -6,12 +6,12 @@
 #define NIKISCRIPT_CFG_ROOT_DIRECTORY "data/cfg/"
 
 #define NIKISCRIPT_IMPLEMENTATION
-#include <NikiScript.h>
-#include <PrintCallback.h>
-#include <Context.h>
-#include <Token.h>
-#include <Lexer.h>
-#include <Parser.h>
+#include <NikiScript/NikiScript.h>
+#include <NikiScript/PrintCallback.h>
+#include <NikiScript/Context.h>
+#include <NikiScript/Token.h>
+#include <NikiScript/Lexer.h>
+#include <NikiScript/Parser.h>
 
 void nikiScriptPrintCallback(void*, ns::PrintLevel level, const char* msg) {
 	std::cout << ns::levelToString(level) << ": " << msg;

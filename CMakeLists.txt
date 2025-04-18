@@ -39,6 +39,6 @@ endif()
 
 set_target_properties(NikiScript PROPERTIES PREFIX "")
 
-target_include_directories(NikiScript PRIVATE ${PROJECT_SOURCE_DIR})
+target_include_directories(NikiScript PRIVATE ${PROJECT_SOURCE_DIR}/include/NikiScript)
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/example)
