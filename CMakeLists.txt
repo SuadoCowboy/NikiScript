@@ -37,6 +37,8 @@ else()
 	set_target_properties(NikiScript PROPERTIES VERSION ${PROJECT_VERSION})
 endif()
 
+set_target_properties(NikiScript PROPERTIES PREFIX "")
+
 target_include_directories(NikiScript PRIVATE ${PROJECT_SOURCE_DIR})
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/example)
