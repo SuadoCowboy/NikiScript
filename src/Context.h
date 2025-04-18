@@ -89,7 +89,7 @@ namespace ns {
 
 		uint8_t origin = 0; ///< this is used so that the command knows where he's running in. See ns::OriginType
 
-		uint16_t maxConsoleVariablesRecursiveDepth = 0; ///< How many console variables can be called inside each other 
+		uint16_t maxConsoleVariablesRecursiveDepth = 255; ///< How many console variables can be called inside each other 
 	};
 
 	/**
