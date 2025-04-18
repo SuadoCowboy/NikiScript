@@ -349,7 +349,7 @@ bool ns::parseFile(Context& ctx, const char* _filePath, bool printError) {
 			filePath += NIKISCRIPT_FILE_EXTENSION;
 
 		if (!_path.has_root_directory())// || _path.root_directory() != NIKISCRIPT_ROOT_DIRECTORY)
-			filePath = std::string(NIKISCRIPT_ROOT_DIRECTORY)+(char)_path.preferred_separator+filePath;
+			filePath = getCfgRootDirectory()+filePath;
 	}
 
 	std::ifstream file{filePath};
