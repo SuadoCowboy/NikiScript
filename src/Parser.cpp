@@ -304,8 +304,11 @@ void ns::updateLoopVariables(Context& ctx) {
 }
 
 void ns::parse(Context& ctx, bool printError) {
-	if (ctx.pLexer == nullptr)
+	if (ctx.pLexer == nullptr) {
+		if (printError)
+			ns::print(PrintLevel::ERROR, "tried to parse with a null lexer\n");
 		return;
+	}
 
 	ProgramVariable* pProgramVar = nullptr;
 
