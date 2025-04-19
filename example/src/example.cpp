@@ -55,7 +55,7 @@ std::string tokenToString(const ns::Token& token) {
 
 
 static void test_command(ns::Context& ctx) {
-	ns::Context copy = ns::copyContext(ctx);
+	ns::Context copy = ns::deepCopyContext(ctx);
 	ns::Lexer lexer{ctx.args.getString(0)};
 	copy.pLexer = &lexer;
 	copy.args.arguments.clear();

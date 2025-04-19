@@ -29,7 +29,7 @@ long long ns::Arguments::getLongLong(size_t index) {
 	return std::stoll(arguments[index]);
 }
 
-ns::Context ns::copyContext(const Context& source) {
+ns::Context ns::deepCopyContext(const Context& source) {
 	Context copy{source};
 
 	for (size_t i = 0; i < copy.loopVariablesRunning.size(); ++i)
