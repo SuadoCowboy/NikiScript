@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['echo_5fcommand_0',['echo_command',['../namespacens.html#aaa121328a28f8d5abebecd306e8c5df1',1,'ns']]],
-  ['exec_5fcommand_1',['exec_command',['../namespacens.html#a221e6a88a0cfd4a8b63526fb27bae4f8',1,'ns']]]
+  ['operator_26_0',['operator&amp;',['../_context_8cpp.html#aa1ed49c8305d9c59f35907b9495381e8',1,'operator&amp;(uint8_t l, ns::OriginType r):&#160;Context.cpp'],['../_context_8cpp.html#a578f625e794f8153ffcffff59cd66cac',1,'operator&amp;(ns::OriginType l, uint8_t r):&#160;Context.cpp'],['../_token_8cpp.html#a3e451a1c2e9265b30c4075e25a522816',1,'operator&amp;(uint8_t l, ns::TokenType r):&#160;Token.cpp'],['../_token_8cpp.html#ab766583d18bc9ec2b74cf9cc022dad49',1,'operator&amp;(ns::TokenType l, uint8_t r):&#160;Token.cpp']]],
+  ['operator_26_3d_1',['operator&amp;=',['../_context_8cpp.html#a3897075840c68aa5b7ff0562df4c025f',1,'Context.cpp']]],
+  ['operator_7c_2',['operator|',['../_context_8cpp.html#afa7bc1675981203ed431bf59cc424022',1,'operator|(ns::OriginType l, ns::OriginType r):&#160;Context.cpp'],['../_context_8cpp.html#acb8ce123abaa776202f9bfa24a0d3f98',1,'operator|(uint8_t l, ns::OriginType r):&#160;Context.cpp'],['../_context_8cpp.html#a9b17e806c47f4347df488fe721b8f5ea',1,'operator|(ns::OriginType l, uint8_t r):&#160;Context.cpp'],['../_token_8cpp.html#a7b219603944cda05dfd56b7889b962be',1,'operator|(ns::TokenType l, ns::TokenType r):&#160;Token.cpp'],['../_token_8cpp.html#a3fa08137610c7edf0a58d7a969a43bf6',1,'operator|(uint8_t l, ns::TokenType r):&#160;Token.cpp'],['../_token_8cpp.html#af7748cf04b7166e6a86e3f2cd09b1049',1,'operator|(ns::TokenType l, uint8_t r):&#160;Token.cpp']]],
+  ['operator_7c_3d_3',['operator|=',['../_context_8cpp.html#a29baadef0344c806c83e04ef45f55a71',1,'Context.cpp']]],
+  ['operator_7e_4',['operator~',['../_context_8cpp.html#a4f3bf76e9d9bc578b120c1e517ce9a01',1,'Context.cpp']]]
 ];

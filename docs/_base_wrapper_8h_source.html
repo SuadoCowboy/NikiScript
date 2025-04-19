@@ -143,7 +143,8 @@ $(function(){initNavTree('_base_wrapper_8h_source.html',''); initResizable(true)
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="_d_l_l_export_8h.html">&quot;DLLExport.h&quot;</a></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace</span> <a class="code hl_namespace" href="namespacens.html">ns</a> {</div>
+<div class="foldopen" id="foldopen00009" data-start="{" data-end="}">
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="namespacens.html">    9</a></span><span class="keyword">namespace</span> <a class="code hl_namespace" href="namespacens.html">ns</a> {</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="comment">/**</span></div>
 <div class="line"><span class="lineno">   11</span><span class="comment">     * @brief should be used when a string is created in the function scope and not passed to the function as a parameter</span></div>
 <div class="line"><span class="lineno">   12</span><span class="comment">     * @param size not counting null-terminator as it&#39;s added automatically</span></div>
@@ -190,6 +191,7 @@ $(function(){initNavTree('_base_wrapper_8h_source.html',''); initResizable(true)
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    }</div>
 </div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>}</div>
+</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="_base_wrapper_8h.html#a17a201a46586acfa0be5f0d6d40df385">   54</a></span>    <a class="code hl_define" href="_d_l_l_export_8h.html#a7b90f67b2f242406a44b9e1ec0892f3a">NIKIAPI</a> <span class="keywordtype">void</span> <a class="code hl_function" href="_base_wrapper_8h.html#a17a201a46586acfa0be5f0d6d40df385">ns_freeCharArray</a>(<span class="keywordtype">char</span>* string);</div>
@@ -203,7 +205,7 @@ $(function(){initNavTree('_base_wrapper_8h_source.html',''); initResizable(true)
 <div class="ttc" id="a_base_wrapper_8cpp_html_a5d5aa745c0aceac3cc936defe9ffa257"><div class="ttname"><a href="_base_wrapper_8cpp.html#a5d5aa745c0aceac3cc936defe9ffa257">ns_free2DCharArray</a></div><div class="ttdeci">void ns_free2DCharArray(const char **strings)</div><div class="ttdef"><b>Definition</b> BaseWrapper.cpp:15</div></div>
 <div class="ttc" id="a_base_wrapper_8h_html_a17a201a46586acfa0be5f0d6d40df385"><div class="ttname"><a href="_base_wrapper_8h.html#a17a201a46586acfa0be5f0d6d40df385">ns_freeCharArray</a></div><div class="ttdeci">NIKIAPI void ns_freeCharArray(char *string)</div></div>
 <div class="ttc" id="a_d_l_l_export_8h_html_a7b90f67b2f242406a44b9e1ec0892f3a"><div class="ttname"><a href="_d_l_l_export_8h.html#a7b90f67b2f242406a44b9e1ec0892f3a">NIKIAPI</a></div><div class="ttdeci">#define NIKIAPI</div><div class="ttdef"><b>Definition</b> DLLExport.h:2</div></div>
-<div class="ttc" id="anamespacens_html"><div class="ttname"><a href="namespacens.html">ns</a></div><div class="ttdef"><b>Definition</b> NikiScript.h:7</div></div>
+<div class="ttc" id="anamespacens_html"><div class="ttname"><a href="namespacens.html">ns</a></div><div class="ttdef"><b>Definition</b> BaseWrapper.h:9</div></div>
 <div class="ttc" id="anamespacens_html_a4b35f842d84da1f06cbedcbf9759ba84"><div class="ttname"><a href="namespacens.html#a4b35f842d84da1f06cbedcbf9759ba84">ns::allocStringToCharString</a></div><div class="ttdeci">char * allocStringToCharString(const std::string &amp;src)</div><div class="ttdoc">should be used when a string is created in the function scope and not passed to the function as a par...</div><div class="ttdef"><b>Definition</b> BaseWrapper.cpp:3</div></div>
 <div class="ttc" id="anamespacens_html_a7977345da2ceb6c406ca6fc67e71d5c6"><div class="ttname"><a href="namespacens.html#a7977345da2ceb6c406ca6fc67e71d5c6">ns::allocUnorderedMapKeys</a></div><div class="ttdeci">K * allocUnorderedMapKeys(const std::unordered_map&lt; K, V &gt; &amp;map)</div><div class="ttdef"><b>Definition</b> BaseWrapper.h:22</div></div>
 <div class="ttc" id="anamespacens_html_a8f84d7b771e3b4a03e4d132fc6321df3"><div class="ttname"><a href="namespacens.html#a8f84d7b771e3b4a03e4d132fc6321df3">ns::allocUnorderedMapStringKeysToCharArray</a></div><div class="ttdeci">const char ** allocUnorderedMapStringKeysToCharArray(const std::unordered_map&lt; std::string, V &gt; &amp;map)</div><div class="ttdef"><b>Definition</b> BaseWrapper.h:40</div></div>
