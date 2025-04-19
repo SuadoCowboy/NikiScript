@@ -73,18 +73,18 @@ namespace ns {
 
 		Command* pCommand = nullptr;
 
-		Arguments args;
+		Arguments args{};
 
-		ConsoleVariables consoleVariables;
-		ProgramVariables programVariables;
+		ConsoleVariables consoleVariables{};
+		ProgramVariables programVariables{};
 
-		CommandHandler commands;
+		CommandHandler commands{};
 
-		LoopVariablesRunning loopVariablesRunning;
-		ToggleVariablesRunning toggleVariablesRunning;
-		ToggleCommandsRunning toggleCommandsRunning;
+		LoopVariablesRunning loopVariablesRunning{};
+		ToggleVariablesRunning toggleVariablesRunning{};
+		ToggleCommandsRunning toggleCommandsRunning{};
 
-		std::string filePath; ///< when running script from a file
+		std::string filePath{}; ///< when running script from a file
 		size_t lineCount = 0;
 
 		uint8_t origin = 0; ///< this is used so that the command knows where he's running in. See ns::OriginType
@@ -93,14 +93,14 @@ namespace ns {
 	};
 
 	/**
-	 * @brief Do not copy Context without calling this function.
+	 * @brief If you want a 100% new copy without being dependent on the source context then use this function
 	 * LoopVariablesRunning and ToggleVariablesRunning stores pointers
 	 * pointed to ConsoleVariables as well as toggleCommandsRunning whose
 	 * pointers are from CommandHandler. That's why this function exists:
 	 * It updates all those pointers.
 	 * @param source object to copy content from
 	 */
-	Context copyContext(const Context& source);
+	Context deepCopyContext(const Context& source);
 }
 
 uint8_t operator|(ns::OriginType l, ns::OriginType r);
