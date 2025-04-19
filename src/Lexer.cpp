@@ -124,13 +124,19 @@ size_t ns::Lexer::setTokenValue() {
 			std::stringstream referenceStream;
 
 			size_t tempIndex = nextTokenPosition+2;
-			
+
+			size_t referenceCount = 0; ///< how many references were found inside of it
 			bool foundCloseReference = false;
-			for (; tempIndex < input.size() && !isSpaceNotNewline(input[tempIndex]); ++tempIndex) {
-				if (input[tempIndex] == NIKISCRIPT_REFERENCE_CLOSE) {
-					++tempIndex;
-					foundCloseReference = true;
-					break;
+			for (; tempIndex < input.size() && input[tempIndex] != '\n'; ++tempIndex) {
+				if (input[tempIndex] == NIKISCRIPT_REFERENCE && tempIndex+1 < input.size() && input[tempIndex+1] == NIKISCRIPT_REFERENCE_OPEN)
+					++referenceCount;
+				else if (input[tempIndex] == NIKISCRIPT_REFERENCE_CLOSE) {
+					if (referenceCount == 0) {
+						++tempIndex;
+						foundCloseReference = true;
+						break;
+					} else
+						--referenceCount;
 				}
 
 				referenceStream << input[tempIndex];

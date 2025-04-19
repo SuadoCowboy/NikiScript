@@ -23,6 +23,7 @@ namespace ns {
 		VARIABLE_TOGGLE = 16, ///< '+' or '-'
 		FILE = 32, ///< ns::parseFile or exec command
 		INTERNAL = 64, ///< raw script generated from C++ code and not from a file or variable or anything else
+		REFERENCE = 128, ///< scripts ran inside a reference ${echo hello} -> echo command is ran inside a reference and its output is the reference result
 	};
 
 	struct Context;
@@ -89,7 +90,7 @@ namespace ns {
 
 		uint8_t origin = 0; ///< this is used so that the command knows where he's running in. See ns::OriginType
 
-		uint16_t maxConsoleVariablesRecursiveDepth = 255; ///< How many console variables can be called inside each other 
+		uint16_t maxConsoleVariablesRecursiveDepth = 255; ///< How many console variables can be called inside each other
 	};
 
 	/**
