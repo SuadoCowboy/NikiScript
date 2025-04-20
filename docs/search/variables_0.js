@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['running_0',['running',['../example_8cpp.html#a36f7b6be7108281af77939ceaec42fd6',1,'example.cpp']]]
+  ['iscrazy_0',['isCrazy',['../example_8cpp.html#a5714641d0ec81ffd3f2c538657e19ade',1,'example.cpp']]]
 ];
