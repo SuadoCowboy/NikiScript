@@ -30,3 +30,7 @@ void ns::print(ns::PrintLevel level, const char* str) {
 void ns::printUnknownCommand(const char* command) {
 	printf(PrintLevel::ERROR, "Unknown command \"{}\"\n", command);
 }
+
+void ns::printAppendToString(void* pBuffer, ns::PrintLevel, const char* string) {
+	static_cast<std::string*>(pBuffer)->append(string);
+}
