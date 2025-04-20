@@ -68,6 +68,16 @@ static void quit_command(ns::Context&) {
 	running = false;
 }
 
+bool isCrazy = false;
+static void crazy_command(ns::Context& ctx) {
+	if (ctx.args.arguments.size() == 0) {
+		ns::printf(ns::PrintLevel::ECHO, "{}\n", isCrazy);
+		return;
+	}
+
+	isCrazy = ctx.args.getSigned<uint32_t>(0) > 0;
+}
+
 int main(int, char**) {
 	ns::setPrintCallback(nullptr, nikiScriptPrintCallback);
 
@@ -79,6 +89,7 @@ int main(int, char**) {
 
 	ctx.commands.add(ns::Command("quit", 0,1, quit_command, "stops the main loop from running", {"s[?]", ""}));
 	ctx.commands.add(ns::Command("test", 1,1, test_command, "runs script", {"s[script]", "parses to nikiscript"}));
+	ctx.commands.add(ns::Command("crazy", 0,1, crazy_command, "", {"i[isCrazy?]", ""}));
 
 	// decimal numbers
 	float floatNumber = 0;
