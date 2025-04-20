@@ -10,6 +10,7 @@ ns::Command::Command() {}
 ns::Command::Command(const std::string& name, uint8_t minArgs, uint8_t maxArgs,
 	CommandCallback callback, const std::string& description, const std::vector<std::string>& argsDescriptions)
 	: name(name), minArgs(minArgs), maxArgs(maxArgs), callback(callback), description(description), argsDescriptions(argsDescriptions) {
+#ifndef NDEBUG	
 	assert(!name.empty());
 	assert(minArgs <= maxArgs);
 	assert(argsDescriptions.size() % 2 == 0);
@@ -17,9 +18,9 @@ ns::Command::Command(const std::string& name, uint8_t minArgs, uint8_t maxArgs,
 
 	bool isName = true;
 	for (uint8_t i = 0; i < argsDescriptions.size(); ++i) {
-		const std::string& arg = argsDescriptions[i];
-
 		if (isName) {
+			const std::string& arg = argsDescriptions[i];
+
 			assert(arg.size() > 3);
 			assert(arg[0] == 's' || arg[0] == 'i' || arg[0] == 'd' || arg[0] == 'v');
 			assert(arg[1] == '[' && arg[arg.size()-1] == ']');
@@ -31,6 +32,7 @@ ns::Command::Command(const std::string& name, uint8_t minArgs, uint8_t maxArgs,
 	}
 
 	assert(callback != nullptr);
+#endif
 }
 
 std::string ns::Command::getArgumentsNames() {
