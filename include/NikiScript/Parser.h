@@ -90,8 +90,18 @@ namespace ns {
 	 * @param ctx
 	 */
 	void parse(Context& ctx, bool printError=true);
-
 	bool parseFile(Context& ctx, const char* filePath, bool printError);
+
+	/**
+	 * @brief should be used when the main context is already using the lexer
+	 * @param ctx
+	 * @param input
+	 * @note the newlines from the end are removed
+	 * @see ns::printAppendToString
+	 * @return the print output which is not printed by the commands
+	 * @warning print function is set to ns::printAppendToString
+	 */
+	std::string parseInsideAnotherScript(Context& ctx, const char* input); // TODO: when making NikiScript thread-safe, don't forget this function!
 
 	std::string getCfgRootDirectory();
 }
