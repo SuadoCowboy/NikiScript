@@ -153,7 +153,7 @@ void ns::toggle_command(ns::Context& ctx) {
 	const std::string& option1 = ctx.args.getString(1);
 	const std::string& option2 = ctx.args.getString(2);
 
-	if (ctx.consoleVariables.count(varName) != 0) {
+	if (ctx.consoleVariables.count(varName) != 0) { // Console Variable
 		std::string& varValue = ctx.consoleVariables[varName];
 
 		if (varValue == option1)
@@ -161,16 +161,26 @@ void ns::toggle_command(ns::Context& ctx) {
 		else
 			varValue = option1;
 
-		return;
-	}
+	} else if (ctx.programVariables.count(varName) != 0) { // Program Variable
+		ns::ProgramVariable& var = ctx.programVariables[varName];
+		std::string varValue = var.get(ctx, &var);
+	
+		if (varValue == option1)
+			var.set(ctx, &var, option2);
+		else
+			var.set(ctx, &var, option1);
+	} else if (ns::Command *pCommand = ctx.commands.get(varName)) { // Command
+		std::string varValue = parseInsideAnotherScript(ctx, pCommand->name.c_str());
+		if (varValue == option1)
+			varValue = option2;
+		else
+			varValue = option1;
 
-	ns::ProgramVariable& var = ctx.programVariables[varName];
-	std::string varValue = var.get(ctx, &var);
-
-	if (varValue == option1)
-		var.set(ctx, &var, option2);
-	else
-		var.set(ctx, &var, option1);
+		// This could be unsecure depending on what nikiscript is being used, because if you set one of the options with something like "); destroy_humanity\\\\", it will call destroy_humanity!
+		varValue = formatString("{}({})", pCommand->name, varValue.c_str());
+		parseInsideAnotherScript(ctx, varValue.c_str());
+	} else
+		ns::print(PrintLevel::ERROR, "toggle command expected a variable or command\n");
 }
 
 void ns::exec_command(Context& ctx) {
@@ -224,7 +234,7 @@ void ns::registerCommands(ns::Context& ctx) {
 	ctx.commands.add(Command("help", 0,1, help_command, "prints a list of commands with their usages or the usage of the specified command", {"s[command?]", "command to see usage"}));
 	ctx.commands.add(Command("var", 1,2, var_command, "creates a variable", {"s[name]", "variable name", "s[value?]", "if value is not specified, variable becomes an empty string"}));
 	ctx.commands.add(Command("delvar", 1,1, delvar_command, "deletes a variable", {"v[variable]", "variable to delete"}));
-	ctx.commands.add(Command("toggle", 3,3, toggle_command, "toggles value between option1 and option2", {"v[variable]", "variable to modify value", "s[option1]", "option to set variable in case variable value is option2", "s[option2]", "option to set variable in case variable value is option1"}));
+	ctx.commands.add(Command("toggle", 3,3, toggle_command, "toggles value between option1 and option2", {"s[variableOrCommand]", "variable or command to modify its value", "s[option1]", "option to set variable in case variable value is option2", "s[option2]", "option to set variable in case variable value is option1"}));
 	ctx.commands.add(Command("exec", 1,1, exec_command, "parses a script file", {"s[filePath]", "path to the file"}));
 	ctx.commands.add(Command("incrementvar", 3,4, incrementvar_command, "do value + delta, when value > max: value = min", {"v[variable]", "variable to modify value", "d[min]", "minimum value possible", "d[max]", "maximum possible value", "d[delta?]", "to increase value with -> value + delta"}));
 }
