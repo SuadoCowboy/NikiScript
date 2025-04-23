@@ -6,8 +6,8 @@
 #include "Parser.h"
 #include "Lexer.h"
 
-void ns::help_command(Context& ctx) {
-	if (ctx.args.arguments.size() == 0) {
+void ns::help(Context& ctx, const std::string& name) {
+	if (name.empty()) {
 		std::stringstream oss{};
 		for (auto& command : ctx.commands.commands)
 			oss << command.second.name << ' ' << command.second.getArgumentsNames() << '\n';
@@ -15,12 +15,9 @@ void ns::help_command(Context& ctx) {
 		ns::print(ns::ECHO, oss.str().c_str());
 
 	} else {
-		std::string& commandName = ctx.args.getString(0);
-		trim(commandName);
-
-		Command* pCommand = ctx.commands.get(commandName);
+		Command* pCommand = ctx.commands.get(name);
 		if (pCommand == nullptr) {
-			ns::printf(ns::ERROR, "Command \"{}\" not found\n", commandName);
+			ns::printf(ns::ERROR, "Command \"{}\" not found\n", name);
 			return;
 		}
 
@@ -28,13 +25,15 @@ void ns::help_command(Context& ctx) {
 	}
 }
 
+void ns::help_command(Context& ctx) {
+	help(ctx, ctx.args.arguments.size() > 0? ctx.args.getString(0) : "");
+}
+
 void ns::echo_command(Context& ctx) {
 	ns::printf(ns::ECHO, "{}\n", ctx.args.getString(0));
 }
 
-void ns::var_command(Context& ctx) {
-	std::string& name = ctx.args.getString(0);
-
+void ns::var(Context& ctx, const std::string& name, const std::string& value) {
 	if (name.empty()) {
 		ns::print(PrintLevel::ERROR, "Variable name can not be empty\n");
 		return;
@@ -113,29 +112,28 @@ void ns::var_command(Context& ctx) {
 		return;
 	}
 
-	if (ctx.args.arguments.size() == 1)
-		ctx.consoleVariables[name] = "";
-	else
-		ctx.consoleVariables[name] = ctx.args.getString(1);
+	ctx.consoleVariables[name] = value;
 }
 
-void ns::delvar_command(Context& ctx) {
-	const std::string& varName = ctx.args.getString(0);
+void ns::var_command(Context& ctx) {
+	var(ctx, ctx.args.getString(0), ctx.args.arguments.size() > 1? ctx.args.getString(1) : "");
+}
 
-	if (ctx.consoleVariables.count(varName) == 0) {
+void ns::delvar(Context& ctx, const std::string& name) {
+	if (ctx.consoleVariables.count(name) == 0) {
 		ns::printf(PrintLevel::ERROR, "Expected console variable\n");
 		return;
 	}
 
 	for (size_t i = 0; i < ctx.loopVariablesRunning.size(); ++i) {
-		if (ctx.loopVariablesRunning[i]->first == varName) {
+		if (ctx.loopVariablesRunning[i]->first == name) {
 			ctx.loopVariablesRunning.erase(ctx.loopVariablesRunning.begin()+i);
 			break;
 		}
 	}
 
-	if (varName.size() > 1 && varName[0] == '+') {
-		std::string toggleVarName = varName.substr(1);
+	if (name.size() > 1 && name[0] == '+') {
+		std::string toggleVarName = name.substr(1);
 
 		for (size_t i = 0; i < ctx.toggleVariablesRunning.size(); ++i) {
 			if (ctx.toggleVariablesRunning[i]->first == toggleVarName) {
@@ -145,14 +143,54 @@ void ns::delvar_command(Context& ctx) {
 		}
 	}
 
-	ctx.consoleVariables.erase(varName);
+	ctx.consoleVariables.erase(name);
 }
 
-void ns::toggle_command(ns::Context& ctx) {
-	const std::string& varName = ctx.args.getString(0);
-	const std::string& option1 = ctx.args.getString(1);
-	const std::string& option2 = ctx.args.getString(2);
+void ns::delvar_command(Context& ctx) {
+	delvar(ctx, ctx.args.getString(0));
+}
 
+void ns::incrementvar(Context& ctx, const std::string& name, float min, float max, float delta) {
+	if (min > max) {
+		ns::printf(ns::ERROR, "max({}) should be higher than min({})\n", max, min);
+		return;
+	}
+
+	float value = 0.0;
+	if (ctx.consoleVariables.count(name) != 0) {
+		try {
+			value = std::stof(ctx.consoleVariables[name]);
+		} catch (...) {
+			ns::printf(ns::ERROR, "\"{}\" is not a number\n", ctx.consoleVariables[name]);
+			return;
+		}
+	} else {
+		try {
+			value = std::stof(ctx.programVariables[name].get(ctx, &ctx.programVariables[name]));
+		} catch (...) {
+			ns::printf(ns::ERROR, "\"{}\" is not a number\n", ctx.consoleVariables[name]);
+			return;
+		}
+	}
+
+	value += delta;
+	if (value > max)
+		value = min;
+
+	if (value < min)
+		value = min;
+
+	if (ctx.consoleVariables.count(name) != 0) {
+		ctx.consoleVariables[name] = std::to_string(value);
+	} else
+		ctx.programVariables[name].set(ctx, &ctx.programVariables[name], std::to_string(value));
+}
+
+void ns::incrementvar_command(Context& ctx) {
+	incrementvar(ctx, ctx.args.getString(0), ctx.args.getFloat(1), ctx.args.getFloat(2), ctx.args.arguments.size() > 3? ctx.args.getFloat(3) : 1.0f);
+}
+
+void ns::toggle(Context& ctx, const std::string& varName, const std::string& option1, const std::string& option2) {
 	if (ctx.consoleVariables.count(varName) != 0) { // Console Variable
 		std::string& varValue = ctx.consoleVariables[varName];
 
@@ -183,50 +221,12 @@ void ns::toggle_command(ns::Context& ctx) {
 		ns::print(PrintLevel::ERROR, "toggle command expected a variable or command\n");
 }
 
-void ns::exec_command(Context& ctx) {
-	parseFile(ctx, ctx.args.getString(0).c_str(), true);
+void ns::toggle_command(ns::Context& ctx) {
+	ns::toggle(ctx, ctx.args.getString(0), ctx.args.getString(1), ctx.args.getString(2));
 }
 
-void ns::incrementvar_command(Context& ctx) {
-	const std::string& variableName = ctx.args.getString(0);
-
-	float min = ctx.args.getFloat(1);
-	float max = ctx.args.getFloat(2);
-	if (min > max) {
-		ns::printf(ns::ERROR, "max({}) should be higher than min({})\n", max, min);
-		return;
-	}
-
-	float delta = ctx.args.getFloat(3);
-
-	float value = 0.0;
-	if (ctx.consoleVariables.count(variableName) != 0) {
-		try {
-			value = std::stof(ctx.consoleVariables[variableName]);
-		} catch (...) {
-			ns::printf(ns::ERROR, "\"{}\" is not a number\n", ctx.consoleVariables[variableName]);
-			return;
-		}
-	} else {
-		try {
-			value = std::stof(ctx.programVariables[variableName].get(ctx, &ctx.programVariables[variableName]));
-		} catch (...) {
-			ns::printf(ns::ERROR, "\"{}\" is not a number\n", ctx.consoleVariables[variableName]);
-			return;
-		}
-	}
-
-	value += delta;
-	if (value > max)
-		value = min;
-
-	if (value < min)
-		value = min;
-
-	if (ctx.consoleVariables.count(variableName) != 0) {
-		ctx.consoleVariables[variableName] = std::to_string(value);
-	} else
-		ctx.programVariables[variableName].set(ctx, &ctx.programVariables[variableName], std::to_string(value));
+void ns::exec_command(Context& ctx) {
+	parseFile(ctx, ctx.args.getString(0).c_str(), true);
 }
 
 void ns::registerCommands(ns::Context& ctx) {
