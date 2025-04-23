@@ -114,9 +114,6 @@ int main(int, char**) {
 	int64_t int64 = 0;
 	ns::registerVariable(ctx, "int64", "", &int64, ns::getNumber<int64_t>, ns::setLong);
 
-	long long int128 = 0;
-	ns::registerVariable(ctx, "int128", "", &int128, ns::getNumber<long long>, ns::setLongLong);
-
 	// unsigned numbers
 	uint8_t uint8 = 0;
 	ns::registerVariable(ctx, "uint8", "", &uint8, ns::getNumber<uint8_t>, ns::setUnsigned<uint8_t>);
@@ -127,11 +124,8 @@ int main(int, char**) {
 	uint32_t uint32 = 0;
 	ns::registerVariable(ctx, "uint32", "", &uint32, ns::getNumber<uint32_t>, ns::setUnsigned<uint32_t>);
 
-	size_t usize = 0;
-	ns::registerVariable(ctx, "usize", "", &usize, ns::getNumber<size_t>, ns::setUnsigned<size_t>);
-
-	long long uint128 = 0;
-	ns::registerVariable(ctx, "uint128", "", &uint128, ns::getNumber<long long>, ns::setUnsignedLongLong);
+	unsigned long long uint64 = 0;
+	ns::registerVariable(ctx, "uint64", "", &uint64, ns::getNumber<unsigned long long>, ns::setUnsignedLongLong);
 
 	running = true;
 	while (running) {
