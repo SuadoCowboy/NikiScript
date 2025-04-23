@@ -39,6 +39,11 @@ void ns::var(Context& ctx, const std::string& name, const std::string& value) {
 		return;
 	}
 
+	if (isdigit(name[0])) {
+		ns::print(PrintLevel::ERROR, "Variable name can not contain digit in the beggining\n");
+		return;
+	}
+
 	for (size_t i = 0; i < name.size(); ++i) {
 		if (isspace(name[i])) {
 			ns::print(PrintLevel::ERROR, "Variable name can not contain whitespace\n");
