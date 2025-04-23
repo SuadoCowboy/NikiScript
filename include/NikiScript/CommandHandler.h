@@ -5,6 +5,9 @@
 
 #include "Command.h"
 
+#define nsRegisterCommand(ctx, name, minArgs, maxArgs, callback, description, ...) \
+	ctx.commands.add(ns::Command(name, minArgs, maxArgs, callback, description, {__VA_ARGS__}))
+
 namespace ns {
 	struct Context;
 

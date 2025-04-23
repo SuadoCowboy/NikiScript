@@ -230,13 +230,13 @@ void ns::incrementvar_command(Context& ctx) {
 }
 
 void ns::registerCommands(ns::Context& ctx) {
-	ctx.commands.add(Command("echo", 1, 1, echo_command, "prints the passed message to console", {"s[message]", "content to print to console"}));
-	ctx.commands.add(Command("help", 0,1, help_command, "prints a list of commands with their usages or the usage of the specified command", {"s[command?]", "command to see usage"}));
-	ctx.commands.add(Command("var", 1,2, var_command, "creates a variable", {"s[name]", "variable name", "s[value?]", "if value is not specified, variable becomes an empty string"}));
-	ctx.commands.add(Command("delvar", 1,1, delvar_command, "deletes a variable", {"v[variable]", "variable to delete"}));
-	ctx.commands.add(Command("toggle", 3,3, toggle_command, "toggles value between option1 and option2", {"s[variableOrCommand]", "variable or command to modify its value", "s[option1]", "option to set variable in case variable value is option2", "s[option2]", "option to set variable in case variable value is option1"}));
-	ctx.commands.add(Command("exec", 1,1, exec_command, "parses a script file", {"s[filePath]", "path to the file"}));
-	ctx.commands.add(Command("incrementvar", 3,4, incrementvar_command, "do value + delta, when value > max: value = min", {"v[variable]", "variable to modify value", "d[min]", "minimum value possible", "d[max]", "maximum possible value", "d[delta?]", "to increase value with -> value + delta"}));
+	nsRegisterCommand(ctx, "echo", 1, 1, echo_command, "prints the passed message to console", "s[message]", "content to print to console");
+	nsRegisterCommand(ctx, "help", 0,1, help_command, "prints a list of commands with their usages or the usage of the specified command", "s[command?]", "command to see usage");
+	nsRegisterCommand(ctx, "var", 1,2, var_command, "creates a variable", "s[name]", "variable name", "s[value?]", "if value is not specified, variable becomes an empty string");
+	nsRegisterCommand(ctx, "delvar", 1,1, delvar_command, "deletes a variable", "v[variable]", "variable to delete");
+	nsRegisterCommand(ctx, "toggle", 3,3, toggle_command, "toggles value between option1 and option2", "s[variableOrCommand]", "variable or command to modify its value", "s[option1]", "option to set variable in case variable value is option2", "s[option2]", "option to set variable in case variable value is option1");
+	nsRegisterCommand(ctx, "exec", 1,1, exec_command, "parses a script file", "s[filePath]", "path to the file");
+	nsRegisterCommand(ctx, "incrementvar", 3,4, incrementvar_command, "do value + delta, when value > max: value = min", "v[variable]", "variable to modify value", "d[min]", "minimum value possible", "d[max]", "maximum possible value", "d[delta?]", "to increase value with -> value + delta");
 }
 
 void ns::registerVariable(ns::Context& ctx, const std::string& name, const std::string& description, void* pVar, const GetProgramVariableValue& get, const SetProgramVariableValue& set) {

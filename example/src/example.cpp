@@ -87,9 +87,9 @@ int main(int, char**) {
 	ns::Lexer lexer;
 	ctx.pLexer = &lexer;
 
-	ctx.commands.add(ns::Command("quit", 0,1, quit_command, "stops the main loop from running", {"s[?]", ""}));
-	ctx.commands.add(ns::Command("test", 1,1, test_command, "runs script", {"s[script]", "parses to nikiscript"}));
-	ctx.commands.add(ns::Command("crazy", 0,1, crazy_command, "", {"i[isCrazy?]", ""}));
+	nsRegisterCommand(ctx, "quit", 0,1, quit_command, "stops the main loop from running", "s[?]", "");
+	nsRegisterCommand(ctx, "test", 1,1, test_command, "runs script", "s[script]", "parses to nikiscript");
+	nsRegisterCommand(ctx, "crazy", 0,1, crazy_command, "", "i[isCrazy?]", "");
 
 	// decimal numbers
 	float floatNumber = 0;
