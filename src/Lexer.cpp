@@ -46,7 +46,7 @@ size_t ns::Lexer::setTokenValue() {
 
 	/*
 	1 = allow white space and NIKISCRIPT_STATEMENT_SEPARATOR
-	2 = escape next char
+	2 = escape next char if is a known char like NIKISCRIPT_STATEMENT_SEPARATOR
 	4 = skipping all until NIKISCRIPT_COMMENT_LINES+NIKISCRIPT_COMMENT_LINE is found
 	*/
 	uint8_t flags = openArguments == 0? 0 : 1;
@@ -54,6 +54,22 @@ size_t ns::Lexer::setTokenValue() {
 	while (nextTokenPosition < input.size() && (position == nextTokenPosition || ((!isSpaceNotNewline(input[nextTokenPosition]) && (input[nextTokenPosition] != NIKISCRIPT_STATEMENT_SEPARATOR || (flags & 2))) || (flags & 1)))) {
 		if (flags & 2) {
 			flags &= ~2;
+			switch (input[nextTokenPosition]) {
+			case NIKISCRIPT_ARGUMENTS_CLOSE:
+			case NIKISCRIPT_ARGUMENTS_OPEN:
+			case NIKISCRIPT_ARGUMENTS_QUOTE:
+			case NIKISCRIPT_ARGUMENTS_SEPARATOR:
+			case NIKISCRIPT_COMMENT_LINE:
+			case NIKISCRIPT_COMMENT_LINES:
+			case NIKISCRIPT_ESCAPE_NEXT_CHAR:
+			case NIKISCRIPT_REFERENCE:
+			case NIKISCRIPT_REFERENCE_CLOSE:
+			case NIKISCRIPT_REFERENCE_OPEN:
+			case NIKISCRIPT_STATEMENT_SEPARATOR:
+				break;
+			default:
+				result << input[nextTokenPosition-1];
+			}
 			result << input[nextTokenPosition++];
 			continue;
 		}
@@ -85,7 +101,7 @@ size_t ns::Lexer::setTokenValue() {
 			}
 
 			if (input[nextTokenPosition+1] == NIKISCRIPT_COMMENT_LINES) {
-				flags |= 5;
+				flags |= 5; // 4 | 1
 				nextTokenPosition += 3;
 				continue;
 			}
