@@ -69,6 +69,7 @@ size_t ns::Lexer::setTokenValue() {
 				break;
 			default:
 				result << input[nextTokenPosition-1];
+				break;
 			}
 			result << input[nextTokenPosition++];
 			continue;
@@ -184,7 +185,7 @@ size_t ns::Lexer::setTokenValue() {
 }
 
 void ns::Lexer::setTokenType() {
-	if (!token.value.empty() && token.value[0] == NIKISCRIPT_STATEMENT_SEPARATOR) {
+	if (token.value.size() == 1 && token.value[0] == NIKISCRIPT_STATEMENT_SEPARATOR) {
 		token.type = TokenType::EOS;
 
 	} else if (token.type == TokenType::NONE || ((TokenType::EOS|TokenType::END) & token.type)) { // if the lexer just started and is not EOS
