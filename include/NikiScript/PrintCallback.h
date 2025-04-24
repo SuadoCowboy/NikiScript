@@ -36,4 +36,12 @@ namespace ns {
 	 * @param string string to append to pBuffer
 	 */
 	void printAppendToString(void* pBuffer, PrintLevel level, const char* string);
+
+	/**
+	 * @brief appends string to pBuffer if level is PrintLevel::ECHO
+	 * @param pBuffer should be std::string*
+	 * @param level should be ECHO to be appended to the string
+	 * @param string string to append to pBuffer
+	 */
+	void printAppendToStringEchoOnly(void* pBuffer, PrintLevel level, const char* string);
 }

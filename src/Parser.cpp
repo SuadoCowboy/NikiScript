@@ -404,7 +404,7 @@ bool ns::parseFile(Context& ctx, const char* _filePath, bool printError) {
 	return true;
 }
 
-std::string ns::parseInsideAnotherScript(Context& ctx, const char* input) {
+void ns::parseInsideAnotherScript(Context& ctx, const char* input) {
 	Arguments originalArgs = ctx.args;
 	Lexer *pOriginalLexer = ctx.pLexer;
 	Command *pOriginalCommand = ctx.pCommand;
@@ -416,25 +416,11 @@ std::string ns::parseInsideAnotherScript(Context& ctx, const char* input) {
 
 	clearStatementData(ctx);
 
-	void* pOriginalPrintCallbackData = pPrintCallbackData;
-	PrintCallback originalPrintCallback = printCallback;
-
-	std::string printOutput = "";
-	setPrintCallback(&printOutput, printAppendToString);
-
-	ctx.origin |= ns::OriginType::REFERENCE;
 	parse(ctx);
-
-	setPrintCallback(pOriginalPrintCallbackData, originalPrintCallback);
 
 	ctx.pLexer = pOriginalLexer;
 	ctx.pCommand = pOriginalCommand;
 	ctx.args = originalArgs;
 	ctx.filePath = originalFilePath;
 	ctx.origin = originalOrigin;
-
-	while (printOutput.size() != 0 && printOutput[printOutput.size()-1] == '\n')
-		printOutput.erase(printOutput.begin()+(printOutput.size()-1));
-
-	return printOutput;
 }

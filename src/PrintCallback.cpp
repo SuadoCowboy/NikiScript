@@ -34,3 +34,8 @@ void ns::printUnknownCommand(const char* command) {
 void ns::printAppendToString(void* pBuffer, ns::PrintLevel, const char* string) {
 	static_cast<std::string*>(pBuffer)->append(string);
 }
+
+void ns::printAppendToStringEchoOnly(void* pBuffer, ns::PrintLevel level, const char* string) {
+	if (level == PrintLevel::ECHO)
+		static_cast<std::string*>(pBuffer)->append(string);
+}

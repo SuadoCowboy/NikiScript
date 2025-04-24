@@ -101,7 +101,7 @@ namespace ns {
 	 * @return the print output which is not printed by the commands
 	 * @warning print function is set to ns::printAppendToString
 	 */
-	std::string parseInsideAnotherScript(Context& ctx, const char* input); // TODO: when making NikiScript thread-safe, don't forget this function!
+	void parseInsideAnotherScript(Context& ctx, const char* input); // TODO: when making NikiScript thread-safe, don't forget this function!
 
 	std::string getCfgRootDirectory();
 }

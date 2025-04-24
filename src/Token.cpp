@@ -43,7 +43,19 @@ void ns::insertReferencesInToken(Context& ctx, Token& token) {
 			offset += value.size();
 
 		} else {
-			std::string printOutput = parseInsideAnotherScript(ctx, reference.second.c_str());
+			void* pOriginalPrintCallbackData = pPrintCallbackData;
+			PrintCallback originalPrintCallback = printCallback;
+
+			std::string printOutput;
+			setPrintCallback(&printOutput, printAppendToStringEchoOnly);
+			
+			parseInsideAnotherScript(ctx, reference.second.c_str());
+			setPrintCallback(pOriginalPrintCallbackData, originalPrintCallback);
+			for (size_t i = 0; i < printOutput.size(); ++i) {
+				if (printOutput[i] == '\n')
+					printOutput[i] = ' ';
+			}
+
 			token.value = token.value.insert(offset+reference.first, printOutput);
 			offset += printOutput.size();
 		}
