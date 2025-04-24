@@ -48,9 +48,15 @@ void ns::insertReferencesInToken(Context& ctx, Token& token) {
 
 			std::string printOutput;
 			setPrintCallback(&printOutput, printAppendToStringEchoOnly);
-			
+
+			uint8_t originalOrigin = ctx.origin;
+
+			ctx.origin |= OriginType::REFERENCE;
 			parseInsideAnotherScript(ctx, reference.second.c_str());
 			setPrintCallback(pOriginalPrintCallbackData, originalPrintCallback);
+
+			ctx.origin = originalOrigin;
+
 			for (size_t i = 0; i < printOutput.size(); ++i) {
 				if (printOutput[i] == '\n')
 					printOutput[i] = ' ';
