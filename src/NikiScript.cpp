@@ -33,21 +33,21 @@ void ns::echo_command(Context& ctx) {
 	ns::printf(ns::ECHO, "{}\n", ctx.args.getString(0));
 }
 
-void ns::var(Context& ctx, const std::string& name, const std::string& value) {
+bool ns::var(Context& ctx, const std::string& name, const std::string& value) {
 	if (name.empty()) {
 		ns::print(PrintLevel::ERROR, "Variable name can not be empty\n");
-		return;
+		return false;
 	}
 
 	if (isdigit(name[0])) {
 		ns::print(PrintLevel::ERROR, "Variable name can not contain digit in the beggining\n");
-		return;
+		return  false;
 	}
 
 	for (size_t i = 0; i < name.size(); ++i) {
 		if (isspace(name[i])) {
 			ns::print(PrintLevel::ERROR, "Variable name can not contain whitespace\n");
-			return;
+			return  false;
 		}
 
 		switch (name[i]) {
@@ -55,73 +55,76 @@ void ns::var(Context& ctx, const std::string& name, const std::string& value) {
 			if (i == 0 && name.size() > 1)
 				break;
 			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name alone or after the first character\n", NIKISCRIPT_LOOP_VARIABLE);
-			return;
+			return false;
 
 		case NIKISCRIPT_TOGGLE_ON:
 			if (i == 0 && name.size() > 1)
 				break;
 			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name alone or after the first character\n", NIKISCRIPT_TOGGLE_ON);
-			return;
+			return false;
 
 		case NIKISCRIPT_TOGGLE_OFF:
 			if (i == 0 && name.size() > 1)
 				break;
 			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name alone or after the first character\n", NIKISCRIPT_TOGGLE_OFF);
-			return;
+			return false;
 
 		case NIKISCRIPT_REFERENCE:
 			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_REFERENCE);
-			return;
+			return false;
 
 		case NIKISCRIPT_REFERENCE_OPEN:
 			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_REFERENCE_OPEN);
-			return;
+			return false;
 
 		case NIKISCRIPT_REFERENCE_CLOSE:
 			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_REFERENCE_CLOSE);
-			return;
+			return false;
 
 		case NIKISCRIPT_ARGUMENTS_SEPARATOR:
 			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_ARGUMENTS_SEPARATOR);
-			return;
+			return false;
 
 		case NIKISCRIPT_ARGUMENTS_CLOSE:
 			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_ARGUMENTS_CLOSE);
-			return;
+			return false;
 
 		case NIKISCRIPT_ARGUMENTS_OPEN:
 			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_ARGUMENTS_OPEN);
-			return;
+			return false;
 
 		case NIKISCRIPT_STATEMENT_SEPARATOR:
 			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_STATEMENT_SEPARATOR);
-			return;
+			return false;
 
 		case NIKISCRIPT_COMMENT_LINE:
 			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_COMMENT_LINE);
-			return;
+			return false;
 
 		case NIKISCRIPT_COMMENT_LINES:
 			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_COMMENT_LINES);
-			return;
+			return false;
 		}
 	}
 
 	if (ctx.programVariables.count(name) != 0) {
 		ns::print(PrintLevel::ERROR, "A program variable already uses this name and therefore can not be replaced\n");
-		return;
+		return false;
 	}
 
 	if (ctx.commands.commands.count(name) != 0) {
 		ns::print(PrintLevel::ERROR, "A command already uses this name and therefore can not be replaced\n");
-		return;
+		return false;
 	}
 
 	ctx.consoleVariables[name] = value;
+	return true;
 }
 
 void ns::var_command(Context& ctx) {
-	var(ctx, ctx.args.getString(0), ctx.args.arguments.size() > 1? ctx.args.getString(1) : "");
+	bool result = var(ctx, ctx.args.getString(0), ctx.args.arguments.size() > 1? ctx.args.getString(1) : "");
+	if (ctx.origin & OriginType::REFERENCE)
+		ns::printf(ns::ECHO, "{}\n", result);
 }
 
 void ns::delvar(Context& ctx, const std::string& name) {
@@ -207,13 +210,25 @@ void ns::toggle(Context& ctx, const std::string& varName, const std::string& opt
 	} else if (ctx.programVariables.count(varName) != 0) { // Program Variable
 		ns::ProgramVariable& var = ctx.programVariables[varName];
 		std::string varValue = var.get(ctx, &var);
-	
+
 		if (varValue == option1)
 			var.set(ctx, &var, option2);
 		else
 			var.set(ctx, &var, option1);
+
 	} else if (ns::Command *pCommand = ctx.commands.get(varName)) { // Command
-		std::string varValue = parseInsideAnotherScript(ctx, pCommand->name.c_str());
+		void* pOriginalPrintCallbackData = pPrintCallbackData;
+		PrintCallback originalPrintCallback = printCallback;
+
+		std::string varValue;
+		setPrintCallback(&varValue, printAppendToStringEchoOnly);
+		
+		parseInsideAnotherScript(ctx, pCommand->name.c_str());
+		setPrintCallback(pOriginalPrintCallbackData, originalPrintCallback);
+
+		if (!varValue.empty() && varValue[varValue.size()] == '\n')
+			varValue.pop_back();
+
 		if (varValue == option1)
 			varValue = option2;
 		else

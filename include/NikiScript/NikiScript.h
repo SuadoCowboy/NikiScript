@@ -26,8 +26,10 @@ namespace ns {
 	 * @param ctx
 	 * @param name
 	 * @param value
+	 * @return true on success
+	 * @note if origin contains OriginType::REFERENCE then it will not print errors
 	 */
-	void var(Context& ctx, const std::string& name, const std::string& value);
+	bool var(Context& ctx, const std::string& name, const std::string& value);
 
 	/**
 	 * @brief creates a variable
