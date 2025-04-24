@@ -58,8 +58,13 @@ void ns::insertReferencesInToken(Context& ctx, Token& token) {
 			ctx.origin = originalOrigin;
 
 			for (size_t i = 0; i < printOutput.size(); ++i) {
-				if (printOutput[i] == '\n')
-					printOutput[i] = ' ';
+				if (printOutput[i] == '\n') {
+					if (i == printOutput.size()-1) {
+						printOutput.pop_back();
+						break;
+					} else
+						printOutput[i] = ' ';
+				}
 			}
 
 			token.value = token.value.insert(offset+reference.first, printOutput);
