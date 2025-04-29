@@ -112,13 +112,17 @@ size_t ns::Lexer::setTokenValue() {
 			if (token.type == TokenType::NONE || ((TokenType::EOS|TokenType::END) & token.type))
 				break;
 
-			++openArguments;
-			flags |= 1;
-
-			if (openArguments == 1) {
+			else if (token.type == TokenType::IDENTIFIER && openArguments == 0) { // only accept this kind of arguments from the identifier
+				++openArguments;
+				flags |= 1;
 				++nextTokenPosition;
-				continue;
+
+			} else {
+				++openArguments;
+				result << input[nextTokenPosition++];
 			}
+
+			continue;
 
 		} else if (input[nextTokenPosition] == NIKISCRIPT_ARGUMENTS_SEPARATOR && openArguments == 1) {
 			++nextTokenPosition;
