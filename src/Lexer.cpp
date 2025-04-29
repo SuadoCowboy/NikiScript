@@ -112,13 +112,17 @@ size_t ns::Lexer::setTokenValue() {
 			if (token.type == TokenType::NONE || ((TokenType::EOS|TokenType::END) & token.type))
 				break;
 
-			else if (token.type == TokenType::IDENTIFIER && openArguments == 0) { // only accept this kind of arguments from the identifier
+			// only accept this kind of arguments tokenization if begins exactly after the identifier
+			else if (token.type == TokenType::IDENTIFIER && openArguments == 0) {
 				++openArguments;
 				flags |= 1;
 				++nextTokenPosition;
 
 			} else {
-				++openArguments;
+				// if the input is something like: "help a (b)" we can just ignore all of them.
+				// we keep track of how many arguments are open because we need to know if the arguments separator will be used or not by the first open argument, which is the only one we care.
+				if (openArguments != 0)
+					++openArguments;
 				result << input[nextTokenPosition++];
 			}
 
