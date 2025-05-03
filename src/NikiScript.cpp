@@ -40,7 +40,7 @@ bool ns::var(Context& ctx, const std::string& name, const std::string& value) {
 	}
 
 	if (isdigit(name[0])) {
-		ns::print(PrintLevel::ERROR, "Variable name can not contain digit in the beggining\n");
+		ns::print(PrintLevel::ERROR, "Variable name can not contain digit in the beginning\n");
 		return  false;
 	}
 
