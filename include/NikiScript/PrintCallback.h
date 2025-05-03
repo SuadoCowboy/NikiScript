@@ -21,8 +21,9 @@ namespace ns {
 	extern void* pPrintCallbackData;
 
 	template<typename... Args>
-	void printf(PrintLevel level, const char* format, Args ... args) {
-		print(level, formatString(format, args...).c_str());
+	void printf(PrintLevel level, const char* format, Args&& ... args) {
+		std::string formatted = formatString(format, args...);
+		print(level, formatted.c_str());
 	}
 
 	void setPrintCallback(void* pData, PrintCallback callback);
