@@ -1,7 +1,5 @@
 #pragma once
 
-#include <filesystem>
-
 #include "Context.h"
 
 #ifndef NIKISCRIPT_LOOP_VARIABLE
@@ -105,12 +103,12 @@ namespace ns {
 	 */
 	void parseInsideAnotherScript(Context& ctx, const char* input); // TODO: when making NikiScript thread-safe, don't forget this function!
 
-	std::filesystem::path getCfgDirectory();
+	const char* getCfgDirectory();
 }
 
 #ifdef NIKISCRIPT_IMPLEMENTATION
 #undef NIKISCRIPT_IMPLEMENTATION
-std::filesystem::path ns::getCfgDirectory() {
-	return std::string(NIKISCRIPT_CFG_DIRECTORY);
+const char* ns::getCfgDirectory() {
+	return NIKISCRIPT_CFG_DIRECTORY;
 }
 #endif
