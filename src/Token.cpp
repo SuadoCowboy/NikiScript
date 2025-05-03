@@ -28,16 +28,16 @@ uint8_t operator&(ns::TokenType l, uint8_t r) {
 	return static_cast<uint8_t>(l)&r;
 }
 
-void ns::insertReferencesInToken(Context& ctx, Token& token) {
+void ns::insertReferencesInToken(Context* pCtx, Token& token) {
 	size_t offset = 0;
 	for (auto& reference : token.references) {
-		if (ctx.consoleVariables.count(reference.second) != 0) { // console variable
-			token.value = token.value.insert(offset+reference.first, ctx.consoleVariables[reference.second]);
-			offset += ctx.consoleVariables[reference.second].size();
+		if (pCtx->consoleVariables.count(reference.second) != 0) { // console variable
+			token.value = token.value.insert(offset+reference.first, pCtx->consoleVariables[reference.second]);
+			offset += pCtx->consoleVariables[reference.second].size();
 
-		} else if (ctx.programVariables.count(reference.second) != 0) { // program variable
-			ProgramVariable& var = ctx.programVariables[reference.second];
-			std::string value = var.get(ctx, &var);
+		} else if (pCtx->programVariables.count(reference.second) != 0) { // program variable
+			ProgramVariable& var = pCtx->programVariables[reference.second];
+			std::string value = var.get(pCtx, &var);
 
 			token.value = token.value.insert(offset+reference.first, value);
 			offset += value.size();
@@ -49,13 +49,13 @@ void ns::insertReferencesInToken(Context& ctx, Token& token) {
 			std::string printOutput;
 			setPrintCallback(&printOutput, printAppendToStringEchoOnly);
 
-			uint8_t originalOrigin = ctx.origin;
+			uint8_t originalOrigin = pCtx->origin;
 
-			ctx.origin |= OriginType::REFERENCE;
-			parseInsideAnotherScript(ctx, reference.second.c_str());
+			pCtx->origin |= OriginType::REFERENCE;
+			parseInsideAnotherScript(pCtx, reference.second.c_str());
 			setPrintCallback(pOriginalPrintCallbackData, originalPrintCallback);
 
-			ctx.origin = originalOrigin;
+			pCtx->origin = originalOrigin;
 
 			for (size_t i = 0; i < printOutput.size(); ++i) {
 				if (printOutput[i] == '\n') {

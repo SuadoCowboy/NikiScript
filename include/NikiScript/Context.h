@@ -101,7 +101,7 @@ namespace ns {
 	 * It updates all those pointers.
 	 * @param source object to copy content from
 	 */
-	Context deepCopyContext(const Context& source);
+	Context deepCopyContext(const Context* source);
 }
 
 uint8_t operator|(ns::OriginType l, ns::OriginType r);

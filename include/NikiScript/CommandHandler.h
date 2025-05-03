@@ -5,8 +5,8 @@
 
 #include "Command.h"
 
-#define nsRegisterCommand(ctx, name, minArgs, maxArgs, callback, description, ...) \
-	ctx.commands.add(ns::Command(name, minArgs, maxArgs, callback, description, {__VA_ARGS__}))
+#define nsRegisterCommand(pCtx, name, minArgs, maxArgs, callback, description, ...) \
+	(pCtx)->commands.add(ns::Command(name, minArgs, maxArgs, callback, description, {__VA_ARGS__}))
 
 namespace ns {
 	struct Context;
@@ -24,6 +24,6 @@ namespace ns {
 		 */
 		bool add(const Command& command);
 
-		void remove(Context& pCtx, const std::string& name);
+		void remove(Context* pCtx, const std::string& name);
 	};
 }

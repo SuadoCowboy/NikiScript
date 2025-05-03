@@ -8,8 +8,8 @@ namespace ns {
 	struct ProgramVariable;
 	struct Context;
 
-	typedef std::string(*GetProgramVariableValue)(Context& ctx, ProgramVariable* pVar);
-	typedef void(*SetProgramVariableValue)(Context& ctx, ProgramVariable* pVar, const std::string& str);
+	typedef std::string(*GetProgramVariableValue)(Context* pCtx, ProgramVariable* pVar);
+	typedef void(*SetProgramVariableValue)(Context* pCtx, ProgramVariable* pVar, const std::string& str);
 	
 	struct Context;
 
@@ -26,11 +26,11 @@ namespace ns {
 
 	typedef std::unordered_map<std::string, ProgramVariable> ProgramVariables;
 
-	std::string getString(Context&, ProgramVariable* pVar);
-	void setString(Context&, ProgramVariable* pVar, const std::string& str);
+	std::string getString(Context*, ProgramVariable* pVar);
+	void setString(Context*, ProgramVariable* pVar, const std::string& str);
 
 	template<typename T>
-	std::string getNumber(Context&, ProgramVariable* pVar) {
+	std::string getNumber(Context*, ProgramVariable* pVar) {
 		return std::to_string(*static_cast<T*>(pVar->pValue));
 	}
 
@@ -42,21 +42,21 @@ namespace ns {
 	 * @param str
 	 */
 	template<typename T>
-	void setUnsigned(Context&, ProgramVariable* pVar, const std::string& str) {
+	void setUnsigned(Context*, ProgramVariable* pVar, const std::string& str) {
 		try {
 			*static_cast<T*>(pVar->pValue) = (T)std::stoul(str);
 		} catch (...) {}
 	}
 
-	void setUnsignedLongLong(Context&, ProgramVariable* pVar, const std::string& str);
+	void setUnsignedLongLong(Context*, ProgramVariable* pVar, const std::string& str);
 
-	void setFloat(Context&, ProgramVariable* pVar, const std::string& str);
-	void setDouble(Context&, ProgramVariable* pVar, const std::string& str);
-	void setLongDouble(Context&, ProgramVariable* pVar, const std::string& str);
+	void setFloat(Context*, ProgramVariable* pVar, const std::string& str);
+	void setDouble(Context*, ProgramVariable* pVar, const std::string& str);
+	void setLongDouble(Context*, ProgramVariable* pVar, const std::string& str);
 
-	void setChar(Context&, ProgramVariable* pVar, const std::string& str);
-	void setShort(Context&, ProgramVariable* pVar, const std::string& str);
-	void setInteger(Context&, ProgramVariable* pVar, const std::string& str);
-	void setLong(Context&, ProgramVariable* pVar, const std::string& str);
-	void setLongLong(Context&, ProgramVariable* pVar, const std::string& str);
+	void setChar(Context*, ProgramVariable* pVar, const std::string& str);
+	void setShort(Context*, ProgramVariable* pVar, const std::string& str);
+	void setInteger(Context*, ProgramVariable* pVar, const std::string& str);
+	void setLong(Context*, ProgramVariable* pVar, const std::string& str);
+	void setLongLong(Context*, ProgramVariable* pVar, const std::string& str);
 }

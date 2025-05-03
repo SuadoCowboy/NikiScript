@@ -27,7 +27,7 @@ namespace ns {
 	/**
 	 * @brief inserts all references in the value
 	 */
-	void insertReferencesInToken(Context& ctx, Token& token);
+	void insertReferencesInToken(Context* pCtx, Token& token);
 }
 
 uint8_t operator|(ns::TokenType l, ns::TokenType r);

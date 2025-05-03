@@ -7,7 +7,7 @@
 namespace ns {
 	struct Context;
 
-	typedef void(*CommandCallback)(Context& ctx);
+	typedef void(*CommandCallback)(Context* pCtx);
 
 	struct Command {
 		std::string name;
