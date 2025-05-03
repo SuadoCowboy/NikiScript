@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include <sstream>
 
-#define NIKISCRIPT_CFG_ROOT_DIRECTORY "data/cfg/"
+#define NIKISCRIPT_CFG_DIRECTORY "data/cfg/"
 
 #define NIKISCRIPT_IMPLEMENTATION
 #include <NikiScript/NikiScript.h>

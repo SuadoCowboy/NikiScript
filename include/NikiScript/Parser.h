@@ -1,5 +1,7 @@
 #pragma once
 
+#include <filesystem>
+
 #include "Context.h"
 
 #ifndef NIKISCRIPT_LOOP_VARIABLE
@@ -20,8 +22,8 @@
 
 #define PATH_SEPARATOR "/"
 
-#ifndef NIKISCRIPT_CFG_ROOT_DIRECTORY
-#define NIKISCRIPT_CFG_ROOT_DIRECTORY "cfg" PATH_SEPARATOR
+#ifndef NIKISCRIPT_CFG_DIRECTORY
+#define NIKISCRIPT_CFG_DIRECTORY "cfg" PATH_SEPARATOR
 #endif
 
 namespace ns {
@@ -90,7 +92,7 @@ namespace ns {
 	 * @param ctx
 	 */
 	void parse(Context& ctx, bool printError=true);
-	bool parseFile(Context& ctx, const char* filePath, bool printError);
+	bool parseFile(Context& ctx, const char* path, bool printError);
 
 	/**
 	 * @brief should be used when the main context is already using the lexer
@@ -103,12 +105,12 @@ namespace ns {
 	 */
 	void parseInsideAnotherScript(Context& ctx, const char* input); // TODO: when making NikiScript thread-safe, don't forget this function!
 
-	std::string getCfgRootDirectory();
+	std::filesystem::path getCfgDirectory();
 }
 
 #ifdef NIKISCRIPT_IMPLEMENTATION
 #undef NIKISCRIPT_IMPLEMENTATION
-std::string ns::getCfgRootDirectory() {
-	return std::string(NIKISCRIPT_CFG_ROOT_DIRECTORY);
+std::filesystem::path ns::getCfgDirectory() {
+	return std::string(NIKISCRIPT_CFG_DIRECTORY);
 }
 #endif

@@ -344,19 +344,20 @@ void ns::parse(Context& ctx, bool printError) {
 	handleCommandCall(ctx, pProgramVar);
 }
 
-bool ns::parseFile(Context& ctx, const char* _filePath, bool printError) {
-	std::string filePath{_filePath};
+bool ns::parseFile(Context& ctx, const char* _path, bool printError) {
+	std::string filePath;
 	{
-		std::filesystem::path _path{filePath};
-		if (!_path.has_extension())
-			filePath += NIKISCRIPT_FILE_EXTENSION;
+		std::filesystem::path path{_path};
+		if (!path.has_extension())
+			path += NIKISCRIPT_FILE_EXTENSION;
 
-		if (!_path.has_root_directory())// || _path.root_directory() != NIKISCRIPT_ROOT_DIRECTORY)
-			filePath = getCfgRootDirectory()+filePath;
+		if (!path.has_root_directory())// || _path.parent_path() != NIKISCRIPT_ROOT_DIRECTORY)
+			path = getCfgDirectory() / path;
+
+		filePath = path.string();
 	}
 
 	std::ifstream file{filePath};
-
 	if (!file) {
 		if (printError)
 			printf(PrintLevel::ERROR, "Could not load file \"{}\"\n", filePath);
