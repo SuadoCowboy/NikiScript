@@ -9,21 +9,21 @@ namespace ns {
 
 	/**
 	 * @brief shows command usage
-	 * @param ctx
+	 * @param pCtx
 	 * @note s[command?]
 	 */
 	void help_command(Context* pCtx);
 
 	/**
 	 * @brief prints all the arguments passed
-	 * @param ctx
+	 * @param pCtx
 	 * @note s[message]
 	 */
 	void echo_command(Context* pCtx);
 
 	/**
 	 * @brief creates a variable
-	 * @param ctx
+	 * @param pCtx
 	 * @param name
 	 * @param value
 	 * @return true on success
@@ -33,7 +33,7 @@ namespace ns {
 
 	/**
 	 * @brief creates a variable
-	 * @param ctx
+	 * @param pCtx
 	 * @note s[name] s[value]
 	 * @see ns::var
 	 */
@@ -43,7 +43,7 @@ namespace ns {
 
 	/**
 	 * @brief deletes a variable
-	 * @param ctx
+	 * @param pCtx
 	 * @note v[consoleVariable]
 	 * @see ns::delvar
 	 */
@@ -53,7 +53,7 @@ namespace ns {
 
 	/**
 	 * @brief increments a variable value
-	 * @param ctx
+	 * @param pCtx
 	 * @note v[variable] d[min] d[max] d[delta?]
 	 * @see ns::incrementvar
 	 */
@@ -61,7 +61,7 @@ namespace ns {
 
 	/**
 	 * @brief toggles a variable value between option1 and option2
-	 * @param ctx
+	 * @param pCtx
 	 * @param variable
 	 * @param varName
 	 * @param option1
@@ -71,7 +71,7 @@ namespace ns {
 
 	/**
 	 * @brief toggles a variable value between option1 and option2
-	 * @param ctx
+	 * @param pCtx
 	 * @note v[variable] s[option1] s[option2]
 	 * @see ns::toggle
 	 */
@@ -79,7 +79,7 @@ namespace ns {
 
 	/**
 	 * @brief parses a file as nikiscript
-	 * @param ctx
+	 * @param pCtx
 	 * @note s[filePath]
 	 * @see ns::parseFile
 	 */
@@ -87,14 +87,14 @@ namespace ns {
 
 	/**
 	 * @brief adds default commands such as echo
-	 * @param ctx
+	 * @param pCtx
 	 * @see ns::echo_command
 	 */
 	void registerCommands(Context* pCtx);
 
 	/**
 	 * @brief creates a variable and stores it in ns::Context::programVariables
-	 * @param ctx
+	 * @param pCtx
 	 * @param name
 	 * @param description
 	 * @param pVar

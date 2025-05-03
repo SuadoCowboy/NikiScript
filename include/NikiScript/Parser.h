@@ -36,7 +36,7 @@ namespace ns {
 	 * It's also mandatory to call this function so that it updates those special variables
 	 *
 	 * @note loop variables are only appended/erased from Context::LoopVariablesRunning
-	 * @param ctx
+	 * @param pCtx
 	 * @see ns::parse
 	 * @see ns::handleIdentifierToken
 	 */
@@ -46,7 +46,7 @@ namespace ns {
 	 * @brief Called in parse function when EOS or END is reached
 	 * @note Sets pCtx->pCommand to nullptr
 	 * @note pCtx->pCommand should point to a valid Command object
-	 * @param ctx
+	 * @param pCtx
 	 * @param pProgramVar if not null: sets/gets program variable
 	 * @see ns::parse
 	 */
@@ -55,7 +55,7 @@ namespace ns {
 	/**
 	 * @brief Called in parse function when IDENTIFIER token is passed
 	 * 
-	 * @param ctx
+	 * @param pCtx
 	 * @param pProgramVar
 	 * @return 0 = it called advanceUntil(EOS) 1 = should call pLexer->advance() 2 = if it's a variable and should run it
 	 * @see ns::parse
@@ -74,27 +74,27 @@ namespace ns {
 	 * @brief Called in parse function when an ConsoleVariable is passed as a IDENTIFIER
 	 * @note I find this algorithm very interesting and fun(it creates a bunch of lexers for each variable call instead of recursive calling)
 	 * @see ns::Context::maxConsoleVariablesRecursiveDepth
-	 * @param ctx
+	 * @param pCtx
 	 * @param pProgramVar
 	 */
 	void handleConsoleVariableCall(Context* pCtx, ProgramVariable*& pProgramVar, bool printError);
 
 	/**
 	 * @brief if a loop variable is active, its script is ran here
-	 * @param ctx
+	 * @param pCtx
 	 */
 	void updateLoopVariables(Context* pCtx);
 
 	/**
 	 * @brief Parses and interpret scripts: handles commands and variables as well as their arguments
-	 * @param ctx
+	 * @param pCtx
 	 */
 	void parse(Context* pCtx, bool printError=true);
 	bool parseFile(Context* pCtx, const char* path, bool printError);
 
 	/**
 	 * @brief should be used when the main context is already using the lexer
-	 * @param ctx
+	 * @param pCtx
 	 * @param input
 	 * @note the newlines from the end are removed
 	 * @see ns::printAppendToString
