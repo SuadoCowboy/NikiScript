@@ -39,14 +39,6 @@ endif()
 
 set_target_properties(NikiScript PROPERTIES PREFIX "")
 
-if(MSVC)
-	if(BUILD_SHARED)
-		set_target_properties(NikiScript PROPERTIES SUFFIX "${NIKISCRIPT_SUFFIX}.dll")
-	else()
-		set_target_properties(NikiScript PROPERTIES SUFFIX "${NIKISCRIPT_SUFFIX}.lib")
-	endif()
-endif()
-
 target_include_directories(NikiScript PRIVATE ${PROJECT_SOURCE_DIR}/include/NikiScript)
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/example)
