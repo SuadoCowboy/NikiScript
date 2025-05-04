@@ -92,7 +92,7 @@ namespace ns {
 
 		uint16_t maxConsoleVariablesRecursiveDepth = 255; ///< How many console variables can be called inside each other
 
-		char* cfgDirectory = nullptr; ///< Should be null-terminated and does not expect a heap-allocated char array
+		char* cfgDirectory = nullptr; ///< Expects a null terminated char array. Heap allocated is possible but this code doesn't free by itself
 	};
 
 	/**
