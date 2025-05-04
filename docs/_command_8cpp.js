@@ -1,4 +1,4 @@
 var _command_8cpp =
 [
-    [ "NIKISCRIPT_COMMAND_ASSERT", "_command_8cpp.html#a3659ba5e8e4661d485bbd29959e6d335", null ]
+    [ "NS_COMMAND_ASSERT", "_command_8cpp.html#a9d057b451b00a700dfb749e5180a054b", null ]
 ];
