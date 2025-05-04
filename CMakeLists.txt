@@ -8,7 +8,7 @@ if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif()
 
-option(BUILD_SHARED "Whether make it shared or static" OFF)
+#option(BUILD_SHARED "Whether make it shared or static" OFF)
 
 if(MSVC)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /WX")
@@ -28,14 +28,14 @@ endif()
 
 file(GLOB SOURCES ${PROJECT_SOURCE_DIR}/src/*.cpp)
 
-if(BUILD_SHARED)
-	set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS 1)
-	add_library(NikiScript SHARED ${SOURCES})
-	set_target_properties(NikiScript PROPERTIES VERSION ${PROJECT_VERSION} POSITION_INDEPENDENT_CODE ON)
-else()
+# if(BUILD_SHARED)
+# 	set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS 1)
+# 	add_library(NikiScript SHARED ${SOURCES})
+# 	set_target_properties(NikiScript PROPERTIES VERSION ${PROJECT_VERSION} POSITION_INDEPENDENT_CODE ON)
+# else()
     add_library(NikiScript STATIC ${SOURCES})
 	set_target_properties(NikiScript PROPERTIES VERSION ${PROJECT_VERSION})
-endif()
+# endif()
 
 set_target_properties(NikiScript PROPERTIES PREFIX "")
 
