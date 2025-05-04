@@ -3,9 +3,6 @@
 #include <stdint.h>
 #include <sstream>
 
-#define NS_CFG_DIRECTORY "data/cfg/"
-
-#define NS_IMPLEMENTATION
 #include <NikiScript/NikiScript.h>
 #include <NikiScript/PrintCallback.h>
 #include <NikiScript/Context.h>
@@ -82,6 +79,7 @@ int main(int, char**) {
 	ns::setPrintCallback(nullptr, nikiScriptPrintCallback);
 
 	ns::Context ctx;
+	ctx.cfgDirectory = "data/cfg/";
 	ns::registerCommands(&ctx);
 
 	ns::Lexer lexer;
