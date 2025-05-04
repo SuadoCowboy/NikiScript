@@ -226,7 +226,7 @@ void ns::toggle(Context* pCtx, const std::string& varName, const std::string& op
 		parseInsideAnotherScript(pCtx, pCommand->name.c_str());
 		setPrintCallback(pOriginalPrintCallbackData, originalPrintCallback);
 
-		if (!varValue.empty() && varValue[varValue.size()] == '\n')
+		if (!varValue.empty() && varValue[varValue.size()-1] == '\n')
 			varValue.pop_back();
 
 		if (varValue == option1)
