@@ -18,12 +18,6 @@
 #define NS_FILE_EXTENSION ".cfg"
 #endif
 
-#define PATH_SEPARATOR "/"
-
-#ifndef NS_CFG_DIRECTORY
-#define NS_CFG_DIRECTORY "cfg" PATH_SEPARATOR
-#endif
-
 namespace ns {
 	/**
 	 * @brief Clear anything related to the current lexer statement
@@ -102,13 +96,4 @@ namespace ns {
 	 * @warning print function is set to ns::printAppendToString
 	 */
 	void parseInsideAnotherScript(Context* pCtx, const char* input); // TODO: when making NikiScript thread-safe, don't forget this function!
-
-	const char* getCfgDirectory();
 }
-
-#ifdef NS_IMPLEMENTATION
-#undef NS_IMPLEMENTATION
-const char* ns::getCfgDirectory() {
-	return NS_CFG_DIRECTORY;
-}
-#endif

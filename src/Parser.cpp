@@ -352,7 +352,7 @@ bool ns::parseFile(Context* pCtx, const char* _path, bool printError) {
 			path += NS_FILE_EXTENSION;
 
 		if (!path.has_root_directory())// || _path.parent_path() != NS_ROOT_DIRECTORY)
-			path = getCfgDirectory() / path;
+			path = pCtx->cfgDirectory / path;
 
 		filePath = path.string();
 	}
