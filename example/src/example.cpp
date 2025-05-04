@@ -3,9 +3,9 @@
 #include <stdint.h>
 #include <sstream>
 
-#define NIKISCRIPT_CFG_DIRECTORY "data/cfg/"
+#define NS_CFG_DIRECTORY "data/cfg/"
 
-#define NIKISCRIPT_IMPLEMENTATION
+#define NS_IMPLEMENTATION
 #include <NikiScript/NikiScript.h>
 #include <NikiScript/PrintCallback.h>
 #include <NikiScript/Context.h>

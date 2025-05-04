@@ -36,8 +36,8 @@ void ns::Lexer::advanceUntil(uint8_t flags) {
 }
 
 size_t ns::Lexer::setTokenValue() {
-	if (input[position] == NIKISCRIPT_STATEMENT_SEPARATOR || input[position] == '\n') {
-		token.value = NIKISCRIPT_STATEMENT_SEPARATOR;
+	if (input[position] == NS_STATEMENT_SEPARATOR || input[position] == '\n') {
+		token.value = NS_STATEMENT_SEPARATOR;
 		return position+1;
 	}
 
@@ -45,27 +45,27 @@ size_t ns::Lexer::setTokenValue() {
 	std::stringstream result{};
 
 	/*
-	1 = allow white space and NIKISCRIPT_STATEMENT_SEPARATOR
-	2 = escape next char if is a known char like NIKISCRIPT_STATEMENT_SEPARATOR
-	4 = skipping all until NIKISCRIPT_COMMENT_LINES+NIKISCRIPT_COMMENT_LINE is found
+	1 = allow white space and NS_STATEMENT_SEPARATOR
+	2 = escape next char if is a known char like NS_STATEMENT_SEPARATOR
+	4 = skipping all until NS_COMMENT_LINES+NS_COMMENT_LINE is found
 	*/
 	uint8_t flags = openArguments == 0? 0 : 1;
 
-	while (nextTokenPosition < input.size() && (position == nextTokenPosition || ((!isSpaceNotNewline(input[nextTokenPosition]) && (input[nextTokenPosition] != NIKISCRIPT_STATEMENT_SEPARATOR || (flags & 2))) || (flags & 1)))) {
+	while (nextTokenPosition < input.size() && (position == nextTokenPosition || ((!isSpaceNotNewline(input[nextTokenPosition]) && (input[nextTokenPosition] != NS_STATEMENT_SEPARATOR || (flags & 2))) || (flags & 1)))) {
 		if (flags & 2) {
 			flags &= ~2;
 			switch (input[nextTokenPosition]) {
-			case NIKISCRIPT_ARGUMENTS_CLOSE:
-			case NIKISCRIPT_ARGUMENTS_OPEN:
-			case NIKISCRIPT_ARGUMENTS_QUOTE:
-			case NIKISCRIPT_ARGUMENTS_SEPARATOR:
-			case NIKISCRIPT_COMMENT_LINE:
-			case NIKISCRIPT_COMMENT_LINES:
-			case NIKISCRIPT_ESCAPE_NEXT_CHAR:
-			case NIKISCRIPT_REFERENCE:
-			case NIKISCRIPT_REFERENCE_CLOSE:
-			case NIKISCRIPT_REFERENCE_OPEN:
-			case NIKISCRIPT_STATEMENT_SEPARATOR:
+			case NS_ARGUMENTS_CLOSE:
+			case NS_ARGUMENTS_OPEN:
+			case NS_ARGUMENTS_QUOTE:
+			case NS_ARGUMENTS_SEPARATOR:
+			case NS_COMMENT_LINE:
+			case NS_COMMENT_LINES:
+			case NS_ESCAPE_NEXT_CHAR:
+			case NS_REFERENCE:
+			case NS_REFERENCE_CLOSE:
+			case NS_REFERENCE_OPEN:
+			case NS_STATEMENT_SEPARATOR:
 				break;
 			default:
 				result << input[nextTokenPosition-1];
@@ -79,7 +79,7 @@ size_t ns::Lexer::setTokenValue() {
 			if (input[nextTokenPosition] == '\n')
 				++lineIndex;
 
-			if (input[nextTokenPosition] == NIKISCRIPT_COMMENT_LINE && input[nextTokenPosition-1] == NIKISCRIPT_COMMENT_LINES)
+			if (input[nextTokenPosition] == NS_COMMENT_LINE && input[nextTokenPosition-1] == NS_COMMENT_LINES)
 				flags &= ~5;
 
 			++nextTokenPosition;
@@ -89,8 +89,8 @@ size_t ns::Lexer::setTokenValue() {
 		if (input[nextTokenPosition] == '\n')
 			break;
 
-		if (nextTokenPosition+1 < input.size() && input[nextTokenPosition] == NIKISCRIPT_COMMENT_LINE) {
-			if (input[nextTokenPosition+1] == NIKISCRIPT_COMMENT_LINE) {
+		if (nextTokenPosition+1 < input.size() && input[nextTokenPosition] == NS_COMMENT_LINE) {
+			if (input[nextTokenPosition+1] == NS_COMMENT_LINE) {
 				size_t i = nextTokenPosition;
 				for (; i < input.size(); ++i) {
 					if (input[i] == '\n')
@@ -101,14 +101,14 @@ size_t ns::Lexer::setTokenValue() {
 				break;
 			}
 
-			if (input[nextTokenPosition+1] == NIKISCRIPT_COMMENT_LINES) {
+			if (input[nextTokenPosition+1] == NS_COMMENT_LINES) {
 				flags |= 5; // 4 | 1
 				nextTokenPosition += 3;
 				continue;
 			}
 		}
 
-		if (input[nextTokenPosition] == NIKISCRIPT_ARGUMENTS_OPEN) {
+		if (input[nextTokenPosition] == NS_ARGUMENTS_OPEN) {
 			if (token.type == TokenType::NONE || ((TokenType::EOS|TokenType::END) & token.type))
 				break;
 
@@ -128,11 +128,11 @@ size_t ns::Lexer::setTokenValue() {
 
 			continue;
 
-		} else if (input[nextTokenPosition] == NIKISCRIPT_ARGUMENTS_SEPARATOR && openArguments == 1) {
+		} else if (input[nextTokenPosition] == NS_ARGUMENTS_SEPARATOR && openArguments == 1) {
 			++nextTokenPosition;
 			break;
 
-		} else if (input[nextTokenPosition] == NIKISCRIPT_ARGUMENTS_CLOSE && openArguments != 0) {
+		} else if (input[nextTokenPosition] == NS_ARGUMENTS_CLOSE && openArguments != 0) {
 			--openArguments;
 			if (openArguments == 0) {
 				++nextTokenPosition;
@@ -140,12 +140,12 @@ size_t ns::Lexer::setTokenValue() {
 			}
 		}
 
-		if (input[nextTokenPosition] == NIKISCRIPT_ESCAPE_NEXT_CHAR) {
+		if (input[nextTokenPosition] == NS_ESCAPE_NEXT_CHAR) {
 			flags |= 2;
 			++nextTokenPosition;
 			continue;
 
-		} else if (input[nextTokenPosition] == NIKISCRIPT_REFERENCE && nextTokenPosition+1 < input.size() && input[nextTokenPosition+1] == NIKISCRIPT_REFERENCE_OPEN) {
+		} else if (input[nextTokenPosition] == NS_REFERENCE && nextTokenPosition+1 < input.size() && input[nextTokenPosition+1] == NS_REFERENCE_OPEN) {
 			std::stringstream referenceStream;
 
 			size_t tempIndex = nextTokenPosition+2;
@@ -153,9 +153,9 @@ size_t ns::Lexer::setTokenValue() {
 			size_t referenceCount = 0; ///< how many references were found inside of it
 			bool foundCloseReference = false;
 			for (; tempIndex < input.size() && input[tempIndex] != '\n'; ++tempIndex) {
-				if (input[tempIndex] == NIKISCRIPT_REFERENCE && tempIndex+1 < input.size() && input[tempIndex+1] == NIKISCRIPT_REFERENCE_OPEN)
+				if (input[tempIndex] == NS_REFERENCE && tempIndex+1 < input.size() && input[tempIndex+1] == NS_REFERENCE_OPEN)
 					++referenceCount;
-				else if (input[tempIndex] == NIKISCRIPT_REFERENCE_CLOSE) {
+				else if (input[tempIndex] == NS_REFERENCE_CLOSE) {
 					if (referenceCount == 0) {
 						++tempIndex;
 						foundCloseReference = true;
@@ -173,7 +173,7 @@ size_t ns::Lexer::setTokenValue() {
 				continue;
 			}
 		
-		} else if (input[nextTokenPosition] == NIKISCRIPT_ARGUMENTS_QUOTE && openArguments == 0) {
+		} else if (input[nextTokenPosition] == NS_ARGUMENTS_QUOTE && openArguments == 0) {
 			++nextTokenPosition;
 			
 			if (flags & 1) {
@@ -193,7 +193,7 @@ size_t ns::Lexer::setTokenValue() {
 }
 
 void ns::Lexer::setTokenType() {
-	if (token.value.size() == 1 && token.value[0] == NIKISCRIPT_STATEMENT_SEPARATOR) {
+	if (token.value.size() == 1 && token.value[0] == NS_STATEMENT_SEPARATOR) {
 		token.type = TokenType::EOS;
 
 	} else if (token.type == TokenType::NONE || ((TokenType::EOS|TokenType::END) & token.type)) { // if the lexer just started and is not EOS

@@ -59,8 +59,8 @@ namespace ns {
 			return T(std::stoi(arguments[index]));
 		}
 
-#ifdef NIKISCRIPT_ARGUMENTS_EXTRA
-		NIKISCRIPT_ARGUMENTS_EXTRA
+#ifdef NS_ARGUMENTS_EXTRA
+		NS_ARGUMENTS_EXTRA
 #endif
 	};
 

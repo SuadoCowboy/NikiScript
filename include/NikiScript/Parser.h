@@ -2,26 +2,26 @@
 
 #include "Context.h"
 
-#ifndef NIKISCRIPT_LOOP_VARIABLE
-#define NIKISCRIPT_LOOP_VARIABLE '!'
+#ifndef NS_LOOP_VARIABLE
+#define NS_LOOP_VARIABLE '!'
 #endif
 
-#ifndef NIKISCRIPT_TOGGLE_ON
-#define NIKISCRIPT_TOGGLE_ON '+'
+#ifndef NS_TOGGLE_ON
+#define NS_TOGGLE_ON '+'
 #endif
 
-#ifndef NIKISCRIPT_TOGGLE_OFF
-#define NIKISCRIPT_TOGGLE_OFF '-'
+#ifndef NS_TOGGLE_OFF
+#define NS_TOGGLE_OFF '-'
 #endif
 
-#ifndef NIKISCRIPT_FILE_EXTENSION
-#define NIKISCRIPT_FILE_EXTENSION ".cfg"
+#ifndef NS_FILE_EXTENSION
+#define NS_FILE_EXTENSION ".cfg"
 #endif
 
 #define PATH_SEPARATOR "/"
 
-#ifndef NIKISCRIPT_CFG_DIRECTORY
-#define NIKISCRIPT_CFG_DIRECTORY "cfg" PATH_SEPARATOR
+#ifndef NS_CFG_DIRECTORY
+#define NS_CFG_DIRECTORY "cfg" PATH_SEPARATOR
 #endif
 
 namespace ns {
@@ -106,9 +106,9 @@ namespace ns {
 	const char* getCfgDirectory();
 }
 
-#ifdef NIKISCRIPT_IMPLEMENTATION
-#undef NIKISCRIPT_IMPLEMENTATION
+#ifdef NS_IMPLEMENTATION
+#undef NS_IMPLEMENTATION
 const char* ns::getCfgDirectory() {
-	return NIKISCRIPT_CFG_DIRECTORY;
+	return NS_CFG_DIRECTORY;
 }
 #endif

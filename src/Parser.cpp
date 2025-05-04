@@ -14,7 +14,7 @@ void ns::clearStatementData(Context* pCtx) {
 
 bool ns::canRunVariable(Context* pCtx) {
 	switch (pCtx->pLexer->token.value[0]) {
-	case NIKISCRIPT_TOGGLE_ON: {
+	case NS_TOGGLE_ON: {
 		ConsoleVariables::pointer pVarPair = &*pCtx->consoleVariables.find(pCtx->pLexer->token.value);
 		auto it = std::find(pCtx->toggleVariablesRunning.begin(), pCtx->toggleVariablesRunning.end(), pVarPair);
 
@@ -27,7 +27,7 @@ bool ns::canRunVariable(Context* pCtx) {
 		return false;
 	}
 
-	case NIKISCRIPT_TOGGLE_OFF: {
+	case NS_TOGGLE_OFF: {
 		ConsoleVariables::pointer pPlusVariable = nullptr;
 		{
 			auto it = pCtx->consoleVariables.find('+'+pCtx->pLexer->token.value.substr(1));
@@ -46,7 +46,7 @@ bool ns::canRunVariable(Context* pCtx) {
 		return false;
 	}
 
-	case NIKISCRIPT_LOOP_VARIABLE: {
+	case NS_LOOP_VARIABLE: {
 		ConsoleVariables::pointer pVar = &*pCtx->consoleVariables.find(pCtx->pLexer->token.value);
 
 		auto it = std::find(pCtx->loopVariablesRunning.begin(), pCtx->loopVariablesRunning.end(), pVar);
@@ -89,7 +89,7 @@ void ns::handleCommandCall(Context* pCtx, ProgramVariable*& pProgramVar) {
 	}
 
 	switch (pCtx->pCommand->name[0]) {
-	case NIKISCRIPT_TOGGLE_ON: {
+	case NS_TOGGLE_ON: {
 		auto it = std::find(pCtx->toggleCommandsRunning.begin(), pCtx->toggleCommandsRunning.end(), pCtx->pCommand);
 
 		if (it == pCtx->toggleCommandsRunning.end())
@@ -103,7 +103,7 @@ void ns::handleCommandCall(Context* pCtx, ProgramVariable*& pProgramVar) {
 		break;
 	}
 	
-	case NIKISCRIPT_TOGGLE_OFF: {
+	case NS_TOGGLE_OFF: {
 		Command* pPlusCommand = pCtx->commands.get('+'+std::string(pCtx->pCommand->name.substr(1)));
 		if (pPlusCommand == nullptr)
 			break;
@@ -349,9 +349,9 @@ bool ns::parseFile(Context* pCtx, const char* _path, bool printError) {
 	{
 		std::filesystem::path path{_path};
 		if (!path.has_extension())
-			path += NIKISCRIPT_FILE_EXTENSION;
+			path += NS_FILE_EXTENSION;
 
-		if (!path.has_root_directory())// || _path.parent_path() != NIKISCRIPT_ROOT_DIRECTORY)
+		if (!path.has_root_directory())// || _path.parent_path() != NS_ROOT_DIRECTORY)
 			path = getCfgDirectory() / path;
 
 		filePath = path.string();

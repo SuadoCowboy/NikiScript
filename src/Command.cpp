@@ -5,10 +5,10 @@
 #include "PrintCallback.h"
 
 #ifdef NDEBUG
-#define NIKISCRIPT_COMMAND_ASSERT(name, expression)
+#define NS_COMMAND_ASSERT(name, expression)
 #else
 #include <iostream>
-#define NIKISCRIPT_COMMAND_ASSERT(name, expression) \
+#define NS_COMMAND_ASSERT(name, expression) \
 	if (!(expression)){std::cout << "Assertion failed on command \"" << name << "\": " # expression "\n"; exit(1);}
 #endif
 
@@ -18,27 +18,27 @@ ns::Command::Command(const std::string& name, uint8_t minArgs, uint8_t maxArgs,
 	CommandCallback callback, const std::string& description, const std::vector<std::string>& argsDescriptions)
 	: name(name), minArgs(minArgs), maxArgs(maxArgs), callback(callback), description(description), argsDescriptions(argsDescriptions) {
 #ifndef NDEBUG
-	NIKISCRIPT_COMMAND_ASSERT(name, !name.empty())
-	NIKISCRIPT_COMMAND_ASSERT(name, minArgs <= maxArgs)
-	NIKISCRIPT_COMMAND_ASSERT(name, argsDescriptions.size() % 2 == 0)
-	NIKISCRIPT_COMMAND_ASSERT(name, argsDescriptions.size() / 2 == maxArgs);
+	NS_COMMAND_ASSERT(name, !name.empty())
+	NS_COMMAND_ASSERT(name, minArgs <= maxArgs)
+	NS_COMMAND_ASSERT(name, argsDescriptions.size() % 2 == 0)
+	NS_COMMAND_ASSERT(name, argsDescriptions.size() / 2 == maxArgs);
 
 	bool isName = true;
 	for (uint8_t i = 0; i < argsDescriptions.size(); ++i) {
 		if (isName) {
 			const std::string& arg = argsDescriptions[i];
 
-			NIKISCRIPT_COMMAND_ASSERT(name, arg.size() > 3);
-			NIKISCRIPT_COMMAND_ASSERT(name, arg[0] == 's' || arg[0] == 'i' || arg[0] == 'd' || arg[0] == 'v');
-			NIKISCRIPT_COMMAND_ASSERT(name, arg[1] == '[' && arg[arg.size()-1] == ']');
+			NS_COMMAND_ASSERT(name, arg.size() > 3);
+			NS_COMMAND_ASSERT(name, arg[0] == 's' || arg[0] == 'i' || arg[0] == 'd' || arg[0] == 'v');
+			NS_COMMAND_ASSERT(name, arg[1] == '[' && arg[arg.size()-1] == ']');
 			if (i >= minArgs*2)
-			NIKISCRIPT_COMMAND_ASSERT(name, arg[arg.size()-2] == '?');
+			NS_COMMAND_ASSERT(name, arg[arg.size()-2] == '?');
 		}
 
 		isName = !isName;
 	}
 
-	NIKISCRIPT_COMMAND_ASSERT(name, callback != nullptr);
+	NS_COMMAND_ASSERT(name, callback != nullptr);
 #endif
 }
 

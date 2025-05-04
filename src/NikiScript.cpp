@@ -51,58 +51,58 @@ bool ns::var(Context* pCtx, const std::string& name, const std::string& value) {
 		}
 
 		switch (name[i]) {
-		case NIKISCRIPT_LOOP_VARIABLE:
+		case NS_LOOP_VARIABLE:
 			if (i == 0 && name.size() > 1)
 				break;
-			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name alone or after the first character\n", NIKISCRIPT_LOOP_VARIABLE);
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name alone or after the first character\n", NS_LOOP_VARIABLE);
 			return false;
 
-		case NIKISCRIPT_TOGGLE_ON:
+		case NS_TOGGLE_ON:
 			if (i == 0 && name.size() > 1)
 				break;
-			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name alone or after the first character\n", NIKISCRIPT_TOGGLE_ON);
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name alone or after the first character\n", NS_TOGGLE_ON);
 			return false;
 
-		case NIKISCRIPT_TOGGLE_OFF:
+		case NS_TOGGLE_OFF:
 			if (i == 0 && name.size() > 1)
 				break;
-			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name alone or after the first character\n", NIKISCRIPT_TOGGLE_OFF);
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name alone or after the first character\n", NS_TOGGLE_OFF);
 			return false;
 
-		case NIKISCRIPT_REFERENCE:
-			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_REFERENCE);
+		case NS_REFERENCE:
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NS_REFERENCE);
 			return false;
 
-		case NIKISCRIPT_REFERENCE_OPEN:
-			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_REFERENCE_OPEN);
+		case NS_REFERENCE_OPEN:
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NS_REFERENCE_OPEN);
 			return false;
 
-		case NIKISCRIPT_REFERENCE_CLOSE:
-			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_REFERENCE_CLOSE);
+		case NS_REFERENCE_CLOSE:
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NS_REFERENCE_CLOSE);
 			return false;
 
-		case NIKISCRIPT_ARGUMENTS_SEPARATOR:
-			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_ARGUMENTS_SEPARATOR);
+		case NS_ARGUMENTS_SEPARATOR:
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NS_ARGUMENTS_SEPARATOR);
 			return false;
 
-		case NIKISCRIPT_ARGUMENTS_CLOSE:
-			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_ARGUMENTS_CLOSE);
+		case NS_ARGUMENTS_CLOSE:
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NS_ARGUMENTS_CLOSE);
 			return false;
 
-		case NIKISCRIPT_ARGUMENTS_OPEN:
-			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_ARGUMENTS_OPEN);
+		case NS_ARGUMENTS_OPEN:
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NS_ARGUMENTS_OPEN);
 			return false;
 
-		case NIKISCRIPT_STATEMENT_SEPARATOR:
-			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_STATEMENT_SEPARATOR);
+		case NS_STATEMENT_SEPARATOR:
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NS_STATEMENT_SEPARATOR);
 			return false;
 
-		case NIKISCRIPT_COMMENT_LINE:
-			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_COMMENT_LINE);
+		case NS_COMMENT_LINE:
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NS_COMMENT_LINE);
 			return false;
 
-		case NIKISCRIPT_COMMENT_LINES:
-			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NIKISCRIPT_COMMENT_LINES);
+		case NS_COMMENT_LINES:
+			ns::printf(PrintLevel::ERROR, "Can not use {} in a variable name\n", NS_COMMENT_LINES);
 			return false;
 		}
 	}
