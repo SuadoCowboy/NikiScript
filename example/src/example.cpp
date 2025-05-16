@@ -79,7 +79,8 @@ int main(int, char**) {
 	ns::setPrintCallback(nullptr, nikiScriptPrintCallback);
 
 	ns::Context ctx;
-	ctx.cfgDirectory = "data/cfg/";
+	char _cfgDirectory[] = "data/cfg/";
+	ctx.cfgDirectory = _cfgDirectory;
 	ns::registerCommands(&ctx);
 
 	ns::Lexer lexer;

@@ -20,15 +20,15 @@ namespace ns {
 	extern PrintCallback printCallback;
 	extern void* pPrintCallbackData;
 
-	template<typename... Args>
-	void printf(PrintLevel level, const char* format, Args&& ... args) {
-		std::string formatted = formatString(format, args...);
-		print(level, formatted.c_str());
-	}
-
 	void setPrintCallback(void* pData, PrintCallback callback);
 	void print(PrintLevel level, const char* str);
 	void printUnknownCommand(const char* command);
+
+	template<typename... Args>
+	void printf(PrintLevel level, const char* format, Args&& ... args) {
+		std::string formatted = formatString(format, args...);
+		ns::print(level, formatted.c_str());
+	}
 
 	/**
 	 * @brief appends string to pBuffer
