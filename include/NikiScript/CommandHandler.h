@@ -5,13 +5,15 @@
 
 #include "Command.h"
 
+#include "DLL.h"
+
 #define nsRegisterCommand(pCtx, name, minArgs, maxArgs, callback, description, ...) \
 	(pCtx)->commands.add(ns::Command(name, minArgs, maxArgs, callback, description, {__VA_ARGS__}))
 
 namespace ns {
 	struct Context;
 
-	struct CommandHandler {
+	struct NS_API CommandHandler {
 		std::unordered_map<std::string, Command> commands{};
 
 		Command* get(const std::string& name);

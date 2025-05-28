@@ -23,7 +23,7 @@ void ns::setPrintCallback(void* pData, PrintCallback callback) {
 	pPrintCallbackData = pData;
 }
 
-void ns::print(ns::PrintLevel level, const char* str) {
+void ns::print(PrintLevel level, const char* str) {
 	printCallback(pPrintCallbackData, level, str);
 }
 
@@ -31,11 +31,11 @@ void ns::printUnknownCommand(const char* command) {
 	printf(PrintLevel::ERROR, "Unknown command \"{}\"\n", command);
 }
 
-void ns::printAppendToString(void* pBuffer, ns::PrintLevel, const char* string) {
+void ns::printAppendToString(void* pBuffer, PrintLevel, const char* string) {
 	static_cast<std::string*>(pBuffer)->append(string);
 }
 
-void ns::printAppendToStringEchoOnly(void* pBuffer, ns::PrintLevel level, const char* string) {
+void ns::printAppendToStringEchoOnly(void* pBuffer, PrintLevel level, const char* string) {
 	if (level == PrintLevel::ECHO)
 		static_cast<std::string*>(pBuffer)->append(string);
 }

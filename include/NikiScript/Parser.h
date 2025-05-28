@@ -18,12 +18,14 @@
 #define NS_FILE_EXTENSION ".cfg"
 #endif
 
+#include "DLL.h"
+
 namespace ns {
 	/**
 	 * @brief Clear anything related to the current lexer statement
 	 * @note It does not go to the next EOS
 	 */
-	void clearStatementData(Context* pCtx);
+	NS_API void clearStatementData(Context* pCtx);
 
 	/**
 	 * @brief if variable is a toggle variable and its allowed to run or if it's a common variable.
@@ -34,7 +36,7 @@ namespace ns {
 	 * @see ns::parse
 	 * @see ns::handleIdentifierToken
 	 */
-	bool canRunVariable(Context* pCtx);
+	NS_API bool canRunVariable(Context* pCtx);
 
 	/**
 	 * @brief Called in parse function when EOS or END is reached
@@ -44,7 +46,7 @@ namespace ns {
 	 * @param pProgramVar if not null: sets/gets program variable
 	 * @see ns::parse
 	 */
-	void handleCommandCall(Context* pCtx, ProgramVariable*& pProgramVar);
+	NS_API void handleCommandCall(Context* pCtx, ProgramVariable*& pProgramVar);
 
 	/**
 	 * @brief Called in parse function when IDENTIFIER token is passed
@@ -55,14 +57,14 @@ namespace ns {
 	 * @see ns::parse
 	 * @see ns::canRunVariable
 	 */
-	uint8_t handleIdentifierToken(Context* pCtx, ProgramVariable*& pProgramVar, bool printError);
+	NS_API uint8_t handleIdentifierToken(Context* pCtx, ProgramVariable*& pProgramVar, bool printError);
 
 	/**
 	 * @brief Handles references in the string and checks if the parameter matches the argument type
 	 * @note Possible argument types: s = string, i = integer, d = decimal, v = variable
 	 * @see ns::parse
 	 */
-	void handleArgumentToken(Context* pCtx, bool printError);
+	NS_API void handleArgumentToken(Context* pCtx, bool printError);
 
 	/**
 	 * @brief Called in parse function when an ConsoleVariable is passed as a IDENTIFIER
@@ -71,20 +73,20 @@ namespace ns {
 	 * @param pCtx
 	 * @param pProgramVar
 	 */
-	void handleConsoleVariableCall(Context* pCtx, ProgramVariable*& pProgramVar, bool printError);
+	NS_API void handleConsoleVariableCall(Context* pCtx, ProgramVariable*& pProgramVar, bool printError);
 
 	/**
 	 * @brief if a loop variable is active, its script is ran here
 	 * @param pCtx
 	 */
-	void updateLoopVariables(Context* pCtx);
+	NS_API void updateLoopVariables(Context* pCtx);
 
 	/**
 	 * @brief Parses and interpret scripts: handles commands and variables as well as their arguments
 	 * @param pCtx
 	 */
-	void parse(Context* pCtx, bool printError=true);
-	bool parseFile(Context* pCtx, const char* path, bool printError);
+	NS_API void parse(Context* pCtx, bool printError=true);
+	NS_API bool parseFile(Context* pCtx, const char* path, bool printError);
 
 	/**
 	 * @brief should be used when the main context is already using the lexer
@@ -95,5 +97,5 @@ namespace ns {
 	 * @return the print output which is not printed by the commands
 	 * @warning print function is set to ns::printAppendToString
 	 */
-	void parseInsideAnotherScript(Context* pCtx, const char* input); // TODO: when making NikiScript thread-safe, don't forget this function!
+	NS_API void parseInsideAnotherScript(Context* pCtx, const char* input); // TODO: when making NikiScript thread-safe, don't forget this function!
 }

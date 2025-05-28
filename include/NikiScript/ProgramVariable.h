@@ -4,6 +4,8 @@
 #include <sstream>
 #include <unordered_map>
 
+#include "DLL.h"
+
 namespace ns {
 	struct ProgramVariable;
 	struct Context;
@@ -13,7 +15,7 @@ namespace ns {
 	
 	struct Context;
 
-	struct ProgramVariable {
+	struct NS_API ProgramVariable {
 		void* pValue = nullptr;
 		std::string description;
 
@@ -26,8 +28,8 @@ namespace ns {
 
 	typedef std::unordered_map<std::string, ProgramVariable> ProgramVariables;
 
-	std::string getString(Context*, ProgramVariable* pVar);
-	void setString(Context*, ProgramVariable* pVar, const std::string& str);
+	NS_API std::string getString(Context*, ProgramVariable* pVar);
+	NS_API void setString(Context*, ProgramVariable* pVar, const std::string& str);
 
 	template<typename T>
 	std::string getNumber(Context*, ProgramVariable* pVar) {
@@ -48,15 +50,15 @@ namespace ns {
 		} catch (...) {}
 	}
 
-	void setUnsignedLongLong(Context*, ProgramVariable* pVar, const std::string& str);
+	NS_API void setUnsignedLongLong(Context*, ProgramVariable* pVar, const std::string& str);
 
-	void setFloat(Context*, ProgramVariable* pVar, const std::string& str);
-	void setDouble(Context*, ProgramVariable* pVar, const std::string& str);
-	void setLongDouble(Context*, ProgramVariable* pVar, const std::string& str);
+	NS_API void setFloat(Context*, ProgramVariable* pVar, const std::string& str);
+	NS_API void setDouble(Context*, ProgramVariable* pVar, const std::string& str);
+	NS_API void setLongDouble(Context*, ProgramVariable* pVar, const std::string& str);
 
-	void setChar(Context*, ProgramVariable* pVar, const std::string& str);
-	void setShort(Context*, ProgramVariable* pVar, const std::string& str);
-	void setInteger(Context*, ProgramVariable* pVar, const std::string& str);
-	void setLong(Context*, ProgramVariable* pVar, const std::string& str);
-	void setLongLong(Context*, ProgramVariable* pVar, const std::string& str);
+	NS_API void setChar(Context*, ProgramVariable* pVar, const std::string& str);
+	NS_API void setShort(Context*, ProgramVariable* pVar, const std::string& str);
+	NS_API void setInteger(Context*, ProgramVariable* pVar, const std::string& str);
+	NS_API void setLong(Context*, ProgramVariable* pVar, const std::string& str);
+	NS_API void setLongLong(Context*, ProgramVariable* pVar, const std::string& str);
 }

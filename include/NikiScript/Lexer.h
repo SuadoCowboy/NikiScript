@@ -49,8 +49,10 @@
 #define NS_ARGUMENTS_QUOTE '"'
 #endif
 
+#include "DLL.h"
+
 namespace ns {
-	struct Lexer {
+	struct NS_API Lexer {
 		std::string input;
 		size_t position = 0;
 		size_t openArguments = 0; ///< how many times NS_ARGUMENTS_OPEN was found

@@ -4,12 +4,14 @@
 #include <string>
 #include <stdint.h>
 
+#include "DLL.h"
+
 namespace ns {
 	struct Context;
 
 	typedef void(*CommandCallback)(Context* pCtx);
 
-	struct Command {
+	struct NS_API Command {
 		std::string name;
 		uint8_t minArgs = 0, maxArgs = 0;
 		CommandCallback callback = nullptr;

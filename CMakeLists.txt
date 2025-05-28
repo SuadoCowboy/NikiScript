@@ -8,13 +8,9 @@ if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif()
 
-#option(BUILD_SHARED "Whether make it shared or static" OFF)
+option(BUILD_SHARED "Whether make it shared or static" ON)
 
-if(MSVC)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /WX")
-	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /Zi")
-	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /O2")
-else()
+if (NOT MSVC)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror")
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g")
 	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
@@ -25,17 +21,19 @@ else()
 	endif()
 endif()
 
-
 file(GLOB SOURCES ${PROJECT_SOURCE_DIR}/src/*.cpp)
 
-# if(BUILD_SHARED)
-# 	set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS 1)
-# 	add_library(NikiScript SHARED ${SOURCES})
-# 	set_target_properties(NikiScript PROPERTIES VERSION ${PROJECT_VERSION} POSITION_INDEPENDENT_CODE ON)
-# else()
+if(BUILD_SHARED)
+	add_library(NikiScript SHARED ${SOURCES})
+	set_target_properties(NikiScript PROPERTIES VERSION ${PROJECT_VERSION} POSITION_INDEPENDENT_CODE ON)
+	target_compile_definitions(NikiScript PUBLIC NS_EXPORT=1)
+	if (MSVC)
+		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4251") # ignore warning related to STL members on structures
+	endif()
+else()
     add_library(NikiScript STATIC ${SOURCES})
 	set_target_properties(NikiScript PROPERTIES VERSION ${PROJECT_VERSION})
-# endif()
+endif()
 
 set_target_properties(NikiScript PROPERTIES PREFIX "")
 

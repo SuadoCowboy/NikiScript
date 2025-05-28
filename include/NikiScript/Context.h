@@ -11,6 +11,8 @@
 #include "ProgramVariable.h"
 #include "Lexer.h"
 
+#include "DLL.h"
+
 namespace ns {
 	/**
 	 * @warning **DO NOT** rearrange this enum. ns::handleConsoleVariableCall uses bit logic on VARIABLE related to VARIABLE_IN_VARIABLE
@@ -28,7 +30,7 @@ namespace ns {
 
 	struct Context;
 
-	struct Arguments {
+	struct NS_API Arguments {
 		std::vector<std::string> arguments{};
 
 		std::string& getString(size_t index);
@@ -69,7 +71,7 @@ namespace ns {
 	typedef std::vector<ConsoleVariables::pointer> ToggleVariablesRunning; ///< This is unecessary to be a pointer but I like the idea of using only 8 bytes instead of the same bytes as the var name
 	typedef std::vector<Command*> ToggleCommandsRunning;
 
-	struct Context {
+	struct NS_API Context {
 		Lexer* pLexer = nullptr;
 
 		Command* pCommand = nullptr;
@@ -103,7 +105,7 @@ namespace ns {
 	 * It updates all those pointers.
 	 * @param source object to copy content from
 	 */
-	Context deepCopyContext(const Context* source);
+	NS_API Context deepCopyContext(const Context* source);
 }
 
 uint8_t operator|(ns::OriginType l, ns::OriginType r);

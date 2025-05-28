@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 
+#include "DLL.h"
+
 namespace ns {
 	enum TokenType : uint8_t {
 		NONE = 0,
@@ -12,7 +14,7 @@ namespace ns {
 		END = 8 ///< End of input data
 	};
 
-	struct Token {
+	struct NS_API Token {
 		TokenType type = TokenType::NONE;
 		std::string value;
 		std::vector<std::pair<size_t, std::string>> references{}; ///< References identified in Token::value. **pair.first** = index where should insert the reference but _does not count with previous inserted references_
@@ -27,11 +29,11 @@ namespace ns {
 	/**
 	 * @brief inserts all references in the value
 	 */
-	void insertReferencesInToken(Context* pCtx, Token& token);
+	NS_API void insertReferencesInToken(Context* pCtx, Token& token);
 }
 
-uint8_t operator|(ns::TokenType l, ns::TokenType r);
-uint8_t operator|(uint8_t l, ns::TokenType r);
-uint8_t operator|(ns::TokenType l, uint8_t r);
-uint8_t operator&(uint8_t l, ns::TokenType r);
-uint8_t operator&(ns::TokenType l, uint8_t r);
+NS_API uint8_t operator|(ns::TokenType l, ns::TokenType r);
+NS_API uint8_t operator|(uint8_t l, ns::TokenType r);
+NS_API uint8_t operator|(ns::TokenType l, uint8_t r);
+NS_API uint8_t operator&(uint8_t l, ns::TokenType r);
+NS_API uint8_t operator&(ns::TokenType l, uint8_t r);
