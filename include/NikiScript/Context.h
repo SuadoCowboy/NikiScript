@@ -108,11 +108,11 @@ namespace ns {
 	NS_API Context deepCopyContext(const Context* source);
 }
 
-uint8_t operator|(ns::OriginType l, ns::OriginType r);
-uint8_t operator|(uint8_t l, ns::OriginType r);
-uint8_t operator|(ns::OriginType l, uint8_t r);
-uint8_t& operator|=(uint8_t& l, ns::OriginType r);
-uint8_t operator&(uint8_t l, ns::OriginType r);
-uint8_t operator&(ns::OriginType l, uint8_t r);
-uint8_t& operator&=(uint8_t& l, ns::OriginType r);
-uint8_t operator~(ns::OriginType l);
+NS_API uint8_t operator|(ns::OriginType l, ns::OriginType r);
+NS_API uint8_t operator|(uint8_t l, ns::OriginType r);
+NS_API uint8_t operator|(ns::OriginType l, uint8_t r);
+NS_API uint8_t& operator|=(uint8_t& l, ns::OriginType r);
+NS_API uint8_t operator&(uint8_t l, ns::OriginType r);
+NS_API uint8_t operator&(ns::OriginType l, uint8_t r);
+NS_API uint8_t& operator&=(uint8_t& l, ns::OriginType r);
+NS_API uint8_t operator~(ns::OriginType l);
