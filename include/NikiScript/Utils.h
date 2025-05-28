@@ -11,7 +11,7 @@ namespace ns {
 	 * @param format 
 	 * @param buf 
 	 */
-	 template<typename ...>
+	template<typename ...>
 	static void _formatStringValue(const std::string& format, std::stringstream& buf) {
 		buf << format;
 	}
