@@ -1,10 +1,10 @@
 #pragma once
 
 #ifdef _WIN32
-	#if defined(NS_EXPORT)
-		#define NS_API __declspec(dllexport)
-	#elif defined(NS_IMPORT)
+	#if defined(NS_IMPORT)
 		#define NS_API __declspec(dllimport)
+	#elif defined(NS_EXPORT)
+		#define NS_API __declspec(dllexport)
 	#endif
 #else
 	#if defined(NS_EXPORT)
