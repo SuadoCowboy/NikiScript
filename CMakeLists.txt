@@ -29,6 +29,8 @@ if(BUILD_SHARED)
 	target_compile_definitions(NikiScript PRIVATE NS_EXPORT=1)
 	if (MSVC)
 		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4251") # ignore warning related to STL members on structures
+	else()
+		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
 	endif()
 else()
     add_library(NikiScript STATIC ${SOURCES})
