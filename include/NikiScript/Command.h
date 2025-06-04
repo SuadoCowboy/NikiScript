@@ -35,6 +35,9 @@ namespace ns {
 		 */
 		Command(const std::string& name, uint8_t minArgs, uint8_t maxArgs, CommandCallback callback, const std::string& description, const std::vector<std::string>& argsDescriptions);
 	
+		/**
+		 * @brief splitted by space
+		 */
 		std::string getArgumentsNames();
 
 		/**
