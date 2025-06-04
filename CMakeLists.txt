@@ -37,7 +37,9 @@ else()
 	set_target_properties(NikiScript PROPERTIES VERSION ${PROJECT_VERSION})
 endif()
 
-set_target_properties(NikiScript PROPERTIES PREFIX "")
+if (WIN32)
+	set_target_properties(NikiScript PROPERTIES PREFIX "")
+endif()
 
 target_include_directories(NikiScript PRIVATE ${PROJECT_SOURCE_DIR}/include/NikiScript)
 
