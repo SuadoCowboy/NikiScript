@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="NikiScript" />
 <meta name="twitter:description" content="Commandline Interpreter inspired on Valve's source engine and DDRaceNetwork" />
 <!-- END twitter metadata -->
-<title>NikiScript Remake: C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/src/CommandHandler.h Source File</title>
+<title>NikiScript Remake: C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/include/NikiScript/CommandHandler.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.png"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -142,41 +142,49 @@ $(function(){initNavTree('_command_handler_8h_source.html',''); initResizable(tr
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="_command_8h.html">&quot;Command.h&quot;</a></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace</span> <a class="code hl_namespace" href="namespacens.html">ns</a> {</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keyword">struct</span> <a class="code hl_struct" href="structns_1_1_context.html">Context</a>;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="structns_1_1_command_handler.html">   11</a></span>    <span class="keyword">struct</span> <a class="code hl_struct" href="structns_1_1_command_handler.html">CommandHandler</a> {</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="structns_1_1_command_handler.html#a29f87a705cd0ecce5eac11c39ef2d7aa">   12</a></span>        std::unordered_map&lt;std::string, <a class="code hl_struct" href="structns_1_1_command.html">Command</a>&gt; <a class="code hl_variable" href="structns_1_1_command_handler.html#a29f87a705cd0ecce5eac11c39ef2d7aa">commands</a>{};</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <a class="code hl_struct" href="structns_1_1_command.html">Command</a>* <a class="code hl_function" href="structns_1_1_command_handler.html#af6aba9bc75aee2884c6217e7b3d8768a">get</a>(<span class="keyword">const</span> std::string&amp; name);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="comment">/**</span></div>
-<div class="line"><span class="lineno">   16</span><span class="comment">         * @brief adds command to commands unordered_map</span></div>
-<div class="line"><span class="lineno">   17</span><span class="comment">         * </span></div>
-<div class="line"><span class="lineno">   18</span><span class="comment">         * @param command name of the will be mapped in the commands variable</span></div>
-<div class="line"><span class="lineno">   19</span><span class="comment">         * @return true if command name is okay</span></div>
-<div class="line"><span class="lineno">   20</span><span class="comment">         * @return false if command with this name already exists</span></div>
-<div class="line"><span class="lineno">   21</span><span class="comment">         */</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="structns_1_1_command_handler.html#a1a6292929925fb2f717c3660d2e29350">add</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structns_1_1_command.html">Command</a>&amp; command);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="structns_1_1_command_handler.html#a02ee7f57efa46fd9a7229218213a45cd">remove</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>&amp; pCtx, <span class="keyword">const</span> std::string&amp; name);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    };</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="_d_l_l_8h.html">&quot;DLL.h&quot;</a></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="foldopen" id="foldopen00010" data-start="" data-end="">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="_command_handler_8h.html#abf95ab45b84aec89590eff970fc793c9">   10</a></span><span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">nsRegisterCommand</span><span class="preprocessor">(</span><span class="preprocessor">pCtx</span><span class="preprocessor">,</span> <span class="preprocessor">name</span><span class="preprocessor">,</span> <span class="preprocessor">minArgs</span><span class="preprocessor">,</span> <span class="preprocessor">maxArgs</span><span class="preprocessor">,</span> <span class="preprocessor">callback</span><span class="preprocessor">,</span> <span class="preprocessor">description</span><span class="preprocessor">,</span> <span class="preprocessor">...</span><span class="preprocessor">)</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="preprocessor">(</span><span class="preprocessor">pCtx</span><span class="preprocessor">)</span><span class="preprocessor">-&gt;</span><span class="preprocessor">commands</span><span class="preprocessor">.</span><span class="preprocessor">add</span><span class="preprocessor">(</span><span class="preprocessor">ns</span><span class="preprocessor">::</span><span class="preprocessor">Command</span><span class="preprocessor">(</span><span class="preprocessor">name</span><span class="preprocessor">,</span> <span class="preprocessor">minArgs</span><span class="preprocessor">,</span> <span class="preprocessor">maxArgs</span><span class="preprocessor">,</span> <span class="preprocessor">callback</span><span class="preprocessor">,</span> <span class="preprocessor">description</span><span class="preprocessor">,</span> <span class="preprocessor">{</span><span class="preprocessor">__VA_ARGS__</span><span class="preprocessor">}</span><span class="preprocessor">)</span><span class="preprocessor">)</span></div>
 </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>}</div>
-<div class="ttc" id="anamespacens_html"><div class="ttname"><a href="namespacens.html">ns</a></div><div class="ttdef"><b>Definition</b> NikiScript.h:7</div></div>
-<div class="ttc" id="astructns_1_1_command_handler_html"><div class="ttname"><a href="structns_1_1_command_handler.html">ns::CommandHandler</a></div><div class="ttdef"><b>Definition</b> CommandHandler.h:11</div></div>
-<div class="ttc" id="astructns_1_1_command_handler_html_a02ee7f57efa46fd9a7229218213a45cd"><div class="ttname"><a href="structns_1_1_command_handler.html#a02ee7f57efa46fd9a7229218213a45cd">ns::CommandHandler::remove</a></div><div class="ttdeci">void remove(Context &amp;pCtx, const std::string &amp;name)</div><div class="ttdef"><b>Definition</b> CommandHandler.cpp:18</div></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">namespace</span> <a class="code hl_namespace" href="namespacens.html">ns</a> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">struct</span> <a class="code hl_struct" href="structns_1_1_context.html">Context</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structns_1_1_command_handler.html">   16</a></span>    <span class="keyword">struct</span> <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="code hl_struct" href="structns_1_1_command_handler.html">CommandHandler</a> {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structns_1_1_command_handler.html#a29f87a705cd0ecce5eac11c39ef2d7aa">   17</a></span>        std::unordered_map&lt;std::string, <a class="code hl_struct" href="structns_1_1_command.html">Command</a>&gt; <a class="code hl_variable" href="structns_1_1_command_handler.html#a29f87a705cd0ecce5eac11c39ef2d7aa">commands</a>{};</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <a class="code hl_struct" href="structns_1_1_command.html">Command</a>* <a class="code hl_function" href="structns_1_1_command_handler.html#af6aba9bc75aee2884c6217e7b3d8768a">get</a>(<span class="keyword">const</span> std::string&amp; name);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   21</span><span class="comment">         * @brief adds command to commands unordered_map</span></div>
+<div class="line"><span class="lineno">   22</span><span class="comment">         * </span></div>
+<div class="line"><span class="lineno">   23</span><span class="comment">         * @param command name of the will be mapped in the commands variable</span></div>
+<div class="line"><span class="lineno">   24</span><span class="comment">         * @return true if command name is okay</span></div>
+<div class="line"><span class="lineno">   25</span><span class="comment">         * @return false if command with this name already exists</span></div>
+<div class="line"><span class="lineno">   26</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="structns_1_1_command_handler.html#a1a6292929925fb2f717c3660d2e29350">add</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structns_1_1_command.html">Command</a>&amp; command);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="structns_1_1_command_handler.html#a4f4928916bb2153f306f07e0effa1805">remove</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx, <span class="keyword">const</span> std::string&amp; name);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    };</div>
+</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>}</div>
+<div class="ttc" id="a_d_l_l_8h_html_ad334fd9dcd644d1e67ea31cab000c251"><div class="ttname"><a href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a></div><div class="ttdeci">#define NS_API</div><div class="ttdef"><b>Definition</b> DLL.h:16</div></div>
+<div class="ttc" id="anamespacens_html"><div class="ttname"><a href="namespacens.html">ns</a></div><div class="ttdef"><b>Definition</b> Command.h:9</div></div>
+<div class="ttc" id="astructns_1_1_command_handler_html"><div class="ttname"><a href="structns_1_1_command_handler.html">ns::CommandHandler</a></div><div class="ttdef"><b>Definition</b> CommandHandler.h:16</div></div>
 <div class="ttc" id="astructns_1_1_command_handler_html_a1a6292929925fb2f717c3660d2e29350"><div class="ttname"><a href="structns_1_1_command_handler.html#a1a6292929925fb2f717c3660d2e29350">ns::CommandHandler::add</a></div><div class="ttdeci">bool add(const Command &amp;command)</div><div class="ttdoc">adds command to commands unordered_map</div><div class="ttdef"><b>Definition</b> CommandHandler.cpp:9</div></div>
-<div class="ttc" id="astructns_1_1_command_handler_html_a29f87a705cd0ecce5eac11c39ef2d7aa"><div class="ttname"><a href="structns_1_1_command_handler.html#a29f87a705cd0ecce5eac11c39ef2d7aa">ns::CommandHandler::commands</a></div><div class="ttdeci">std::unordered_map&lt; std::string, Command &gt; commands</div><div class="ttdef"><b>Definition</b> CommandHandler.h:12</div></div>
+<div class="ttc" id="astructns_1_1_command_handler_html_a29f87a705cd0ecce5eac11c39ef2d7aa"><div class="ttname"><a href="structns_1_1_command_handler.html#a29f87a705cd0ecce5eac11c39ef2d7aa">ns::CommandHandler::commands</a></div><div class="ttdeci">std::unordered_map&lt; std::string, Command &gt; commands</div><div class="ttdef"><b>Definition</b> CommandHandler.h:17</div></div>
+<div class="ttc" id="astructns_1_1_command_handler_html_a4f4928916bb2153f306f07e0effa1805"><div class="ttname"><a href="structns_1_1_command_handler.html#a4f4928916bb2153f306f07e0effa1805">ns::CommandHandler::remove</a></div><div class="ttdeci">void remove(Context *pCtx, const std::string &amp;name)</div><div class="ttdef"><b>Definition</b> CommandHandler.cpp:18</div></div>
 <div class="ttc" id="astructns_1_1_command_handler_html_af6aba9bc75aee2884c6217e7b3d8768a"><div class="ttname"><a href="structns_1_1_command_handler.html#af6aba9bc75aee2884c6217e7b3d8768a">ns::CommandHandler::get</a></div><div class="ttdeci">Command * get(const std::string &amp;name)</div><div class="ttdef"><b>Definition</b> CommandHandler.cpp:5</div></div>
-<div class="ttc" id="astructns_1_1_command_html"><div class="ttname"><a href="structns_1_1_command.html">ns::Command</a></div><div class="ttdef"><b>Definition</b> Command.h:12</div></div>
-<div class="ttc" id="astructns_1_1_context_html"><div class="ttname"><a href="structns_1_1_context.html">ns::Context</a></div><div class="ttdef"><b>Definition</b> Context.h:71</div></div>
+<div class="ttc" id="astructns_1_1_command_html"><div class="ttname"><a href="structns_1_1_command.html">ns::Command</a></div><div class="ttdef"><b>Definition</b> Command.h:14</div></div>
+<div class="ttc" id="astructns_1_1_context_html"><div class="ttname"><a href="structns_1_1_context.html">ns::Context</a></div><div class="ttdef"><b>Definition</b> Context.h:74</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_command_handler_8h.html">CommandHandler.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_9015efe376f034568db8aa7b82f409e7.html">NikiScript</a></li><li class="navelem"><a class="el" href="_command_handler_8h.html">CommandHandler.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

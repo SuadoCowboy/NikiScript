@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="NikiScript" />
 <meta name="twitter:description" content="Commandline Interpreter inspired on Valve's source engine and DDRaceNetwork" />
 <!-- END twitter metadata -->
-<title>NikiScript Remake: C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/src/Utils.h Source File</title>
+<title>NikiScript Remake: C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/include/NikiScript/Utils.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.png"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -141,103 +141,106 @@ $(function(){initNavTree('_utils_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">string</span><span class="preprocessor">&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">sstream</span><span class="preprocessor">&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">namespace</span> <a class="code hl_namespace" href="namespacens.html">ns</a> {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="comment">/**</span></div>
-<div class="line"><span class="lineno">    9</span><span class="comment">     * @warning this function is not meant to be used outside this header</span></div>
-<div class="line"><span class="lineno">   10</span><span class="comment">     * @tparam  </span></div>
-<div class="line"><span class="lineno">   11</span><span class="comment">     * @param format </span></div>
-<div class="line"><span class="lineno">   12</span><span class="comment">     * @param buf </span></div>
-<div class="line"><span class="lineno">   13</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>     <span class="keyword">template</span>&lt;<span class="keyword">typename</span> ...&gt;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> _formatStringValue(<span class="keyword">const</span> std::string&amp; format, std::stringstream&amp; buf) {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <a class="code hl_namespace" href="namespacens.html">buf</a> &lt;&lt; <a class="code hl_namespace" href="namespacens.html">format</a>;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    }</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="comment">/**</span></div>
-<div class="line"><span class="lineno">   20</span><span class="comment">     * @warning this function is not meant to be used outside this header</span></div>
-<div class="line"><span class="lineno">   21</span><span class="comment">     * @tparam T </span></div>
-<div class="line"><span class="lineno">   22</span><span class="comment">     * @tparam Args </span></div>
-<div class="line"><span class="lineno">   23</span><span class="comment">     * @param format </span></div>
-<div class="line"><span class="lineno">   24</span><span class="comment">     * @param buf </span></div>
-<div class="line"><span class="lineno">   25</span><span class="comment">     * @param value </span></div>
-<div class="line"><span class="lineno">   26</span><span class="comment">     * @param args </span></div>
-<div class="line"><span class="lineno">   27</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> ... Args&gt;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> _formatStringValue(<span class="keyword">const</span> std::string&amp; format, std::stringstream&amp; buf, T value, Args&amp; ... args) {</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <a class="code hl_namespace" href="namespacens.html">size_t</a> <a class="code hl_namespace" href="namespacens.html">idx</a> = <a class="code hl_namespace" href="namespacens.html">format</a>.<a class="code hl_namespace" href="namespacens.html">find</a>(<span class="stringliteral">&quot;{}&quot;</span>);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordflow">if</span> (<a class="code hl_namespace" href="namespacens.html">idx</a> == <a class="code hl_namespace" href="namespacens.html">std</a>::<a class="code hl_namespace" href="namespacens.html">string</a>::<a class="code hl_namespace" href="namespacens.html">npos</a>) {</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <a class="code hl_namespace" href="namespacens.html">buf</a> &lt;&lt; <a class="code hl_namespace" href="namespacens.html">format</a>;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        }</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <a class="code hl_namespace" href="namespacens.html">buf</a> &lt;&lt; <a class="code hl_namespace" href="namespacens.html">format</a>.<a class="code hl_namespace" href="namespacens.html">substr</a>(0, <a class="code hl_namespace" href="namespacens.html">idx</a>) &lt;&lt; <a class="code hl_namespace" href="namespacens.html">value</a>;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="_d_l_l_8h.html">&quot;DLL.h&quot;</a></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace</span> <a class="code hl_namespace" href="namespacens.html">ns</a> {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   11</span><span class="comment">     * @warning this function is not meant to be used outside this header</span></div>
+<div class="line"><span class="lineno">   12</span><span class="comment">     * @tparam  </span></div>
+<div class="line"><span class="lineno">   13</span><span class="comment">     * @param format</span></div>
+<div class="line"><span class="lineno">   14</span><span class="comment">     * @param buf</span></div>
+<div class="line"><span class="lineno">   15</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> ...&gt;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> _formatStringValue(<span class="keyword">const</span> std::string&amp; format, std::stringstream&amp; buf) {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <a class="code hl_namespace" href="namespacens.html">buf</a> &lt;&lt; <a class="code hl_namespace" href="namespacens.html">format</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    }</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   22</span><span class="comment">     * @warning this function is not meant to be used outside this header</span></div>
+<div class="line"><span class="lineno">   23</span><span class="comment">     * @tparam T</span></div>
+<div class="line"><span class="lineno">   24</span><span class="comment">     * @tparam Args</span></div>
+<div class="line"><span class="lineno">   25</span><span class="comment">     * @param format</span></div>
+<div class="line"><span class="lineno">   26</span><span class="comment">     * @param buf</span></div>
+<div class="line"><span class="lineno">   27</span><span class="comment">     * @param value</span></div>
+<div class="line"><span class="lineno">   28</span><span class="comment">     * @param args</span></div>
+<div class="line"><span class="lineno">   29</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> ... Args&gt;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">static</span> <span class="keywordtype">void</span> _formatStringValue(<span class="keyword">const</span> std::string&amp; format, std::stringstream&amp; buf, T value, Args&amp; ... args) {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <a class="code hl_namespace" href="namespacens.html">size_t</a> <a class="code hl_namespace" href="namespacens.html">idx</a> = <a class="code hl_namespace" href="namespacens.html">format</a>.<a class="code hl_namespace" href="namespacens.html">find</a>(<span class="stringliteral">&quot;{}&quot;</span>);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordflow">if</span> (<a class="code hl_namespace" href="namespacens.html">idx</a> == <a class="code hl_namespace" href="namespacens.html">std</a>::<a class="code hl_namespace" href="namespacens.html">string</a>::<a class="code hl_namespace" href="namespacens.html">npos</a>) {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            <a class="code hl_namespace" href="namespacens.html">buf</a> &lt;&lt; <a class="code hl_namespace" href="namespacens.html">format</a>;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        }</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <a class="code hl_namespace" href="namespacens.html">_formatStringValue</a>(<a class="code hl_namespace" href="namespacens.html">format</a>.<a class="code hl_namespace" href="namespacens.html">substr</a>(<a class="code hl_namespace" href="namespacens.html">idx</a>+2), <a class="code hl_namespace" href="namespacens.html">buf</a>, <a class="code hl_namespace" href="namespacens.html">args</a>...);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    }</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">/**</span></div>
-<div class="line"><span class="lineno">   42</span><span class="comment">     * @brief format string using {}. Example: `formatString(&quot;Hello, {}!&quot;, &quot;World&quot;)` -&gt; `&quot;Hello, World!&quot;`</span></div>
-<div class="line"><span class="lineno">   43</span><span class="comment">     * @tparam Args </span></div>
-<div class="line"><span class="lineno">   44</span><span class="comment">     * @param format </span></div>
-<div class="line"><span class="lineno">   45</span><span class="comment">     * @param args </span></div>
-<div class="line"><span class="lineno">   46</span><span class="comment">     * @return std::string </span></div>
-<div class="line"><span class="lineno">   47</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> ... Args&gt;</div>
-<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="namespacens.html#aab2de7296213716cce8231e343f4b834">   49</a></span>    std::string <a class="code hl_function" href="namespacens.html#aab2de7296213716cce8231e343f4b834">formatString</a>(<span class="keyword">const</span> std::string&amp; format, Args ... args) {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <a class="code hl_namespace" href="namespacens.html">std</a>::<a class="code hl_namespace" href="namespacens.html">stringstream</a> <a class="code hl_namespace" href="namespacens.html">buf</a>{};</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <a class="code hl_namespace" href="namespacens.html">_formatStringValue</a>(<a class="code hl_namespace" href="namespacens.html">format</a>, <a class="code hl_namespace" href="namespacens.html">buf</a>, <a class="code hl_namespace" href="namespacens.html">args</a>...);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordflow">return</span> <a class="code hl_namespace" href="namespacens.html">buf</a>.<a class="code hl_namespace" href="namespacens.html">str</a>();</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    }</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <a class="code hl_namespace" href="namespacens.html">buf</a> &lt;&lt; <a class="code hl_namespace" href="namespacens.html">format</a>.<a class="code hl_namespace" href="namespacens.html">substr</a>(0, <a class="code hl_namespace" href="namespacens.html">idx</a>) &lt;&lt; <a class="code hl_namespace" href="namespacens.html">value</a>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <a class="code hl_namespace" href="namespacens.html">_formatStringValue</a>(<a class="code hl_namespace" href="namespacens.html">format</a>.<a class="code hl_namespace" href="namespacens.html">substr</a>(<a class="code hl_namespace" href="namespacens.html">idx</a>+2), <a class="code hl_namespace" href="namespacens.html">buf</a>, <a class="code hl_namespace" href="namespacens.html">args</a>...);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   44</span><span class="comment">     * @brief format string using {}. Example: `formatString(&quot;Hello, {}!&quot;, &quot;World&quot;)` -&gt; `&quot;Hello, World!&quot;`</span></div>
+<div class="line"><span class="lineno">   45</span><span class="comment">     * @tparam Args</span></div>
+<div class="line"><span class="lineno">   46</span><span class="comment">     * @param format</span></div>
+<div class="line"><span class="lineno">   47</span><span class="comment">     * @param args</span></div>
+<div class="line"><span class="lineno">   48</span><span class="comment">     * @return std::string</span></div>
+<div class="line"><span class="lineno">   49</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> ... Args&gt;</div>
+<div class="foldopen" id="foldopen00051" data-start="{" data-end="}">
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="namespacens.html#aab2de7296213716cce8231e343f4b834">   51</a></span>    std::string <a class="code hl_function" href="namespacens.html#aab2de7296213716cce8231e343f4b834">formatString</a>(<span class="keyword">const</span> std::string&amp; format, Args ... args) {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <a class="code hl_namespace" href="namespacens.html">std</a>::<a class="code hl_namespace" href="namespacens.html">stringstream</a> <a class="code hl_namespace" href="namespacens.html">buf</a>{};</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <a class="code hl_namespace" href="namespacens.html">_formatStringValue</a>(<a class="code hl_namespace" href="namespacens.html">format</a>, <a class="code hl_namespace" href="namespacens.html">buf</a>, <a class="code hl_namespace" href="namespacens.html">args</a>...);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordflow">return</span> <a class="code hl_namespace" href="namespacens.html">buf</a>.<a class="code hl_namespace" href="namespacens.html">str</a>();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    }</div>
 </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="comment">/**</span></div>
-<div class="line"><span class="lineno">   56</span><span class="comment">      * @brief trim from start</span></div>
-<div class="line"><span class="lineno">   57</span><span class="comment">      * @param s string to trim the beginning</span></div>
-<div class="line"><span class="lineno">   58</span><span class="comment">      * @see ns::trim</span></div>
-<div class="line"><span class="lineno">   59</span><span class="comment">      * @see ns::rtrim</span></div>
-<div class="line"><span class="lineno">   60</span><span class="comment">      * @note https://stackoverflow.com/questions/216823/how-to-trim-a-stdstring</span></div>
-<div class="line"><span class="lineno">   61</span><span class="comment">      */</span></div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="namespacens.html#aa38612c1876386101d82733bcc9d8fd1">ltrim</a>(std::string &amp;s);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">/**</span></div>
-<div class="line"><span class="lineno">   65</span><span class="comment">     * @brief trim from end</span></div>
-<div class="line"><span class="lineno">   66</span><span class="comment">     * @param s string to trim the end</span></div>
-<div class="line"><span class="lineno">   67</span><span class="comment">     * @see ns::trim</span></div>
-<div class="line"><span class="lineno">   68</span><span class="comment">     * @see ns::ltrim</span></div>
-<div class="line"><span class="lineno">   69</span><span class="comment">     * @note https://stackoverflow.com/questions/216823/how-to-trim-a-stdstring</span></div>
-<div class="line"><span class="lineno">   70</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="namespacens.html#a021b7d90d89d69b6672e939826611e48">rtrim</a>(std::string &amp;s);</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="comment">/**</span></div>
-<div class="line"><span class="lineno">   74</span><span class="comment">     * @brief trim from start and end</span></div>
-<div class="line"><span class="lineno">   75</span><span class="comment">     * @param s string to trim</span></div>
-<div class="line"><span class="lineno">   76</span><span class="comment">     * @see ns::ltrim</span></div>
-<div class="line"><span class="lineno">   77</span><span class="comment">     * @see ns::rtrim</span></div>
-<div class="line"><span class="lineno">   78</span><span class="comment">     * @note https://stackoverflow.com/questions/216823/how-to-trim-a-stdstring</span></div>
-<div class="line"><span class="lineno">   79</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="namespacens.html#a4f7e42729d58e0fdb007239f1d01ce65">trim</a>(std::string&amp; s);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="comment">/**</span></div>
-<div class="line"><span class="lineno">   83</span><span class="comment">     * @brief call isspace but does not accept newline</span></div>
-<div class="line"><span class="lineno">   84</span><span class="comment">     * @param c char to check if is space</span></div>
-<div class="line"><span class="lineno">   85</span><span class="comment">     * @return true if is space</span></div>
-<div class="line"><span class="lineno">   86</span><span class="comment">     * @return false if is not space</span></div>
-<div class="line"><span class="lineno">   87</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacens.html#a0bf029c40ad72088261a139d9907b90f">isSpaceNotNewline</a>(<span class="keywordtype">char</span> c);</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>}</div>
-<div class="ttc" id="anamespacens_html"><div class="ttname"><a href="namespacens.html">ns</a></div><div class="ttdef"><b>Definition</b> NikiScript.h:7</div></div>
-<div class="ttc" id="anamespacens_html_a021b7d90d89d69b6672e939826611e48"><div class="ttname"><a href="namespacens.html#a021b7d90d89d69b6672e939826611e48">ns::rtrim</a></div><div class="ttdeci">void rtrim(std::string &amp;s)</div><div class="ttdoc">trim from end</div><div class="ttdef"><b>Definition</b> Utils.cpp:13</div></div>
-<div class="ttc" id="anamespacens_html_a0bf029c40ad72088261a139d9907b90f"><div class="ttname"><a href="namespacens.html#a0bf029c40ad72088261a139d9907b90f">ns::isSpaceNotNewline</a></div><div class="ttdeci">bool isSpaceNotNewline(char c)</div><div class="ttdoc">call isspace but does not accept newline</div><div class="ttdef"><b>Definition</b> Utils.cpp:24</div></div>
-<div class="ttc" id="anamespacens_html_a4f7e42729d58e0fdb007239f1d01ce65"><div class="ttname"><a href="namespacens.html#a4f7e42729d58e0fdb007239f1d01ce65">ns::trim</a></div><div class="ttdeci">void trim(std::string &amp;s)</div><div class="ttdoc">trim from start and end</div><div class="ttdef"><b>Definition</b> Utils.cpp:19</div></div>
-<div class="ttc" id="anamespacens_html_aa38612c1876386101d82733bcc9d8fd1"><div class="ttname"><a href="namespacens.html#aa38612c1876386101d82733bcc9d8fd1">ns::ltrim</a></div><div class="ttdeci">void ltrim(std::string &amp;s)</div><div class="ttdoc">trim from start</div><div class="ttdef"><b>Definition</b> Utils.cpp:7</div></div>
-<div class="ttc" id="anamespacens_html_aab2de7296213716cce8231e343f4b834"><div class="ttname"><a href="namespacens.html#aab2de7296213716cce8231e343f4b834">ns::formatString</a></div><div class="ttdeci">std::string formatString(const std::string &amp;format, Args ... args)</div><div class="ttdoc">format string using {}. Example: formatString(&quot;Hello, {}!&quot;, &quot;World&quot;) -&gt; &quot;Hello, World!...</div><div class="ttdef"><b>Definition</b> Utils.h:49</div></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   58</span><span class="comment">      * @brief trim from start</span></div>
+<div class="line"><span class="lineno">   59</span><span class="comment">      * @param s string to trim the beginning</span></div>
+<div class="line"><span class="lineno">   60</span><span class="comment">      * @see ns::trim</span></div>
+<div class="line"><span class="lineno">   61</span><span class="comment">      * @see ns::rtrim</span></div>
+<div class="line"><span class="lineno">   62</span><span class="comment">      * @note https://stackoverflow.com/questions/216823/how-to-trim-a-stdstring</span></div>
+<div class="line"><span class="lineno">   63</span><span class="comment">      */</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacens.html#aa38612c1876386101d82733bcc9d8fd1">ltrim</a>(std::string &amp;s);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   67</span><span class="comment">     * @brief trim from end</span></div>
+<div class="line"><span class="lineno">   68</span><span class="comment">     * @param s string to trim the end</span></div>
+<div class="line"><span class="lineno">   69</span><span class="comment">     * @see ns::trim</span></div>
+<div class="line"><span class="lineno">   70</span><span class="comment">     * @see ns::ltrim</span></div>
+<div class="line"><span class="lineno">   71</span><span class="comment">     * @note https://stackoverflow.com/questions/216823/how-to-trim-a-stdstring</span></div>
+<div class="line"><span class="lineno">   72</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacens.html#a021b7d90d89d69b6672e939826611e48">rtrim</a>(std::string &amp;s);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   76</span><span class="comment">     * @brief trim from start and end</span></div>
+<div class="line"><span class="lineno">   77</span><span class="comment">     * @param s string to trim</span></div>
+<div class="line"><span class="lineno">   78</span><span class="comment">     * @see ns::ltrim</span></div>
+<div class="line"><span class="lineno">   79</span><span class="comment">     * @see ns::rtrim</span></div>
+<div class="line"><span class="lineno">   80</span><span class="comment">     * @note https://stackoverflow.com/questions/216823/how-to-trim-a-stdstring</span></div>
+<div class="line"><span class="lineno">   81</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacens.html#a4f7e42729d58e0fdb007239f1d01ce65">trim</a>(std::string&amp; s);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   85</span><span class="comment">     * @brief call isspace but does not accept newline</span></div>
+<div class="line"><span class="lineno">   86</span><span class="comment">     * @param c char to check if is space</span></div>
+<div class="line"><span class="lineno">   87</span><span class="comment">     * @return true if is space</span></div>
+<div class="line"><span class="lineno">   88</span><span class="comment">     * @return false if is not space</span></div>
+<div class="line"><span class="lineno">   89</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacens.html#a0bf029c40ad72088261a139d9907b90f">isSpaceNotNewline</a>(<span class="keywordtype">char</span> c);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>}</div>
+<div class="ttc" id="a_d_l_l_8h_html_ad334fd9dcd644d1e67ea31cab000c251"><div class="ttname"><a href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a></div><div class="ttdeci">#define NS_API</div><div class="ttdef"><b>Definition</b> DLL.h:16</div></div>
+<div class="ttc" id="anamespacens_html"><div class="ttname"><a href="namespacens.html">ns</a></div><div class="ttdef"><b>Definition</b> Command.h:9</div></div>
+<div class="ttc" id="anamespacens_html_a021b7d90d89d69b6672e939826611e48"><div class="ttname"><a href="namespacens.html#a021b7d90d89d69b6672e939826611e48">ns::rtrim</a></div><div class="ttdeci">NS_API void rtrim(std::string &amp;s)</div><div class="ttdoc">trim from end</div><div class="ttdef"><b>Definition</b> Utils.cpp:13</div></div>
+<div class="ttc" id="anamespacens_html_a0bf029c40ad72088261a139d9907b90f"><div class="ttname"><a href="namespacens.html#a0bf029c40ad72088261a139d9907b90f">ns::isSpaceNotNewline</a></div><div class="ttdeci">NS_API bool isSpaceNotNewline(char c)</div><div class="ttdoc">call isspace but does not accept newline</div><div class="ttdef"><b>Definition</b> Utils.cpp:24</div></div>
+<div class="ttc" id="anamespacens_html_a4f7e42729d58e0fdb007239f1d01ce65"><div class="ttname"><a href="namespacens.html#a4f7e42729d58e0fdb007239f1d01ce65">ns::trim</a></div><div class="ttdeci">NS_API void trim(std::string &amp;s)</div><div class="ttdoc">trim from start and end</div><div class="ttdef"><b>Definition</b> Utils.cpp:19</div></div>
+<div class="ttc" id="anamespacens_html_aa38612c1876386101d82733bcc9d8fd1"><div class="ttname"><a href="namespacens.html#aa38612c1876386101d82733bcc9d8fd1">ns::ltrim</a></div><div class="ttdeci">NS_API void ltrim(std::string &amp;s)</div><div class="ttdoc">trim from start</div><div class="ttdef"><b>Definition</b> Utils.cpp:7</div></div>
+<div class="ttc" id="anamespacens_html_aab2de7296213716cce8231e343f4b834"><div class="ttname"><a href="namespacens.html#aab2de7296213716cce8231e343f4b834">ns::formatString</a></div><div class="ttdeci">std::string formatString(const std::string &amp;format, Args ... args)</div><div class="ttdoc">format string using {}. Example: formatString(&quot;Hello, {}!&quot;, &quot;World&quot;) -&gt; &quot;Hello, World!...</div><div class="ttdef"><b>Definition</b> Utils.h:51</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_utils_8h.html">Utils.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_9015efe376f034568db8aa7b82f409e7.html">NikiScript</a></li><li class="navelem"><a class="el" href="_utils_8h.html">Utils.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

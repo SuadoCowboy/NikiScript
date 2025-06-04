@@ -1,6 +1,7 @@
 var structns_1_1_context =
 [
     [ "args", "structns_1_1_context.html#ad43fb323f0509ec3c449e9e5d99a7a6f", null ],
+    [ "cfgDirectory", "structns_1_1_context.html#add82d29170864b53ca82b910c47d3463", null ],
     [ "commands", "structns_1_1_context.html#af0d9a4ca5512cd4da3283e61c2a0c320", null ],
     [ "consoleVariables", "structns_1_1_context.html#aedf036ea4707a97e3706b53d9847f4e3", null ],
     [ "filePath", "structns_1_1_context.html#ab690de3fe963de83bfe74f98ff0abb0e", null ],

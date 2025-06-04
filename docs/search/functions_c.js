@@ -1,10 +1,17 @@
 var searchData=
 [
-  ['parse_0',['parse',['../namespacens.html#a680665d6c662c728a87ec369de2f03a4',1,'ns']]],
-  ['parsefile_1',['parseFile',['../namespacens.html#a765477cb266c6fb3e82b1b85867bca56',1,'ns']]],
-  ['print_2',['print',['../namespacens.html#a666e2f7ee47a99728f16c0cd8496f87b',1,'ns']]],
-  ['printasdatatree_3',['printAsDataTree',['../structns_1_1_command.html#a55b0bbc03cee29bf48b5101e432fd14d',1,'ns::Command']]],
-  ['printf_4',['printf',['../namespacens.html#a718a27e98397219ba3d815add90b6eff',1,'ns']]],
-  ['printunknowncommand_5',['printUnknownCommand',['../namespacens.html#a1e3ef744b251c2aa8529c33c6c2fd21d',1,'ns']]],
-  ['programvariable_6',['ProgramVariable',['../structns_1_1_program_variable.html#ad28cb1d59cb6236747b03f70dbc40872',1,'ns::ProgramVariable::ProgramVariable()'],['../structns_1_1_program_variable.html#a746cd97784a2a570f405c7aa8273b9f7',1,'ns::ProgramVariable::ProgramVariable(void *pValue, const std::string &amp;description, const GetProgramVariableValue &amp;get, const SetProgramVariableValue &amp;set)']]]
+  ['setchar_0',['setChar',['../namespacens.html#aaca0c0d3bd2c066bc83de2977913662b',1,'ns']]],
+  ['setdouble_1',['setDouble',['../namespacens.html#afb3202cde594b735adf840c8e08ed7c9',1,'ns']]],
+  ['setfloat_2',['setFloat',['../namespacens.html#a2a30ba0d055ce67d657cc5e182ec02d6',1,'ns']]],
+  ['setinteger_3',['setInteger',['../namespacens.html#ab5df8b848c5dfb0663452cc2a8317de1',1,'ns']]],
+  ['setlong_4',['setLong',['../namespacens.html#a6d15d646fc7a83246653e6d978c590b7',1,'ns']]],
+  ['setlongdouble_5',['setLongDouble',['../namespacens.html#a668f6ac5fb72add982ac4b5a937db1a9',1,'ns']]],
+  ['setlonglong_6',['setLongLong',['../namespacens.html#a715e52079094433632f88b7ff320ed34',1,'ns']]],
+  ['setprintcallback_7',['setPrintCallback',['../namespacens.html#afe84346f014adbb0b28f06bd210d92a8',1,'ns']]],
+  ['setshort_8',['setShort',['../namespacens.html#a00a991aee145e0315d5bdd0777013adc',1,'ns']]],
+  ['setstring_9',['setString',['../namespacens.html#aa362e4ed819864cd24044a8647131be1',1,'ns']]],
+  ['settokentype_10',['setTokenType',['../structns_1_1_lexer.html#af94430738655fd9259ff5df3c0fd41c5',1,'ns::Lexer']]],
+  ['settokenvalue_11',['setTokenValue',['../structns_1_1_lexer.html#a7672049e4a46c6f5c785ad8656883a81',1,'ns::Lexer']]],
+  ['setunsigned_12',['setUnsigned',['../namespacens.html#ab3b75d109f985fb5291c7716f547b7ad',1,'ns']]],
+  ['setunsignedlonglong_13',['setUnsignedLongLong',['../namespacens.html#aaa7893d3da548470f29c183d495f7012',1,'ns']]]
 ];

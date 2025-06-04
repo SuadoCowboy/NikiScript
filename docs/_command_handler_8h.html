@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="NikiScript" />
 <meta name="twitter:description" content="Commandline Interpreter inspired on Valve's source engine and DDRaceNetwork" />
 <!-- END twitter metadata -->
-<title>NikiScript Remake: C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/src/CommandHandler.h File Reference</title>
+<title>NikiScript Remake: C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/include/NikiScript/CommandHandler.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.png"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -134,22 +134,24 @@ $(function(){initNavTree('_command_handler_8h.html',''); initResizable(true); })
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle"><div class="title">CommandHandler.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;unordered_map&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &quot;<a class="el" href="_command_8h_source.html">Command.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_d_l_l_8h_source.html">DLL.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for CommandHandler.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_command_handler_8h__incl.svg" width="359" height="219"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_command_handler_8h__incl.svg" width="395" height="219"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_command_handler_8h__dep__incl.svg" width="1670" height="390"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_command_handler_8h__dep__incl.svg" width="1166" height="390"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="_command_handler_8h_source.html">Go to the source code of this file.</a></p>
@@ -163,13 +165,67 @@ Classes</h2></td></tr>
 Namespaces</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html">ns</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:abf95ab45b84aec89590eff970fc793c9" id="r_abf95ab45b84aec89590eff970fc793c9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf95ab45b84aec89590eff970fc793c9">nsRegisterCommand</a>(pCtx,  name,  minArgs,  maxArgs,  callback,  description, ...)</td></tr>
+<tr class="separator:abf95ab45b84aec89590eff970fc793c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="abf95ab45b84aec89590eff970fc793c9" name="abf95ab45b84aec89590eff970fc793c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf95ab45b84aec89590eff970fc793c9">&#9670;&#160;</a></span>nsRegisterCommand</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define nsRegisterCommand</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>pCtx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>minArgs</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>maxArgs</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>description</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    (pCtx)-&gt;commands.add(<a class="code hl_struct" href="structns_1_1_command.html">ns::Command</a>(name, minArgs, maxArgs, callback, description, {__VA_ARGS__}))</div>
+<div class="ttc" id="astructns_1_1_command_html"><div class="ttname"><a href="structns_1_1_command.html">ns::Command</a></div><div class="ttdef"><b>Definition</b> Command.h:14</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_command_handler_8h.html">CommandHandler.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_9015efe376f034568db8aa7b82f409e7.html">NikiScript</a></li><li class="navelem"><a class="el" href="_command_handler_8h.html">CommandHandler.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

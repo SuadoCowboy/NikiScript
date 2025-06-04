@@ -1,12 +1,17 @@
 var _niki_script_8h =
 [
-    [ "ns::delvar_command", "namespacens.html#a9044192a7606f450e4376247bd746179", null ],
-    [ "ns::echo_command", "namespacens.html#aaa121328a28f8d5abebecd306e8c5df1", null ],
-    [ "ns::exec_command", "namespacens.html#a221e6a88a0cfd4a8b63526fb27bae4f8", null ],
-    [ "ns::help_command", "namespacens.html#a8cdaa9d3b16f6c69f7edf2ed75b41a95", null ],
-    [ "ns::incrementvar_command", "namespacens.html#a799b896e23c08756a3d83896f0129ca8", null ],
-    [ "ns::registerCommands", "namespacens.html#a344e3633da213d1f3854a60b1130c87f", null ],
-    [ "ns::registerVariable", "namespacens.html#a1c1ab326ebd9ab56dc2d964fa179a842", null ],
-    [ "ns::toggle_command", "namespacens.html#a58d9ceae20bc91fa24638b93a442fde3", null ],
-    [ "ns::var_command", "namespacens.html#a8d945efbeb71a8c00ee1f3dfbacfb61c", null ]
+    [ "ns::delvar", "namespacens.html#a10444fcfdae3dbd25ea2cbb4a5d60452", null ],
+    [ "ns::delvar_command", "namespacens.html#af487d69d5024ac72ea9a8afac048fb8b", null ],
+    [ "ns::echo_command", "namespacens.html#ad301b4e638e588d7c5dea4f9138fafee", null ],
+    [ "ns::exec_command", "namespacens.html#a7dd3bde0b7581c9f94a7e132f7abcc40", null ],
+    [ "ns::help", "namespacens.html#a4c5576dbf8078f700a42e051ee167d73", null ],
+    [ "ns::help_command", "namespacens.html#a2f5990095e2c9bedb327ec28683aeb98", null ],
+    [ "ns::incrementvar", "namespacens.html#ad245a599b7cdad8a8861ea7a87a33fec", null ],
+    [ "ns::incrementvar_command", "namespacens.html#a4d4dc34e6db446c54db1a5f50e66dc12", null ],
+    [ "ns::registerCommands", "namespacens.html#ab8f42539867f1784f83bf8bcc3093d31", null ],
+    [ "ns::registerVariable", "namespacens.html#acab9b505fdfb45a0cb058c83d5ee6c45", null ],
+    [ "ns::toggle", "namespacens.html#a7ea4c19bc3ce2b59f6340ee1e504d12d", null ],
+    [ "ns::toggle_command", "namespacens.html#a3c30d3aa9206c9f7cfdf554928b20898", null ],
+    [ "ns::var", "namespacens.html#a6d08c6fc61f50c137d1dbac6a8a07920", null ],
+    [ "ns::var_command", "namespacens.html#a69636af4fb6f0f4854d24322dfcaf8fd", null ]
 ];

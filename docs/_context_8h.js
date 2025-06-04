@@ -13,15 +13,16 @@ var _context_8h =
       [ "ns::VARIABLE_LOOP", "namespacens.html#a8748c664d230e63fda397e022a64a692acdd532426a089789ae057a9985735711", null ],
       [ "ns::VARIABLE_TOGGLE", "namespacens.html#a8748c664d230e63fda397e022a64a692a837e32aed1982c12fee3c40aac7c7a1d", null ],
       [ "ns::FILE", "namespacens.html#a8748c664d230e63fda397e022a64a692a2184e872bc93429d96b395caf25eb099", null ],
-      [ "ns::INTERNAL", "namespacens.html#a8748c664d230e63fda397e022a64a692a68b0ff2b33d140165a418bce9e1ba9d5", null ]
+      [ "ns::INTERNAL", "namespacens.html#a8748c664d230e63fda397e022a64a692a68b0ff2b33d140165a418bce9e1ba9d5", null ],
+      [ "ns::REFERENCE", "namespacens.html#a8748c664d230e63fda397e022a64a692a32c784ad2761ebe4023f26fb85459170", null ]
     ] ],
-    [ "ns::copyContext", "namespacens.html#a0bc26977ca513cbb3640bf66dfe0e53b", null ],
-    [ "operator&", "_context_8h.html#a578f625e794f8153ffcffff59cd66cac", null ],
-    [ "operator&", "_context_8h.html#aa1ed49c8305d9c59f35907b9495381e8", null ],
-    [ "operator&=", "_context_8h.html#a3897075840c68aa5b7ff0562df4c025f", null ],
-    [ "operator|", "_context_8h.html#afa7bc1675981203ed431bf59cc424022", null ],
-    [ "operator|", "_context_8h.html#a9b17e806c47f4347df488fe721b8f5ea", null ],
-    [ "operator|", "_context_8h.html#acb8ce123abaa776202f9bfa24a0d3f98", null ],
-    [ "operator|=", "_context_8h.html#a29baadef0344c806c83e04ef45f55a71", null ],
-    [ "operator~", "_context_8h.html#a4f3bf76e9d9bc578b120c1e517ce9a01", null ]
+    [ "ns::deepCopyContext", "namespacens.html#a3e72aa48479e5482db1cc6248c26f24b", null ],
+    [ "operator&", "_context_8h.html#a9a6b418ada734f772fd0c0413db25dd3", null ],
+    [ "operator&", "_context_8h.html#a6b06a9a17c81df03518566ce3ef1aef2", null ],
+    [ "operator&=", "_context_8h.html#a931822f32957debea0a7f0569f7d9aea", null ],
+    [ "operator|", "_context_8h.html#a5ddbd6b781fbf1ef1ccb5559128e3601", null ],
+    [ "operator|", "_context_8h.html#a6c6d0f239db11a27031aec61f511250c", null ],
+    [ "operator|", "_context_8h.html#a84bd09d40861d736f1f4ce1a3fdf443b", null ],
+    [ "operator|=", "_context_8h.html#a37a8892a2d5e27c7a51b4eafeee4e6e8", null ],
+    [ "operator~", "_context_8h.html#aa934ee8692930337d03b4804cd932413", null ]
 ];

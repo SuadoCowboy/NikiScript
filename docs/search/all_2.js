@@ -1,14 +1,9 @@
 var searchData=
 [
-  ['command_2ecpp_0',['Command.cpp',['../_command_8cpp.html',1,'']]],
-  ['commandhandler_2ecpp_1',['CommandHandler.cpp',['../_command_handler_8cpp.html',1,'']]],
-  ['commandhandlerwrapper_2ecpp_2',['CommandHandlerWrapper.cpp',['../_command_handler_wrapper_8cpp.html',1,'']]],
-  ['commandhandlerwrapper_2eh_3',['CommandHandlerWrapper.h',['../_command_handler_wrapper_8h.html',1,'']]],
-  ['commands_4',['Commands',['../md__c_1_2_users_2emilly_2_documents_2_lucca_2_projetos_2_cpp_2_niki_script_2_conventions.html#autotoc_md5',1,'']]],
-  ['commandwrapper_2ecpp_5',['CommandWrapper.cpp',['../_command_wrapper_8cpp.html',1,'']]],
-  ['commandwrapper_2eh_6',['CommandWrapper.h',['../_command_wrapper_8h.html',1,'']]],
-  ['console_20the_20toggle_20variable_20is_20useless_7',['in the console, the toggle variable is useless',['../index.html#autotoc_md9',1,'']]],
-  ['context_2ecpp_8',['Context.cpp',['../_context_8cpp.html',1,'']]],
-  ['conventions_9',['Conventions',['../md__c_1_2_users_2emilly_2_documents_2_lucca_2_projetos_2_cpp_2_niki_script_2_conventions.html',1,'']]],
-  ['conventions_2emd_10',['Conventions.md',['../_conventions_8md.html',1,'']]]
+  ['deepcopycontext_0',['deepCopyContext',['../namespacens.html#a3e72aa48479e5482db1cc6248c26f24b',1,'ns']]],
+  ['default_1',['DEFAULT',['../namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4bafcb5a845922b103d4b59460e7cab767b',1,'ns']]],
+  ['delvar_2',['delvar',['../namespacens.html#a10444fcfdae3dbd25ea2cbb4a5d60452',1,'ns']]],
+  ['delvar_5fcommand_3',['delvar_command',['../namespacens.html#af487d69d5024ac72ea9a8afac048fb8b',1,'ns']]],
+  ['description_4',['description',['../structns_1_1_command.html#abc23bf93ffc1da2ea4c0c199af8d65fa',1,'ns::Command::description'],['../structns_1_1_program_variable.html#af860fbef0a639782291e9bd2dd2fc7b9',1,'ns::ProgramVariable::description']]],
+  ['dll_2eh_5',['DLL.h',['../_d_l_l_8h.html',1,'']]]
 ];

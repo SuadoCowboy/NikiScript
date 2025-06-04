@@ -1,13 +1,16 @@
-<map id="C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/src/Lexer.h" name="C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/src/Lexer.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="22,5,224,64"/>
+<map id="C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/include/NikiScript/Lexer.h" name="C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/include/NikiScript/Lexer.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="54,5,256,64"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,187,70,213"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,66,80,113,51,173,47,171,75,111,103,63"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="176,187,230,213"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="144,63,171,111,196,171,191,173,166,113,139,66"/>
-<area shape="rect" id="Node000004" href="$_token_8h.html" title=" " alt="" coords="89,112,156,139"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="126,64,126,96,120,96,120,64"/>
-<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="110,141,65,179,62,175,106,137"/>
-<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="139,137,180,174,176,178,135,141"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="94,187,152,213"/>
-<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="126,139,126,171,120,171,120,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="137,66,58,175,53,172,132,63"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="94,187,147,213"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="151,65,129,172,123,171,146,64"/>
+<area shape="rect" id="Node000004" href="$_token_8h.html" title=" " alt="" coords="157,112,224,139"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="169,63,182,97,178,99,164,65"/>
+<area shape="rect" id="Node000006" href="$_d_l_l_8h.html" title=" " alt="" coords="253,187,310,213"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="192,63,238,110,258,141,273,171,268,173,253,144,234,114,188,66"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="165,142,79,182,77,177,163,137"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="180,141,145,177,141,174,177,137"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="172,187,229,213"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="195,139,199,171,194,172,190,140"/>
+<area shape="poly" id="edge7_Node000004_Node000006" title=" " alt="" coords="208,137,256,175,253,179,205,141"/>
 </map>

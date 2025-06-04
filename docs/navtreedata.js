@@ -25,21 +25,24 @@
 var NAVTREE =
 [
   [ "NikiScript Remake", "index.html", [
-    [ "Meet NikiScript", "index.html", "index" ],
-    [ "Conventions", "md__c_1_2_users_2emilly_2_documents_2_lucca_2_projetos_2_cpp_2_niki_script_2_conventions.html", [
-      [ "Print", "md__c_1_2_users_2emilly_2_documents_2_lucca_2_projetos_2_cpp_2_niki_script_2_conventions.html#autotoc_md1", null ],
-      [ "Naming", "md__c_1_2_users_2emilly_2_documents_2_lucca_2_projetos_2_cpp_2_niki_script_2_conventions.html#autotoc_md2", [
-        [ "Functions", "md__c_1_2_users_2emilly_2_documents_2_lucca_2_projetos_2_cpp_2_niki_script_2_conventions.html#autotoc_md3", null ],
-        [ "Variables", "md__c_1_2_users_2emilly_2_documents_2_lucca_2_projetos_2_cpp_2_niki_script_2_conventions.html#autotoc_md4", null ],
-        [ "Commands", "md__c_1_2_users_2emilly_2_documents_2_lucca_2_projetos_2_cpp_2_niki_script_2_conventions.html#autotoc_md5", null ]
-      ] ]
-    ] ],
-    [ "TODO", "md__c_1_2_users_2emilly_2_documents_2_lucca_2_projetos_2_cpp_2_niki_script_2_t_o_d_o.html", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
-        [ "Functions", "namespacemembers_func.html", null ]
+        [ "Functions", "namespacemembers_func.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ],
+        [ "Typedefs", "namespacemembers_type.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ],
+        [ "Enumerator", "namespacemembers_eval.html", null ]
+      ] ]
+    ] ],
+    [ "Classes", "annotated.html", [
+      [ "Class List", "annotated.html", "annotated_dup" ],
+      [ "Class Index", "classes.html", null ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", null ],
+        [ "Functions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -47,8 +50,6 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Functions", "globals_func.html", null ],
-        [ "Variables", "globals_vars.html", null ],
-        [ "Typedefs", "globals_type.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -57,7 +58,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_base_wrapper_8cpp.html"
+"_command_8cpp.html",
+"structns_1_1_context.html#aa6a196d8366b343b0e6d86c58a2517f6"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

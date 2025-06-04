@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="NikiScript" />
 <meta name="twitter:description" content="Commandline Interpreter inspired on Valve's source engine and DDRaceNetwork" />
 <!-- END twitter metadata -->
-<title>NikiScript Remake: C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/src/Lexer.h File Reference</title>
+<title>NikiScript Remake: C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/include/NikiScript/Lexer.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.png"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -142,15 +142,16 @@ $(function(){initNavTree('_lexer_8h.html',''); initResizable(true); });
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &quot;<a class="el" href="_token_8h_source.html">Token.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_d_l_l_8h_source.html">DLL.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Lexer.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_lexer_8h__incl.svg" width="235" height="219"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_lexer_8h__incl.svg" width="315" height="219"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_lexer_8h__dep__incl.svg" width="1963" height="390"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_lexer_8h__dep__incl.svg" width="1530" height="390"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="_lexer_8h_source.html">Go to the source code of this file.</a></p>
@@ -167,178 +168,178 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a59b1a1896173f84cda363cf5fba0c0e9" id="r_a59b1a1896173f84cda363cf5fba0c0e9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a59b1a1896173f84cda363cf5fba0c0e9">NIKISCRIPT_ESCAPE_NEXT_CHAR</a>&#160;&#160;&#160;'\\'</td></tr>
-<tr class="separator:a59b1a1896173f84cda363cf5fba0c0e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc050624ca40bb2ca84f2ed504d2d817" id="r_afc050624ca40bb2ca84f2ed504d2d817"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc050624ca40bb2ca84f2ed504d2d817">NIKISCRIPT_STATEMENT_SEPARATOR</a>&#160;&#160;&#160;';'</td></tr>
-<tr class="separator:afc050624ca40bb2ca84f2ed504d2d817"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a140f97a15a67dc1632a0cd99570b1237" id="r_a140f97a15a67dc1632a0cd99570b1237"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a140f97a15a67dc1632a0cd99570b1237">NIKISCRIPT_REFERENCE</a>&#160;&#160;&#160;'$'</td></tr>
-<tr class="separator:a140f97a15a67dc1632a0cd99570b1237"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9eb39fe323f8f26fb62da8910e783131" id="r_a9eb39fe323f8f26fb62da8910e783131"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9eb39fe323f8f26fb62da8910e783131">NIKISCRIPT_REFERENCE_OPEN</a>&#160;&#160;&#160;'{'</td></tr>
-<tr class="separator:a9eb39fe323f8f26fb62da8910e783131"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73db599c11ddd285d3e4c6fda5b411eb" id="r_a73db599c11ddd285d3e4c6fda5b411eb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73db599c11ddd285d3e4c6fda5b411eb">NIKISCRIPT_REFERENCE_CLOSE</a>&#160;&#160;&#160;'}'</td></tr>
-<tr class="separator:a73db599c11ddd285d3e4c6fda5b411eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a938e0c54bce5620731ceb5dad0ebe38f" id="r_a938e0c54bce5620731ceb5dad0ebe38f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a938e0c54bce5620731ceb5dad0ebe38f">NIKISCRIPT_ARGUMENTS_SEPARATOR</a>&#160;&#160;&#160;','</td></tr>
-<tr class="separator:a938e0c54bce5620731ceb5dad0ebe38f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21313d174c74f83b82921bb068cea7c5" id="r_a21313d174c74f83b82921bb068cea7c5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21313d174c74f83b82921bb068cea7c5">NIKISCRIPT_ARGUMENTS_OPEN</a>&#160;&#160;&#160;'('</td></tr>
-<tr class="separator:a21313d174c74f83b82921bb068cea7c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5042a03bf36366aa4a35500151b70b8d" id="r_a5042a03bf36366aa4a35500151b70b8d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5042a03bf36366aa4a35500151b70b8d">NIKISCRIPT_ARGUMENTS_CLOSE</a>&#160;&#160;&#160;')'</td></tr>
-<tr class="separator:a5042a03bf36366aa4a35500151b70b8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f319f20a61b040e1db3cb439fbc8cdc" id="r_a5f319f20a61b040e1db3cb439fbc8cdc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f319f20a61b040e1db3cb439fbc8cdc">NIKISCRIPT_COMMENT_LINE</a>&#160;&#160;&#160;'/'</td></tr>
-<tr class="separator:a5f319f20a61b040e1db3cb439fbc8cdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a705cdff96b9490454cad94d63759823c" id="r_a705cdff96b9490454cad94d63759823c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a705cdff96b9490454cad94d63759823c">NIKISCRIPT_COMMENT_LINES</a>&#160;&#160;&#160;'*'</td></tr>
-<tr class="separator:a705cdff96b9490454cad94d63759823c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5dfab7c600fd8be6d665e5ce3a110048" id="r_a5dfab7c600fd8be6d665e5ce3a110048"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5dfab7c600fd8be6d665e5ce3a110048">NIKISCRIPT_ARGUMENTS_QUOTE</a>&#160;&#160;&#160;'&quot;'</td></tr>
-<tr class="separator:a5dfab7c600fd8be6d665e5ce3a110048"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1d4171ab1a94bd66bd6b7f8c19f4331" id="r_ac1d4171ab1a94bd66bd6b7f8c19f4331"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac1d4171ab1a94bd66bd6b7f8c19f4331">NS_ESCAPE_NEXT_CHAR</a>&#160;&#160;&#160;'\\'</td></tr>
+<tr class="separator:ac1d4171ab1a94bd66bd6b7f8c19f4331"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98e623eb982e7ad0070b56c967b396b8" id="r_a98e623eb982e7ad0070b56c967b396b8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98e623eb982e7ad0070b56c967b396b8">NS_STATEMENT_SEPARATOR</a>&#160;&#160;&#160;';'</td></tr>
+<tr class="separator:a98e623eb982e7ad0070b56c967b396b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac044e958fed530482ed02aa85b2933d7" id="r_ac044e958fed530482ed02aa85b2933d7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac044e958fed530482ed02aa85b2933d7">NS_REFERENCE</a>&#160;&#160;&#160;'$'</td></tr>
+<tr class="separator:ac044e958fed530482ed02aa85b2933d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9629b188fa8165a438dc8dc90bc3cb7b" id="r_a9629b188fa8165a438dc8dc90bc3cb7b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9629b188fa8165a438dc8dc90bc3cb7b">NS_REFERENCE_OPEN</a>&#160;&#160;&#160;'{'</td></tr>
+<tr class="separator:a9629b188fa8165a438dc8dc90bc3cb7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a007b840c8d6ef86deff725c13b9de6d0" id="r_a007b840c8d6ef86deff725c13b9de6d0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a007b840c8d6ef86deff725c13b9de6d0">NS_REFERENCE_CLOSE</a>&#160;&#160;&#160;'}'</td></tr>
+<tr class="separator:a007b840c8d6ef86deff725c13b9de6d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0085f05e9fd23f648f96d6ca348fdc64" id="r_a0085f05e9fd23f648f96d6ca348fdc64"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0085f05e9fd23f648f96d6ca348fdc64">NS_ARGUMENTS_SEPARATOR</a>&#160;&#160;&#160;','</td></tr>
+<tr class="separator:a0085f05e9fd23f648f96d6ca348fdc64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4c076d8b96b669e883a64345ecc6be3" id="r_ad4c076d8b96b669e883a64345ecc6be3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4c076d8b96b669e883a64345ecc6be3">NS_ARGUMENTS_OPEN</a>&#160;&#160;&#160;'('</td></tr>
+<tr class="separator:ad4c076d8b96b669e883a64345ecc6be3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2ea48afaffd8b8e1baf1ee13e9ab41e" id="r_ad2ea48afaffd8b8e1baf1ee13e9ab41e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2ea48afaffd8b8e1baf1ee13e9ab41e">NS_ARGUMENTS_CLOSE</a>&#160;&#160;&#160;')'</td></tr>
+<tr class="separator:ad2ea48afaffd8b8e1baf1ee13e9ab41e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acde1d5c650be61be6caa7131e9a0d6e3" id="r_acde1d5c650be61be6caa7131e9a0d6e3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acde1d5c650be61be6caa7131e9a0d6e3">NS_COMMENT_LINE</a>&#160;&#160;&#160;'/'</td></tr>
+<tr class="separator:acde1d5c650be61be6caa7131e9a0d6e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ee4f49738eb4f05c3d473db4b407523" id="r_a5ee4f49738eb4f05c3d473db4b407523"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ee4f49738eb4f05c3d473db4b407523">NS_COMMENT_LINES</a>&#160;&#160;&#160;'*'</td></tr>
+<tr class="separator:a5ee4f49738eb4f05c3d473db4b407523"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b01ce8d64e669c020e677a997c57e61" id="r_a6b01ce8d64e669c020e677a997c57e61"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b01ce8d64e669c020e677a997c57e61">NS_ARGUMENTS_QUOTE</a>&#160;&#160;&#160;'&quot;'</td></tr>
+<tr class="separator:a6b01ce8d64e669c020e677a997c57e61"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a5042a03bf36366aa4a35500151b70b8d" name="a5042a03bf36366aa4a35500151b70b8d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5042a03bf36366aa4a35500151b70b8d">&#9670;&#160;</a></span>NIKISCRIPT_ARGUMENTS_CLOSE</h2>
+<a id="ad2ea48afaffd8b8e1baf1ee13e9ab41e" name="ad2ea48afaffd8b8e1baf1ee13e9ab41e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2ea48afaffd8b8e1baf1ee13e9ab41e">&#9670;&#160;</a></span>NS_ARGUMENTS_CLOSE</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NIKISCRIPT_ARGUMENTS_CLOSE&#160;&#160;&#160;')'</td>
+          <td class="memname">#define NS_ARGUMENTS_CLOSE&#160;&#160;&#160;')'</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a21313d174c74f83b82921bb068cea7c5" name="a21313d174c74f83b82921bb068cea7c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21313d174c74f83b82921bb068cea7c5">&#9670;&#160;</a></span>NIKISCRIPT_ARGUMENTS_OPEN</h2>
+<a id="ad4c076d8b96b669e883a64345ecc6be3" name="ad4c076d8b96b669e883a64345ecc6be3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4c076d8b96b669e883a64345ecc6be3">&#9670;&#160;</a></span>NS_ARGUMENTS_OPEN</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NIKISCRIPT_ARGUMENTS_OPEN&#160;&#160;&#160;'('</td>
+          <td class="memname">#define NS_ARGUMENTS_OPEN&#160;&#160;&#160;'('</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a5dfab7c600fd8be6d665e5ce3a110048" name="a5dfab7c600fd8be6d665e5ce3a110048"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5dfab7c600fd8be6d665e5ce3a110048">&#9670;&#160;</a></span>NIKISCRIPT_ARGUMENTS_QUOTE</h2>
+<a id="a6b01ce8d64e669c020e677a997c57e61" name="a6b01ce8d64e669c020e677a997c57e61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b01ce8d64e669c020e677a997c57e61">&#9670;&#160;</a></span>NS_ARGUMENTS_QUOTE</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NIKISCRIPT_ARGUMENTS_QUOTE&#160;&#160;&#160;'&quot;'</td>
+          <td class="memname">#define NS_ARGUMENTS_QUOTE&#160;&#160;&#160;'&quot;'</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a938e0c54bce5620731ceb5dad0ebe38f" name="a938e0c54bce5620731ceb5dad0ebe38f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a938e0c54bce5620731ceb5dad0ebe38f">&#9670;&#160;</a></span>NIKISCRIPT_ARGUMENTS_SEPARATOR</h2>
+<a id="a0085f05e9fd23f648f96d6ca348fdc64" name="a0085f05e9fd23f648f96d6ca348fdc64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0085f05e9fd23f648f96d6ca348fdc64">&#9670;&#160;</a></span>NS_ARGUMENTS_SEPARATOR</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NIKISCRIPT_ARGUMENTS_SEPARATOR&#160;&#160;&#160;','</td>
+          <td class="memname">#define NS_ARGUMENTS_SEPARATOR&#160;&#160;&#160;','</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a5f319f20a61b040e1db3cb439fbc8cdc" name="a5f319f20a61b040e1db3cb439fbc8cdc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f319f20a61b040e1db3cb439fbc8cdc">&#9670;&#160;</a></span>NIKISCRIPT_COMMENT_LINE</h2>
+<a id="acde1d5c650be61be6caa7131e9a0d6e3" name="acde1d5c650be61be6caa7131e9a0d6e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acde1d5c650be61be6caa7131e9a0d6e3">&#9670;&#160;</a></span>NS_COMMENT_LINE</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NIKISCRIPT_COMMENT_LINE&#160;&#160;&#160;'/'</td>
+          <td class="memname">#define NS_COMMENT_LINE&#160;&#160;&#160;'/'</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a705cdff96b9490454cad94d63759823c" name="a705cdff96b9490454cad94d63759823c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a705cdff96b9490454cad94d63759823c">&#9670;&#160;</a></span>NIKISCRIPT_COMMENT_LINES</h2>
+<a id="a5ee4f49738eb4f05c3d473db4b407523" name="a5ee4f49738eb4f05c3d473db4b407523"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ee4f49738eb4f05c3d473db4b407523">&#9670;&#160;</a></span>NS_COMMENT_LINES</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NIKISCRIPT_COMMENT_LINES&#160;&#160;&#160;'*'</td>
+          <td class="memname">#define NS_COMMENT_LINES&#160;&#160;&#160;'*'</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a59b1a1896173f84cda363cf5fba0c0e9" name="a59b1a1896173f84cda363cf5fba0c0e9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59b1a1896173f84cda363cf5fba0c0e9">&#9670;&#160;</a></span>NIKISCRIPT_ESCAPE_NEXT_CHAR</h2>
+<a id="ac1d4171ab1a94bd66bd6b7f8c19f4331" name="ac1d4171ab1a94bd66bd6b7f8c19f4331"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1d4171ab1a94bd66bd6b7f8c19f4331">&#9670;&#160;</a></span>NS_ESCAPE_NEXT_CHAR</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NIKISCRIPT_ESCAPE_NEXT_CHAR&#160;&#160;&#160;'\\'</td>
+          <td class="memname">#define NS_ESCAPE_NEXT_CHAR&#160;&#160;&#160;'\\'</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a140f97a15a67dc1632a0cd99570b1237" name="a140f97a15a67dc1632a0cd99570b1237"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a140f97a15a67dc1632a0cd99570b1237">&#9670;&#160;</a></span>NIKISCRIPT_REFERENCE</h2>
+<a id="ac044e958fed530482ed02aa85b2933d7" name="ac044e958fed530482ed02aa85b2933d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac044e958fed530482ed02aa85b2933d7">&#9670;&#160;</a></span>NS_REFERENCE</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NIKISCRIPT_REFERENCE&#160;&#160;&#160;'$'</td>
+          <td class="memname">#define NS_REFERENCE&#160;&#160;&#160;'$'</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a73db599c11ddd285d3e4c6fda5b411eb" name="a73db599c11ddd285d3e4c6fda5b411eb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a73db599c11ddd285d3e4c6fda5b411eb">&#9670;&#160;</a></span>NIKISCRIPT_REFERENCE_CLOSE</h2>
+<a id="a007b840c8d6ef86deff725c13b9de6d0" name="a007b840c8d6ef86deff725c13b9de6d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a007b840c8d6ef86deff725c13b9de6d0">&#9670;&#160;</a></span>NS_REFERENCE_CLOSE</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NIKISCRIPT_REFERENCE_CLOSE&#160;&#160;&#160;'}'</td>
+          <td class="memname">#define NS_REFERENCE_CLOSE&#160;&#160;&#160;'}'</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a9eb39fe323f8f26fb62da8910e783131" name="a9eb39fe323f8f26fb62da8910e783131"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9eb39fe323f8f26fb62da8910e783131">&#9670;&#160;</a></span>NIKISCRIPT_REFERENCE_OPEN</h2>
+<a id="a9629b188fa8165a438dc8dc90bc3cb7b" name="a9629b188fa8165a438dc8dc90bc3cb7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9629b188fa8165a438dc8dc90bc3cb7b">&#9670;&#160;</a></span>NS_REFERENCE_OPEN</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NIKISCRIPT_REFERENCE_OPEN&#160;&#160;&#160;'{'</td>
+          <td class="memname">#define NS_REFERENCE_OPEN&#160;&#160;&#160;'{'</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="afc050624ca40bb2ca84f2ed504d2d817" name="afc050624ca40bb2ca84f2ed504d2d817"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc050624ca40bb2ca84f2ed504d2d817">&#9670;&#160;</a></span>NIKISCRIPT_STATEMENT_SEPARATOR</h2>
+<a id="a98e623eb982e7ad0070b56c967b396b8" name="a98e623eb982e7ad0070b56c967b396b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98e623eb982e7ad0070b56c967b396b8">&#9670;&#160;</a></span>NS_STATEMENT_SEPARATOR</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NIKISCRIPT_STATEMENT_SEPARATOR&#160;&#160;&#160;';'</td>
+          <td class="memname">#define NS_STATEMENT_SEPARATOR&#160;&#160;&#160;';'</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -350,7 +351,7 @@ Macros</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_lexer_8h.html">Lexer.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_9015efe376f034568db8aa7b82f409e7.html">NikiScript</a></li><li class="navelem"><a class="el" href="_lexer_8h.html">Lexer.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

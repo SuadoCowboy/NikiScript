@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="NikiScript" />
 <meta name="twitter:description" content="Commandline Interpreter inspired on Valve's source engine and DDRaceNetwork" />
 <!-- END twitter metadata -->
-<title>NikiScript Remake: C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/src/PrintCallback.h File Reference</title>
+<title>NikiScript Remake: C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/include/NikiScript/PrintCallback.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.png"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -143,16 +143,17 @@ $(function(){initNavTree('_print_callback_8h.html',''); initResizable(true); });
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
+<code>#include &quot;<a class="el" href="_d_l_l_8h_source.html">DLL.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_utils_8h_source.html">Utils.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for PrintCallback.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_print_callback_8h__incl.svg" width="246" height="219"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_print_callback_8h__incl.svg" width="326" height="219"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_print_callback_8h__dep__incl.svg" width="2431" height="390"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_print_callback_8h__dep__incl.svg" width="1736" height="390"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="_print_callback_8h_source.html">Go to the source code of this file.</a></p>
@@ -178,17 +179,23 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af69320371eceb2067268d0d2278ac24b" id="r_af69320371eceb2067268d0d2278ac24b"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#af69320371eceb2067268d0d2278ac24b">ns::levelToString</a> (<a class="el" href="namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level)</td></tr>
+<tr class="memitem:af69320371eceb2067268d0d2278ac24b" id="r_af69320371eceb2067268d0d2278ac24b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#af69320371eceb2067268d0d2278ac24b">ns::levelToString</a> (<a class="el" href="namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level)</td></tr>
 <tr class="separator:af69320371eceb2067268d0d2278ac24b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a718a27e98397219ba3d815add90b6eff" id="r_a718a27e98397219ba3d815add90b6eff"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
-<tr class="memitem:a718a27e98397219ba3d815add90b6eff"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacens.html#a718a27e98397219ba3d815add90b6eff">ns::printf</a> (<a class="el" href="namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level, const char *format, Args ... args)</td></tr>
-<tr class="separator:a718a27e98397219ba3d815add90b6eff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe84346f014adbb0b28f06bd210d92a8" id="r_afe84346f014adbb0b28f06bd210d92a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#afe84346f014adbb0b28f06bd210d92a8">ns::setPrintCallback</a> (void *pData, <a class="el" href="namespacens.html#a55c233af7a6a03709d59570277dd6e44">PrintCallback</a> callback)</td></tr>
+<tr class="memitem:afe84346f014adbb0b28f06bd210d92a8" id="r_afe84346f014adbb0b28f06bd210d92a8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#afe84346f014adbb0b28f06bd210d92a8">ns::setPrintCallback</a> (void *pData, <a class="el" href="namespacens.html#a55c233af7a6a03709d59570277dd6e44">PrintCallback</a> callback)</td></tr>
 <tr class="separator:afe84346f014adbb0b28f06bd210d92a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a666e2f7ee47a99728f16c0cd8496f87b" id="r_a666e2f7ee47a99728f16c0cd8496f87b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a666e2f7ee47a99728f16c0cd8496f87b">ns::print</a> (<a class="el" href="namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level, const char *str)</td></tr>
+<tr class="memitem:a666e2f7ee47a99728f16c0cd8496f87b" id="r_a666e2f7ee47a99728f16c0cd8496f87b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a666e2f7ee47a99728f16c0cd8496f87b">ns::print</a> (<a class="el" href="namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level, const char *str)</td></tr>
 <tr class="separator:a666e2f7ee47a99728f16c0cd8496f87b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e3ef744b251c2aa8529c33c6c2fd21d" id="r_a1e3ef744b251c2aa8529c33c6c2fd21d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a1e3ef744b251c2aa8529c33c6c2fd21d">ns::printUnknownCommand</a> (const char *command)</td></tr>
+<tr class="memitem:a1e3ef744b251c2aa8529c33c6c2fd21d" id="r_a1e3ef744b251c2aa8529c33c6c2fd21d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a1e3ef744b251c2aa8529c33c6c2fd21d">ns::printUnknownCommand</a> (const char *command)</td></tr>
 <tr class="separator:a1e3ef744b251c2aa8529c33c6c2fd21d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff07398d2ba4a41cd2c79a47519c7250" id="r_aff07398d2ba4a41cd2c79a47519c7250"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:aff07398d2ba4a41cd2c79a47519c7250"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacens.html#aff07398d2ba4a41cd2c79a47519c7250">ns::printf</a> (<a class="el" href="namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level, const char *format, Args &amp;&amp;... args)</td></tr>
+<tr class="separator:aff07398d2ba4a41cd2c79a47519c7250"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac90c3ba0528ee77abaa71214a079453" id="r_aac90c3ba0528ee77abaa71214a079453"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#aac90c3ba0528ee77abaa71214a079453">ns::printAppendToString</a> (void *pBuffer, <a class="el" href="namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level, const char *string)</td></tr>
+<tr class="memdesc:aac90c3ba0528ee77abaa71214a079453"><td class="mdescLeft">&#160;</td><td class="mdescRight">appends string to pBuffer  <br /></td></tr>
+<tr class="separator:aac90c3ba0528ee77abaa71214a079453"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27c0803ce3ed68f1eba03b32eef3d6f3" id="r_a27c0803ce3ed68f1eba03b32eef3d6f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a27c0803ce3ed68f1eba03b32eef3d6f3">ns::printAppendToStringEchoOnly</a> (void *pBuffer, <a class="el" href="namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4b">PrintLevel</a> level, const char *string)</td></tr>
+<tr class="memdesc:a27c0803ce3ed68f1eba03b32eef3d6f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">appends string to pBuffer if level is <a class="el" href="namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4babb45f522bb73d5584c78407b8ac843eb" title="any text that came from a command that is not an error">PrintLevel::ECHO</a>  <br /></td></tr>
+<tr class="separator:a27c0803ce3ed68f1eba03b32eef3d6f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -202,7 +209,7 @@ Variables</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_print_callback_8h.html">PrintCallback.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_9015efe376f034568db8aa7b82f409e7.html">NikiScript</a></li><li class="navelem"><a class="el" href="_print_callback_8h.html">PrintCallback.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

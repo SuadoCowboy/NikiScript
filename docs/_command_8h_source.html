@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="NikiScript" />
 <meta name="twitter:description" content="Commandline Interpreter inspired on Valve's source engine and DDRaceNetwork" />
 <!-- END twitter metadata -->
-<title>NikiScript Remake: C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/src/Command.h Source File</title>
+<title>NikiScript Remake: C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/include/NikiScript/Command.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.png"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -141,65 +141,73 @@ $(function(){initNavTree('_command_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">string</span><span class="preprocessor">&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="preprocessor">&lt;</span><span class="preprocessor">stdint</span><span class="preprocessor">.</span><span class="preprocessor">h</span><span class="preprocessor">&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">namespace</span> <a class="code hl_namespace" href="namespacens.html">ns</a> {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="keyword">struct</span> <a class="code hl_struct" href="structns_1_1_context.html">Context</a>;</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="namespacens.html#a3ac1910ef8066900ee976d96453ea88d">   10</a></span>    <span class="keyword">typedef</span> <span class="keywordtype">void</span>(*<a class="code hl_typedef" href="namespacens.html#a3ac1910ef8066900ee976d96453ea88d">CommandCallback</a>)(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>&amp; ctx);</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="_d_l_l_8h.html">&quot;DLL.h&quot;</a></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="foldopen" id="foldopen00009" data-start="{" data-end="}">
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="namespacens.html">    9</a></span><span class="keyword">namespace</span> <a class="code hl_namespace" href="namespacens.html">ns</a> {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keyword">struct</span> <a class="code hl_struct" href="structns_1_1_context.html">Context</a>;</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="structns_1_1_command.html">   12</a></span>    <span class="keyword">struct</span> <a class="code hl_struct" href="structns_1_1_command.html">Command</a> {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structns_1_1_command.html#a06a04724a5f5203a378595a26b4554f8">   13</a></span>        std::string <a class="code hl_variable" href="structns_1_1_command.html#a06a04724a5f5203a378595a26b4554f8">name</a>;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="structns_1_1_command.html#a2916662d1cdf66791b703da600e60c12">   14</a></span>        uint8_t <a class="code hl_variable" href="structns_1_1_command.html#a0a5814545780ce9eaf1c453f11d258ee">minArgs</a> = 0, <a class="code hl_variable" href="structns_1_1_command.html#a2916662d1cdf66791b703da600e60c12">maxArgs</a> = 0;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structns_1_1_command.html#acad196ab109cbfadc5068794d2e42812">   15</a></span>        <a class="code hl_typedef" href="namespacens.html#a3ac1910ef8066900ee976d96453ea88d">CommandCallback</a> <a class="code hl_variable" href="structns_1_1_command.html#acad196ab109cbfadc5068794d2e42812">callback</a> = <span class="keywordtype">nullptr</span>;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structns_1_1_command.html#abc23bf93ffc1da2ea4c0c199af8d65fa">   16</a></span>        std::string <a class="code hl_variable" href="structns_1_1_command.html#abc23bf93ffc1da2ea4c0c199af8d65fa">description</a>;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="comment">/**</span></div>
-<div class="line"><span class="lineno">   19</span><span class="comment">         * @note odd = name</span></div>
-<div class="line"><span class="lineno">   20</span><span class="comment">         * @note even = description</span></div>
-<div class="line"><span class="lineno">   21</span><span class="comment">         */</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="structns_1_1_command.html#a3470912e6dfd5753226cf6c2e6d22e89">   22</a></span>        std::vector&lt;std::string&gt; <a class="code hl_variable" href="structns_1_1_command.html#a3470912e6dfd5753226cf6c2e6d22e89">argsDescriptions</a>{};</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <a class="code hl_function" href="structns_1_1_command.html#ae1639fa280ed9c6025d68e7376c53eb7">Command</a>();</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="comment">/**</span></div>
-<div class="line"><span class="lineno">   26</span><span class="comment">         * @param name</span></div>
-<div class="line"><span class="lineno">   27</span><span class="comment">         * @param minArgs</span></div>
-<div class="line"><span class="lineno">   28</span><span class="comment">         * @param maxArgs</span></div>
-<div class="line"><span class="lineno">   29</span><span class="comment">         * @param callback</span></div>
-<div class="line"><span class="lineno">   30</span><span class="comment">         * @param description Command description</span></div>
-<div class="line"><span class="lineno">   31</span><span class="comment">         * @param argsDescriptions Arguments description. Should have 2 strings for each argument, where the first one is argument name and the second is argument description.</span></div>
-<div class="line"><span class="lineno">   32</span><span class="comment">         * @see ns::registerCommands for code example</span></div>
-<div class="line"><span class="lineno">   33</span><span class="comment">         */</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <a class="code hl_function" href="structns_1_1_command.html#abb24edca1af6ca12efe70d1438290de2">Command</a>(<span class="keyword">const</span> std::string&amp; name, uint8_t minArgs, uint8_t maxArgs, <a class="code hl_typedef" href="namespacens.html#a3ac1910ef8066900ee976d96453ea88d">CommandCallback</a> callback, <span class="keyword">const</span> std::string&amp; description, <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; argsDescriptions);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        std::string <a class="code hl_function" href="structns_1_1_command.html#a2c0c267a6887a73454947f631474c9ee">getArgumentsNames</a>();</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="namespacens.html#a94a8224b488678e4f7a9e36b7284974c">   12</a></span>    <span class="keyword">typedef</span> <span class="keywordtype">void</span>(*<a class="code hl_typedef" href="namespacens.html#a94a8224b488678e4f7a9e36b7284974c">CommandCallback</a>)(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="structns_1_1_command.html">   14</a></span>    <span class="keyword">struct</span> <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="code hl_struct" href="structns_1_1_command.html">Command</a> {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structns_1_1_command.html#a06a04724a5f5203a378595a26b4554f8">   15</a></span>        std::string <a class="code hl_variable" href="structns_1_1_command.html#a06a04724a5f5203a378595a26b4554f8">name</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structns_1_1_command.html#a2916662d1cdf66791b703da600e60c12">   16</a></span>        uint8_t <a class="code hl_variable" href="structns_1_1_command.html#a0a5814545780ce9eaf1c453f11d258ee">minArgs</a> = 0, <a class="code hl_variable" href="structns_1_1_command.html#a2916662d1cdf66791b703da600e60c12">maxArgs</a> = 0;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structns_1_1_command.html#acad196ab109cbfadc5068794d2e42812">   17</a></span>        <a class="code hl_typedef" href="namespacens.html#a94a8224b488678e4f7a9e36b7284974c">CommandCallback</a> <a class="code hl_variable" href="structns_1_1_command.html#acad196ab109cbfadc5068794d2e42812">callback</a> = <span class="keywordtype">nullptr</span>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="structns_1_1_command.html#abc23bf93ffc1da2ea4c0c199af8d65fa">   18</a></span>        std::string <a class="code hl_variable" href="structns_1_1_command.html#abc23bf93ffc1da2ea4c0c199af8d65fa">description</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   21</span><span class="comment">         * @note odd = name</span></div>
+<div class="line"><span class="lineno">   22</span><span class="comment">         * @note even = description</span></div>
+<div class="line"><span class="lineno">   23</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structns_1_1_command.html#a3470912e6dfd5753226cf6c2e6d22e89">   24</a></span>        std::vector&lt;std::string&gt; <a class="code hl_variable" href="structns_1_1_command.html#a3470912e6dfd5753226cf6c2e6d22e89">argsDescriptions</a>{};</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <a class="code hl_function" href="structns_1_1_command.html#ae1639fa280ed9c6025d68e7376c53eb7">Command</a>();</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   28</span><span class="comment">         * @param name</span></div>
+<div class="line"><span class="lineno">   29</span><span class="comment">         * @param minArgs</span></div>
+<div class="line"><span class="lineno">   30</span><span class="comment">         * @param maxArgs</span></div>
+<div class="line"><span class="lineno">   31</span><span class="comment">         * @param callback</span></div>
+<div class="line"><span class="lineno">   32</span><span class="comment">         * @param description Command description</span></div>
+<div class="line"><span class="lineno">   33</span><span class="comment">         * @param argsDescriptions Arguments description. Should have 2 strings for each argument, where the first one is argument name and the second is argument description.</span></div>
+<div class="line"><span class="lineno">   34</span><span class="comment">         * @see ns::registerCommands for code example</span></div>
+<div class="line"><span class="lineno">   35</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <a class="code hl_function" href="structns_1_1_command.html#abb24edca1af6ca12efe70d1438290de2">Command</a>(<span class="keyword">const</span> std::string&amp; name, uint8_t minArgs, uint8_t maxArgs, <a class="code hl_typedef" href="namespacens.html#a94a8224b488678e4f7a9e36b7284974c">CommandCallback</a> callback, <span class="keyword">const</span> std::string&amp; description, <span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; argsDescriptions);</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="comment">/**</span></div>
-<div class="line"><span class="lineno">   39</span><span class="comment">         * @brief prints usage, description and argsDescriptions all like a data tree</span></div>
+<div class="line"><span class="lineno">   39</span><span class="comment">         * @brief splitted by space</span></div>
 <div class="line"><span class="lineno">   40</span><span class="comment">         */</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="structns_1_1_command.html#a55b0bbc03cee29bf48b5101e432fd14d">printAsDataTree</a>();</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    };</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        std::string <a class="code hl_function" href="structns_1_1_command.html#a2c0c267a6887a73454947f631474c9ee">getArgumentsNames</a>();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   44</span><span class="comment">         * @brief prints usage, description and argsDescriptions all like a data tree</span></div>
+<div class="line"><span class="lineno">   45</span><span class="comment">         */</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="structns_1_1_command.html#a55b0bbc03cee29bf48b5101e432fd14d">printAsDataTree</a>();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    };</div>
 </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}</div>
-<div class="ttc" id="anamespacens_html"><div class="ttname"><a href="namespacens.html">ns</a></div><div class="ttdef"><b>Definition</b> NikiScript.h:7</div></div>
-<div class="ttc" id="anamespacens_html_a3ac1910ef8066900ee976d96453ea88d"><div class="ttname"><a href="namespacens.html#a3ac1910ef8066900ee976d96453ea88d">ns::CommandCallback</a></div><div class="ttdeci">void(* CommandCallback)(Context &amp;ctx)</div><div class="ttdef"><b>Definition</b> Command.h:10</div></div>
-<div class="ttc" id="astructns_1_1_command_html"><div class="ttname"><a href="structns_1_1_command.html">ns::Command</a></div><div class="ttdef"><b>Definition</b> Command.h:12</div></div>
-<div class="ttc" id="astructns_1_1_command_html_a06a04724a5f5203a378595a26b4554f8"><div class="ttname"><a href="structns_1_1_command.html#a06a04724a5f5203a378595a26b4554f8">ns::Command::name</a></div><div class="ttdeci">std::string name</div><div class="ttdef"><b>Definition</b> Command.h:13</div></div>
-<div class="ttc" id="astructns_1_1_command_html_a0a5814545780ce9eaf1c453f11d258ee"><div class="ttname"><a href="structns_1_1_command.html#a0a5814545780ce9eaf1c453f11d258ee">ns::Command::minArgs</a></div><div class="ttdeci">uint8_t minArgs</div><div class="ttdef"><b>Definition</b> Command.h:14</div></div>
-<div class="ttc" id="astructns_1_1_command_html_a2916662d1cdf66791b703da600e60c12"><div class="ttname"><a href="structns_1_1_command.html#a2916662d1cdf66791b703da600e60c12">ns::Command::maxArgs</a></div><div class="ttdeci">uint8_t maxArgs</div><div class="ttdef"><b>Definition</b> Command.h:14</div></div>
-<div class="ttc" id="astructns_1_1_command_html_a2c0c267a6887a73454947f631474c9ee"><div class="ttname"><a href="structns_1_1_command.html#a2c0c267a6887a73454947f631474c9ee">ns::Command::getArgumentsNames</a></div><div class="ttdeci">std::string getArgumentsNames()</div><div class="ttdef"><b>Definition</b> Command.cpp:36</div></div>
-<div class="ttc" id="astructns_1_1_command_html_a3470912e6dfd5753226cf6c2e6d22e89"><div class="ttname"><a href="structns_1_1_command.html#a3470912e6dfd5753226cf6c2e6d22e89">ns::Command::argsDescriptions</a></div><div class="ttdeci">std::vector&lt; std::string &gt; argsDescriptions</div><div class="ttdef"><b>Definition</b> Command.h:22</div></div>
-<div class="ttc" id="astructns_1_1_command_html_a55b0bbc03cee29bf48b5101e432fd14d"><div class="ttname"><a href="structns_1_1_command.html#a55b0bbc03cee29bf48b5101e432fd14d">ns::Command::printAsDataTree</a></div><div class="ttdeci">void printAsDataTree()</div><div class="ttdoc">prints usage, description and argsDescriptions all like a data tree</div><div class="ttdef"><b>Definition</b> Command.cpp:56</div></div>
-<div class="ttc" id="astructns_1_1_command_html_abb24edca1af6ca12efe70d1438290de2"><div class="ttname"><a href="structns_1_1_command.html#abb24edca1af6ca12efe70d1438290de2">ns::Command::Command</a></div><div class="ttdeci">Command(const std::string &amp;name, uint8_t minArgs, uint8_t maxArgs, CommandCallback callback, const std::string &amp;description, const std::vector&lt; std::string &gt; &amp;argsDescriptions)</div><div class="ttdef"><b>Definition</b> Command.cpp:10</div></div>
-<div class="ttc" id="astructns_1_1_command_html_abc23bf93ffc1da2ea4c0c199af8d65fa"><div class="ttname"><a href="structns_1_1_command.html#abc23bf93ffc1da2ea4c0c199af8d65fa">ns::Command::description</a></div><div class="ttdeci">std::string description</div><div class="ttdef"><b>Definition</b> Command.h:16</div></div>
-<div class="ttc" id="astructns_1_1_command_html_acad196ab109cbfadc5068794d2e42812"><div class="ttname"><a href="structns_1_1_command.html#acad196ab109cbfadc5068794d2e42812">ns::Command::callback</a></div><div class="ttdeci">CommandCallback callback</div><div class="ttdef"><b>Definition</b> Command.h:15</div></div>
-<div class="ttc" id="astructns_1_1_command_html_ae1639fa280ed9c6025d68e7376c53eb7"><div class="ttname"><a href="structns_1_1_command.html#ae1639fa280ed9c6025d68e7376c53eb7">ns::Command::Command</a></div><div class="ttdeci">Command()</div><div class="ttdef"><b>Definition</b> Command.cpp:8</div></div>
-<div class="ttc" id="astructns_1_1_context_html"><div class="ttname"><a href="structns_1_1_context.html">ns::Context</a></div><div class="ttdef"><b>Definition</b> Context.h:71</div></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}</div>
+</div>
+<div class="ttc" id="a_d_l_l_8h_html_ad334fd9dcd644d1e67ea31cab000c251"><div class="ttname"><a href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a></div><div class="ttdeci">#define NS_API</div><div class="ttdef"><b>Definition</b> DLL.h:16</div></div>
+<div class="ttc" id="anamespacens_html"><div class="ttname"><a href="namespacens.html">ns</a></div><div class="ttdef"><b>Definition</b> Command.h:9</div></div>
+<div class="ttc" id="anamespacens_html_a94a8224b488678e4f7a9e36b7284974c"><div class="ttname"><a href="namespacens.html#a94a8224b488678e4f7a9e36b7284974c">ns::CommandCallback</a></div><div class="ttdeci">void(* CommandCallback)(Context *pCtx)</div><div class="ttdef"><b>Definition</b> Command.h:12</div></div>
+<div class="ttc" id="astructns_1_1_command_html"><div class="ttname"><a href="structns_1_1_command.html">ns::Command</a></div><div class="ttdef"><b>Definition</b> Command.h:14</div></div>
+<div class="ttc" id="astructns_1_1_command_html_a06a04724a5f5203a378595a26b4554f8"><div class="ttname"><a href="structns_1_1_command.html#a06a04724a5f5203a378595a26b4554f8">ns::Command::name</a></div><div class="ttdeci">std::string name</div><div class="ttdef"><b>Definition</b> Command.h:15</div></div>
+<div class="ttc" id="astructns_1_1_command_html_a0a5814545780ce9eaf1c453f11d258ee"><div class="ttname"><a href="structns_1_1_command.html#a0a5814545780ce9eaf1c453f11d258ee">ns::Command::minArgs</a></div><div class="ttdeci">uint8_t minArgs</div><div class="ttdef"><b>Definition</b> Command.h:16</div></div>
+<div class="ttc" id="astructns_1_1_command_html_a2916662d1cdf66791b703da600e60c12"><div class="ttname"><a href="structns_1_1_command.html#a2916662d1cdf66791b703da600e60c12">ns::Command::maxArgs</a></div><div class="ttdeci">uint8_t maxArgs</div><div class="ttdef"><b>Definition</b> Command.h:16</div></div>
+<div class="ttc" id="astructns_1_1_command_html_a2c0c267a6887a73454947f631474c9ee"><div class="ttname"><a href="structns_1_1_command.html#a2c0c267a6887a73454947f631474c9ee">ns::Command::getArgumentsNames</a></div><div class="ttdeci">std::string getArgumentsNames()</div><div class="ttdoc">splitted by space</div><div class="ttdef"><b>Definition</b> Command.cpp:45</div></div>
+<div class="ttc" id="astructns_1_1_command_html_a3470912e6dfd5753226cf6c2e6d22e89"><div class="ttname"><a href="structns_1_1_command.html#a3470912e6dfd5753226cf6c2e6d22e89">ns::Command::argsDescriptions</a></div><div class="ttdeci">std::vector&lt; std::string &gt; argsDescriptions</div><div class="ttdef"><b>Definition</b> Command.h:24</div></div>
+<div class="ttc" id="astructns_1_1_command_html_a55b0bbc03cee29bf48b5101e432fd14d"><div class="ttname"><a href="structns_1_1_command.html#a55b0bbc03cee29bf48b5101e432fd14d">ns::Command::printAsDataTree</a></div><div class="ttdeci">void printAsDataTree()</div><div class="ttdoc">prints usage, description and argsDescriptions all like a data tree</div><div class="ttdef"><b>Definition</b> Command.cpp:65</div></div>
+<div class="ttc" id="astructns_1_1_command_html_abb24edca1af6ca12efe70d1438290de2"><div class="ttname"><a href="structns_1_1_command.html#abb24edca1af6ca12efe70d1438290de2">ns::Command::Command</a></div><div class="ttdeci">Command(const std::string &amp;name, uint8_t minArgs, uint8_t maxArgs, CommandCallback callback, const std::string &amp;description, const std::vector&lt; std::string &gt; &amp;argsDescriptions)</div><div class="ttdef"><b>Definition</b> Command.cpp:17</div></div>
+<div class="ttc" id="astructns_1_1_command_html_abc23bf93ffc1da2ea4c0c199af8d65fa"><div class="ttname"><a href="structns_1_1_command.html#abc23bf93ffc1da2ea4c0c199af8d65fa">ns::Command::description</a></div><div class="ttdeci">std::string description</div><div class="ttdef"><b>Definition</b> Command.h:18</div></div>
+<div class="ttc" id="astructns_1_1_command_html_acad196ab109cbfadc5068794d2e42812"><div class="ttname"><a href="structns_1_1_command.html#acad196ab109cbfadc5068794d2e42812">ns::Command::callback</a></div><div class="ttdeci">CommandCallback callback</div><div class="ttdef"><b>Definition</b> Command.h:17</div></div>
+<div class="ttc" id="astructns_1_1_command_html_ae1639fa280ed9c6025d68e7376c53eb7"><div class="ttname"><a href="structns_1_1_command.html#ae1639fa280ed9c6025d68e7376c53eb7">ns::Command::Command</a></div><div class="ttdeci">Command()</div><div class="ttdef"><b>Definition</b> Command.cpp:15</div></div>
+<div class="ttc" id="astructns_1_1_context_html"><div class="ttname"><a href="structns_1_1_context.html">ns::Context</a></div><div class="ttdef"><b>Definition</b> Context.h:74</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_command_8h.html">Command.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_9015efe376f034568db8aa7b82f409e7.html">NikiScript</a></li><li class="navelem"><a class="el" href="_command_8h.html">Command.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

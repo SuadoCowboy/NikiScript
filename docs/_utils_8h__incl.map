@@ -1,9 +1,11 @@
-<map id="C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/src/Utils.h" name="C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/src/Utils.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="20,5,221,64"/>
+<map id="C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/include/NikiScript/Utils.h" name="C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/include/NikiScript/Utils.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="62,5,264,64"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,112,70,139"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,66,62,102,58,99,92,63"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,67,69,105,66,101,121,62"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="94,112,147,139"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="123,64,123,96,118,96,118,64"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="151,65,135,99,130,97,147,63"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="171,112,240,139"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="150,62,185,99,181,102,146,66"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="179,63,195,97,190,99,174,65"/>
+<area shape="rect" id="Node000005" href="$_d_l_l_8h.html" title=" " alt="" coords="264,112,320,139"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="206,62,263,101,260,105,203,67"/>
 </map>

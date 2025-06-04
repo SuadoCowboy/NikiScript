@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="NikiScript" />
 <meta name="twitter:description" content="Commandline Interpreter inspired on Valve's source engine and DDRaceNetwork" />
 <!-- END twitter metadata -->
-<title>NikiScript Remake: C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/src/Parser.h File Reference</title>
+<title>NikiScript Remake: C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/include/NikiScript/Parser.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.png"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -140,10 +140,11 @@ $(function(){initNavTree('_parser_8h.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="_context_8h_source.html">Context.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_d_l_l_8h_source.html">DLL.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Parser.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_parser_8h__incl.svg" width="886" height="368"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_parser_8h__incl.svg" width="1026" height="368"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -160,111 +161,98 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a043e102456d553490573be5591c586ed" id="r_a043e102456d553490573be5591c586ed"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a043e102456d553490573be5591c586ed">NIKISCRIPT_LOOP_VARIABLE</a>&#160;&#160;&#160;'!'</td></tr>
-<tr class="separator:a043e102456d553490573be5591c586ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9dc2b5af60533628db36bded7820fa0d" id="r_a9dc2b5af60533628db36bded7820fa0d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9dc2b5af60533628db36bded7820fa0d">NIKISCRIPT_TOGGLE_ON</a>&#160;&#160;&#160;'+'</td></tr>
-<tr class="separator:a9dc2b5af60533628db36bded7820fa0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace7ee102d6be89086925b20fa4980401" id="r_ace7ee102d6be89086925b20fa4980401"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace7ee102d6be89086925b20fa4980401">NIKISCRIPT_TOGGLE_OFF</a>&#160;&#160;&#160;'-'</td></tr>
-<tr class="separator:ace7ee102d6be89086925b20fa4980401"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3db4230d0b4b7ce1715177aa3f36e86f" id="r_a3db4230d0b4b7ce1715177aa3f36e86f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3db4230d0b4b7ce1715177aa3f36e86f">NIKISCRIPT_FILE_EXTENSION</a>&#160;&#160;&#160;&quot;.cfg&quot;</td></tr>
-<tr class="separator:a3db4230d0b4b7ce1715177aa3f36e86f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06bb90cf6b7eec551ca34090a3ba2650" id="r_a06bb90cf6b7eec551ca34090a3ba2650"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06bb90cf6b7eec551ca34090a3ba2650">NIKISCRIPT_ROOT_DIRECTORY</a>&#160;&#160;&#160;&quot;cfg&quot;</td></tr>
-<tr class="separator:a06bb90cf6b7eec551ca34090a3ba2650"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd3566feb0882f49466dff07047e7187" id="r_afd3566feb0882f49466dff07047e7187"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd3566feb0882f49466dff07047e7187">NS_LOOP_VARIABLE</a>&#160;&#160;&#160;'!'</td></tr>
+<tr class="separator:afd3566feb0882f49466dff07047e7187"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f33407581a243d9b702f14a3075ebd0" id="r_a4f33407581a243d9b702f14a3075ebd0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f33407581a243d9b702f14a3075ebd0">NS_TOGGLE_ON</a>&#160;&#160;&#160;'+'</td></tr>
+<tr class="separator:a4f33407581a243d9b702f14a3075ebd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad505409c5e56abf02788a629c2a32754" id="r_ad505409c5e56abf02788a629c2a32754"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad505409c5e56abf02788a629c2a32754">NS_TOGGLE_OFF</a>&#160;&#160;&#160;'-'</td></tr>
+<tr class="separator:ad505409c5e56abf02788a629c2a32754"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9a1a03fc8c442b4bae4a76ed8ebea95" id="r_af9a1a03fc8c442b4bae4a76ed8ebea95"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af9a1a03fc8c442b4bae4a76ed8ebea95">NS_FILE_EXTENSION</a>&#160;&#160;&#160;&quot;.cfg&quot;</td></tr>
+<tr class="separator:af9a1a03fc8c442b4bae4a76ed8ebea95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a4fe365e87149fa977f063285581956df" id="r_a4fe365e87149fa977f063285581956df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a4fe365e87149fa977f063285581956df">ns::clearStatementData</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx)</td></tr>
-<tr class="memdesc:a4fe365e87149fa977f063285581956df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear anything related to the current lexer statement.  <br /></td></tr>
-<tr class="separator:a4fe365e87149fa977f063285581956df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40a0a3f7fe6fd5ec89be5d0766ece192" id="r_a40a0a3f7fe6fd5ec89be5d0766ece192"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a40a0a3f7fe6fd5ec89be5d0766ece192">ns::canRunVariable</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx)</td></tr>
-<tr class="memdesc:a40a0a3f7fe6fd5ec89be5d0766ece192"><td class="mdescLeft">&#160;</td><td class="mdescRight">if variable is a toggle variable and its allowed to run or if it's a common variable. It's also mandatory to call this function so that it updates those special variables  <br /></td></tr>
-<tr class="separator:a40a0a3f7fe6fd5ec89be5d0766ece192"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2cb4570673469538fdfd4547bf8991cd" id="r_a2cb4570673469538fdfd4547bf8991cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a2cb4570673469538fdfd4547bf8991cd">ns::handleCommandCall</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;pProgramVar)</td></tr>
-<tr class="memdesc:a2cb4570673469538fdfd4547bf8991cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in parse function when EOS or END is reached.  <br /></td></tr>
-<tr class="separator:a2cb4570673469538fdfd4547bf8991cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e708b91ba687e006ea45ff21acc36a6" id="r_a6e708b91ba687e006ea45ff21acc36a6"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a6e708b91ba687e006ea45ff21acc36a6">ns::handleIdentifierToken</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;pProgramVar, bool printError)</td></tr>
-<tr class="memdesc:a6e708b91ba687e006ea45ff21acc36a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in parse function when IDENTIFIER token is passed.  <br /></td></tr>
-<tr class="separator:a6e708b91ba687e006ea45ff21acc36a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa27be0bd43b5a54a8f2468a63855ab53" id="r_aa27be0bd43b5a54a8f2468a63855ab53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#aa27be0bd43b5a54a8f2468a63855ab53">ns::handleArgumentToken</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, bool printError)</td></tr>
-<tr class="memdesc:aa27be0bd43b5a54a8f2468a63855ab53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles references in the string and checks if the parameter matches the argument type.  <br /></td></tr>
-<tr class="separator:aa27be0bd43b5a54a8f2468a63855ab53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1abe3e2b1b7d309dd6ea8419eecdecc1" id="r_a1abe3e2b1b7d309dd6ea8419eecdecc1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a1abe3e2b1b7d309dd6ea8419eecdecc1">ns::handleConsoleVariableCall</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;pProgramVar, bool printError)</td></tr>
-<tr class="memdesc:a1abe3e2b1b7d309dd6ea8419eecdecc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in parse function when an ConsoleVariable is passed as a IDENTIFIER.  <br /></td></tr>
-<tr class="separator:a1abe3e2b1b7d309dd6ea8419eecdecc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50c6d4aa9b61b3e31cac4c85e52aea9c" id="r_a50c6d4aa9b61b3e31cac4c85e52aea9c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a50c6d4aa9b61b3e31cac4c85e52aea9c">ns::updateLoopVariables</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx)</td></tr>
-<tr class="memdesc:a50c6d4aa9b61b3e31cac4c85e52aea9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">if a loop variable is active, its script is ran here  <br /></td></tr>
-<tr class="separator:a50c6d4aa9b61b3e31cac4c85e52aea9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a680665d6c662c728a87ec369de2f03a4" id="r_a680665d6c662c728a87ec369de2f03a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a680665d6c662c728a87ec369de2f03a4">ns::parse</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, bool printError=true)</td></tr>
-<tr class="memdesc:a680665d6c662c728a87ec369de2f03a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses and interpret scripts: handles commands and variables as well as their arguments.  <br /></td></tr>
-<tr class="separator:a680665d6c662c728a87ec369de2f03a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a765477cb266c6fb3e82b1b85867bca56" id="r_a765477cb266c6fb3e82b1b85867bca56"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a765477cb266c6fb3e82b1b85867bca56">ns::parseFile</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, const char *filePath, bool printError)</td></tr>
-<tr class="separator:a765477cb266c6fb3e82b1b85867bca56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55368173711a3deeb6fc25c15a16bfbe" id="r_a55368173711a3deeb6fc25c15a16bfbe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a55368173711a3deeb6fc25c15a16bfbe">ns::clearStatementData</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx)</td></tr>
+<tr class="memdesc:a55368173711a3deeb6fc25c15a16bfbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear anything related to the current lexer statement.  <br /></td></tr>
+<tr class="separator:a55368173711a3deeb6fc25c15a16bfbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a835958beedf13b0954ebc3a8dfdaeea4" id="r_a835958beedf13b0954ebc3a8dfdaeea4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a835958beedf13b0954ebc3a8dfdaeea4">ns::canRunVariable</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx)</td></tr>
+<tr class="memdesc:a835958beedf13b0954ebc3a8dfdaeea4"><td class="mdescLeft">&#160;</td><td class="mdescRight">if variable is a toggle variable and its allowed to run or if it's a common variable. It's also mandatory to call this function so that it updates those special variables  <br /></td></tr>
+<tr class="separator:a835958beedf13b0954ebc3a8dfdaeea4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41298eb880e43602381703c62f0d5621" id="r_a41298eb880e43602381703c62f0d5621"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a41298eb880e43602381703c62f0d5621">ns::handleCommandCall</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;pProgramVar)</td></tr>
+<tr class="memdesc:a41298eb880e43602381703c62f0d5621"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in parse function when EOS or END is reached.  <br /></td></tr>
+<tr class="separator:a41298eb880e43602381703c62f0d5621"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2854057a243fa436efc22fc9b58a886f" id="r_a2854057a243fa436efc22fc9b58a886f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a2854057a243fa436efc22fc9b58a886f">ns::handleIdentifierToken</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;pProgramVar, bool printError)</td></tr>
+<tr class="memdesc:a2854057a243fa436efc22fc9b58a886f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in parse function when IDENTIFIER token is passed.  <br /></td></tr>
+<tr class="separator:a2854057a243fa436efc22fc9b58a886f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d93b985853056ca807f8abe0b14785d" id="r_a7d93b985853056ca807f8abe0b14785d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a7d93b985853056ca807f8abe0b14785d">ns::handleArgumentToken</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx, bool printError)</td></tr>
+<tr class="memdesc:a7d93b985853056ca807f8abe0b14785d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles references in the string and checks if the parameter matches the argument type.  <br /></td></tr>
+<tr class="separator:a7d93b985853056ca807f8abe0b14785d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b66a94d129239bbe0dac704d8be411a" id="r_a6b66a94d129239bbe0dac704d8be411a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a6b66a94d129239bbe0dac704d8be411a">ns::handleConsoleVariableCall</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;pProgramVar, bool printError)</td></tr>
+<tr class="memdesc:a6b66a94d129239bbe0dac704d8be411a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in parse function when an ConsoleVariable is passed as a IDENTIFIER.  <br /></td></tr>
+<tr class="separator:a6b66a94d129239bbe0dac704d8be411a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaad3b119512ebe87dcdebd8e0a602b03" id="r_aaad3b119512ebe87dcdebd8e0a602b03"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#aaad3b119512ebe87dcdebd8e0a602b03">ns::updateLoopVariables</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx)</td></tr>
+<tr class="memdesc:aaad3b119512ebe87dcdebd8e0a602b03"><td class="mdescLeft">&#160;</td><td class="mdescRight">if a loop variable is active, its script is ran here  <br /></td></tr>
+<tr class="separator:aaad3b119512ebe87dcdebd8e0a602b03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dbca0329180b87cd0dab5f830b5acbc" id="r_a1dbca0329180b87cd0dab5f830b5acbc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a1dbca0329180b87cd0dab5f830b5acbc">ns::parse</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx, bool printError=true)</td></tr>
+<tr class="memdesc:a1dbca0329180b87cd0dab5f830b5acbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses and interpret scripts: handles commands and variables as well as their arguments.  <br /></td></tr>
+<tr class="separator:a1dbca0329180b87cd0dab5f830b5acbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83cc66ad3c0b840c928c3072c0326f2c" id="r_a83cc66ad3c0b840c928c3072c0326f2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a83cc66ad3c0b840c928c3072c0326f2c">ns::parseFile</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx, const char *path, bool printError)</td></tr>
+<tr class="separator:a83cc66ad3c0b840c928c3072c0326f2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad249462d47182df15dee71c6f1a58204" id="r_ad249462d47182df15dee71c6f1a58204"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#ad249462d47182df15dee71c6f1a58204">ns::parseInsideAnotherScript</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx, const char *input)</td></tr>
+<tr class="memdesc:ad249462d47182df15dee71c6f1a58204"><td class="mdescLeft">&#160;</td><td class="mdescRight">should be used when the main context is already using the lexer  <br /></td></tr>
+<tr class="separator:ad249462d47182df15dee71c6f1a58204"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a3db4230d0b4b7ce1715177aa3f36e86f" name="a3db4230d0b4b7ce1715177aa3f36e86f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3db4230d0b4b7ce1715177aa3f36e86f">&#9670;&#160;</a></span>NIKISCRIPT_FILE_EXTENSION</h2>
+<a id="af9a1a03fc8c442b4bae4a76ed8ebea95" name="af9a1a03fc8c442b4bae4a76ed8ebea95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9a1a03fc8c442b4bae4a76ed8ebea95">&#9670;&#160;</a></span>NS_FILE_EXTENSION</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NIKISCRIPT_FILE_EXTENSION&#160;&#160;&#160;&quot;.cfg&quot;</td>
+          <td class="memname">#define NS_FILE_EXTENSION&#160;&#160;&#160;&quot;.cfg&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a043e102456d553490573be5591c586ed" name="a043e102456d553490573be5591c586ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a043e102456d553490573be5591c586ed">&#9670;&#160;</a></span>NIKISCRIPT_LOOP_VARIABLE</h2>
+<a id="afd3566feb0882f49466dff07047e7187" name="afd3566feb0882f49466dff07047e7187"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd3566feb0882f49466dff07047e7187">&#9670;&#160;</a></span>NS_LOOP_VARIABLE</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NIKISCRIPT_LOOP_VARIABLE&#160;&#160;&#160;'!'</td>
+          <td class="memname">#define NS_LOOP_VARIABLE&#160;&#160;&#160;'!'</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a06bb90cf6b7eec551ca34090a3ba2650" name="a06bb90cf6b7eec551ca34090a3ba2650"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06bb90cf6b7eec551ca34090a3ba2650">&#9670;&#160;</a></span>NIKISCRIPT_ROOT_DIRECTORY</h2>
+<a id="ad505409c5e56abf02788a629c2a32754" name="ad505409c5e56abf02788a629c2a32754"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad505409c5e56abf02788a629c2a32754">&#9670;&#160;</a></span>NS_TOGGLE_OFF</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NIKISCRIPT_ROOT_DIRECTORY&#160;&#160;&#160;&quot;cfg&quot;</td>
+          <td class="memname">#define NS_TOGGLE_OFF&#160;&#160;&#160;'-'</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="ace7ee102d6be89086925b20fa4980401" name="ace7ee102d6be89086925b20fa4980401"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace7ee102d6be89086925b20fa4980401">&#9670;&#160;</a></span>NIKISCRIPT_TOGGLE_OFF</h2>
+<a id="a4f33407581a243d9b702f14a3075ebd0" name="a4f33407581a243d9b702f14a3075ebd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f33407581a243d9b702f14a3075ebd0">&#9670;&#160;</a></span>NS_TOGGLE_ON</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define NIKISCRIPT_TOGGLE_OFF&#160;&#160;&#160;'-'</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a9dc2b5af60533628db36bded7820fa0d" name="a9dc2b5af60533628db36bded7820fa0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9dc2b5af60533628db36bded7820fa0d">&#9670;&#160;</a></span>NIKISCRIPT_TOGGLE_ON</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define NIKISCRIPT_TOGGLE_ON&#160;&#160;&#160;'+'</td>
+          <td class="memname">#define NS_TOGGLE_ON&#160;&#160;&#160;'+'</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -276,7 +264,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_parser_8h.html">Parser.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_9015efe376f034568db8aa7b82f409e7.html">NikiScript</a></li><li class="navelem"><a class="el" href="_parser_8h.html">Parser.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

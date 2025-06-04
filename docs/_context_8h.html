@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="NikiScript" />
 <meta name="twitter:description" content="Commandline Interpreter inspired on Valve's source engine and DDRaceNetwork" />
 <!-- END twitter metadata -->
-<title>NikiScript Remake: C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/src/Context.h File Reference</title>
+<title>NikiScript Remake: C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/include/NikiScript/Context.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.png"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -150,15 +150,16 @@ $(function(){initNavTree('_context_8h.html',''); initResizable(true); });
 <code>#include &quot;<a class="el" href="_print_callback_8h_source.html">PrintCallback.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_program_variable_8h_source.html">ProgramVariable.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_lexer_8h_source.html">Lexer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_d_l_l_8h_source.html">DLL.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Context.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_context_8h__incl.svg" width="886" height="294"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_context_8h__incl.svg" width="979" height="294"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_context_8h__dep__incl.svg" width="1687" height="283"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_context_8h__dep__incl.svg" width="1166" height="283"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="_context_8h_source.html">Go to the source code of this file.</a></p>
@@ -198,41 +199,42 @@ Enumerations</h2></td></tr>
 &#160;&#160;<a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692a837e32aed1982c12fee3c40aac7c7a1d">ns::VARIABLE_TOGGLE</a> = 16
 , <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692a2184e872bc93429d96b395caf25eb099">ns::FILE</a> = 32
 , <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692a68b0ff2b33d140165a418bce9e1ba9d5">ns::INTERNAL</a> = 64
+, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692a32c784ad2761ebe4023f26fb85459170">ns::REFERENCE</a> = 128
 <br />
  }</td></tr>
 <tr class="separator:a8748c664d230e63fda397e022a64a692"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0bc26977ca513cbb3640bf66dfe0e53b" id="r_a0bc26977ca513cbb3640bf66dfe0e53b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structns_1_1_context.html">Context</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a0bc26977ca513cbb3640bf66dfe0e53b">ns::copyContext</a> (const <a class="el" href="structns_1_1_context.html">Context</a> &amp;source)</td></tr>
-<tr class="memdesc:a0bc26977ca513cbb3640bf66dfe0e53b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Do not copy <a class="el" href="structns_1_1_context.html">Context</a> without calling this function. <a class="el" href="namespacens.html#acac0024f454fa3dc64c31ae134b275d1">LoopVariablesRunning</a> and <a class="el" href="namespacens.html#a2f22f24df1b56351ed6bf8406e21563d" title="This is unecessary to be a pointer but I like the idea of using only 8 bytes instead of the same byte...">ToggleVariablesRunning</a> stores pointers pointed to <a class="el" href="namespacens.html#a41c19c013ca599941451dfff7770a84f">ConsoleVariables</a> as well as toggleCommandsRunning whose pointers are from <a class="el" href="structns_1_1_command_handler.html">CommandHandler</a>. That's why this function exists: It updates all those pointers.  <br /></td></tr>
-<tr class="separator:a0bc26977ca513cbb3640bf66dfe0e53b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa7bc1675981203ed431bf59cc424022" id="r_afa7bc1675981203ed431bf59cc424022"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afa7bc1675981203ed431bf59cc424022">operator|</a> (<a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> l, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> r)</td></tr>
-<tr class="separator:afa7bc1675981203ed431bf59cc424022"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb8ce123abaa776202f9bfa24a0d3f98" id="r_acb8ce123abaa776202f9bfa24a0d3f98"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb8ce123abaa776202f9bfa24a0d3f98">operator|</a> (uint8_t l, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> r)</td></tr>
-<tr class="separator:acb8ce123abaa776202f9bfa24a0d3f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b17e806c47f4347df488fe721b8f5ea" id="r_a9b17e806c47f4347df488fe721b8f5ea"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b17e806c47f4347df488fe721b8f5ea">operator|</a> (<a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> l, uint8_t r)</td></tr>
-<tr class="separator:a9b17e806c47f4347df488fe721b8f5ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29baadef0344c806c83e04ef45f55a71" id="r_a29baadef0344c806c83e04ef45f55a71"><td class="memItemLeft" align="right" valign="top">uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29baadef0344c806c83e04ef45f55a71">operator|=</a> (uint8_t &amp;l, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> r)</td></tr>
-<tr class="separator:a29baadef0344c806c83e04ef45f55a71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1ed49c8305d9c59f35907b9495381e8" id="r_aa1ed49c8305d9c59f35907b9495381e8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa1ed49c8305d9c59f35907b9495381e8">operator&amp;</a> (uint8_t l, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> r)</td></tr>
-<tr class="separator:aa1ed49c8305d9c59f35907b9495381e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a578f625e794f8153ffcffff59cd66cac" id="r_a578f625e794f8153ffcffff59cd66cac"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a578f625e794f8153ffcffff59cd66cac">operator&amp;</a> (<a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> l, uint8_t r)</td></tr>
-<tr class="separator:a578f625e794f8153ffcffff59cd66cac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3897075840c68aa5b7ff0562df4c025f" id="r_a3897075840c68aa5b7ff0562df4c025f"><td class="memItemLeft" align="right" valign="top">uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3897075840c68aa5b7ff0562df4c025f">operator&amp;=</a> (uint8_t &amp;l, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> r)</td></tr>
-<tr class="separator:a3897075840c68aa5b7ff0562df4c025f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f3bf76e9d9bc578b120c1e517ce9a01" id="r_a4f3bf76e9d9bc578b120c1e517ce9a01"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4f3bf76e9d9bc578b120c1e517ce9a01">operator~</a> (<a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> l)</td></tr>
-<tr class="separator:a4f3bf76e9d9bc578b120c1e517ce9a01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e72aa48479e5482db1cc6248c26f24b" id="r_a3e72aa48479e5482db1cc6248c26f24b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="el" href="structns_1_1_context.html">Context</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a3e72aa48479e5482db1cc6248c26f24b">ns::deepCopyContext</a> (const <a class="el" href="structns_1_1_context.html">Context</a> *source)</td></tr>
+<tr class="memdesc:a3e72aa48479e5482db1cc6248c26f24b"><td class="mdescLeft">&#160;</td><td class="mdescRight">If you want a 100% new copy without being dependent on the source context then use this function <a class="el" href="namespacens.html#acac0024f454fa3dc64c31ae134b275d1">LoopVariablesRunning</a> and <a class="el" href="namespacens.html#a2f22f24df1b56351ed6bf8406e21563d" title="This is unecessary to be a pointer but I like the idea of using only 8 bytes instead of the same byte...">ToggleVariablesRunning</a> stores pointers pointed to <a class="el" href="namespacens.html#a41c19c013ca599941451dfff7770a84f">ConsoleVariables</a> as well as toggleCommandsRunning whose pointers are from <a class="el" href="structns_1_1_command_handler.html">CommandHandler</a>. That's why this function exists: It updates all those pointers.  <br /></td></tr>
+<tr class="separator:a3e72aa48479e5482db1cc6248c26f24b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ddbd6b781fbf1ef1ccb5559128e3601" id="r_a5ddbd6b781fbf1ef1ccb5559128e3601"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ddbd6b781fbf1ef1ccb5559128e3601">operator|</a> (<a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> l, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> r)</td></tr>
+<tr class="separator:a5ddbd6b781fbf1ef1ccb5559128e3601"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84bd09d40861d736f1f4ce1a3fdf443b" id="r_a84bd09d40861d736f1f4ce1a3fdf443b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84bd09d40861d736f1f4ce1a3fdf443b">operator|</a> (uint8_t l, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> r)</td></tr>
+<tr class="separator:a84bd09d40861d736f1f4ce1a3fdf443b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c6d0f239db11a27031aec61f511250c" id="r_a6c6d0f239db11a27031aec61f511250c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c6d0f239db11a27031aec61f511250c">operator|</a> (<a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> l, uint8_t r)</td></tr>
+<tr class="separator:a6c6d0f239db11a27031aec61f511250c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37a8892a2d5e27c7a51b4eafeee4e6e8" id="r_a37a8892a2d5e27c7a51b4eafeee4e6e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37a8892a2d5e27c7a51b4eafeee4e6e8">operator|=</a> (uint8_t &amp;l, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> r)</td></tr>
+<tr class="separator:a37a8892a2d5e27c7a51b4eafeee4e6e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b06a9a17c81df03518566ce3ef1aef2" id="r_a6b06a9a17c81df03518566ce3ef1aef2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b06a9a17c81df03518566ce3ef1aef2">operator&amp;</a> (uint8_t l, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> r)</td></tr>
+<tr class="separator:a6b06a9a17c81df03518566ce3ef1aef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a6b418ada734f772fd0c0413db25dd3" id="r_a9a6b418ada734f772fd0c0413db25dd3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a6b418ada734f772fd0c0413db25dd3">operator&amp;</a> (<a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> l, uint8_t r)</td></tr>
+<tr class="separator:a9a6b418ada734f772fd0c0413db25dd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a931822f32957debea0a7f0569f7d9aea" id="r_a931822f32957debea0a7f0569f7d9aea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a931822f32957debea0a7f0569f7d9aea">operator&amp;=</a> (uint8_t &amp;l, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> r)</td></tr>
+<tr class="separator:a931822f32957debea0a7f0569f7d9aea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa934ee8692930337d03b4804cd932413" id="r_aa934ee8692930337d03b4804cd932413"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa934ee8692930337d03b4804cd932413">operator~</a> (<a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> l)</td></tr>
+<tr class="separator:aa934ee8692930337d03b4804cd932413"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a578f625e794f8153ffcffff59cd66cac" name="a578f625e794f8153ffcffff59cd66cac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a578f625e794f8153ffcffff59cd66cac">&#9670;&#160;</a></span>operator&amp;() <span class="overload">[1/2]</span></h2>
+<a id="a9a6b418ada734f772fd0c0413db25dd3" name="a9a6b418ada734f772fd0c0413db25dd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a6b418ada734f772fd0c0413db25dd3">&#9670;&#160;</a></span>operator&amp;() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t operator&amp; </td>
+          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t operator&amp; </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
         </tr>
@@ -246,14 +248,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aa1ed49c8305d9c59f35907b9495381e8" name="aa1ed49c8305d9c59f35907b9495381e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1ed49c8305d9c59f35907b9495381e8">&#9670;&#160;</a></span>operator&amp;() <span class="overload">[2/2]</span></h2>
+<a id="a6b06a9a17c81df03518566ce3ef1aef2" name="a6b06a9a17c81df03518566ce3ef1aef2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b06a9a17c81df03518566ce3ef1aef2">&#9670;&#160;</a></span>operator&amp;() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t operator&amp; </td>
+          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t operator&amp; </td>
           <td>(</td>
           <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
         </tr>
@@ -267,14 +269,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a3897075840c68aa5b7ff0562df4c025f" name="a3897075840c68aa5b7ff0562df4c025f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3897075840c68aa5b7ff0562df4c025f">&#9670;&#160;</a></span>operator&amp;=()</h2>
+<a id="a931822f32957debea0a7f0569f7d9aea" name="a931822f32957debea0a7f0569f7d9aea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a931822f32957debea0a7f0569f7d9aea">&#9670;&#160;</a></span>operator&amp;=()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t &amp; operator&amp;= </td>
+          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t &amp; operator&amp;= </td>
           <td>(</td>
           <td class="paramtype">uint8_t &amp;</td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
         </tr>
@@ -288,14 +290,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="afa7bc1675981203ed431bf59cc424022" name="afa7bc1675981203ed431bf59cc424022"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afa7bc1675981203ed431bf59cc424022">&#9670;&#160;</a></span>operator|() <span class="overload">[1/3]</span></h2>
+<a id="a5ddbd6b781fbf1ef1ccb5559128e3601" name="a5ddbd6b781fbf1ef1ccb5559128e3601"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ddbd6b781fbf1ef1ccb5559128e3601">&#9670;&#160;</a></span>operator|() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t operator| </td>
+          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t operator| </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
         </tr>
@@ -309,14 +311,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9b17e806c47f4347df488fe721b8f5ea" name="a9b17e806c47f4347df488fe721b8f5ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b17e806c47f4347df488fe721b8f5ea">&#9670;&#160;</a></span>operator|() <span class="overload">[2/3]</span></h2>
+<a id="a6c6d0f239db11a27031aec61f511250c" name="a6c6d0f239db11a27031aec61f511250c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c6d0f239db11a27031aec61f511250c">&#9670;&#160;</a></span>operator|() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t operator| </td>
+          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t operator| </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
         </tr>
@@ -330,14 +332,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="acb8ce123abaa776202f9bfa24a0d3f98" name="acb8ce123abaa776202f9bfa24a0d3f98"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb8ce123abaa776202f9bfa24a0d3f98">&#9670;&#160;</a></span>operator|() <span class="overload">[3/3]</span></h2>
+<a id="a84bd09d40861d736f1f4ce1a3fdf443b" name="a84bd09d40861d736f1f4ce1a3fdf443b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84bd09d40861d736f1f4ce1a3fdf443b">&#9670;&#160;</a></span>operator|() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t operator| </td>
+          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t operator| </td>
           <td>(</td>
           <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
         </tr>
@@ -351,14 +353,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a29baadef0344c806c83e04ef45f55a71" name="a29baadef0344c806c83e04ef45f55a71"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a29baadef0344c806c83e04ef45f55a71">&#9670;&#160;</a></span>operator|=()</h2>
+<a id="a37a8892a2d5e27c7a51b4eafeee4e6e8" name="a37a8892a2d5e27c7a51b4eafeee4e6e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37a8892a2d5e27c7a51b4eafeee4e6e8">&#9670;&#160;</a></span>operator|=()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t &amp; operator|= </td>
+          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t &amp; operator|= </td>
           <td>(</td>
           <td class="paramtype">uint8_t &amp;</td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
         </tr>
@@ -372,14 +374,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a4f3bf76e9d9bc578b120c1e517ce9a01" name="a4f3bf76e9d9bc578b120c1e517ce9a01"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4f3bf76e9d9bc578b120c1e517ce9a01">&#9670;&#160;</a></span>operator~()</h2>
+<a id="aa934ee8692930337d03b4804cd932413" name="aa934ee8692930337d03b4804cd932413"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa934ee8692930337d03b4804cd932413">&#9670;&#160;</a></span>operator~()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t operator~ </td>
+          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t operator~ </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>l</em></span></td><td>)</td>
           <td></td>
@@ -394,7 +396,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_context_8h.html">Context.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_9015efe376f034568db8aa7b82f409e7.html">NikiScript</a></li><li class="navelem"><a class="el" href="_context_8h.html">Context.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="NikiScript" />
 <meta name="twitter:description" content="Commandline Interpreter inspired on Valve's source engine and DDRaceNetwork" />
 <!-- END twitter metadata -->
-<title>NikiScript Remake: C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/src/NikiScript.h File Reference</title>
+<title>NikiScript Remake: C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/include/NikiScript/NikiScript.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link rel="icon" type="image/svg+xml" href="logo.png"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -140,15 +140,16 @@ $(function(){initNavTree('_niki_script_8h.html',''); initResizable(true); });
 <div class="contents">
 <div class="textblock"><code>#include &lt;string&gt;</code><br />
 <code>#include &quot;<a class="el" href="_context_8h_source.html">Context.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_d_l_l_8h_source.html">DLL.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for NikiScript.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_niki_script_8h__incl.svg" width="839" height="368"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_niki_script_8h__incl.svg" width="1051" height="368"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_niki_script_8h__dep__incl.svg" width="438" height="176"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_niki_script_8h__dep__incl.svg" width="212" height="176"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="_niki_script_8h_source.html">Go to the source code of this file.</a></p>
@@ -160,40 +161,52 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8cdaa9d3b16f6c69f7edf2ed75b41a95" id="r_a8cdaa9d3b16f6c69f7edf2ed75b41a95"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a8cdaa9d3b16f6c69f7edf2ed75b41a95">ns::help_command</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx)</td></tr>
-<tr class="memdesc:a8cdaa9d3b16f6c69f7edf2ed75b41a95"><td class="mdescLeft">&#160;</td><td class="mdescRight">shows command usage  <br /></td></tr>
-<tr class="separator:a8cdaa9d3b16f6c69f7edf2ed75b41a95"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa121328a28f8d5abebecd306e8c5df1" id="r_aaa121328a28f8d5abebecd306e8c5df1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#aaa121328a28f8d5abebecd306e8c5df1">ns::echo_command</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx)</td></tr>
-<tr class="memdesc:aaa121328a28f8d5abebecd306e8c5df1"><td class="mdescLeft">&#160;</td><td class="mdescRight">prints all the arguments passed  <br /></td></tr>
-<tr class="separator:aaa121328a28f8d5abebecd306e8c5df1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d945efbeb71a8c00ee1f3dfbacfb61c" id="r_a8d945efbeb71a8c00ee1f3dfbacfb61c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a8d945efbeb71a8c00ee1f3dfbacfb61c">ns::var_command</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx)</td></tr>
-<tr class="memdesc:a8d945efbeb71a8c00ee1f3dfbacfb61c"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a variable  <br /></td></tr>
-<tr class="separator:a8d945efbeb71a8c00ee1f3dfbacfb61c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9044192a7606f450e4376247bd746179" id="r_a9044192a7606f450e4376247bd746179"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a9044192a7606f450e4376247bd746179">ns::delvar_command</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx)</td></tr>
-<tr class="memdesc:a9044192a7606f450e4376247bd746179"><td class="mdescLeft">&#160;</td><td class="mdescRight">deletes a variable  <br /></td></tr>
-<tr class="separator:a9044192a7606f450e4376247bd746179"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58d9ceae20bc91fa24638b93a442fde3" id="r_a58d9ceae20bc91fa24638b93a442fde3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a58d9ceae20bc91fa24638b93a442fde3">ns::toggle_command</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx)</td></tr>
-<tr class="memdesc:a58d9ceae20bc91fa24638b93a442fde3"><td class="mdescLeft">&#160;</td><td class="mdescRight">toggles a variable value between option1 and option2  <br /></td></tr>
-<tr class="separator:a58d9ceae20bc91fa24638b93a442fde3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a221e6a88a0cfd4a8b63526fb27bae4f8" id="r_a221e6a88a0cfd4a8b63526fb27bae4f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a221e6a88a0cfd4a8b63526fb27bae4f8">ns::exec_command</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx)</td></tr>
-<tr class="memdesc:a221e6a88a0cfd4a8b63526fb27bae4f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">parses a file as nikiscript  <br /></td></tr>
-<tr class="separator:a221e6a88a0cfd4a8b63526fb27bae4f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a799b896e23c08756a3d83896f0129ca8" id="r_a799b896e23c08756a3d83896f0129ca8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a799b896e23c08756a3d83896f0129ca8">ns::incrementvar_command</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx)</td></tr>
-<tr class="memdesc:a799b896e23c08756a3d83896f0129ca8"><td class="mdescLeft">&#160;</td><td class="mdescRight">increments a variable value  <br /></td></tr>
-<tr class="separator:a799b896e23c08756a3d83896f0129ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a344e3633da213d1f3854a60b1130c87f" id="r_a344e3633da213d1f3854a60b1130c87f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a344e3633da213d1f3854a60b1130c87f">ns::registerCommands</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx)</td></tr>
-<tr class="memdesc:a344e3633da213d1f3854a60b1130c87f"><td class="mdescLeft">&#160;</td><td class="mdescRight">adds default commands such as echo  <br /></td></tr>
-<tr class="separator:a344e3633da213d1f3854a60b1130c87f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c1ab326ebd9ab56dc2d964fa179a842" id="r_a1c1ab326ebd9ab56dc2d964fa179a842"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a1c1ab326ebd9ab56dc2d964fa179a842">ns::registerVariable</a> (<a class="el" href="structns_1_1_context.html">Context</a> &amp;ctx, const std::string &amp;name, const std::string &amp;description, void *pVar, const <a class="el" href="namespacens.html#a3f8f2b23dd1ab6b8cc50e989f7a09482">GetProgramVariableValue</a> &amp;get, const <a class="el" href="namespacens.html#a904a292a8b7b2e78bb2851d5fd884e56">SetProgramVariableValue</a> &amp;set)</td></tr>
-<tr class="memdesc:a1c1ab326ebd9ab56dc2d964fa179a842"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a variable and stores it in <a class="el" href="structns_1_1_context.html#a5479b96c543502cfbb8073eb01281818">ns::Context::programVariables</a>  <br /></td></tr>
-<tr class="separator:a1c1ab326ebd9ab56dc2d964fa179a842"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c5576dbf8078f700a42e051ee167d73" id="r_a4c5576dbf8078f700a42e051ee167d73"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a4c5576dbf8078f700a42e051ee167d73">ns::help</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx, const std::string &amp;name)</td></tr>
+<tr class="separator:a4c5576dbf8078f700a42e051ee167d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f5990095e2c9bedb327ec28683aeb98" id="r_a2f5990095e2c9bedb327ec28683aeb98"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a2f5990095e2c9bedb327ec28683aeb98">ns::help_command</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx)</td></tr>
+<tr class="memdesc:a2f5990095e2c9bedb327ec28683aeb98"><td class="mdescLeft">&#160;</td><td class="mdescRight">shows command usage  <br /></td></tr>
+<tr class="separator:a2f5990095e2c9bedb327ec28683aeb98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad301b4e638e588d7c5dea4f9138fafee" id="r_ad301b4e638e588d7c5dea4f9138fafee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#ad301b4e638e588d7c5dea4f9138fafee">ns::echo_command</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx)</td></tr>
+<tr class="memdesc:ad301b4e638e588d7c5dea4f9138fafee"><td class="mdescLeft">&#160;</td><td class="mdescRight">prints all the arguments passed  <br /></td></tr>
+<tr class="separator:ad301b4e638e588d7c5dea4f9138fafee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d08c6fc61f50c137d1dbac6a8a07920" id="r_a6d08c6fc61f50c137d1dbac6a8a07920"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a6d08c6fc61f50c137d1dbac6a8a07920">ns::var</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx, const std::string &amp;name, const std::string &amp;value)</td></tr>
+<tr class="memdesc:a6d08c6fc61f50c137d1dbac6a8a07920"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a variable  <br /></td></tr>
+<tr class="separator:a6d08c6fc61f50c137d1dbac6a8a07920"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69636af4fb6f0f4854d24322dfcaf8fd" id="r_a69636af4fb6f0f4854d24322dfcaf8fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a69636af4fb6f0f4854d24322dfcaf8fd">ns::var_command</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx)</td></tr>
+<tr class="memdesc:a69636af4fb6f0f4854d24322dfcaf8fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a variable  <br /></td></tr>
+<tr class="separator:a69636af4fb6f0f4854d24322dfcaf8fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10444fcfdae3dbd25ea2cbb4a5d60452" id="r_a10444fcfdae3dbd25ea2cbb4a5d60452"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a10444fcfdae3dbd25ea2cbb4a5d60452">ns::delvar</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx, const std::string &amp;name)</td></tr>
+<tr class="separator:a10444fcfdae3dbd25ea2cbb4a5d60452"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af487d69d5024ac72ea9a8afac048fb8b" id="r_af487d69d5024ac72ea9a8afac048fb8b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#af487d69d5024ac72ea9a8afac048fb8b">ns::delvar_command</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx)</td></tr>
+<tr class="memdesc:af487d69d5024ac72ea9a8afac048fb8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">deletes a variable  <br /></td></tr>
+<tr class="separator:af487d69d5024ac72ea9a8afac048fb8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad245a599b7cdad8a8861ea7a87a33fec" id="r_ad245a599b7cdad8a8861ea7a87a33fec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#ad245a599b7cdad8a8861ea7a87a33fec">ns::incrementvar</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx, const std::string &amp;name, float min, float max, float delta)</td></tr>
+<tr class="separator:ad245a599b7cdad8a8861ea7a87a33fec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d4dc34e6db446c54db1a5f50e66dc12" id="r_a4d4dc34e6db446c54db1a5f50e66dc12"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a4d4dc34e6db446c54db1a5f50e66dc12">ns::incrementvar_command</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx)</td></tr>
+<tr class="memdesc:a4d4dc34e6db446c54db1a5f50e66dc12"><td class="mdescLeft">&#160;</td><td class="mdescRight">increments a variable value  <br /></td></tr>
+<tr class="separator:a4d4dc34e6db446c54db1a5f50e66dc12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ea4c19bc3ce2b59f6340ee1e504d12d" id="r_a7ea4c19bc3ce2b59f6340ee1e504d12d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a7ea4c19bc3ce2b59f6340ee1e504d12d">ns::toggle</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx, const std::string &amp;varName, const std::string &amp;option1, const std::string &amp;option2)</td></tr>
+<tr class="memdesc:a7ea4c19bc3ce2b59f6340ee1e504d12d"><td class="mdescLeft">&#160;</td><td class="mdescRight">toggles a variable value between option1 and option2  <br /></td></tr>
+<tr class="separator:a7ea4c19bc3ce2b59f6340ee1e504d12d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c30d3aa9206c9f7cfdf554928b20898" id="r_a3c30d3aa9206c9f7cfdf554928b20898"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a3c30d3aa9206c9f7cfdf554928b20898">ns::toggle_command</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx)</td></tr>
+<tr class="memdesc:a3c30d3aa9206c9f7cfdf554928b20898"><td class="mdescLeft">&#160;</td><td class="mdescRight">toggles a variable value between option1 and option2  <br /></td></tr>
+<tr class="separator:a3c30d3aa9206c9f7cfdf554928b20898"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dd3bde0b7581c9f94a7e132f7abcc40" id="r_a7dd3bde0b7581c9f94a7e132f7abcc40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a7dd3bde0b7581c9f94a7e132f7abcc40">ns::exec_command</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx)</td></tr>
+<tr class="memdesc:a7dd3bde0b7581c9f94a7e132f7abcc40"><td class="mdescLeft">&#160;</td><td class="mdescRight">parses a file as nikiscript  <br /></td></tr>
+<tr class="separator:a7dd3bde0b7581c9f94a7e132f7abcc40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8f42539867f1784f83bf8bcc3093d31" id="r_ab8f42539867f1784f83bf8bcc3093d31"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#ab8f42539867f1784f83bf8bcc3093d31">ns::registerCommands</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx)</td></tr>
+<tr class="memdesc:ab8f42539867f1784f83bf8bcc3093d31"><td class="mdescLeft">&#160;</td><td class="mdescRight">adds default commands such as echo  <br /></td></tr>
+<tr class="separator:ab8f42539867f1784f83bf8bcc3093d31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acab9b505fdfb45a0cb058c83d5ee6c45" id="r_acab9b505fdfb45a0cb058c83d5ee6c45"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#acab9b505fdfb45a0cb058c83d5ee6c45">ns::registerVariable</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx, const std::string &amp;name, const std::string &amp;description, void *pVar, const <a class="el" href="namespacens.html#a28e977b53de9a4d85c314a6fceb611c9">GetProgramVariableValue</a> &amp;get, const <a class="el" href="namespacens.html#a373ca8b923313ff7b1168f59035de943">SetProgramVariableValue</a> &amp;set)</td></tr>
+<tr class="memdesc:acab9b505fdfb45a0cb058c83d5ee6c45"><td class="mdescLeft">&#160;</td><td class="mdescRight">creates a variable and stores it in <a class="el" href="structns_1_1_context.html#a5479b96c543502cfbb8073eb01281818">ns::Context::programVariables</a>  <br /></td></tr>
+<tr class="separator:acab9b505fdfb45a0cb058c83d5ee6c45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="_niki_script_8h.html">NikiScript.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_9015efe376f034568db8aa7b82f409e7.html">NikiScript</a></li><li class="navelem"><a class="el" href="_niki_script_8h.html">NikiScript.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
   </ul>
 </div>

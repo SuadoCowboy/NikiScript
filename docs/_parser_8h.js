@@ -1,17 +1,17 @@
 var _parser_8h =
 [
-    [ "NIKISCRIPT_FILE_EXTENSION", "_parser_8h.html#a3db4230d0b4b7ce1715177aa3f36e86f", null ],
-    [ "NIKISCRIPT_LOOP_VARIABLE", "_parser_8h.html#a043e102456d553490573be5591c586ed", null ],
-    [ "NIKISCRIPT_ROOT_DIRECTORY", "_parser_8h.html#a06bb90cf6b7eec551ca34090a3ba2650", null ],
-    [ "NIKISCRIPT_TOGGLE_OFF", "_parser_8h.html#ace7ee102d6be89086925b20fa4980401", null ],
-    [ "NIKISCRIPT_TOGGLE_ON", "_parser_8h.html#a9dc2b5af60533628db36bded7820fa0d", null ],
-    [ "ns::canRunVariable", "namespacens.html#a40a0a3f7fe6fd5ec89be5d0766ece192", null ],
-    [ "ns::clearStatementData", "namespacens.html#a4fe365e87149fa977f063285581956df", null ],
-    [ "ns::handleArgumentToken", "namespacens.html#aa27be0bd43b5a54a8f2468a63855ab53", null ],
-    [ "ns::handleCommandCall", "namespacens.html#a2cb4570673469538fdfd4547bf8991cd", null ],
-    [ "ns::handleConsoleVariableCall", "namespacens.html#a1abe3e2b1b7d309dd6ea8419eecdecc1", null ],
-    [ "ns::handleIdentifierToken", "namespacens.html#a6e708b91ba687e006ea45ff21acc36a6", null ],
-    [ "ns::parse", "namespacens.html#a680665d6c662c728a87ec369de2f03a4", null ],
-    [ "ns::parseFile", "namespacens.html#a765477cb266c6fb3e82b1b85867bca56", null ],
-    [ "ns::updateLoopVariables", "namespacens.html#a50c6d4aa9b61b3e31cac4c85e52aea9c", null ]
+    [ "NS_FILE_EXTENSION", "_parser_8h.html#af9a1a03fc8c442b4bae4a76ed8ebea95", null ],
+    [ "NS_LOOP_VARIABLE", "_parser_8h.html#afd3566feb0882f49466dff07047e7187", null ],
+    [ "NS_TOGGLE_OFF", "_parser_8h.html#ad505409c5e56abf02788a629c2a32754", null ],
+    [ "NS_TOGGLE_ON", "_parser_8h.html#a4f33407581a243d9b702f14a3075ebd0", null ],
+    [ "ns::canRunVariable", "namespacens.html#a835958beedf13b0954ebc3a8dfdaeea4", null ],
+    [ "ns::clearStatementData", "namespacens.html#a55368173711a3deeb6fc25c15a16bfbe", null ],
+    [ "ns::handleArgumentToken", "namespacens.html#a7d93b985853056ca807f8abe0b14785d", null ],
+    [ "ns::handleCommandCall", "namespacens.html#a41298eb880e43602381703c62f0d5621", null ],
+    [ "ns::handleConsoleVariableCall", "namespacens.html#a6b66a94d129239bbe0dac704d8be411a", null ],
+    [ "ns::handleIdentifierToken", "namespacens.html#a2854057a243fa436efc22fc9b58a886f", null ],
+    [ "ns::parse", "namespacens.html#a1dbca0329180b87cd0dab5f830b5acbc", null ],
+    [ "ns::parseFile", "namespacens.html#a83cc66ad3c0b840c928c3072c0326f2c", null ],
+    [ "ns::parseInsideAnotherScript", "namespacens.html#ad249462d47182df15dee71c6f1a58204", null ],
+    [ "ns::updateLoopVariables", "namespacens.html#aaad3b119512ebe87dcdebd8e0a602b03", null ]
 ];

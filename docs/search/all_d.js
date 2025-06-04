@@ -1,11 +1,9 @@
 var searchData=
 [
-  ['parser_2ecpp_0',['Parser.cpp',['../_parser_8cpp.html',1,'']]],
-  ['print_1',['Print',['../md__c_1_2_users_2emilly_2_documents_2_lucca_2_projetos_2_cpp_2_niki_script_2_conventions.html#autotoc_md1',1,'']]],
-  ['printcallback_2ecpp_2',['PrintCallback.cpp',['../_print_callback_8cpp.html',1,'']]],
-  ['printcallbackwrapper_2ecpp_3',['PrintCallbackWrapper.cpp',['../_print_callback_wrapper_8cpp.html',1,'']]],
-  ['printcallbackwrapper_2eh_4',['PrintCallbackWrapper.h',['../_print_callback_wrapper_8h.html',1,'']]],
-  ['programvariable_2ecpp_5',['ProgramVariable.cpp',['../_program_variable_8cpp.html',1,'']]],
-  ['programvariablewrapper_2ecpp_6',['ProgramVariableWrapper.cpp',['../_program_variable_wrapper_8cpp.html',1,'']]],
-  ['programvariablewrapper_2eh_7',['ProgramVariableWrapper.h',['../_program_variable_wrapper_8h.html',1,'']]]
+  ['reference_0',['REFERENCE',['../namespacens.html#a8748c664d230e63fda397e022a64a692a32c784ad2761ebe4023f26fb85459170',1,'ns']]],
+  ['references_1',['references',['../structns_1_1_token.html#aa0ce8444f31ea51df58176f3ff348e66',1,'ns::Token']]],
+  ['registercommands_2',['registerCommands',['../namespacens.html#ab8f42539867f1784f83bf8bcc3093d31',1,'ns']]],
+  ['registervariable_3',['registerVariable',['../namespacens.html#acab9b505fdfb45a0cb058c83d5ee6c45',1,'ns']]],
+  ['remove_4',['remove',['../structns_1_1_command_handler.html#a4f4928916bb2153f306f07e0effa1805',1,'ns::CommandHandler']]],
+  ['rtrim_5',['rtrim',['../namespacens.html#a021b7d90d89d69b6672e939826611e48',1,'ns']]]
 ];
