@@ -25,11 +25,11 @@ void ns::help(Context* pCtx, const std::string& name) {
 	}
 }
 
-void ns::help_command(Context* pCtx) {
+void ns::help_command(Context* pCtx, void*) {
 	help(pCtx, pCtx->args.arguments.size() > 0? pCtx->args.getString(0) : "");
 }
 
-void ns::echo_command(Context* pCtx) {
+void ns::echo_command(Context* pCtx, void*) {
 	ns::printf(ns::ECHO, "{}\n", pCtx->args.getString(0));
 }
 
@@ -121,7 +121,7 @@ bool ns::var(Context* pCtx, const std::string& name, const std::string& value) {
 	return true;
 }
 
-void ns::var_command(Context* pCtx) {
+void ns::var_command(Context* pCtx, void*) {
 	bool result = var(pCtx, pCtx->args.getString(0), pCtx->args.arguments.size() > 1? pCtx->args.getString(1) : "");
 	if (pCtx->origin & OriginType::REFERENCE)
 		ns::printf(ns::ECHO, "{}\n", result);
@@ -154,7 +154,7 @@ void ns::delvar(Context* pCtx, const std::string& name) {
 	pCtx->consoleVariables.erase(name);
 }
 
-void ns::delvar_command(Context* pCtx) {
+void ns::delvar_command(Context* pCtx, void*) {
 	delvar(pCtx, pCtx->args.getString(0));
 }
 
@@ -194,7 +194,7 @@ void ns::incrementvar(Context* pCtx, const std::string& name, float min, float m
 		pCtx->programVariables[name].set(pCtx, &pCtx->programVariables[name], std::to_string(value));
 }
 
-void ns::incrementvar_command(Context* pCtx) {
+void ns::incrementvar_command(Context* pCtx, void*) {
 	incrementvar(pCtx, pCtx->args.getString(0), pCtx->args.getFloat(1), pCtx->args.getFloat(2), pCtx->args.arguments.size() > 3? pCtx->args.getFloat(3) : 1.0f);
 }
 
@@ -241,15 +241,15 @@ void ns::toggle(Context* pCtx, const std::string& varName, const std::string& op
 		ns::print(PrintLevel::ERROR, "toggle command expected a variable or command\n");
 }
 
-void ns::toggle_command(ns::Context* pCtx) {
+void ns::toggle_command(Context* pCtx, void*) {
 	ns::toggle(pCtx, pCtx->args.getString(0), pCtx->args.getString(1), pCtx->args.getString(2));
 }
 
-void ns::exec_command(Context* pCtx) {
+void ns::exec_command(Context* pCtx, void*) {
 	parseFile(pCtx, pCtx->args.getString(0).c_str(), true);
 }
 
-void ns::registerCommands(ns::Context* pCtx) {
+void ns::registerCommands(Context* pCtx) {
 	nsRegisterCommand(pCtx, "echo", 1, 1, echo_command, "prints the passed message to console", "s[message]", "content to print to console");
 	nsRegisterCommand(pCtx, "help", 0,1, help_command, "prints a list of commands with their usages or the usage of the specified command", "s[command?]", "command to see usage");
 	nsRegisterCommand(pCtx, "var", 1,2, var_command, "creates a variable", "s[name]", "variable name", "s[value?]", "if value is not specified, variable becomes an empty string");
@@ -259,6 +259,6 @@ void ns::registerCommands(ns::Context* pCtx) {
 	nsRegisterCommand(pCtx, "incrementvar", 3,4, incrementvar_command, "do value + delta, when value > max: value = min", "v[variable]", "variable to modify value", "d[min]", "minimum value possible", "d[max]", "maximum possible value", "d[delta?]", "to increase value with -> value + delta");
 }
 
-void ns::registerVariable(ns::Context* pCtx, const std::string& name, const std::string& description, void* pVar, const GetProgramVariableValue& get, const SetProgramVariableValue& set) {
+void ns::registerVariable(Context* pCtx, const std::string& name, const std::string& description, void* pVar, const GetProgramVariableValue& get, const SetProgramVariableValue& set) {
 	pCtx->programVariables[name] = ProgramVariable(pVar, description, get, set);
 }

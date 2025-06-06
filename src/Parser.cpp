@@ -121,7 +121,7 @@ void ns::handleCommandCall(Context* pCtx, ProgramVariable*& pProgramVar) {
 	}
 	}
 
-	pCtx->pCommand->callback(pCtx);
+	pCtx->pCommand->callback(pCtx, pCtx->pCommand->pData);
 	clearStatementData(pCtx);
 }
 

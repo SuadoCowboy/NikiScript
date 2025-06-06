@@ -51,7 +51,7 @@ std::string tokenToString(const ns::Token& token) {
 }
 
 
-static void test_command(ns::Context* pCtx) {
+static void test_command(ns::Context* pCtx, void*) {
 	ns::Context copy = ns::deepCopyContext(pCtx);
 	ns::Lexer lexer{pCtx->args.getString(0)};
 	copy.pLexer = &lexer;
@@ -61,12 +61,12 @@ static void test_command(ns::Context* pCtx) {
 }
 
 bool running = false;
-static void quit_command(ns::Context*) {
+static void quit_command(ns::Context*, void*) {
 	running = false;
 }
 
 bool isCrazy = false;
-static void crazy_command(ns::Context* pCtx) {
+static void crazy_command(ns::Context* pCtx, void*) {
 	if (pCtx->args.arguments.size() == 0) {
 		ns::printf(ns::PrintLevel::ECHO, "{}\n", isCrazy);
 		return;

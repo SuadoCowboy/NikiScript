@@ -8,7 +8,10 @@
 #include "DLL.h"
 
 #define nsRegisterCommand(pCtx, name, minArgs, maxArgs, callback, description, ...) \
-	(pCtx)->commands.add(ns::Command(name, minArgs, maxArgs, callback, description, {__VA_ARGS__}))
+	(pCtx)->commands.add(ns::Command(name, minArgs, maxArgs, callback, nullptr, description, {__VA_ARGS__}))
+
+#define nsRegisterCommandWithData(pCtx, name, minArgs, maxArgs, pData, callback, description, ...) \
+	(pCtx)->commands.add(ns::Command(name, minArgs, maxArgs, callback, pData, description, {__VA_ARGS__}))
 
 namespace ns {
 	struct Context;
