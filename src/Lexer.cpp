@@ -35,9 +35,10 @@ void ns::Lexer::advanceUntil(uint8_t flags) {
 bool ns::Lexer::setTokenValue() {
 	if (input[position] == NS_STATEMENT_SEPARATOR || input[position] == '\n') {
 		token.value = NS_STATEMENT_SEPARATOR;
-		return position+1;
+		++position;
+		return false;
 	}
-
+	
 	size_t nextTokenPosition = position;
 	token.value.clear();
 
