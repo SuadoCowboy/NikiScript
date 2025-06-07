@@ -21,10 +21,7 @@ void ns::Lexer::advance() {
 	if (input[position] == '\n')
 		lineIndex++;
 
-	size_t nextTokenPosition = setTokenValue();
-	setTokenType();
-
-	position = nextTokenPosition;
+	setTokenType(setTokenValue());
 }
 
 void ns::Lexer::advanceUntil(uint8_t flags) {
@@ -35,19 +32,20 @@ void ns::Lexer::advanceUntil(uint8_t flags) {
 		advance();
 }
 
-size_t ns::Lexer::setTokenValue() {
+bool ns::Lexer::setTokenValue() {
 	if (input[position] == NS_STATEMENT_SEPARATOR || input[position] == '\n') {
 		token.value = NS_STATEMENT_SEPARATOR;
 		return position+1;
 	}
 
 	size_t nextTokenPosition = position;
-	std::stringstream result{};
+	token.value.clear();
 
 	/*
 	1 = allow white space and NS_STATEMENT_SEPARATOR
 	2 = escape next char if is a known char like NS_STATEMENT_SEPARATOR
 	4 = skipping all until NS_COMMENT_LINES+NS_COMMENT_LINE is found
+	8 = token value is NS_STATEMENT_SEPARATOR and should its type should be string
 	*/
 	uint8_t flags = openArguments == 0? 0 : 1;
 
@@ -68,10 +66,10 @@ size_t ns::Lexer::setTokenValue() {
 			case NS_STATEMENT_SEPARATOR:
 				break;
 			default:
-				result << input[nextTokenPosition-1];
+				token.value += input[nextTokenPosition-1];
 				break;
 			}
-			result << input[nextTokenPosition++];
+			token.value += input[nextTokenPosition++];
 			continue;
 		}
 
@@ -123,18 +121,22 @@ size_t ns::Lexer::setTokenValue() {
 				// we keep track of how many arguments are open because we need to know if the arguments separator will be used or not by the first open argument, which is the only one we care.
 				if (openArguments != 0)
 					++openArguments;
-				result << input[nextTokenPosition++];
+				token.value += input[nextTokenPosition++];
 			}
 
 			continue;
 
 		} else if (input[nextTokenPosition] == NS_ARGUMENTS_SEPARATOR && openArguments == 1) {
+			if (token.value.size() == 1 && token.value[0] == NS_STATEMENT_SEPARATOR)
+				flags |= 8;
 			++nextTokenPosition;
 			break;
 
 		} else if (input[nextTokenPosition] == NS_ARGUMENTS_CLOSE && openArguments != 0) {
 			--openArguments;
 			if (openArguments == 0) {
+				if (token.value.size() == 1 && token.value[0] == NS_STATEMENT_SEPARATOR)
+					flags |= 8;
 				++nextTokenPosition;
 				break;
 			}
@@ -168,7 +170,7 @@ size_t ns::Lexer::setTokenValue() {
 			}
 
 			if (foundCloseReference) {
-				token.references.emplace_back(result.str().size(), referenceStream.str());
+				token.references.emplace_back(token.value.size(), referenceStream.str());
 				nextTokenPosition = tempIndex;
 				continue;
 			}
@@ -177,6 +179,8 @@ size_t ns::Lexer::setTokenValue() {
 			++nextTokenPosition;
 			
 			if (flags & 1) {
+				if (token.value.size() == 1 && token.value[0] == NS_STATEMENT_SEPARATOR)
+					flags |= 8;
 				flags &= ~1;
 				break;
 			} else {
@@ -185,15 +189,15 @@ size_t ns::Lexer::setTokenValue() {
 			}
 		}
 
-		result << input[nextTokenPosition++];
+		token.value += input[nextTokenPosition++];
 	}
 
-	token.value = result.str();
-	return nextTokenPosition;
+	position = nextTokenPosition;
+	return (flags & 8);
 }
 
-void ns::Lexer::setTokenType() {
-	if (token.value.size() == 1 && token.value[0] == NS_STATEMENT_SEPARATOR) {
+void ns::Lexer::setTokenType(bool skipStatementSeparator) {
+	if (!skipStatementSeparator && token.value.size() == 1 && token.value[0] == NS_STATEMENT_SEPARATOR) {
 		token.type = TokenType::EOS;
 
 	} else if (token.type == TokenType::NONE || ((TokenType::EOS|TokenType::END) & token.type)) { // if the lexer just started and is not EOS

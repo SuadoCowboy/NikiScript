@@ -84,18 +84,18 @@ namespace ns {
 		void advanceUntil(uint8_t flags);
 
 		/**
-		 * @brief Gets token value by checking where a whitespace is found
+		 * @brief Gets token value by checking where a whitespace is found and updates token position to the end+1 of the new token
 		 *
-		 * @return Next input's initial position. Either whitespace, EOS or END
+		 * @return true if it NS_STATEMENT_SEPARATOR but inside a string and therefore should not be interpreted as such
 		 * @see Lexer::setTokenType
 		 */
-		size_t setTokenValue();
+		bool setTokenValue();
 
 		/**
 		 * @brief Identifies token type by checking the previous token type
 		 * @see Lexer::setTokenValue
 		 */
-		void setTokenType();
+		void setTokenType(bool skipStatementSeparator);
 
 		/**
 		 * @brief resets members
