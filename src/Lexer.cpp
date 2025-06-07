@@ -64,7 +64,7 @@ bool ns::Lexer::setTokenValue() {
 			case NS_REFERENCE:
 			case NS_REFERENCE_CLOSE:
 			case NS_REFERENCE_OPEN:
-			case NS_STATEMENT_SEPARATOR:
+			//case NS_STATEMENT_SEPARATOR:
 				break;
 			default:
 				token.value += input[nextTokenPosition-1];
