@@ -36,10 +36,7 @@ else()
     add_library(NikiScript STATIC ${SOURCES})
 endif()
 
-set_target_properties(NikiScript PROPERTIES
-	VERSION ${PROJECT_VERSION}
-	DEBUG_POSTFIX "-d"
-)
+set_target_properties(NikiScript PROPERTIES VERSION ${PROJECT_VERSION})
 
 if (WIN32)
 	set_target_properties(NikiScript PROPERTIES PREFIX "")
