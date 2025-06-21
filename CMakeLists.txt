@@ -25,7 +25,7 @@ file(GLOB SOURCES ${PROJECT_SOURCE_DIR}/src/*.cpp)
 
 if(BUILD_SHARED)
 	add_library(NikiScript SHARED ${SOURCES})
-	set_target_properties(NikiScript PROPERTIES VERSION ${PROJECT_VERSION} POSITION_INDEPENDENT_CODE ON)
+	set_target_properties(NikiScript PROPERTIES POSITION_INDEPENDENT_CODE ON)
 	target_compile_definitions(NikiScript PRIVATE NS_EXPORT=1)
 	if (MSVC)
 		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4251") # ignore warning related to STL members on structures
@@ -34,8 +34,12 @@ if(BUILD_SHARED)
 	endif()
 else()
     add_library(NikiScript STATIC ${SOURCES})
-	set_target_properties(NikiScript PROPERTIES VERSION ${PROJECT_VERSION})
 endif()
+
+set_target_properties(NikiScript PROPERTIES
+	VERSION ${PROJECT_VERSION}
+	DEBUG_POSTFIX "-d"
+)
 
 if (WIN32)
 	set_target_properties(NikiScript PROPERTIES PREFIX "")
