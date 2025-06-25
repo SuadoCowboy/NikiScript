@@ -32,7 +32,7 @@ ns::Command::Command(const std::string& name, uint8_t minArgs, uint8_t maxArgs,
 			NS_COMMAND_ASSERT(name, arg[0] == 's' || arg[0] == 'i' || arg[0] == 'd' || arg[0] == 'v');
 			NS_COMMAND_ASSERT(name, arg[1] == '[' && arg[arg.size()-1] == ']');
 			if (i >= minArgs*2)
-			NS_COMMAND_ASSERT(name, arg[arg.size()-2] == '?');
+				NS_COMMAND_ASSERT(name, arg[arg.size()-2] == '?');
 		}
 
 		isName = !isName;
