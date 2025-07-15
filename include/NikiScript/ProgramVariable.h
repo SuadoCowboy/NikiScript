@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <cstring>
 #include <sstream>
 #include <unordered_map>
 
@@ -30,6 +31,28 @@ namespace ns {
 
 	NS_API std::string getString(Context*, ProgramVariable* pVar);
 	NS_API void setString(Context*, ProgramVariable* pVar, const std::string& str);
+
+	NS_API std::string getCharArray(Context*, ProgramVariable* pVar);
+
+	template<size_t Size = 256>
+	void setCharArray(Context*, ProgramVariable* pVar, const std::string& str) {
+		try {
+			char* pValue = static_cast<char*>(pVar->pValue);
+			if (str.size() == 0) {
+				pValue[0] = '\0';
+				return;
+			}
+
+			size_t i = 0;
+			for (; i < Size-1 && i < str.size(); ++i)
+				pValue[i] = str[i];
+
+			pValue[i] = '\0';
+
+			//strncpy_s(pValue, Size, str.c_str(), Size);
+			//pValue[Size - 1] = '\0'; // Ensure null termination
+		} catch (...) {}
+	}
 
 	template<typename T>
 	std::string getNumber(Context*, ProgramVariable* pVar) {

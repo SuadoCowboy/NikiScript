@@ -16,6 +16,10 @@ void ns::setString(Context*, ProgramVariable* pVar, const std::string& str) {
 	*static_cast<std::string*>(pVar->pValue) = str;
 }
 
+std::string ns::getCharArray(Context*, ProgramVariable* pVar) {
+	return std::string(static_cast<char*>(pVar->pValue));
+}
+
 
 void ns::setUnsignedLongLong(Context*, ProgramVariable* pVar, const std::string& str) {
 	try {

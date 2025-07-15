@@ -126,6 +126,9 @@ int main(int, char**) {
 	unsigned long long uint64 = 0;
 	ns::registerVariable(&ctx, "uint64", "", &uint64, ns::getNumber<unsigned long long>, ns::setUnsignedLongLong);
 
+	char pName[16] = "nameless tee";
+	ns::registerVariable(&ctx, "name", "", pName, ns::getCharArray, ns::setCharArray<16>);
+
 	running = true;
 	while (running) {
 		std::string input;
