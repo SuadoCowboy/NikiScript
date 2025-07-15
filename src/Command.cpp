@@ -16,7 +16,7 @@ ns::Command::Command() {}
 
 ns::Command::Command(const std::string& name, uint8_t minArgs, uint8_t maxArgs,
 	CommandCallback callback, void* pData, const std::string& description, const std::vector<std::string>& argsDescriptions)
-	: name(name), minArgs(minArgs), maxArgs(maxArgs), callback(callback), pData(pData), description(description), argsDescriptions(argsDescriptions) {
+	: name(name), description(description), argsDescriptions(argsDescriptions), minArgs(minArgs), maxArgs(maxArgs), callback(callback), pData(pData) {
 #ifndef NDEBUG
 	NS_COMMAND_ASSERT(name, !name.empty())
 	NS_COMMAND_ASSERT(name, minArgs <= maxArgs)

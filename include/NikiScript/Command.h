@@ -12,17 +12,17 @@ namespace ns {
 	typedef void(*CommandCallback)(Context* pCtx, void* pData);
 
 	struct NS_API Command {
-		std::string name;
-		std::string description;
-
-		uint8_t minArgs = 0, maxArgs = 0;
-		CommandCallback callback = nullptr;
+		std::string name{};
+		std::string description{};
 
 		/**
 		 * @note odd = name
 		 * @note even = description
 		 */
 		std::vector<std::string> argsDescriptions{};
+
+		uint8_t minArgs = 0, maxArgs = 0;
+		CommandCallback callback = nullptr;
 
 		void* pData = nullptr; ///< pData is useful for functions that don't have a defined body and actually depends on a data that it's not possible to know without a hacky way which is worse than just using pData
 
