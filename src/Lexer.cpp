@@ -24,8 +24,8 @@ void ns::Lexer::advance() {
 	setTokenType(setTokenValue());
 }
 
-void ns::Lexer::advanceUntil(uint8_t flags) {
-	flags |= static_cast<uint8_t>(TokenType::END);
+void ns::Lexer::advanceUntil(TokenFlag flags) {
+	flags |= static_cast<TokenFlag>(TokenType::END);
 
 	advance();
 	while (!(flags & token.type))

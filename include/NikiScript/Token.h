@@ -6,7 +6,8 @@
 #include "DLL.h"
 
 namespace ns {
-	enum TokenType : uint8_t {
+	typedef uint8_t TokenFlag;
+	enum TokenType : TokenFlag {
 		NONE = 0,
 		IDENTIFIER = 1, ///< If it's the first token after an EOS, END or NONE. Should be either a variable or command
 		ARGUMENT = 2, ///< If lexer could not convert to integer and an identifier was already caught up
@@ -32,8 +33,8 @@ namespace ns {
 	NS_API void insertReferencesInToken(Context* pCtx, Token& token);
 }
 
-NS_API uint8_t operator|(ns::TokenType l, ns::TokenType r);
-NS_API uint8_t operator|(uint8_t l, ns::TokenType r);
-NS_API uint8_t operator|(ns::TokenType l, uint8_t r);
-NS_API uint8_t operator&(uint8_t l, ns::TokenType r);
-NS_API uint8_t operator&(ns::TokenType l, uint8_t r);
+NS_API ns::TokenFlag operator|(ns::TokenType l, ns::TokenType r);
+NS_API ns::TokenFlag operator|(ns::TokenFlag l, ns::TokenType r);
+NS_API ns::TokenFlag operator|(ns::TokenType l, ns::TokenFlag r);
+NS_API ns::TokenFlag operator&(ns::TokenFlag l, ns::TokenType r);
+NS_API ns::TokenFlag operator&(ns::TokenType l, ns::TokenFlag r);

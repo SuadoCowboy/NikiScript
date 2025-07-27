@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Context.h"
+#include "Token.h"
 
 #ifndef NS_LOOP_VARIABLE
 #define NS_LOOP_VARIABLE '!'
@@ -57,7 +58,7 @@ namespace ns {
 	 * @see ns::parse
 	 * @see ns::canRunVariable
 	 */
-	NS_API uint8_t handleIdentifierToken(Context* pCtx, ProgramVariable*& pProgramVar, bool printError);
+	NS_API TokenFlag handleIdentifierToken(Context* pCtx, ProgramVariable*& pProgramVar, bool printError);
 
 	/**
 	 * @brief Handles references in the string and checks if the parameter matches the argument type

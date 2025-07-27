@@ -8,26 +8,6 @@ ns::Token::Token() {}
 ns::Token::Token(TokenType type) : type(type), value("") {}
 ns::Token::Token(TokenType type, const char *value) : type(type), value(value) {}
 
-uint8_t operator|(ns::TokenType l, ns::TokenType r) {
-	return static_cast<uint8_t>(l)|static_cast<uint8_t>(r);
-}
-
-uint8_t operator|(uint8_t l, ns::TokenType r) {
-	return l|static_cast<uint8_t>(r);
-}
-
-uint8_t operator|(ns::TokenType l, uint8_t r) {
-	return static_cast<uint8_t>(l)|r;
-}
-
-uint8_t operator&(uint8_t l, ns::TokenType r) {
-	return l&static_cast<uint8_t>(r);
-}
-
-uint8_t operator&(ns::TokenType l, uint8_t r) {
-	return static_cast<uint8_t>(l)&r;
-}
-
 void ns::insertReferencesInToken(Context* pCtx, Token& token) {
 	size_t offset = 0;
 	for (auto& reference : token.references) {
@@ -49,7 +29,7 @@ void ns::insertReferencesInToken(Context* pCtx, Token& token) {
 			std::string printOutput;
 			setPrintCallback(&printOutput, printAppendToStringEchoOnly);
 
-			uint8_t originalOrigin = pCtx->origin;
+			uint16_t originalOrigin = pCtx->origin;
 
 			pCtx->origin |= OriginType::REFERENCE;
 			parseInsideAnotherScript(pCtx, reference.second.c_str());
@@ -75,4 +55,25 @@ void ns::insertReferencesInToken(Context* pCtx, Token& token) {
 		// 	offset += reference.second.size()+3;
 		// }
 	}
+}
+
+
+ns::TokenFlag operator|(ns::TokenType l, ns::TokenType r) {
+	return static_cast<ns::TokenFlag>(l)|static_cast<ns::TokenFlag>(r);
+}
+
+ns::TokenFlag operator|(ns::TokenFlag l, ns::TokenType r) {
+	return l|static_cast<ns::TokenFlag>(r);
+}
+
+ns::TokenFlag operator|(ns::TokenType l, ns::TokenFlag r) {
+	return static_cast<ns::TokenFlag>(l)|r;
+}
+
+ns::TokenFlag operator&(ns::TokenFlag l, ns::TokenType r) {
+	return l&static_cast<ns::TokenFlag>(r);
+}
+
+ns::TokenFlag operator&(ns::TokenType l, ns::TokenFlag r) {
+	return static_cast<ns::TokenFlag>(l)&r;
 }

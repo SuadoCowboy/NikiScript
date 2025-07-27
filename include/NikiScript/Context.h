@@ -14,10 +14,12 @@
 #include "DLL.h"
 
 namespace ns {
+	typedef uint16_t Origin;
+
 	/**
 	 * @warning **DO NOT** rearrange this enum. ns::handleConsoleVariableCall uses bit logic on VARIABLE related to VARIABLE_IN_VARIABLE
 	 */
-	enum OriginType : uint8_t {
+	enum OriginType : Origin {
 		COMMAND = 1, ///< if a command is calling another command
 		VARIABLE = 2, ///< any variable
 		VARIABLE_IN_VARIABLE = 4, ///< var x that calls var y
@@ -90,7 +92,7 @@ namespace ns {
 		std::string filePath{}; ///< when running script from a file
 		size_t lineCount = 0;
 
-		uint8_t origin = 0; ///< this is used so that the command knows where he's running in. See ns::OriginType
+		Origin origin = 0; ///< this is used so that the command knows where he's running in. See ns::OriginType
 
 		uint16_t maxConsoleVariablesRecursiveDepth = 255; ///< How many console variables can be called inside each other
 
@@ -108,11 +110,11 @@ namespace ns {
 	NS_API Context deepCopyContext(const Context* source);
 }
 
-NS_API uint8_t operator|(ns::OriginType l, ns::OriginType r);
-NS_API uint8_t operator|(uint8_t l, ns::OriginType r);
-NS_API uint8_t operator|(ns::OriginType l, uint8_t r);
-NS_API uint8_t& operator|=(uint8_t& l, ns::OriginType r);
-NS_API uint8_t operator&(uint8_t l, ns::OriginType r);
-NS_API uint8_t operator&(ns::OriginType l, uint8_t r);
-NS_API uint8_t& operator&=(uint8_t& l, ns::OriginType r);
-NS_API uint8_t operator~(ns::OriginType l);
+NS_API ns::Origin operator|(ns::OriginType l, ns::OriginType r);
+NS_API ns::Origin operator|(ns::Origin l, ns::OriginType r);
+NS_API ns::Origin operator|(ns::OriginType l, ns::Origin r);
+NS_API ns::Origin& operator|=(ns::Origin& l, ns::OriginType r);
+NS_API ns::Origin operator&(ns::Origin l, ns::OriginType r);
+NS_API ns::Origin operator&(ns::OriginType l, ns::Origin r);
+NS_API ns::Origin& operator&=(ns::Origin& l, ns::OriginType r);
+NS_API ns::Origin operator~(ns::OriginType l);
