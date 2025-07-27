@@ -18,8 +18,8 @@ namespace ns {
 
 	typedef void(*PrintCallback)(void* pData, PrintLevel level, const char* message);
 
-	extern PrintCallback printCallback;
-	extern void* pPrintCallbackData;
+	extern NS_API PrintCallback printCallback;
+	extern NS_API void* pPrintCallbackData;
 
 	NS_API void setPrintCallback(void* pData, PrintCallback callback);
 	NS_API void print(PrintLevel level, const char* str);
