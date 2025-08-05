@@ -1,11 +1,13 @@
 <map id="C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/include/NikiScript/ProgramVariable.h" name="C:/Users/emilly/Documents/Lucca/Projetos/Cpp/NikiScript/include/NikiScript/ProgramVariable.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="55,5,292,64"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="83,5,320,64"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="5,112,59,139"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="129,67,66,106,63,101,126,62"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="83,112,152,139"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="158,66,136,100,131,97,153,63"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="176,112,286,139"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="194,63,216,97,212,100,190,66"/>
-<area shape="rect" id="Node000005" href="$_d_l_l_8h.html" title=" " alt="" coords="310,112,367,139"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="228,62,303,102,301,107,226,67"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,67,70,107,68,102,145,62"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="83,112,144,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="175,66,138,103,135,99,171,62"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="167,112,236,139"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="204,64,204,96,199,96,199,64"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="260,112,370,139"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="239,62,288,100,285,104,236,66"/>
+<area shape="rect" id="Node000006" href="$_d_l_l_8h.html" title=" " alt="" coords="394,112,451,139"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="274,62,381,105,379,110,272,67"/>
 </map>

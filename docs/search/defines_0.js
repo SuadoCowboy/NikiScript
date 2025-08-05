@@ -17,5 +17,6 @@ var searchData=
   ['ns_5fstatement_5fseparator_14',['NS_STATEMENT_SEPARATOR',['../_lexer_8h.html#a98e623eb982e7ad0070b56c967b396b8',1,'Lexer.h']]],
   ['ns_5ftoggle_5foff_15',['NS_TOGGLE_OFF',['../_parser_8h.html#ad505409c5e56abf02788a629c2a32754',1,'Parser.h']]],
   ['ns_5ftoggle_5fon_16',['NS_TOGGLE_ON',['../_parser_8h.html#a4f33407581a243d9b702f14a3075ebd0',1,'Parser.h']]],
-  ['nsregistercommand_17',['nsRegisterCommand',['../_command_handler_8h.html#abf95ab45b84aec89590eff970fc793c9',1,'CommandHandler.h']]]
+  ['nsregistercommand_17',['nsRegisterCommand',['../_command_handler_8h.html#abf95ab45b84aec89590eff970fc793c9',1,'CommandHandler.h']]],
+  ['nsregistercommandwithdata_18',['nsRegisterCommandWithData',['../_command_handler_8h.html#a1b31877424a66c735b200dffdc23df0f',1,'CommandHandler.h']]]
 ];

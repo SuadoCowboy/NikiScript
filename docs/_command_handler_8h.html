@@ -170,6 +170,8 @@ Namespaces</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:abf95ab45b84aec89590eff970fc793c9" id="r_abf95ab45b84aec89590eff970fc793c9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf95ab45b84aec89590eff970fc793c9">nsRegisterCommand</a>(pCtx,  name,  minArgs,  maxArgs,  callback,  description, ...)</td></tr>
 <tr class="separator:abf95ab45b84aec89590eff970fc793c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b31877424a66c735b200dffdc23df0f" id="r_a1b31877424a66c735b200dffdc23df0f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b31877424a66c735b200dffdc23df0f">nsRegisterCommandWithData</a>(pCtx,  name,  minArgs,  maxArgs,  pData,  callback,  description, ...)</td></tr>
+<tr class="separator:a1b31877424a66c735b200dffdc23df0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="abf95ab45b84aec89590eff970fc793c9" name="abf95ab45b84aec89590eff970fc793c9"></a>
@@ -215,8 +217,60 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    (pCtx)-&gt;commands.add(<a class="code hl_struct" href="structns_1_1_command.html">ns::Command</a>(name, minArgs, maxArgs, callback, description, {__VA_ARGS__}))</div>
+<b>Value:</b><div class="fragment"><div class="line">    (pCtx)-&gt;commands.add(<a class="code hl_struct" href="structns_1_1_command.html">ns::Command</a>(name, minArgs, maxArgs, callback, <span class="keyword">nullptr</span>, description, {__VA_ARGS__}))</div>
 <div class="ttc" id="astructns_1_1_command_html"><div class="ttname"><a href="structns_1_1_command.html">ns::Command</a></div><div class="ttdef"><b>Definition</b> Command.h:14</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1b31877424a66c735b200dffdc23df0f" name="a1b31877424a66c735b200dffdc23df0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b31877424a66c735b200dffdc23df0f">&#9670;&#160;</a></span>nsRegisterCommandWithData</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define nsRegisterCommandWithData</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>pCtx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>minArgs</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>maxArgs</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>pData</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>callback</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>description</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em></em></span>...&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">    (pCtx)-&gt;commands.add(<a class="code hl_struct" href="structns_1_1_command.html">ns::Command</a>(name, minArgs, maxArgs, callback, pData, description, {__VA_ARGS__}))</div>
 </div><!-- fragment -->
 </div>
 </div>

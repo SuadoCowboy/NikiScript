@@ -154,7 +154,7 @@ $(function(){initNavTree('_context_8h.html',''); initResizable(true); });
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Context.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_context_8h__incl.svg" width="979" height="294"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_context_8h__incl.svg" width="1143" height="294"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -178,6 +178,8 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:aff768a79f032f6aee1c20766c6181ce4" id="r_aff768a79f032f6aee1c20766c6181ce4"><td class="memItemLeft" align="right" valign="top">typedef uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a></td></tr>
+<tr class="separator:aff768a79f032f6aee1c20766c6181ce4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41c19c013ca599941451dfff7770a84f" id="r_a41c19c013ca599941451dfff7770a84f"><td class="memItemLeft" align="right" valign="top">typedef std::unordered_map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a41c19c013ca599941451dfff7770a84f">ns::ConsoleVariables</a></td></tr>
 <tr class="separator:a41c19c013ca599941451dfff7770a84f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acac0024f454fa3dc64c31ae134b275d1" id="r_acac0024f454fa3dc64c31ae134b275d1"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; ConsoleVariables::pointer &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#acac0024f454fa3dc64c31ae134b275d1">ns::LoopVariablesRunning</a></td></tr>
@@ -190,200 +192,200 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a8748c664d230e63fda397e022a64a692" id="r_a8748c664d230e63fda397e022a64a692"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> : uint8_t { <br />
-&#160;&#160;<a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692ae30b7d41fe340ed717a4ce639e07d9d6">ns::COMMAND</a> = 1
-, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692aa68e450f9f65bc831cf53043e3f557c1">ns::VARIABLE</a> = 2
-, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692aac7bddcfce330502ae32fb82f7e8bce8">ns::VARIABLE_IN_VARIABLE</a> = 4
-, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692acdd532426a089789ae057a9985735711">ns::VARIABLE_LOOP</a> = 8
+<tr class="memitem:acce233f315820c742c68841465f2c2f0" id="r_acce233f315820c742c68841465f2c2f0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0">ns::OriginType</a> : Origin { <br />
+&#160;&#160;<a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0ae30b7d41fe340ed717a4ce639e07d9d6">ns::COMMAND</a> = 1
+, <a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0aa68e450f9f65bc831cf53043e3f557c1">ns::VARIABLE</a> = 2
+, <a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0aac7bddcfce330502ae32fb82f7e8bce8">ns::VARIABLE_IN_VARIABLE</a> = 4
+, <a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0acdd532426a089789ae057a9985735711">ns::VARIABLE_LOOP</a> = 8
 , <br />
-&#160;&#160;<a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692a837e32aed1982c12fee3c40aac7c7a1d">ns::VARIABLE_TOGGLE</a> = 16
-, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692a2184e872bc93429d96b395caf25eb099">ns::FILE</a> = 32
-, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692a68b0ff2b33d140165a418bce9e1ba9d5">ns::INTERNAL</a> = 64
-, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692a32c784ad2761ebe4023f26fb85459170">ns::REFERENCE</a> = 128
+&#160;&#160;<a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0a837e32aed1982c12fee3c40aac7c7a1d">ns::VARIABLE_TOGGLE</a> = 16
+, <a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0a2184e872bc93429d96b395caf25eb099">ns::FILE</a> = 32
+, <a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0a68b0ff2b33d140165a418bce9e1ba9d5">ns::INTERNAL</a> = 64
+, <a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0a32c784ad2761ebe4023f26fb85459170">ns::REFERENCE</a> = 128
 <br />
  }</td></tr>
-<tr class="separator:a8748c664d230e63fda397e022a64a692"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:acce233f315820c742c68841465f2c2f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a3e72aa48479e5482db1cc6248c26f24b" id="r_a3e72aa48479e5482db1cc6248c26f24b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="el" href="structns_1_1_context.html">Context</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a3e72aa48479e5482db1cc6248c26f24b">ns::deepCopyContext</a> (const <a class="el" href="structns_1_1_context.html">Context</a> *source)</td></tr>
 <tr class="memdesc:a3e72aa48479e5482db1cc6248c26f24b"><td class="mdescLeft">&#160;</td><td class="mdescRight">If you want a 100% new copy without being dependent on the source context then use this function <a class="el" href="namespacens.html#acac0024f454fa3dc64c31ae134b275d1">LoopVariablesRunning</a> and <a class="el" href="namespacens.html#a2f22f24df1b56351ed6bf8406e21563d" title="This is unecessary to be a pointer but I like the idea of using only 8 bytes instead of the same byte...">ToggleVariablesRunning</a> stores pointers pointed to <a class="el" href="namespacens.html#a41c19c013ca599941451dfff7770a84f">ConsoleVariables</a> as well as toggleCommandsRunning whose pointers are from <a class="el" href="structns_1_1_command_handler.html">CommandHandler</a>. That's why this function exists: It updates all those pointers.  <br /></td></tr>
 <tr class="separator:a3e72aa48479e5482db1cc6248c26f24b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ddbd6b781fbf1ef1ccb5559128e3601" id="r_a5ddbd6b781fbf1ef1ccb5559128e3601"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ddbd6b781fbf1ef1ccb5559128e3601">operator|</a> (<a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> l, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> r)</td></tr>
-<tr class="separator:a5ddbd6b781fbf1ef1ccb5559128e3601"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84bd09d40861d736f1f4ce1a3fdf443b" id="r_a84bd09d40861d736f1f4ce1a3fdf443b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84bd09d40861d736f1f4ce1a3fdf443b">operator|</a> (uint8_t l, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> r)</td></tr>
-<tr class="separator:a84bd09d40861d736f1f4ce1a3fdf443b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c6d0f239db11a27031aec61f511250c" id="r_a6c6d0f239db11a27031aec61f511250c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c6d0f239db11a27031aec61f511250c">operator|</a> (<a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> l, uint8_t r)</td></tr>
-<tr class="separator:a6c6d0f239db11a27031aec61f511250c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37a8892a2d5e27c7a51b4eafeee4e6e8" id="r_a37a8892a2d5e27c7a51b4eafeee4e6e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37a8892a2d5e27c7a51b4eafeee4e6e8">operator|=</a> (uint8_t &amp;l, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> r)</td></tr>
-<tr class="separator:a37a8892a2d5e27c7a51b4eafeee4e6e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b06a9a17c81df03518566ce3ef1aef2" id="r_a6b06a9a17c81df03518566ce3ef1aef2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b06a9a17c81df03518566ce3ef1aef2">operator&amp;</a> (uint8_t l, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> r)</td></tr>
-<tr class="separator:a6b06a9a17c81df03518566ce3ef1aef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a6b418ada734f772fd0c0413db25dd3" id="r_a9a6b418ada734f772fd0c0413db25dd3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9a6b418ada734f772fd0c0413db25dd3">operator&amp;</a> (<a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> l, uint8_t r)</td></tr>
-<tr class="separator:a9a6b418ada734f772fd0c0413db25dd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a931822f32957debea0a7f0569f7d9aea" id="r_a931822f32957debea0a7f0569f7d9aea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a931822f32957debea0a7f0569f7d9aea">operator&amp;=</a> (uint8_t &amp;l, <a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> r)</td></tr>
-<tr class="separator:a931822f32957debea0a7f0569f7d9aea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa934ee8692930337d03b4804cd932413" id="r_aa934ee8692930337d03b4804cd932413"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa934ee8692930337d03b4804cd932413">operator~</a> (<a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a> l)</td></tr>
-<tr class="separator:aa934ee8692930337d03b4804cd932413"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0c4bda20fa08e6d77e83f9bf1077710" id="r_ad0c4bda20fa08e6d77e83f9bf1077710"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0c4bda20fa08e6d77e83f9bf1077710">operator|</a> (<a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0">ns::OriginType</a> l, <a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0">ns::OriginType</a> r)</td></tr>
+<tr class="separator:ad0c4bda20fa08e6d77e83f9bf1077710"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab40377fb176f4e16d5386ed52553be1b" id="r_ab40377fb176f4e16d5386ed52553be1b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab40377fb176f4e16d5386ed52553be1b">operator|</a> (<a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a> l, <a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0">ns::OriginType</a> r)</td></tr>
+<tr class="separator:ab40377fb176f4e16d5386ed52553be1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65b3a1a93740faf14b3d280aaa23d8d0" id="r_a65b3a1a93740faf14b3d280aaa23d8d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a65b3a1a93740faf14b3d280aaa23d8d0">operator|</a> (<a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0">ns::OriginType</a> l, <a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a> r)</td></tr>
+<tr class="separator:a65b3a1a93740faf14b3d280aaa23d8d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5887fa5bf514e365f8f8dd8a8b201f6" id="r_af5887fa5bf514e365f8f8dd8a8b201f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af5887fa5bf514e365f8f8dd8a8b201f6">operator|=</a> (<a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a> &amp;l, <a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0">ns::OriginType</a> r)</td></tr>
+<tr class="separator:af5887fa5bf514e365f8f8dd8a8b201f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a471f3aaa55b3d385ec37c014d2e71687" id="r_a471f3aaa55b3d385ec37c014d2e71687"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a471f3aaa55b3d385ec37c014d2e71687">operator&amp;</a> (<a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a> l, <a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0">ns::OriginType</a> r)</td></tr>
+<tr class="separator:a471f3aaa55b3d385ec37c014d2e71687"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae54401a2d23d83b8f90af455591a6585" id="r_ae54401a2d23d83b8f90af455591a6585"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae54401a2d23d83b8f90af455591a6585">operator&amp;</a> (<a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0">ns::OriginType</a> l, <a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a> r)</td></tr>
+<tr class="separator:ae54401a2d23d83b8f90af455591a6585"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3c4fe6c990be534de615ce1b3960418" id="r_ab3c4fe6c990be534de615ce1b3960418"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3c4fe6c990be534de615ce1b3960418">operator&amp;=</a> (<a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a> &amp;l, <a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0">ns::OriginType</a> r)</td></tr>
+<tr class="separator:ab3c4fe6c990be534de615ce1b3960418"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa924bfe0a2a4e8a23445d0cba515f34f" id="r_aa924bfe0a2a4e8a23445d0cba515f34f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa924bfe0a2a4e8a23445d0cba515f34f">operator~</a> (<a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0">ns::OriginType</a> l)</td></tr>
+<tr class="separator:aa924bfe0a2a4e8a23445d0cba515f34f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a9a6b418ada734f772fd0c0413db25dd3" name="a9a6b418ada734f772fd0c0413db25dd3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a6b418ada734f772fd0c0413db25dd3">&#9670;&#160;</a></span>operator&amp;() <span class="overload">[1/2]</span></h2>
+<a id="a471f3aaa55b3d385ec37c014d2e71687" name="a471f3aaa55b3d385ec37c014d2e71687"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a471f3aaa55b3d385ec37c014d2e71687">&#9670;&#160;</a></span>operator&amp;() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t operator&amp; </td>
+          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a> operator&amp; </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
+          <td class="paramtype"><a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a></td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a6b06a9a17c81df03518566ce3ef1aef2" name="a6b06a9a17c81df03518566ce3ef1aef2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b06a9a17c81df03518566ce3ef1aef2">&#9670;&#160;</a></span>operator&amp;() <span class="overload">[2/2]</span></h2>
+<a id="ae54401a2d23d83b8f90af455591a6585" name="ae54401a2d23d83b8f90af455591a6585"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae54401a2d23d83b8f90af455591a6585">&#9670;&#160;</a></span>operator&amp;() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t operator&amp; </td>
+          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a> operator&amp; </td>
           <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
+          <td class="paramtype"><a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a></td>          <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a931822f32957debea0a7f0569f7d9aea" name="a931822f32957debea0a7f0569f7d9aea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a931822f32957debea0a7f0569f7d9aea">&#9670;&#160;</a></span>operator&amp;=()</h2>
+<a id="ab3c4fe6c990be534de615ce1b3960418" name="ab3c4fe6c990be534de615ce1b3960418"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3c4fe6c990be534de615ce1b3960418">&#9670;&#160;</a></span>operator&amp;=()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t &amp; operator&amp;= </td>
+          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a> &amp; operator&amp;= </td>
           <td>(</td>
-          <td class="paramtype">uint8_t &amp;</td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
+          <td class="paramtype"><a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a5ddbd6b781fbf1ef1ccb5559128e3601" name="a5ddbd6b781fbf1ef1ccb5559128e3601"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5ddbd6b781fbf1ef1ccb5559128e3601">&#9670;&#160;</a></span>operator|() <span class="overload">[1/3]</span></h2>
+<a id="ab40377fb176f4e16d5386ed52553be1b" name="ab40377fb176f4e16d5386ed52553be1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab40377fb176f4e16d5386ed52553be1b">&#9670;&#160;</a></span>operator|() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t operator| </td>
+          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a> operator| </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
+          <td class="paramtype"><a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a></td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a6c6d0f239db11a27031aec61f511250c" name="a6c6d0f239db11a27031aec61f511250c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c6d0f239db11a27031aec61f511250c">&#9670;&#160;</a></span>operator|() <span class="overload">[2/3]</span></h2>
+<a id="a65b3a1a93740faf14b3d280aaa23d8d0" name="a65b3a1a93740faf14b3d280aaa23d8d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65b3a1a93740faf14b3d280aaa23d8d0">&#9670;&#160;</a></span>operator|() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t operator| </td>
+          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a> operator| </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
+          <td class="paramtype"><a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a></td>          <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a84bd09d40861d736f1f4ce1a3fdf443b" name="a84bd09d40861d736f1f4ce1a3fdf443b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84bd09d40861d736f1f4ce1a3fdf443b">&#9670;&#160;</a></span>operator|() <span class="overload">[3/3]</span></h2>
+<a id="ad0c4bda20fa08e6d77e83f9bf1077710" name="ad0c4bda20fa08e6d77e83f9bf1077710"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0c4bda20fa08e6d77e83f9bf1077710">&#9670;&#160;</a></span>operator|() <span class="overload">[3/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t operator| </td>
+          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a> operator| </td>
           <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
+          <td class="paramtype"><a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a37a8892a2d5e27c7a51b4eafeee4e6e8" name="a37a8892a2d5e27c7a51b4eafeee4e6e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a37a8892a2d5e27c7a51b4eafeee4e6e8">&#9670;&#160;</a></span>operator|=()</h2>
+<a id="af5887fa5bf514e365f8f8dd8a8b201f6" name="af5887fa5bf514e365f8f8dd8a8b201f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5887fa5bf514e365f8f8dd8a8b201f6">&#9670;&#160;</a></span>operator|=()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t &amp; operator|= </td>
+          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a> &amp; operator|= </td>
           <td>(</td>
-          <td class="paramtype">uint8_t &amp;</td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
+          <td class="paramtype"><a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>l</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>r</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="aa934ee8692930337d03b4804cd932413" name="aa934ee8692930337d03b4804cd932413"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa934ee8692930337d03b4804cd932413">&#9670;&#160;</a></span>operator~()</h2>
+<a id="aa924bfe0a2a4e8a23445d0cba515f34f" name="aa924bfe0a2a4e8a23445d0cba515f34f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa924bfe0a2a4e8a23445d0cba515f34f">&#9670;&#160;</a></span>operator~()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t operator~ </td>
+          <td class="memname"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="el" href="namespacens.html#aff768a79f032f6aee1c20766c6181ce4">ns::Origin</a> operator~ </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="namespacens.html#a8748c664d230e63fda397e022a64a692">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>l</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="namespacens.html#acce233f315820c742c68841465f2c2f0">ns::OriginType</a></td>          <td class="paramname"><span class="paramname"><em>l</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>

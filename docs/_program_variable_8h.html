@@ -141,13 +141,14 @@ $(function(){initNavTree('_program_variable_8h.html',''); initResizable(true); }
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;string&gt;</code><br />
+<code>#include &lt;cstring&gt;</code><br />
 <code>#include &lt;sstream&gt;</code><br />
 <code>#include &lt;unordered_map&gt;</code><br />
 <code>#include &quot;<a class="el" href="_d_l_l_8h_source.html">DLL.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for ProgramVariable.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_program_variable_8h__incl.svg" width="372" height="144"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_program_variable_8h__incl.svg" width="456" height="144"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -182,6 +183,11 @@ Functions</h2></td></tr>
 <tr class="separator:a5a26d1f000cc6ca4b4dde834ab220e23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa362e4ed819864cd24044a8647131be1" id="r_aa362e4ed819864cd24044a8647131be1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#aa362e4ed819864cd24044a8647131be1">ns::setString</a> (<a class="el" href="structns_1_1_context.html">Context</a> *, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *pVar, const std::string &amp;str)</td></tr>
 <tr class="separator:aa362e4ed819864cd24044a8647131be1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15dea94223fe28c87f0de245c7144243" id="r_a15dea94223fe28c87f0de245c7144243"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a15dea94223fe28c87f0de245c7144243">ns::getCharArray</a> (<a class="el" href="structns_1_1_context.html">Context</a> *, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *pVar)</td></tr>
+<tr class="separator:a15dea94223fe28c87f0de245c7144243"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2392db87172cf9e5c612285a9d2649f8" id="r_a2392db87172cf9e5c612285a9d2649f8"><td class="memTemplParams" colspan="2">template&lt;size_t Size = 256&gt; </td></tr>
+<tr class="memitem:a2392db87172cf9e5c612285a9d2649f8"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacens.html#a2392db87172cf9e5c612285a9d2649f8">ns::setCharArray</a> (<a class="el" href="structns_1_1_context.html">Context</a> *, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *pVar, const std::string &amp;str)</td></tr>
+<tr class="separator:a2392db87172cf9e5c612285a9d2649f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5345f8c98c2796a4f9a26ea3d0c6823a" id="r_a5345f8c98c2796a4f9a26ea3d0c6823a"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
 <tr class="memitem:a5345f8c98c2796a4f9a26ea3d0c6823a"><td class="memTemplItemLeft" align="right" valign="top">std::string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacens.html#a5345f8c98c2796a4f9a26ea3d0c6823a">ns::getNumber</a> (<a class="el" href="structns_1_1_context.html">Context</a> *, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *pVar)</td></tr>
 <tr class="separator:a5345f8c98c2796a4f9a26ea3d0c6823a"><td class="memSeparator" colspan="2">&#160;</td></tr>

@@ -138,108 +138,106 @@ $(function(){initNavTree('_parser_8h_source.html',''); initResizable(true); });
 <a href="_parser_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#</span><span class="preprocessor">pragma</span> <span class="preprocessor">once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="_context_8h.html">&quot;Context.h&quot;</a></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">NS_LOOP_VARIABLE</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="_parser_8h.html#afd3566feb0882f49466dff07047e7187">    6</a></span><span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">NS_LOOP_VARIABLE</span> <span class="stringliteral">&#39;!&#39;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#</span><span class="preprocessor">endif</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">NS_TOGGLE_ON</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="_parser_8h.html#a4f33407581a243d9b702f14a3075ebd0">   10</a></span><span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">NS_TOGGLE_ON</span> <span class="stringliteral">&#39;+&#39;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#</span><span class="preprocessor">endif</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">NS_TOGGLE_OFF</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="_parser_8h.html#ad505409c5e56abf02788a629c2a32754">   14</a></span><span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">NS_TOGGLE_OFF</span> <span class="stringliteral">&#39;-&#39;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#</span><span class="preprocessor">endif</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">NS_FILE_EXTENSION</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="_parser_8h.html#af9a1a03fc8c442b4bae4a76ed8ebea95">   18</a></span><span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">NS_FILE_EXTENSION</span> <span class="stringliteral">&quot;.cfg&quot;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#</span><span class="preprocessor">endif</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="_d_l_l_8h.html">&quot;DLL.h&quot;</a></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">namespace</span> <a class="code hl_namespace" href="namespacens.html">ns</a> {</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="comment">/**</span></div>
-<div class="line"><span class="lineno">   25</span><span class="comment">     * @brief Clear anything related to the current lexer statement</span></div>
-<div class="line"><span class="lineno">   26</span><span class="comment">     * @note It does not go to the next EOS</span></div>
-<div class="line"><span class="lineno">   27</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacens.html#a55368173711a3deeb6fc25c15a16bfbe">clearStatementData</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="comment">/**</span></div>
-<div class="line"><span class="lineno">   31</span><span class="comment">     * @brief if variable is a toggle variable and its allowed to run or if it&#39;s a common variable.</span></div>
-<div class="line"><span class="lineno">   32</span><span class="comment">     * It&#39;s also mandatory to call this function so that it updates those special variables</span></div>
-<div class="line"><span class="lineno">   33</span><span class="comment">     *</span></div>
-<div class="line"><span class="lineno">   34</span><span class="comment">     * @note loop variables are only appended/erased from Context::LoopVariablesRunning</span></div>
-<div class="line"><span class="lineno">   35</span><span class="comment">     * @param pCtx</span></div>
-<div class="line"><span class="lineno">   36</span><span class="comment">     * @see ns::parse</span></div>
-<div class="line"><span class="lineno">   37</span><span class="comment">     * @see ns::handleIdentifierToken</span></div>
-<div class="line"><span class="lineno">   38</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacens.html#a835958beedf13b0954ebc3a8dfdaeea4">canRunVariable</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">/**</span></div>
-<div class="line"><span class="lineno">   42</span><span class="comment">     * @brief Called in parse function when EOS or END is reached</span></div>
-<div class="line"><span class="lineno">   43</span><span class="comment">     * @note Sets pCtx-&gt;pCommand to nullptr</span></div>
-<div class="line"><span class="lineno">   44</span><span class="comment">     * @note pCtx-&gt;pCommand should point to a valid Command object</span></div>
-<div class="line"><span class="lineno">   45</span><span class="comment">     * @param pCtx</span></div>
-<div class="line"><span class="lineno">   46</span><span class="comment">     * @param pProgramVar if not null: sets/gets program variable</span></div>
-<div class="line"><span class="lineno">   47</span><span class="comment">     * @see ns::parse</span></div>
-<div class="line"><span class="lineno">   48</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacens.html#a41298eb880e43602381703c62f0d5621">handleCommandCall</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx, <a class="code hl_struct" href="structns_1_1_program_variable.html">ProgramVariable</a>*&amp; pProgramVar);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">/**</span></div>
-<div class="line"><span class="lineno">   52</span><span class="comment">     * @brief Called in parse function when IDENTIFIER token is passed</span></div>
-<div class="line"><span class="lineno">   53</span><span class="comment">     * </span></div>
-<div class="line"><span class="lineno">   54</span><span class="comment">     * @param pCtx</span></div>
-<div class="line"><span class="lineno">   55</span><span class="comment">     * @param pProgramVar</span></div>
-<div class="line"><span class="lineno">   56</span><span class="comment">     * @return 0 = it called advanceUntil(EOS) 1 = should call pLexer-&gt;advance() 2 = if it&#39;s a variable and should run it</span></div>
-<div class="line"><span class="lineno">   57</span><span class="comment">     * @see ns::parse</span></div>
-<div class="line"><span class="lineno">   58</span><span class="comment">     * @see ns::canRunVariable</span></div>
-<div class="line"><span class="lineno">   59</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t <a class="code hl_function" href="namespacens.html#a2854057a243fa436efc22fc9b58a886f">handleIdentifierToken</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx, <a class="code hl_struct" href="structns_1_1_program_variable.html">ProgramVariable</a>*&amp; pProgramVar, <span class="keywordtype">bool</span> printError);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">/**</span></div>
-<div class="line"><span class="lineno">   63</span><span class="comment">     * @brief Handles references in the string and checks if the parameter matches the argument type</span></div>
-<div class="line"><span class="lineno">   64</span><span class="comment">     * @note Possible argument types: s = string, i = integer, d = decimal, v = variable</span></div>
-<div class="line"><span class="lineno">   65</span><span class="comment">     * @see ns::parse</span></div>
-<div class="line"><span class="lineno">   66</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacens.html#a7d93b985853056ca807f8abe0b14785d">handleArgumentToken</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx, <span class="keywordtype">bool</span> printError);</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">/**</span></div>
-<div class="line"><span class="lineno">   70</span><span class="comment">     * @brief Called in parse function when an ConsoleVariable is passed as a IDENTIFIER</span></div>
-<div class="line"><span class="lineno">   71</span><span class="comment">     * @note I find this algorithm very interesting and fun(it creates a bunch of lexers for each variable call instead of recursive calling)</span></div>
-<div class="line"><span class="lineno">   72</span><span class="comment">     * @see ns::Context::maxConsoleVariablesRecursiveDepth</span></div>
-<div class="line"><span class="lineno">   73</span><span class="comment">     * @param pCtx</span></div>
-<div class="line"><span class="lineno">   74</span><span class="comment">     * @param pProgramVar</span></div>
-<div class="line"><span class="lineno">   75</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacens.html#a6b66a94d129239bbe0dac704d8be411a">handleConsoleVariableCall</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx, <a class="code hl_struct" href="structns_1_1_program_variable.html">ProgramVariable</a>*&amp; pProgramVar, <span class="keywordtype">bool</span> printError);</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="comment">/**</span></div>
-<div class="line"><span class="lineno">   79</span><span class="comment">     * @brief if a loop variable is active, its script is ran here</span></div>
-<div class="line"><span class="lineno">   80</span><span class="comment">     * @param pCtx</span></div>
-<div class="line"><span class="lineno">   81</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacens.html#aaad3b119512ebe87dcdebd8e0a602b03">updateLoopVariables</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="comment">/**</span></div>
-<div class="line"><span class="lineno">   85</span><span class="comment">     * @brief Parses and interpret scripts: handles commands and variables as well as their arguments</span></div>
-<div class="line"><span class="lineno">   86</span><span class="comment">     * @param pCtx</span></div>
-<div class="line"><span class="lineno">   87</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacens.html#a1dbca0329180b87cd0dab5f830b5acbc">parse</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx, <span class="keywordtype">bool</span> printError=<span class="keyword">true</span>);</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacens.html#a83cc66ad3c0b840c928c3072c0326f2c">parseFile</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx, <span class="keyword">const</span> <span class="keywordtype">char</span>* path, <span class="keywordtype">bool</span> printError);</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="comment">/**</span></div>
-<div class="line"><span class="lineno">   92</span><span class="comment">     * @brief should be used when the main context is already using the lexer</span></div>
-<div class="line"><span class="lineno">   93</span><span class="comment">     * @param pCtx</span></div>
-<div class="line"><span class="lineno">   94</span><span class="comment">     * @param input</span></div>
-<div class="line"><span class="lineno">   95</span><span class="comment">     * @note the newlines from the end are removed</span></div>
-<div class="line"><span class="lineno">   96</span><span class="comment">     * @see ns::printAppendToString</span></div>
-<div class="line"><span class="lineno">   97</span><span class="comment">     * @return the print output which is not printed by the commands</span></div>
-<div class="line"><span class="lineno">   98</span><span class="comment">     * @warning print function is set to ns::printAppendToString</span></div>
-<div class="line"><span class="lineno">   99</span><span class="comment">     */</span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacens.html#ad249462d47182df15dee71c6f1a58204">parseInsideAnotherScript</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx, <span class="keyword">const</span> <span class="keywordtype">char</span>* input); <span class="comment">// TODO: when making NikiScript thread-safe, don&#39;t forget this function!</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>}</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="_token_8h.html">&quot;Token.h&quot;</a></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">NS_LOOP_VARIABLE</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="_parser_8h.html#afd3566feb0882f49466dff07047e7187">    7</a></span><span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">NS_LOOP_VARIABLE</span> <span class="stringliteral">&#39;!&#39;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#</span><span class="preprocessor">endif</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">NS_TOGGLE_ON</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="_parser_8h.html#a4f33407581a243d9b702f14a3075ebd0">   11</a></span><span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">NS_TOGGLE_ON</span> <span class="stringliteral">&#39;+&#39;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#</span><span class="preprocessor">endif</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">NS_TOGGLE_OFF</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="_parser_8h.html#ad505409c5e56abf02788a629c2a32754">   15</a></span><span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">NS_TOGGLE_OFF</span> <span class="stringliteral">&#39;-&#39;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#</span><span class="preprocessor">endif</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#</span><span class="preprocessor">ifndef</span> <span class="preprocessor">NS_FILE_EXTENSION</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="_parser_8h.html#af9a1a03fc8c442b4bae4a76ed8ebea95">   19</a></span><span class="preprocessor">#</span><span class="preprocessor">define</span> <span class="preprocessor">NS_FILE_EXTENSION</span> <span class="stringliteral">&quot;.cfg&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#</span><span class="preprocessor">endif</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#</span><span class="preprocessor">include</span> <a class="code" href="_d_l_l_8h.html">&quot;DLL.h&quot;</a></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">namespace</span> <a class="code hl_namespace" href="namespacens.html">ns</a> {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   26</span><span class="comment">     * @brief Clear anything related to the current lexer statement</span></div>
+<div class="line"><span class="lineno">   27</span><span class="comment">     * @note It does not go to the next EOS</span></div>
+<div class="line"><span class="lineno">   28</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacens.html#a55368173711a3deeb6fc25c15a16bfbe">clearStatementData</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   32</span><span class="comment">     * @brief if variable is a toggle variable and its allowed to run or if it&#39;s a common variable.</span></div>
+<div class="line"><span class="lineno">   33</span><span class="comment">     * It&#39;s also mandatory to call this function so that it updates those special variables</span></div>
+<div class="line"><span class="lineno">   34</span><span class="comment">     *</span></div>
+<div class="line"><span class="lineno">   35</span><span class="comment">     * @note loop variables are only appended/erased from Context::LoopVariablesRunning</span></div>
+<div class="line"><span class="lineno">   36</span><span class="comment">     * @param pCtx</span></div>
+<div class="line"><span class="lineno">   37</span><span class="comment">     * @see ns::parse</span></div>
+<div class="line"><span class="lineno">   38</span><span class="comment">     * @see ns::handleIdentifierToken</span></div>
+<div class="line"><span class="lineno">   39</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacens.html#a835958beedf13b0954ebc3a8dfdaeea4">canRunVariable</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   43</span><span class="comment">     * @brief Called in parse function when EOS or END is reached</span></div>
+<div class="line"><span class="lineno">   44</span><span class="comment">     * @note Sets pCtx-&gt;pCommand to nullptr</span></div>
+<div class="line"><span class="lineno">   45</span><span class="comment">     * @note pCtx-&gt;pCommand should point to a valid Command object</span></div>
+<div class="line"><span class="lineno">   46</span><span class="comment">     * @param pCtx</span></div>
+<div class="line"><span class="lineno">   47</span><span class="comment">     * @param pProgramVar if not null: sets/gets program variable</span></div>
+<div class="line"><span class="lineno">   48</span><span class="comment">     * @see ns::parse</span></div>
+<div class="line"><span class="lineno">   49</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacens.html#a41298eb880e43602381703c62f0d5621">handleCommandCall</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx, <a class="code hl_struct" href="structns_1_1_program_variable.html">ProgramVariable</a>*&amp; pProgramVar);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   53</span><span class="comment">     * @brief Called in parse function when IDENTIFIER token is passed</span></div>
+<div class="line"><span class="lineno">   54</span><span class="comment">     * </span></div>
+<div class="line"><span class="lineno">   55</span><span class="comment">     * @param pCtx</span></div>
+<div class="line"><span class="lineno">   56</span><span class="comment">     * @param pProgramVar</span></div>
+<div class="line"><span class="lineno">   57</span><span class="comment">     * @return 0 = it called advanceUntil(EOS) 1 = should call pLexer-&gt;advance() 2 = if it&#39;s a variable and should run it</span></div>
+<div class="line"><span class="lineno">   58</span><span class="comment">     * @see ns::parse</span></div>
+<div class="line"><span class="lineno">   59</span><span class="comment">     * @see ns::canRunVariable</span></div>
+<div class="line"><span class="lineno">   60</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="code hl_typedef" href="namespacens.html#a346e6afb871214aa4116d460fa68bf5e">TokenFlag</a> <a class="code hl_function" href="namespacens.html#a147178e70921a9ef1214b388115dcb9a">handleIdentifierToken</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx, <a class="code hl_struct" href="structns_1_1_program_variable.html">ProgramVariable</a>*&amp; pProgramVar, <span class="keywordtype">bool</span> printError);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   64</span><span class="comment">     * @brief Handles references in the string and checks if the parameter matches the argument type</span></div>
+<div class="line"><span class="lineno">   65</span><span class="comment">     * @note Possible argument types: s = string, i = integer, d = decimal, v = variable</span></div>
+<div class="line"><span class="lineno">   66</span><span class="comment">     * @see ns::parse</span></div>
+<div class="line"><span class="lineno">   67</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacens.html#a7d93b985853056ca807f8abe0b14785d">handleArgumentToken</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx, <span class="keywordtype">bool</span> printError);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   71</span><span class="comment">     * @brief Called in parse function when an ConsoleVariable is passed as a IDENTIFIER</span></div>
+<div class="line"><span class="lineno">   72</span><span class="comment">     * @note I find this algorithm very interesting and fun(it creates a bunch of lexers for each variable call instead of recursive calling)</span></div>
+<div class="line"><span class="lineno">   73</span><span class="comment">     * @see ns::Context::maxConsoleVariablesRecursiveDepth</span></div>
+<div class="line"><span class="lineno">   74</span><span class="comment">     * @param pCtx</span></div>
+<div class="line"><span class="lineno">   75</span><span class="comment">     * @param pProgramVar</span></div>
+<div class="line"><span class="lineno">   76</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacens.html#a6b66a94d129239bbe0dac704d8be411a">handleConsoleVariableCall</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx, <a class="code hl_struct" href="structns_1_1_program_variable.html">ProgramVariable</a>*&amp; pProgramVar, <span class="keywordtype">bool</span> printError);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   80</span><span class="comment">     * @brief if a loop variable is active, its script is ran here</span></div>
+<div class="line"><span class="lineno">   81</span><span class="comment">     * @param pCtx</span></div>
+<div class="line"><span class="lineno">   82</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacens.html#aaad3b119512ebe87dcdebd8e0a602b03">updateLoopVariables</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   86</span><span class="comment">     * @brief Parses and interpret scripts: handles commands and variables as well as their arguments</span></div>
+<div class="line"><span class="lineno">   87</span><span class="comment">     * @param pCtx</span></div>
+<div class="line"><span class="lineno">   88</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacens.html#a1dbca0329180b87cd0dab5f830b5acbc">parse</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx, <span class="keywordtype">bool</span> printError=<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">bool</span> <a class="code hl_function" href="namespacens.html#a83cc66ad3c0b840c928c3072c0326f2c">parseFile</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx, <span class="keyword">const</span> <span class="keywordtype">char</span>* path, <span class="keywordtype">bool</span> printError);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="comment">/**</span></div>
+<div class="line"><span class="lineno">   93</span><span class="comment">     * @brief should be used when the context is already being used so that it won&#39;t override any of the main ctx</span></div>
+<div class="line"><span class="lineno">   94</span><span class="comment">     * @param pCtx</span></div>
+<div class="line"><span class="lineno">   95</span><span class="comment">     * @param input</span></div>
+<div class="line"><span class="lineno">   96</span><span class="comment">     */</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <span class="keywordtype">void</span> <a class="code hl_function" href="namespacens.html#ad249462d47182df15dee71c6f1a58204">parseInsideAnotherScript</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx, <span class="keyword">const</span> <span class="keywordtype">char</span>* input); <span class="comment">// TODO: when making NikiScript thread-safe, don&#39;t forget this function!</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>}</div>
 <div class="ttc" id="a_d_l_l_8h_html_ad334fd9dcd644d1e67ea31cab000c251"><div class="ttname"><a href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a></div><div class="ttdeci">#define NS_API</div><div class="ttdef"><b>Definition</b> DLL.h:16</div></div>
 <div class="ttc" id="anamespacens_html"><div class="ttname"><a href="namespacens.html">ns</a></div><div class="ttdef"><b>Definition</b> Command.h:9</div></div>
+<div class="ttc" id="anamespacens_html_a147178e70921a9ef1214b388115dcb9a"><div class="ttname"><a href="namespacens.html#a147178e70921a9ef1214b388115dcb9a">ns::handleIdentifierToken</a></div><div class="ttdeci">NS_API TokenFlag handleIdentifierToken(Context *pCtx, ProgramVariable *&amp;pProgramVar, bool printError)</div><div class="ttdoc">Called in parse function when IDENTIFIER token is passed.</div><div class="ttdef"><b>Definition</b> Parser.cpp:128</div></div>
 <div class="ttc" id="anamespacens_html_a1dbca0329180b87cd0dab5f830b5acbc"><div class="ttname"><a href="namespacens.html#a1dbca0329180b87cd0dab5f830b5acbc">ns::parse</a></div><div class="ttdeci">NS_API void parse(Context *pCtx, bool printError=true)</div><div class="ttdoc">Parses and interpret scripts: handles commands and variables as well as their arguments.</div><div class="ttdef"><b>Definition</b> Parser.cpp:306</div></div>
-<div class="ttc" id="anamespacens_html_a2854057a243fa436efc22fc9b58a886f"><div class="ttname"><a href="namespacens.html#a2854057a243fa436efc22fc9b58a886f">ns::handleIdentifierToken</a></div><div class="ttdeci">NS_API uint8_t handleIdentifierToken(Context *pCtx, ProgramVariable *&amp;pProgramVar, bool printError)</div><div class="ttdoc">Called in parse function when IDENTIFIER token is passed.</div><div class="ttdef"><b>Definition</b> Parser.cpp:128</div></div>
+<div class="ttc" id="anamespacens_html_a346e6afb871214aa4116d460fa68bf5e"><div class="ttname"><a href="namespacens.html#a346e6afb871214aa4116d460fa68bf5e">ns::TokenFlag</a></div><div class="ttdeci">uint8_t TokenFlag</div><div class="ttdef"><b>Definition</b> Token.h:9</div></div>
 <div class="ttc" id="anamespacens_html_a41298eb880e43602381703c62f0d5621"><div class="ttname"><a href="namespacens.html#a41298eb880e43602381703c62f0d5621">ns::handleCommandCall</a></div><div class="ttdeci">NS_API void handleCommandCall(Context *pCtx, ProgramVariable *&amp;pProgramVar)</div><div class="ttdoc">Called in parse function when EOS or END is reached.</div><div class="ttdef"><b>Definition</b> Parser.cpp:65</div></div>
 <div class="ttc" id="anamespacens_html_a55368173711a3deeb6fc25c15a16bfbe"><div class="ttname"><a href="namespacens.html#a55368173711a3deeb6fc25c15a16bfbe">ns::clearStatementData</a></div><div class="ttdeci">NS_API void clearStatementData(Context *pCtx)</div><div class="ttdoc">Clear anything related to the current lexer statement.</div><div class="ttdef"><b>Definition</b> Parser.cpp:10</div></div>
 <div class="ttc" id="anamespacens_html_a6b66a94d129239bbe0dac704d8be411a"><div class="ttname"><a href="namespacens.html#a6b66a94d129239bbe0dac704d8be411a">ns::handleConsoleVariableCall</a></div><div class="ttdeci">NS_API void handleConsoleVariableCall(Context *pCtx, ProgramVariable *&amp;pProgramVar, bool printError)</div><div class="ttdoc">Called in parse function when an ConsoleVariable is passed as a IDENTIFIER.</div><div class="ttdef"><b>Definition</b> Parser.cpp:233</div></div>
@@ -247,9 +245,9 @@ $(function(){initNavTree('_parser_8h_source.html',''); initResizable(true); });
 <div class="ttc" id="anamespacens_html_a835958beedf13b0954ebc3a8dfdaeea4"><div class="ttname"><a href="namespacens.html#a835958beedf13b0954ebc3a8dfdaeea4">ns::canRunVariable</a></div><div class="ttdeci">NS_API bool canRunVariable(Context *pCtx)</div><div class="ttdoc">if variable is a toggle variable and its allowed to run or if it&#39;s a common variable....</div><div class="ttdef"><b>Definition</b> Parser.cpp:15</div></div>
 <div class="ttc" id="anamespacens_html_a83cc66ad3c0b840c928c3072c0326f2c"><div class="ttname"><a href="namespacens.html#a83cc66ad3c0b840c928c3072c0326f2c">ns::parseFile</a></div><div class="ttdeci">NS_API bool parseFile(Context *pCtx, const char *path, bool printError)</div><div class="ttdef"><b>Definition</b> Parser.cpp:347</div></div>
 <div class="ttc" id="anamespacens_html_aaad3b119512ebe87dcdebd8e0a602b03"><div class="ttname"><a href="namespacens.html#aaad3b119512ebe87dcdebd8e0a602b03">ns::updateLoopVariables</a></div><div class="ttdeci">NS_API void updateLoopVariables(Context *pCtx)</div><div class="ttdoc">if a loop variable is active, its script is ran here</div><div class="ttdef"><b>Definition</b> Parser.cpp:293</div></div>
-<div class="ttc" id="anamespacens_html_ad249462d47182df15dee71c6f1a58204"><div class="ttname"><a href="namespacens.html#ad249462d47182df15dee71c6f1a58204">ns::parseInsideAnotherScript</a></div><div class="ttdeci">NS_API void parseInsideAnotherScript(Context *pCtx, const char *input)</div><div class="ttdoc">should be used when the main context is already using the lexer</div><div class="ttdef"><b>Definition</b> Parser.cpp:408</div></div>
-<div class="ttc" id="astructns_1_1_context_html"><div class="ttname"><a href="structns_1_1_context.html">ns::Context</a></div><div class="ttdef"><b>Definition</b> Context.h:74</div></div>
-<div class="ttc" id="astructns_1_1_program_variable_html"><div class="ttname"><a href="structns_1_1_program_variable.html">ns::ProgramVariable</a></div><div class="ttdef"><b>Definition</b> ProgramVariable.h:18</div></div>
+<div class="ttc" id="anamespacens_html_ad249462d47182df15dee71c6f1a58204"><div class="ttname"><a href="namespacens.html#ad249462d47182df15dee71c6f1a58204">ns::parseInsideAnotherScript</a></div><div class="ttdeci">NS_API void parseInsideAnotherScript(Context *pCtx, const char *input)</div><div class="ttdoc">should be used when the context is already being used so that it won&#39;t override any of the main ctx</div><div class="ttdef"><b>Definition</b> Parser.cpp:408</div></div>
+<div class="ttc" id="astructns_1_1_context_html"><div class="ttname"><a href="structns_1_1_context.html">ns::Context</a></div><div class="ttdef"><b>Definition</b> Context.h:76</div></div>
+<div class="ttc" id="astructns_1_1_program_variable_html"><div class="ttname"><a href="structns_1_1_program_variable.html">ns::ProgramVariable</a></div><div class="ttdef"><b>Definition</b> ProgramVariable.h:19</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

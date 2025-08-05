@@ -90,13 +90,9 @@ namespace ns {
 	NS_API bool parseFile(Context* pCtx, const char* path, bool printError);
 
 	/**
-	 * @brief should be used when the main context is already using the lexer
+	 * @brief should be used when the context is already being used so that it won't override any of the main ctx
 	 * @param pCtx
 	 * @param input
-	 * @note the newlines from the end are removed
-	 * @see ns::printAppendToString
-	 * @return the print output which is not printed by the commands
-	 * @warning print function is set to ns::printAppendToString
 	 */
 	NS_API void parseInsideAnotherScript(Context* pCtx, const char* input); // TODO: when making NikiScript thread-safe, don't forget this function!
 }

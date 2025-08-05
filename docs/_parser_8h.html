@@ -140,11 +140,12 @@ $(function(){initNavTree('_parser_8h.html',''); initResizable(true); });
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="_context_8h_source.html">Context.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_token_8h_source.html">Token.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_d_l_l_8h_source.html">DLL.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Parser.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_parser_8h__incl.svg" width="1026" height="368"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_parser_8h__incl.svg" width="1087" height="368"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -181,9 +182,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a41298eb880e43602381703c62f0d5621" id="r_a41298eb880e43602381703c62f0d5621"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a41298eb880e43602381703c62f0d5621">ns::handleCommandCall</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;pProgramVar)</td></tr>
 <tr class="memdesc:a41298eb880e43602381703c62f0d5621"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in parse function when EOS or END is reached.  <br /></td></tr>
 <tr class="separator:a41298eb880e43602381703c62f0d5621"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2854057a243fa436efc22fc9b58a886f" id="r_a2854057a243fa436efc22fc9b58a886f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a2854057a243fa436efc22fc9b58a886f">ns::handleIdentifierToken</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;pProgramVar, bool printError)</td></tr>
-<tr class="memdesc:a2854057a243fa436efc22fc9b58a886f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in parse function when IDENTIFIER token is passed.  <br /></td></tr>
-<tr class="separator:a2854057a243fa436efc22fc9b58a886f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a147178e70921a9ef1214b388115dcb9a" id="r_a147178e70921a9ef1214b388115dcb9a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="el" href="namespacens.html#a346e6afb871214aa4116d460fa68bf5e">TokenFlag</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a147178e70921a9ef1214b388115dcb9a">ns::handleIdentifierToken</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx, <a class="el" href="structns_1_1_program_variable.html">ProgramVariable</a> *&amp;pProgramVar, bool printError)</td></tr>
+<tr class="memdesc:a147178e70921a9ef1214b388115dcb9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called in parse function when IDENTIFIER token is passed.  <br /></td></tr>
+<tr class="separator:a147178e70921a9ef1214b388115dcb9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d93b985853056ca807f8abe0b14785d" id="r_a7d93b985853056ca807f8abe0b14785d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a7d93b985853056ca807f8abe0b14785d">ns::handleArgumentToken</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx, bool printError)</td></tr>
 <tr class="memdesc:a7d93b985853056ca807f8abe0b14785d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles references in the string and checks if the parameter matches the argument type.  <br /></td></tr>
 <tr class="separator:a7d93b985853056ca807f8abe0b14785d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -199,7 +200,7 @@ Functions</h2></td></tr>
 <tr class="memitem:a83cc66ad3c0b840c928c3072c0326f2c" id="r_a83cc66ad3c0b840c928c3072c0326f2c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#a83cc66ad3c0b840c928c3072c0326f2c">ns::parseFile</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx, const char *path, bool printError)</td></tr>
 <tr class="separator:a83cc66ad3c0b840c928c3072c0326f2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad249462d47182df15dee71c6f1a58204" id="r_ad249462d47182df15dee71c6f1a58204"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens.html#ad249462d47182df15dee71c6f1a58204">ns::parseInsideAnotherScript</a> (<a class="el" href="structns_1_1_context.html">Context</a> *pCtx, const char *input)</td></tr>
-<tr class="memdesc:ad249462d47182df15dee71c6f1a58204"><td class="mdescLeft">&#160;</td><td class="mdescRight">should be used when the main context is already using the lexer  <br /></td></tr>
+<tr class="memdesc:ad249462d47182df15dee71c6f1a58204"><td class="mdescLeft">&#160;</td><td class="mdescRight">should be used when the context is already being used so that it won't override any of the main ctx  <br /></td></tr>
 <tr class="separator:ad249462d47182df15dee71c6f1a58204"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>

@@ -9,7 +9,7 @@ var _parser_8h =
     [ "ns::handleArgumentToken", "namespacens.html#a7d93b985853056ca807f8abe0b14785d", null ],
     [ "ns::handleCommandCall", "namespacens.html#a41298eb880e43602381703c62f0d5621", null ],
     [ "ns::handleConsoleVariableCall", "namespacens.html#a6b66a94d129239bbe0dac704d8be411a", null ],
-    [ "ns::handleIdentifierToken", "namespacens.html#a2854057a243fa436efc22fc9b58a886f", null ],
+    [ "ns::handleIdentifierToken", "namespacens.html#a147178e70921a9ef1214b388115dcb9a", null ],
     [ "ns::parse", "namespacens.html#a1dbca0329180b87cd0dab5f830b5acbc", null ],
     [ "ns::parseFile", "namespacens.html#a83cc66ad3c0b840c928c3072c0326f2c", null ],
     [ "ns::parseInsideAnotherScript", "namespacens.html#ad249462d47182df15dee71c6f1a58204", null ],
