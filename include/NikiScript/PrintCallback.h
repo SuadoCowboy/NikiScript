@@ -32,14 +32,6 @@ namespace ns {
 	}
 
 	/**
-	 * @brief appends string to pBuffer
-	 * @param pBuffer should be std::string*
-	 * @param level unused
-	 * @param string string to append to pBuffer
-	 */
-	NS_API void printAppendToString(void* pBuffer, PrintLevel level, const char* string);
-
-	/**
 	 * @brief appends string to pBuffer if level is PrintLevel::ECHO
 	 * @param pBuffer should be std::string*
 	 * @param level should be ECHO to be appended to the string
