@@ -1,3 +1,3 @@
-- create a parser version that uses next() or something(see BindHandler::bind on JikaruEngine to have an idea)
+- create parseUntilEOS function.
 
-- threaded calls -> parse on a new thread and each alias creates another thread/async
+- (unrelated) with parseUntilEOS function, JikaruEngine can make an advanced system of a bunch of lexers running and each frame it runs until end of statement
