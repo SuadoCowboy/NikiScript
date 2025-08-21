@@ -25,11 +25,11 @@ void* pMyPointer = nullptr;
 ## Commands
 **Code:**
 ```cpp
-void my_awesome_command(ns::Context* pCtx) {
+void my_awesome_command(ns::CommandContext* pCtx) {
     ...
 }
 
-void quit_command(ns::Context* pCtx) {
+void quit_command(ns::CommandContext* pCtx) {
     ...
 }
 ```

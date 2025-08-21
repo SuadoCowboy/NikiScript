@@ -7,19 +7,19 @@
 
 #include "PrintCallback.h"
 
-void ns::clearStatementData(Context* pCtx) {
+void ns::clearStatementData(CommandContext* pCtx) {
 	pCtx->pCommand = nullptr;
 	pCtx->args.arguments.clear();
 }
 
-bool ns::canRunVariable(Context* pCtx) {
+bool ns::canRunVariable(CommandContext* pCtx) {
 	switch (pCtx->pLexer->token.value[0]) {
 	case NS_TOGGLE_ON: {
-		ConsoleVariables::pointer pVarPair = &*pCtx->consoleVariables.find(pCtx->pLexer->token.value);
-		auto it = std::find(pCtx->toggleVariablesRunning.begin(), pCtx->toggleVariablesRunning.end(), pVarPair);
+		ConsoleVariables::pointer pVarPair = &*pCtx->pCtx->consoleVariables.find(pCtx->pLexer->token.value);
+		auto it = std::find(pCtx->pCtx->toggleVariablesRunning.begin(), pCtx->pCtx->toggleVariablesRunning.end(), pVarPair);
 
-		if (it == pCtx->toggleVariablesRunning.end()) {
-			pCtx->toggleVariablesRunning.push_back(pVarPair);
+		if (it == pCtx->pCtx->toggleVariablesRunning.end()) {
+			pCtx->pCtx->toggleVariablesRunning.push_back(pVarPair);
 
 			return true;
 		}
@@ -30,16 +30,16 @@ bool ns::canRunVariable(Context* pCtx) {
 	case NS_TOGGLE_OFF: {
 		ConsoleVariables::pointer pPlusVariable = nullptr;
 		{
-			auto it = pCtx->consoleVariables.find('+'+pCtx->pLexer->token.value.substr(1));
-			if (it == pCtx->consoleVariables.end())
+			auto it = pCtx->pCtx->consoleVariables.find('+'+pCtx->pLexer->token.value.substr(1));
+			if (it == pCtx->pCtx->consoleVariables.end())
 				return false;
 
 			pPlusVariable = &*it;
 		}
 
-		auto it = std::find(pCtx->toggleVariablesRunning.begin(), pCtx->toggleVariablesRunning.end(), pPlusVariable);
-		if (it != pCtx->toggleVariablesRunning.end()) {
-			pCtx->toggleVariablesRunning.erase(it);
+		auto it = std::find(pCtx->pCtx->toggleVariablesRunning.begin(), pCtx->pCtx->toggleVariablesRunning.end(), pPlusVariable);
+		if (it != pCtx->pCtx->toggleVariablesRunning.end()) {
+			pCtx->pCtx->toggleVariablesRunning.erase(it);
 
 			return true;
 		}
@@ -47,13 +47,13 @@ bool ns::canRunVariable(Context* pCtx) {
 	}
 
 	case NS_LOOP_VARIABLE: {
-		ConsoleVariables::pointer pVar = &*pCtx->consoleVariables.find(pCtx->pLexer->token.value);
+		ConsoleVariables::pointer pVar = &*pCtx->pCtx->consoleVariables.find(pCtx->pLexer->token.value);
 
-		auto it = std::find(pCtx->loopVariablesRunning.begin(), pCtx->loopVariablesRunning.end(), pVar);
-		if (it == pCtx->loopVariablesRunning.end())
-			pCtx->loopVariablesRunning.push_back(pVar);
+		auto it = std::find(pCtx->pCtx->loopVariablesRunning.begin(), pCtx->pCtx->loopVariablesRunning.end(), pVar);
+		if (it == pCtx->pCtx->loopVariablesRunning.end())
+			pCtx->pCtx->loopVariablesRunning.push_back(pVar);
 		else
-			pCtx->loopVariablesRunning.erase(it);
+			pCtx->pCtx->loopVariablesRunning.erase(it);
 		return false;
 	}
 
@@ -62,7 +62,7 @@ bool ns::canRunVariable(Context* pCtx) {
 	}
 }
 
-void ns::handleCommandCall(Context* pCtx, ProgramVariable*& pProgramVar) {
+void ns::handleCommandCall(CommandContext* pCtx, ProgramVariable*& pProgramVar) {
 	if (pProgramVar != nullptr) {
 		if (pCtx->args.arguments.size() == 0)
 			ns::printf(ns::ECHO, "Value: {}\n{}\n", pProgramVar->get(pCtx, pProgramVar), pProgramVar->description);
@@ -90,10 +90,10 @@ void ns::handleCommandCall(Context* pCtx, ProgramVariable*& pProgramVar) {
 
 	switch (pCtx->pCommand->name[0]) {
 	case NS_TOGGLE_ON: {
-		auto it = std::find(pCtx->toggleCommandsRunning.begin(), pCtx->toggleCommandsRunning.end(), pCtx->pCommand);
+		auto it = std::find(pCtx->pCtx->toggleCommandsRunning.begin(), pCtx->pCtx->toggleCommandsRunning.end(), pCtx->pCommand);
 
-		if (it == pCtx->toggleCommandsRunning.end())
-			pCtx->toggleCommandsRunning.push_back(pCtx->pCommand);
+		if (it == pCtx->pCtx->toggleCommandsRunning.end())
+			pCtx->pCtx->toggleCommandsRunning.push_back(pCtx->pCommand);
 
 		else {
 			clearStatementData(pCtx);
@@ -104,18 +104,18 @@ void ns::handleCommandCall(Context* pCtx, ProgramVariable*& pProgramVar) {
 	}
 	
 	case NS_TOGGLE_OFF: {
-		Command* pPlusCommand = pCtx->commands.get('+'+std::string(pCtx->pCommand->name.substr(1)));
+		Command* pPlusCommand = pCtx->pCtx->commands.get('+'+std::string(pCtx->pCommand->name.substr(1)));
 		if (pPlusCommand == nullptr)
 			break;
 
-		auto it = std::find(pCtx->toggleCommandsRunning.begin(), pCtx->toggleCommandsRunning.end(), pPlusCommand);
+		auto it = std::find(pCtx->pCtx->toggleCommandsRunning.begin(), pCtx->pCtx->toggleCommandsRunning.end(), pPlusCommand);
 
-		if (it == pCtx->toggleCommandsRunning.end()) {
+		if (it == pCtx->pCtx->toggleCommandsRunning.end()) {
 			clearStatementData(pCtx);
 			return;
 
 		} else
-			pCtx->toggleCommandsRunning.erase(it);
+			pCtx->pCtx->toggleCommandsRunning.erase(it);
 
 		break;
 	}
@@ -125,25 +125,25 @@ void ns::handleCommandCall(Context* pCtx, ProgramVariable*& pProgramVar) {
 	clearStatementData(pCtx);
 }
 
-ns::TokenFlag ns::handleIdentifierToken(Context* pCtx, ProgramVariable*& pProgramVar, bool printError) {
+ns::TokenFlag ns::handleIdentifierToken(CommandContext* pCtx, ProgramVariable*& pProgramVar, bool printError) {
 	if (pCtx->pLexer->token.value.empty()) {
 		pCtx->pLexer->advanceUntil(static_cast<TokenFlag>(TokenType::EOS));
 		return 1;
 	}
 
-	if (pCtx->consoleVariables.count(pCtx->pLexer->token.value) != 0) {
+	if (pCtx->pCtx->consoleVariables.count(pCtx->pLexer->token.value) != 0) {
 		if (canRunVariable(pCtx))
 			return 2;
 
 		pCtx->pLexer->advanceUntil(static_cast<TokenFlag>(TokenType::EOS));
 		return 0;
 
-	} else if (pCtx->programVariables.count(pCtx->pLexer->token.value) != 0) {
-		pProgramVar = &pCtx->programVariables[pCtx->pLexer->token.value];
+	} else if (pCtx->pCtx->programVariables.count(pCtx->pLexer->token.value) != 0) {
+		pProgramVar = &pCtx->pCtx->programVariables[pCtx->pLexer->token.value];
 		return 1;
 
 	} else {
-		pCtx->pCommand = pCtx->commands.get(pCtx->pLexer->token.value);
+		pCtx->pCommand = pCtx->pCtx->commands.get(pCtx->pLexer->token.value);
 
 		if (pCtx->pCommand == nullptr) {
 			if (printError)
@@ -157,7 +157,7 @@ ns::TokenFlag ns::handleIdentifierToken(Context* pCtx, ProgramVariable*& pProgra
 	return false;
 }
 
-void ns::handleArgumentToken(Context* pCtx, bool printError) {
+void ns::handleArgumentToken(CommandContext* pCtx, bool printError) {
 	insertReferencesInToken(pCtx, pCtx->pLexer->token);
 
 	if (pCtx->pLexer->token.value.empty())
@@ -214,7 +214,7 @@ void ns::handleArgumentToken(Context* pCtx, bool printError) {
 		break;
 
 	case 'v':
-		if (pCtx->programVariables.count(pCtx->pLexer->token.value) == 0 && pCtx->consoleVariables.count(pCtx->pLexer->token.value) == 0) {
+		if (pCtx->pCtx->programVariables.count(pCtx->pLexer->token.value) == 0 && pCtx->pCtx->consoleVariables.count(pCtx->pLexer->token.value) == 0) {
 			if (printError)
 				ns::printf(PrintLevel::ERROR, "{} -> Type not matched: expected (v)ariable\n", arg);
 			clearStatementData(pCtx);
@@ -230,11 +230,11 @@ void ns::handleArgumentToken(Context* pCtx, bool printError) {
 	pCtx->args.arguments.push_back(pCtx->pLexer->token.value);
 }
 
-void ns::handleConsoleVariableCall(Context* pCtx, ProgramVariable*& pProgramVar, bool printError) {
+void ns::handleConsoleVariableCall(CommandContext* pCtx, ProgramVariable*& pProgramVar, bool printError) {
 	Lexer* pOriginalLexer = pCtx->pLexer;
 
 	std::vector<Lexer> tempLexers;
-	tempLexers.emplace_back(pCtx->consoleVariables[pCtx->pLexer->token.value]);
+	tempLexers.emplace_back(pCtx->pCtx->consoleVariables[pCtx->pLexer->token.value]);
 
 	pCtx->pLexer = &tempLexers.back();
 	pCtx->pLexer->advance();
@@ -246,12 +246,12 @@ void ns::handleConsoleVariableCall(Context* pCtx, ProgramVariable*& pProgramVar,
 		switch (pCtx->pLexer->token.type) {
 		case TokenType::IDENTIFIER:
 			if (handleIdentifierToken(pCtx, pProgramVar, printError) == 2) {
-				if (pCtx->maxConsoleVariablesRecursiveDepth != 0 && tempLexers.size() >= pCtx->maxConsoleVariablesRecursiveDepth) {
+				if (pCtx->pCtx->maxConsoleVariablesRecursiveDepth != 0 && tempLexers.size() >= pCtx->pCtx->maxConsoleVariablesRecursiveDepth) {
 					pCtx->pLexer->advanceUntil(static_cast<TokenFlag>(TokenType::EOS));
 					break;
 				}
 
-				tempLexers.emplace_back(pCtx->consoleVariables[pCtx->pLexer->token.value]);
+				tempLexers.emplace_back(pCtx->pCtx->consoleVariables[pCtx->pLexer->token.value]);
 				pCtx->pLexer = &tempLexers.back();
 				pCtx->origin |= OriginType::VARIABLE_IN_VARIABLE;
 			}
@@ -291,19 +291,21 @@ void ns::handleConsoleVariableCall(Context* pCtx, ProgramVariable*& pProgramVar,
 }
 
 void ns::updateLoopVariables(Context* pCtx) {
-	pCtx->origin |= OriginType::VARIABLE|OriginType::VARIABLE_LOOP;
+	ns::CommandContext ctx;
+	ctx.pCtx = pCtx;
 
-	pCtx->pLexer->clear();
+	ns::Lexer lexer{};
+	ctx.origin |= OriginType::VARIABLE|OriginType::VARIABLE_LOOP;
+	ctx.pLexer = &lexer;
+
 	for (auto& pVar : pCtx->loopVariablesRunning) {
-		pCtx->pLexer->input = pVar->second;
-		parse(pCtx);
-		pCtx->pLexer->clear();
+		ctx.pLexer->input = pVar->second;
+		parse(&ctx);
+		ctx.pLexer->clear();
 	}
-	
-	pCtx->origin &= ~(OriginType::VARIABLE|OriginType::VARIABLE_LOOP);
 }
 
-void ns::parse(Context* pCtx, bool printError) {
+void ns::parse(CommandContext* pCtx, bool printError) {
 	if (pCtx->pLexer == nullptr) {
 		if (printError)
 			ns::print(PrintLevel::ERROR, "tried to parse with a null lexer\n");
@@ -344,7 +346,41 @@ void ns::parse(Context* pCtx, bool printError) {
 	handleCommandCall(pCtx, pProgramVar);
 }
 
-bool ns::parseFile(Context* pCtx, const char* _path, bool printError) {
+void ns::parseUntilEOS(CommandContext* pCtx, ProgramVariable*& pProgramVar, bool printError) {
+	if (pCtx->pLexer == nullptr) {
+		if (printError)
+			ns::print(PrintLevel::ERROR, "tried to parse with a null lexer\n");
+		return;
+	}
+
+	while ((pCtx->pLexer->token.type & (TokenType::EOS|TokenType::END)) == 0) {
+		switch (pCtx->pLexer->token.type) {
+		case TokenType::IDENTIFIER: { // can be either variable or command
+			TokenFlag result = handleIdentifierToken(pCtx, pProgramVar, printError);
+			if (result == 2) {
+				handleConsoleVariableCall(pCtx, pProgramVar, printError);
+				pCtx->pLexer->advanceUntil(static_cast<TokenFlag>(TokenType::EOS));
+			} else if (result == 1)
+				pCtx->pLexer->advance();
+			break;
+		}
+
+		case TokenType::ARGUMENT:
+			handleArgumentToken(pCtx, printError);
+			pCtx->pLexer->advance();
+			break;
+
+		default:
+			pCtx->pLexer->advance();
+			break;
+		}
+	}
+
+	handleCommandCall(pCtx, pProgramVar);
+	pCtx->pLexer->advance();
+}
+
+bool ns::parseFile(CommandContext* pCtx, const char* _path, bool printError) {
 	std::string filePath;
 	{
 		std::filesystem::path path{_path};
@@ -352,7 +388,7 @@ bool ns::parseFile(Context* pCtx, const char* _path, bool printError) {
 			path += NS_FILE_EXTENSION;
 
 		if (!path.has_root_directory())// || _path.parent_path() != NS_ROOT_DIRECTORY)
-			path = pCtx->cfgDirectory / path;
+			path = pCtx->pCtx->cfgDirectory / path;
 
 		filePath = path.string();
 	}
@@ -403,25 +439,4 @@ bool ns::parseFile(Context* pCtx, const char* _path, bool printError) {
 		pCtx->origin &= ~OriginType::FILE;
 
 	return true;
-}
-
-void ns::parseInsideAnotherScript(Context* pCtx, const char* input) {
-	Arguments originalArgs = pCtx->args;
-	Lexer *pOriginalLexer = pCtx->pLexer;
-	Command *pOriginalCommand = pCtx->pCommand;
-	std::string originalFilePath = pCtx->filePath;
-	uint16_t originalOrigin = pCtx->origin;
-
-	Lexer tempLexer{input};
-	pCtx->pLexer = &tempLexer;
-
-	clearStatementData(pCtx);
-
-	parse(pCtx);
-
-	pCtx->pLexer = pOriginalLexer;
-	pCtx->pCommand = pOriginalCommand;
-	pCtx->args = originalArgs;
-	pCtx->filePath = originalFilePath;
-	pCtx->origin = originalOrigin;
 }

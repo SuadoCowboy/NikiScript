@@ -1,4 +1,4 @@
 @cd build
-copy NikiScript.dll example
-@cd example
-.\example.exe %*
+copy NikiScript.dll examples
+@cd examples
+.\%1.exe

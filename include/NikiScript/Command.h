@@ -7,9 +7,9 @@
 #include "DLL.h"
 
 namespace ns {
-	struct Context;
+	struct CommandContext;
 
-	typedef void(*CommandCallback)(Context* pCtx, void* pData);
+	typedef void(*CommandCallback)(CommandContext* pCtx, void* pData);
 
 	struct NS_API Command {
 		std::string name{};

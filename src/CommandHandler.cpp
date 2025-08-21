@@ -15,10 +15,13 @@ bool ns::CommandHandler::add(const Command& command) {
 	return true;
 }
 
-void ns::CommandHandler::remove(Context* pCtx, const std::string& name) {
-	for (size_t i = 0; i < pCtx->toggleCommandsRunning.size(); ++i) {
-		if (name == pCtx->toggleCommandsRunning[i]->name) {
-			pCtx->toggleCommandsRunning.erase(pCtx->toggleCommandsRunning.begin()+i);
+void ns::CommandHandler::remove(CommandContext* pCtx, const std::string& name) {
+	if (commands.count(name) == 0)
+		return;
+
+	for (size_t i = 0; i < pCtx->pCtx->toggleCommandsRunning.size(); ++i) {
+		if (name == pCtx->pCtx->toggleCommandsRunning[i]->name) {
+			pCtx->pCtx->toggleCommandsRunning.erase(pCtx->pCtx->toggleCommandsRunning.begin()+i);
 			break;
 		}
 	}

@@ -10,11 +10,10 @@
 namespace ns {
 	struct ProgramVariable;
 	struct Context;
+	struct CommandContext;
 
-	typedef std::string(*GetProgramVariableValue)(Context* pCtx, ProgramVariable* pVar);
-	typedef void(*SetProgramVariableValue)(Context* pCtx, ProgramVariable* pVar, const std::string& str);
-	
-	struct Context;
+	typedef std::string(*GetProgramVariableValue)(CommandContext* pCtx, ProgramVariable* pVar);
+	typedef void(*SetProgramVariableValue)(CommandContext* pCtx, ProgramVariable* pVar, const std::string& str);
 
 	struct NS_API ProgramVariable {
 		void* pValue = nullptr;
@@ -29,13 +28,13 @@ namespace ns {
 
 	typedef std::unordered_map<std::string, ProgramVariable> ProgramVariables;
 
-	NS_API std::string getString(Context*, ProgramVariable* pVar);
-	NS_API void setString(Context*, ProgramVariable* pVar, const std::string& str);
+	NS_API std::string getString(CommandContext*, ProgramVariable* pVar);
+	NS_API void setString(CommandContext*, ProgramVariable* pVar, const std::string& str);
 
-	NS_API std::string getCharArray(Context*, ProgramVariable* pVar);
+	NS_API std::string getCharArray(CommandContext*, ProgramVariable* pVar);
 
 	template<size_t Size = 256>
-	void setCharArray(Context*, ProgramVariable* pVar, const std::string& str) {
+	void setCharArray(CommandContext*, ProgramVariable* pVar, const std::string& str) {
 		try {
 			char* pValue = static_cast<char*>(pVar->pValue);
 			if (str.size() == 0) {
@@ -55,7 +54,7 @@ namespace ns {
 	}
 
 	template<typename T>
-	std::string getNumber(Context*, ProgramVariable* pVar) {
+	std::string getNumber(CommandContext*, ProgramVariable* pVar) {
 		return std::to_string(*static_cast<T*>(pVar->pValue));
 	}
 
@@ -67,21 +66,21 @@ namespace ns {
 	 * @param str
 	 */
 	template<typename T>
-	void setUnsigned(Context*, ProgramVariable* pVar, const std::string& str) {
+	void setUnsigned(CommandContext*, ProgramVariable* pVar, const std::string& str) {
 		try {
 			*static_cast<T*>(pVar->pValue) = (T)std::stoul(str);
 		} catch (...) {}
 	}
 
-	NS_API void setUnsignedLongLong(Context*, ProgramVariable* pVar, const std::string& str);
+	NS_API void setUnsignedLongLong(CommandContext*, ProgramVariable* pVar, const std::string& str);
 
-	NS_API void setFloat(Context*, ProgramVariable* pVar, const std::string& str);
-	NS_API void setDouble(Context*, ProgramVariable* pVar, const std::string& str);
-	NS_API void setLongDouble(Context*, ProgramVariable* pVar, const std::string& str);
+	NS_API void setFloat(CommandContext*, ProgramVariable* pVar, const std::string& str);
+	NS_API void setDouble(CommandContext*, ProgramVariable* pVar, const std::string& str);
+	NS_API void setLongDouble(CommandContext*, ProgramVariable* pVar, const std::string& str);
 
-	NS_API void setChar(Context*, ProgramVariable* pVar, const std::string& str);
-	NS_API void setShort(Context*, ProgramVariable* pVar, const std::string& str);
-	NS_API void setInteger(Context*, ProgramVariable* pVar, const std::string& str);
-	NS_API void setLong(Context*, ProgramVariable* pVar, const std::string& str);
-	NS_API void setLongLong(Context*, ProgramVariable* pVar, const std::string& str);
+	NS_API void setChar(CommandContext*, ProgramVariable* pVar, const std::string& str);
+	NS_API void setShort(CommandContext*, ProgramVariable* pVar, const std::string& str);
+	NS_API void setInteger(CommandContext*, ProgramVariable* pVar, const std::string& str);
+	NS_API void setLong(CommandContext*, ProgramVariable* pVar, const std::string& str);
+	NS_API void setLongLong(CommandContext*, ProgramVariable* pVar, const std::string& str);
 }

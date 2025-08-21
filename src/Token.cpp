@@ -8,15 +8,15 @@ ns::Token::Token() {}
 ns::Token::Token(TokenType type) : type(type), value("") {}
 ns::Token::Token(TokenType type, const char *value) : type(type), value(value) {}
 
-void ns::insertReferencesInToken(Context* pCtx, Token& token) {
+void ns::insertReferencesInToken(CommandContext* pCtx, Token& token) {
 	size_t offset = 0;
 	for (auto& reference : token.references) {
-		if (pCtx->consoleVariables.count(reference.second) != 0) { // console variable
-			token.value = token.value.insert(offset+reference.first, pCtx->consoleVariables[reference.second]);
-			offset += pCtx->consoleVariables[reference.second].size();
+		if (pCtx->pCtx->consoleVariables.count(reference.second) != 0) { // console variable
+			token.value = token.value.insert(offset+reference.first, pCtx->pCtx->consoleVariables[reference.second]);
+			offset += pCtx->pCtx->consoleVariables[reference.second].size();
 
-		} else if (pCtx->programVariables.count(reference.second) != 0) { // program variable
-			ProgramVariable& var = pCtx->programVariables[reference.second];
+		} else if (pCtx->pCtx->programVariables.count(reference.second) != 0) { // program variable
+			ProgramVariable& var = pCtx->pCtx->programVariables[reference.second];
 			std::string value = var.get(pCtx, &var);
 
 			token.value = token.value.insert(offset+reference.first, value);
@@ -32,7 +32,15 @@ void ns::insertReferencesInToken(Context* pCtx, Token& token) {
 			uint16_t originalOrigin = pCtx->origin;
 
 			pCtx->origin |= OriginType::REFERENCE;
-			parseInsideAnotherScript(pCtx, reference.second.c_str());
+
+			{
+				ns::CommandContext ctx;
+				ctx.pCtx = pCtx->pCtx;
+				ns::Lexer lexer{reference.second};
+				ctx.pLexer = &lexer;
+				ns::parse(&ctx);
+			}
+
 			setPrintCallback(pOriginalPrintCallbackData, originalPrintCallback);
 
 			pCtx->origin = originalOrigin;

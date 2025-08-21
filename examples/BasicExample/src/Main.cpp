@@ -1,72 +1,35 @@
 #include <iostream>
 #include <string>
 #include <stdint.h>
-#include <sstream>
 
 #include <NikiScript/NikiScript.h>
-#include <NikiScript/PrintCallback.h>
-#include <NikiScript/Context.h>
-#include <NikiScript/Token.h>
-#include <NikiScript/Lexer.h>
 #include <NikiScript/Parser.h>
 
 void nikiScriptPrintCallback(void*, ns::PrintLevel level, const char* msg) {
 	std::cout << ns::levelToString(level) << ": " << msg;
 }
 
-std::string tokenTypeToString(const ns::TokenType& type) {
-	switch (type) {
-	case ns::TokenType::NONE:
-		return "NONE";
-	case ns::TokenType::IDENTIFIER:
-		return "IDENTIFIER";
-	case ns::TokenType::ARGUMENT:
-		return "ARGUMENT";
-	case ns::TokenType::EOS:
-		return "EOS";
-	case ns::TokenType::END:
-		return "END";
-	default:
-		return "UNKNOWN";
-	}
-}
 
-std::string tokenToString(const ns::Token& token) {
-	std::stringstream out{};
-	out << '(' << tokenTypeToString(token.type) << ", \"" << token.value << "\", REFS: {";
+static void test_command(ns::CommandContext* pCtx, void*) {
+	// we copy the context so that we can run stuff without changing the main context
+	ns::Context contextCopy = ns::deepCopyContext(pCtx->pCtx);
 
-	std::string formatted = token.value;
-	if (token.references.empty())
-		return out.str()+"})";
+	ns::CommandContext ctx{};
+	ctx.pCtx = &contextCopy;
 
-	else for (auto& ref : token.references) {
-		out << '(' << ref.first << ", " << ref.second << "), ";
-		formatted.insert(ref.first, ref.second);
-	}
-
-	std::string outString = out.str();
-	outString.replace(outString.begin()+outString.size()-2, outString.begin()+outString.size()-1, "}) -> ");
-
-	return outString + formatted;
-}
-
-
-static void test_command(ns::Context* pCtx, void*) {
-	ns::Context copy = ns::deepCopyContext(pCtx);
 	ns::Lexer lexer{pCtx->args.getString(0)};
-	copy.pLexer = &lexer;
-	copy.args.arguments.clear();
+	ctx.pLexer = &lexer;
 
-	ns::parse(&copy);
+	ns::parse(&ctx);
 }
 
 bool running = false;
-static void quit_command(ns::Context*, void*) {
+static void quit_command(ns::CommandContext*, void*) {
 	running = false;
 }
 
 bool isCrazy = false;
-static void crazy_command(ns::Context* pCtx, void*) {
+static void crazy_command(ns::CommandContext* pCtx, void*) {
 	if (pCtx->args.arguments.size() == 0) {
 		ns::printf(ns::PrintLevel::ECHO, "{}\n", isCrazy);
 		return;
@@ -75,16 +38,8 @@ static void crazy_command(ns::Context* pCtx, void*) {
 	isCrazy = pCtx->args.getSigned<uint32_t>(0) > 0;
 }
 
-int main(int, char**) {
-	ns::setPrintCallback(nullptr, nikiScriptPrintCallback);
-
-	ns::Context ctx;
-	char _cfgDirectory[] = "data/cfg/";
-	ctx.cfgDirectory = _cfgDirectory;
+void init(ns::Context& ctx) {
 	ns::registerCommands(&ctx);
-
-	ns::Lexer lexer;
-	ctx.pLexer = &lexer;
 
 	nsRegisterCommand(&ctx, "quit", 0,1, quit_command, "stops the main loop from running", "s[?]", "");
 	nsRegisterCommand(&ctx, "test", 1,1, test_command, "runs script", "s[script]", "parses to nikiscript");
@@ -128,17 +83,30 @@ int main(int, char**) {
 
 	char pName[16] = "nameless tee";
 	ns::registerVariable(&ctx, "name", "", pName, ns::getCharArray, ns::setCharArray<16>);
+}
+
+int main(int, char**) {
+	ns::setPrintCallback(nullptr, nikiScriptPrintCallback);
+
+	ns::Context ctx;
+	char _cfgDirectory[] = "data/cfg/";
+	ctx.cfgDirectory = _cfgDirectory;
+	init(ctx);
+
+	std::string input;
 
 	running = true;
 	while (running) {
-		std::string input;
+		input.clear();
 
 		std::cout << "> ";
 		std::getline(std::cin, input);
 
-		lexer.input = input;
-		ns::parse(&ctx);
-		lexer.clear();
+		ns::CommandContext commandCtx;
+		commandCtx.pCtx = &ctx;
+		ns::Lexer lexer{input};
+		commandCtx.pLexer = &lexer;
+		ns::parse(&commandCtx);
 
 		ns::updateLoopVariables(&ctx);
 	}

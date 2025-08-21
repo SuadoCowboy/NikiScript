@@ -14,7 +14,7 @@
 	(pCtx)->commands.add(ns::Command(name, minArgs, maxArgs, callback, pData, description, {__VA_ARGS__}))
 
 namespace ns {
-	struct Context;
+	struct CommandContext;
 
 	struct NS_API CommandHandler {
 		std::unordered_map<std::string, Command> commands{};
@@ -29,6 +29,6 @@ namespace ns {
 		 */
 		bool add(const Command& command);
 
-		void remove(Context* pCtx, const std::string& name);
+		void remove(CommandContext* pCtx, const std::string& name);
 	};
 }

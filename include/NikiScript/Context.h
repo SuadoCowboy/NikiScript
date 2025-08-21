@@ -30,8 +30,6 @@ namespace ns {
 		REFERENCE = 128, ///< scripts ran inside a reference ${echo hello} -> echo command is ran inside a reference and its output is the reference result
 	};
 
-	struct Context;
-
 	struct NS_API Arguments {
 		std::vector<std::string> arguments{};
 
@@ -73,13 +71,10 @@ namespace ns {
 	typedef std::vector<ConsoleVariables::pointer> ToggleVariablesRunning; ///< This is unecessary to be a pointer but I like the idea of using only 8 bytes instead of the same bytes as the var name
 	typedef std::vector<Command*> ToggleCommandsRunning;
 
+	/**
+	 * @brief general context that can be used with multiple command contexts
+	 */
 	struct NS_API Context {
-		Lexer* pLexer = nullptr;
-
-		Command* pCommand = nullptr;
-
-		Arguments args{};
-
 		ConsoleVariables consoleVariables{};
 		ProgramVariables programVariables{};
 
@@ -89,14 +84,24 @@ namespace ns {
 		ToggleVariablesRunning toggleVariablesRunning{};
 		ToggleCommandsRunning toggleCommandsRunning{};
 
+		uint16_t maxConsoleVariablesRecursiveDepth = 255; ///< How many console variables can be called inside each other
+		char* cfgDirectory = nullptr; ///< Expects a null terminated char array. Heap allocated is possible but this code doesn't free by itself
+	};
+
+	/**
+	 * @brief context passed to commands callbacks which contains command required data
+	 */
+	struct NS_API CommandContext {
+		Lexer* pLexer = nullptr;
+		Command* pCommand = nullptr;
+		Context* pCtx = nullptr; ///< A general context which contains data which commands won't need unless for special cases
+
+		Arguments args{};
+
 		std::string filePath{}; ///< when running script from a file
 		size_t lineCount = 0;
 
 		Origin origin = 0; ///< this is used so that the command knows where he's running in. See ns::OriginType
-
-		uint16_t maxConsoleVariablesRecursiveDepth = 255; ///< How many console variables can be called inside each other
-
-		char* cfgDirectory = nullptr; ///< Expects a null terminated char array. Heap allocated is possible but this code doesn't free by itself
 	};
 
 	/**

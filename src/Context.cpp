@@ -39,7 +39,7 @@ ns::Context ns::deepCopyContext(const Context* source) {
 		copy.toggleVariablesRunning[i] = &*copy.consoleVariables.find(copy.toggleVariablesRunning[i]->first);
 
 	for (size_t i = 0; i < copy.toggleCommandsRunning.size(); ++i)
-		copy.toggleCommandsRunning[i] = &copy.commands.commands.find(copy.toggleCommandsRunning[i]->name)->second;
+		copy.toggleCommandsRunning[i] = copy.commands.get(copy.toggleCommandsRunning[i]->name);
 
 	return copy;
 }

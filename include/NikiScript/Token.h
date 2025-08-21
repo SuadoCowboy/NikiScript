@@ -25,12 +25,12 @@ namespace ns {
 		Token(TokenType type, const char *value);
 	};
 
-	struct Context;
+	struct CommandContext;
 
 	/**
 	 * @brief inserts all references in the value
 	 */
-	NS_API void insertReferencesInToken(Context* pCtx, Token& token);
+	NS_API void insertReferencesInToken(CommandContext* pCtx, Token& token);
 }
 
 NS_API ns::TokenFlag operator|(ns::TokenType l, ns::TokenType r);
