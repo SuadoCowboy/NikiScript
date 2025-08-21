@@ -8,13 +8,10 @@
 
 namespace ns {
 	enum PrintLevel : uint8_t {
-		DEFAULT = 0, ///< any user input
-		ECHO, ///< any text that came from a command that is not an error
+		ECHO = 0, ///< any text that came from a command that is not an error
 		WARNING, ///< anything that is wrong but can continue
 		ERROR, ///< anything that went wrong and can not continue
 	};
-
-	NS_API const char* levelToString(PrintLevel level);
 
 	typedef void(*PrintCallback)(void* pData, PrintLevel level, const char* message);
 

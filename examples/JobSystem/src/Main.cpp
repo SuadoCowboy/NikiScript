@@ -12,8 +12,21 @@ struct Job {
 	ns::ProgramVariable* pProgramVar = nullptr;
 };
 
+const char* printLevelToString(ns::PrintLevel level) {
+	switch (level) {
+	case ns::PrintLevel::ECHO:
+		return "ECHO";
+	case ns::PrintLevel::WARNING:
+		return "WARNING";
+	case ns::PrintLevel::ERROR:
+		return "ERROR";
+	default:
+		return "UNKNOWN";
+	}
+}
+
 void nikiScriptPrintCallback(void*, ns::PrintLevel level, const char* msg) {
-	std::cout << ns::levelToString(level) << ": " << msg;
+	std::cout << printLevelToString(level) << ": " << msg;
 }
 
 bool running = false;
