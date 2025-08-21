@@ -5,7 +5,20 @@
 #include "Utils.h"
 
 ns::Lexer::Lexer() {}
-ns::Lexer::Lexer(const std::string& input) : input(input) {}
+ns::Lexer::Lexer(const std::string& _input) {
+	clear();
+	input = _input;
+}
+
+ns::Lexer& ns::Lexer::operator=(const std::string& _input) {
+	clear();
+	input = _input;
+}
+
+ns::Lexer& ns::Lexer::operator=(const char* _input) {
+	clear();
+	input = _input;
+}
 
 void ns::Lexer::advance() {
 	token.references.clear();

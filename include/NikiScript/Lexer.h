@@ -67,6 +67,9 @@ namespace ns {
 		Lexer();
 		Lexer(const std::string& input);
 
+		Lexer& operator=(const std::string& input);
+		Lexer& operator=(const char* input);
+
 		/**
 		 * @brief Gets the next token in the input
 		 * @note Position is set to the **next** token position in the end of this function
