@@ -5,8 +5,21 @@
 #include <NikiScript/NikiScript.h>
 #include <NikiScript/Parser.h>
 
+const char* printLevelToCStr(ns::PrintLevel level) {
+	switch (level) {
+	case ns::PrintLevel::ECHO:
+		return "ECHO";
+	case ns::PrintLevel::WARNING:
+		return "WARNING";
+	case ns::PrintLevel::ERROR:
+		return "ERROR";
+	default:
+		return "UNKNOWN";
+	}
+}
+
 void nikiScriptPrintCallback(void*, ns::PrintLevel level, const char* msg) {
-	std::cout << ns::levelToString(level) << ": " << msg;
+	std::cout << printLevelToCStr(level) << ": " << msg;
 }
 
 
@@ -17,8 +30,7 @@ static void test_command(ns::CommandContext* pCtx, void*) {
 	ns::CommandContext ctx{};
 	ctx.pCtx = &contextCopy;
 
-	ns::Lexer lexer{pCtx->args.getString(0)};
-	ctx.pLexer = &lexer;
+	ctx.lexer = pCtx->args.getString(0);
 
 	ns::parse(&ctx);
 }
@@ -37,6 +49,7 @@ static void crazy_command(ns::CommandContext* pCtx, void*) {
 
 	isCrazy = pCtx->args.getSigned<uint32_t>(0) > 0;
 }
+
 
 void init(ns::Context& ctx) {
 	ns::registerCommands(&ctx);
@@ -104,8 +117,7 @@ int main(int, char**) {
 
 		ns::CommandContext commandCtx;
 		commandCtx.pCtx = &ctx;
-		ns::Lexer lexer{input};
-		commandCtx.pLexer = &lexer;
+		commandCtx.lexer = input;
 		ns::parse(&commandCtx);
 
 		ns::updateLoopVariables(&ctx);

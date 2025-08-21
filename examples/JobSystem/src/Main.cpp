@@ -1,3 +1,10 @@
+// In this example it's possible to have multiple scripts being parsed.
+// It's very simple and it doesn't fully implement the wait command
+// correctly. Variables are an example of wait command not working
+// as wished. It's possible to make variables work with wait but
+// that would require to remake the parse function and this is
+// just a simple example.
+
 #include <iostream>
 #include <string>
 #include <stdint.h>
@@ -7,12 +14,11 @@
 #include <NikiScript/Parser.h>
 
 struct Job {
-	ns::Lexer lexer;
 	ns::CommandContext ctx;
 	ns::ProgramVariable* pProgramVar = nullptr;
 };
 
-const char* printLevelToString(ns::PrintLevel level) {
+const char* printLevelToCStr(ns::PrintLevel level) {
 	switch (level) {
 	case ns::PrintLevel::ECHO:
 		return "ECHO";
@@ -26,8 +32,9 @@ const char* printLevelToString(ns::PrintLevel level) {
 }
 
 void nikiScriptPrintCallback(void*, ns::PrintLevel level, const char* msg) {
-	std::cout << printLevelToString(level) << ": " << msg;
+	std::cout << printLevelToCStr(level) << ": " << msg;
 }
+
 
 bool running = false;
 static void quit_command(ns::CommandContext*, void*) {
@@ -46,6 +53,7 @@ static void wait_command(ns::CommandContext* pCtx, void*) {
 		waitAmounts[pCtx] = cycles;
 	}
 }
+
 
 int main() {
 	ns::setPrintCallback(nullptr, nikiScriptPrintCallback);
@@ -69,20 +77,22 @@ int main() {
 		std::cout << "> ";
 		std::getline(std::cin, input);
 
-		jobs.push_back(new Job());
-		jobs.back()->lexer.input = input;
-		jobs.back()->ctx.pCtx = &ctx;
-		jobs.back()->ctx.pLexer = &jobs.back()->lexer;
-		jobs.back()->lexer.advance();
+		{
+			Job* pJob = new Job();
+			jobs.push_back(pJob);
+			pJob->ctx.lexer.input = input;
+			pJob->ctx.pCtx = &ctx;
+			pJob->ctx.lexer.advance();
+		}
 
 		for (size_t i = 0; i < jobs.size();) {
-			if (jobs[i]->lexer.token.type == ns::TokenType::END) {
+			if (jobs[i]->ctx.lexer.token.type == ns::TokenType::END) {
 				delete jobs[i];
 				jobs.erase(jobs.begin()+i);
 				continue;
 			}
 
-			while (waitAmounts.count(&jobs[i]->ctx) == 0 && jobs[i]->lexer.token.type != ns::TokenType::END)
+			while (waitAmounts.count(&jobs[i]->ctx) == 0 && jobs[i]->ctx.lexer.token.type != ns::TokenType::END)
 				ns::parseUntilEOS(&jobs[i]->ctx, jobs[i]->pProgramVar);
 
 			if (waitAmounts.count(&jobs[i]->ctx) != 0) {

@@ -225,8 +225,7 @@ void ns::toggle(CommandContext* pCtx, const std::string& varName, const std::str
 
 		ns::CommandContext ctx;
 		ctx.pCtx = pCtx->pCtx;
-		ns::Lexer lexer{pCommand->name};
-		ctx.pLexer = &lexer;
+		ctx.lexer = pCommand->name;
 		ns::parse(&ctx);
 
 		setPrintCallback(pOriginalPrintCallbackData, originalPrintCallback);
@@ -242,8 +241,8 @@ void ns::toggle(CommandContext* pCtx, const std::string& varName, const std::str
 		// This could be unsecure depending on what nikiscript is being used, because if you set one of the options with something like "); destroy_humanity\\\\", it will call destroy_humanity!
 		varValue = formatString("{}({})", pCommand->name, varValue.c_str());
 
-		lexer.clear();
-		lexer.input = varValue;
+		ns::clearStatementData(&ctx);
+		ctx.lexer = varValue;
 		ns::parse(&ctx);
 	} else
 		ns::print(PrintLevel::ERROR, "toggle command expected a variable or command\n");

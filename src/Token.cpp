@@ -29,21 +29,13 @@ void ns::insertReferencesInToken(CommandContext* pCtx, Token& token) {
 			std::string printOutput;
 			setPrintCallback(&printOutput, printAppendToStringEchoOnly);
 
-			uint16_t originalOrigin = pCtx->origin;
-
-			pCtx->origin |= OriginType::REFERENCE;
-
 			{
-				ns::CommandContext ctx;
-				ctx.pCtx = pCtx->pCtx;
-				ns::Lexer lexer{reference.second};
-				ctx.pLexer = &lexer;
+				ns::CommandContext ctx{pCtx->pCtx, reference.second};
+				ctx.origin |= OriginType::REFERENCE;
 				ns::parse(&ctx);
 			}
 
 			setPrintCallback(pOriginalPrintCallbackData, originalPrintCallback);
-
-			pCtx->origin = originalOrigin;
 
 			for (size_t i = 0; i < printOutput.size(); ++i) {
 				if (printOutput[i] == '\n') {
