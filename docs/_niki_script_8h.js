@@ -1,17 +1,17 @@
 var _niki_script_8h =
 [
-    [ "ns::delvar", "namespacens.html#a10444fcfdae3dbd25ea2cbb4a5d60452", null ],
-    [ "ns::delvar_command", "namespacens.html#af18876263ab3f190b8f00b10b0cf92d5", null ],
-    [ "ns::echo_command", "namespacens.html#ad643249770f360b3c30b0abae4a8ddb7", null ],
-    [ "ns::exec_command", "namespacens.html#afbc41ba14a63d151e57b9b4bcd538c3c", null ],
-    [ "ns::help", "namespacens.html#a4c5576dbf8078f700a42e051ee167d73", null ],
-    [ "ns::help_command", "namespacens.html#ac9505e398e1666ad2d801b24a84a4762", null ],
-    [ "ns::incrementvar", "namespacens.html#ad245a599b7cdad8a8861ea7a87a33fec", null ],
-    [ "ns::incrementvar_command", "namespacens.html#a4167120bb375c4c291739c301a3fb754", null ],
+    [ "ns::delvar", "namespacens.html#af107591d42567df29abd6c3680e92e28", null ],
+    [ "ns::delvar_command", "namespacens.html#ad17600c38298b48ae9ba00641198c03f", null ],
+    [ "ns::echo_command", "namespacens.html#a4597db0a9b0c901062283fab3f203a52", null ],
+    [ "ns::exec_command", "namespacens.html#a8308efc8b985492ddf13b887b78ff84a", null ],
+    [ "ns::help", "namespacens.html#a83e1085d99aae4d49bd27b0c30e4eac7", null ],
+    [ "ns::help_command", "namespacens.html#a989da621c33fe6b97edeb2fcbc9421f0", null ],
+    [ "ns::incrementvar", "namespacens.html#aac90109ec246716074f9aac0bf69e42a", null ],
+    [ "ns::incrementvar_command", "namespacens.html#a9773c7bf9a2b916a1adab61e9ec0402d", null ],
     [ "ns::registerCommands", "namespacens.html#ab8f42539867f1784f83bf8bcc3093d31", null ],
     [ "ns::registerVariable", "namespacens.html#acab9b505fdfb45a0cb058c83d5ee6c45", null ],
-    [ "ns::toggle", "namespacens.html#a7ea4c19bc3ce2b59f6340ee1e504d12d", null ],
-    [ "ns::toggle_command", "namespacens.html#adee1b00b5cc7417ec021b265436bdfca", null ],
-    [ "ns::var", "namespacens.html#a6d08c6fc61f50c137d1dbac6a8a07920", null ],
-    [ "ns::var_command", "namespacens.html#a494b32f7ea0afde27e746d8265c7195b", null ]
+    [ "ns::toggle", "namespacens.html#ae81e7399ccc9c01d563a6e7ae8f14ef1", null ],
+    [ "ns::toggle_command", "namespacens.html#a8620a6bb49551ff7da22079d5054776d", null ],
+    [ "ns::var", "namespacens.html#a64cacf5076b958f8465ec846cdb3b147", null ],
+    [ "ns::var_command", "namespacens.html#a73ce3b7b3434055bc6ed5a94021a30b1", null ]
 ];

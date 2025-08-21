@@ -8,7 +8,7 @@ var indexSectionsWithContent =
   5: "acdfgilmnoprstv",
   6: "cglopst",
   7: "opt",
-  8: "acdefinrvw",
+  8: "acefinrvw",
   9: "n"
 };
 

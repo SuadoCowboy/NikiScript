@@ -2,6 +2,7 @@ var _context_8h =
 [
     [ "ns::Arguments", "structns_1_1_arguments.html", "structns_1_1_arguments" ],
     [ "ns::Context", "structns_1_1_context.html", "structns_1_1_context" ],
+    [ "ns::CommandContext", "structns_1_1_command_context.html", "structns_1_1_command_context" ],
     [ "ns::ConsoleVariables", "namespacens.html#a41c19c013ca599941451dfff7770a84f", null ],
     [ "ns::LoopVariablesRunning", "namespacens.html#acac0024f454fa3dc64c31ae134b275d1", null ],
     [ "ns::Origin", "namespacens.html#aff768a79f032f6aee1c20766c6181ce4", null ],

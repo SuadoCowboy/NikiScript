@@ -155,7 +155,7 @@ $(function(){initNavTree('_command_handler_8h_source.html',''); initResizable(tr
 </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">namespace</span> <a class="code hl_namespace" href="namespacens.html">ns</a> {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">struct</span> <a class="code hl_struct" href="structns_1_1_context.html">Context</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">struct</span> <a class="code hl_struct" href="structns_1_1_command_context.html">CommandContext</a>;</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="foldopen" id="foldopen00019" data-start="{" data-end="};">
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="structns_1_1_command_handler.html">   19</a></span>    <span class="keyword">struct</span> <a class="code hl_define" href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a> <a class="code hl_struct" href="structns_1_1_command_handler.html">CommandHandler</a> {</div>
@@ -171,19 +171,19 @@ $(function(){initNavTree('_command_handler_8h_source.html',''); initResizable(tr
 <div class="line"><span class="lineno">   29</span><span class="comment">         */</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="structns_1_1_command_handler.html#a1a6292929925fb2f717c3660d2e29350">add</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structns_1_1_command.html">Command</a>&amp; command);</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="structns_1_1_command_handler.html#a4f4928916bb2153f306f07e0effa1805">remove</a>(<a class="code hl_struct" href="structns_1_1_context.html">Context</a>* pCtx, <span class="keyword">const</span> std::string&amp; name);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="structns_1_1_command_handler.html#adf280aa40294650806748ffce492b125">remove</a>(<a class="code hl_struct" href="structns_1_1_command_context.html">CommandContext</a>* pCtx, <span class="keyword">const</span> std::string&amp; name);</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    };</div>
 </div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>}</div>
 <div class="ttc" id="a_d_l_l_8h_html_ad334fd9dcd644d1e67ea31cab000c251"><div class="ttname"><a href="_d_l_l_8h.html#ad334fd9dcd644d1e67ea31cab000c251">NS_API</a></div><div class="ttdeci">#define NS_API</div><div class="ttdef"><b>Definition</b> DLL.h:16</div></div>
 <div class="ttc" id="anamespacens_html"><div class="ttname"><a href="namespacens.html">ns</a></div><div class="ttdef"><b>Definition</b> Command.h:9</div></div>
+<div class="ttc" id="astructns_1_1_command_context_html"><div class="ttname"><a href="structns_1_1_command_context.html">ns::CommandContext</a></div><div class="ttdoc">context passed to commands callbacks which contains command required data</div><div class="ttdef"><b>Definition</b> Context.h:94</div></div>
 <div class="ttc" id="astructns_1_1_command_handler_html"><div class="ttname"><a href="structns_1_1_command_handler.html">ns::CommandHandler</a></div><div class="ttdef"><b>Definition</b> CommandHandler.h:19</div></div>
 <div class="ttc" id="astructns_1_1_command_handler_html_a1a6292929925fb2f717c3660d2e29350"><div class="ttname"><a href="structns_1_1_command_handler.html#a1a6292929925fb2f717c3660d2e29350">ns::CommandHandler::add</a></div><div class="ttdeci">bool add(const Command &amp;command)</div><div class="ttdoc">adds command to commands unordered_map</div><div class="ttdef"><b>Definition</b> CommandHandler.cpp:9</div></div>
 <div class="ttc" id="astructns_1_1_command_handler_html_a29f87a705cd0ecce5eac11c39ef2d7aa"><div class="ttname"><a href="structns_1_1_command_handler.html#a29f87a705cd0ecce5eac11c39ef2d7aa">ns::CommandHandler::commands</a></div><div class="ttdeci">std::unordered_map&lt; std::string, Command &gt; commands</div><div class="ttdef"><b>Definition</b> CommandHandler.h:20</div></div>
-<div class="ttc" id="astructns_1_1_command_handler_html_a4f4928916bb2153f306f07e0effa1805"><div class="ttname"><a href="structns_1_1_command_handler.html#a4f4928916bb2153f306f07e0effa1805">ns::CommandHandler::remove</a></div><div class="ttdeci">void remove(Context *pCtx, const std::string &amp;name)</div><div class="ttdef"><b>Definition</b> CommandHandler.cpp:18</div></div>
+<div class="ttc" id="astructns_1_1_command_handler_html_adf280aa40294650806748ffce492b125"><div class="ttname"><a href="structns_1_1_command_handler.html#adf280aa40294650806748ffce492b125">ns::CommandHandler::remove</a></div><div class="ttdeci">void remove(CommandContext *pCtx, const std::string &amp;name)</div><div class="ttdef"><b>Definition</b> CommandHandler.cpp:18</div></div>
 <div class="ttc" id="astructns_1_1_command_handler_html_af6aba9bc75aee2884c6217e7b3d8768a"><div class="ttname"><a href="structns_1_1_command_handler.html#af6aba9bc75aee2884c6217e7b3d8768a">ns::CommandHandler::get</a></div><div class="ttdeci">Command * get(const std::string &amp;name)</div><div class="ttdef"><b>Definition</b> CommandHandler.cpp:5</div></div>
 <div class="ttc" id="astructns_1_1_command_html"><div class="ttname"><a href="structns_1_1_command.html">ns::Command</a></div><div class="ttdef"><b>Definition</b> Command.h:14</div></div>
-<div class="ttc" id="astructns_1_1_context_html"><div class="ttname"><a href="structns_1_1_context.html">ns::Context</a></div><div class="ttdef"><b>Definition</b> Context.h:76</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

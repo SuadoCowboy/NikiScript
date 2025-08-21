@@ -9,7 +9,7 @@ var _token_8h =
       [ "ns::EOS", "namespacens.html#a54e83a5e1625533f2a9624f433653a18abffa8c21d3061787e98bed2284806b35", null ],
       [ "ns::END", "namespacens.html#a54e83a5e1625533f2a9624f433653a18a7944068b7b744600a7ca4ca3b773f2aa", null ]
     ] ],
-    [ "ns::insertReferencesInToken", "namespacens.html#a60f88b0f1397f9eaf20038267e9aef5b", null ],
+    [ "ns::insertReferencesInToken", "namespacens.html#ac0a347b62d60fac8f41f61046a316708", null ],
     [ "operator&", "_token_8h.html#ad46f110ff446e02399642ca6f1aa3f68", null ],
     [ "operator&", "_token_8h.html#ad8925203f4a45f65650a324f8a74e727", null ],
     [ "operator|", "_token_8h.html#a5cffff8aa4cd56232be58b7e66ffde27", null ],

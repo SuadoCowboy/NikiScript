@@ -7,6 +7,6 @@ var searchData=
   ['operator_7c_3d_4',['operator|=',['../_context_8h.html#af5887fa5bf514e365f8f8dd8a8b201f6',1,'operator|=(ns::Origin &amp;l, ns::OriginType r):&#160;Context.cpp'],['../_context_8cpp.html#a83818dec56ef5caac9b75cf981a6d59a',1,'operator|=(ns::Origin &amp;l, ns::OriginType r):&#160;Context.cpp']]],
   ['operator_7e_5',['operator~',['../_context_8h.html#aa924bfe0a2a4e8a23445d0cba515f34f',1,'operator~(ns::OriginType l):&#160;Context.cpp'],['../_context_8cpp.html#a662d3d23d967f14ad9a9f7dbe3c65221',1,'operator~(ns::OriginType l):&#160;Context.cpp']]],
   ['origin_6',['Origin',['../namespacens.html#aff768a79f032f6aee1c20766c6181ce4',1,'ns']]],
-  ['origin_7',['origin',['../structns_1_1_context.html#a9265be080d8a36876c856900ab3e64ce',1,'ns::Context']]],
+  ['origin_7',['origin',['../structns_1_1_command_context.html#a8fa0658562ce4c709bc5419f5fed139b',1,'ns::CommandContext']]],
   ['origintype_8',['OriginType',['../namespacens.html#acce233f315820c742c68841465f2c2f0',1,'ns']]]
 ];

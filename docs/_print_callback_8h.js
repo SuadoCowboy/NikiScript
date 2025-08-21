@@ -2,14 +2,11 @@ var _print_callback_8h =
 [
     [ "ns::PrintCallback", "namespacens.html#a55c233af7a6a03709d59570277dd6e44", null ],
     [ "ns::PrintLevel", "namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4b", [
-      [ "ns::DEFAULT", "namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4bafcb5a845922b103d4b59460e7cab767b", null ],
       [ "ns::ECHO", "namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4babb45f522bb73d5584c78407b8ac843eb", null ],
       [ "ns::WARNING", "namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4ba66ccd26cde099239eaf58e96c3b96635", null ],
       [ "ns::ERROR", "namespacens.html#a4698fdf810ba4a73c738651d5f9c1e4bae32a4328ffb440a25e81da8bec9b1e0a", null ]
     ] ],
-    [ "ns::levelToString", "namespacens.html#af69320371eceb2067268d0d2278ac24b", null ],
     [ "ns::print", "namespacens.html#a666e2f7ee47a99728f16c0cd8496f87b", null ],
-    [ "ns::printAppendToString", "namespacens.html#aac90c3ba0528ee77abaa71214a079453", null ],
     [ "ns::printAppendToStringEchoOnly", "namespacens.html#a27c0803ce3ed68f1eba03b32eef3d6f3", null ],
     [ "ns::printf", "namespacens.html#aff07398d2ba4a41cd2c79a47519c7250", null ],
     [ "ns::printUnknownCommand", "namespacens.html#a1e3ef744b251c2aa8529c33c6c2fd21d", null ],
