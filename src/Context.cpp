@@ -29,6 +29,13 @@ long long ns::Arguments::getLongLong(size_t index) {
 	return std::stoll(arguments[index]);
 }
 
+
+ns::CommandContext::CommandContext() {}
+ns::CommandContext::CommandContext(Context* pCtx) : pCtx(pCtx) {}
+ns::CommandContext::CommandContext(Context* pCtx, const std::string& lexerInput) : pCtx(pCtx), lexer(lexerInput) {}
+ns::CommandContext::CommandContext(Context* pCtx, const char* lexerInput) : pCtx(pCtx), lexer(lexerInput) {}
+
+
 ns::Context ns::deepCopyContext(const Context* source) {
 	Context copy{*source};
 

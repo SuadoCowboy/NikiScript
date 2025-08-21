@@ -16,18 +16,15 @@
 namespace ns {
 	typedef uint16_t Origin;
 
-	/**
-	 * @warning **DO NOT** rearrange this enum. ns::handleConsoleVariableCall uses bit logic on VARIABLE related to VARIABLE_IN_VARIABLE
-	 */
 	enum OriginType : Origin {
-		COMMAND = 1, ///< if a command is calling another command
-		VARIABLE = 2, ///< any variable
-		VARIABLE_IN_VARIABLE = 4, ///< var x that calls var y
-		VARIABLE_LOOP = 8, ///< '!'
-		VARIABLE_TOGGLE = 16, ///< '+' or '-'
-		FILE = 32, ///< ns::parseFile or exec command
-		INTERNAL = 64, ///< raw script generated from C++ code and not from a file or variable or anything else
-		REFERENCE = 128, ///< scripts ran inside a reference ${echo hello} -> echo command is ran inside a reference and its output is the reference result
+		COMMAND = 1, ///< If a command is calling another command.
+		VARIABLE = 2, ///< Any variable.
+		VARIABLE_IN_VARIABLE = 4, ///< Var x that calls var y.
+		VARIABLE_LOOP = 8, ///< '!'.
+		VARIABLE_TOGGLE = 16, ///< '+' or '-'.
+		FILE = 32, ///< ns::parseFile or exec command.
+		INTERNAL = 64, ///< Raw script generated from C++ code and not from a file or variable or anything else.
+		REFERENCE = 128, ///< Scripts ran inside a reference ${echo hello} -> echo command is ran inside a reference and its output is the reference result.
 	};
 
 	struct NS_API Arguments {
@@ -44,8 +41,8 @@ namespace ns {
 		unsigned long long getUnsignedLongLong(size_t index);
 
 		/**
-		 * @brief uses std::stoul so any number below that can be used
-		 * @tparam T number type
+		 * @brief Uses std::stoul so any number below that can be used.
+		 * @tparam T Number type.
 		 */
 		template<typename T>
 		T getUnsigned(size_t index) {
@@ -53,8 +50,8 @@ namespace ns {
 		}
 
 		/**
-		 * @brief uses std::stoi so any number below that can be used
-		 * @tparam T
+		 * @brief Uses std::stoi so any number below that can be used.
+		 * @tparam T Return type.
 		 */
 		template<typename T>
 		T getSigned(size_t index) {
@@ -68,11 +65,11 @@ namespace ns {
 
 	typedef std::unordered_map<std::string, std::string> ConsoleVariables;
 	typedef std::vector<ConsoleVariables::pointer> LoopVariablesRunning;
-	typedef std::vector<ConsoleVariables::pointer> ToggleVariablesRunning; ///< This is unecessary to be a pointer but I like the idea of using only 8 bytes instead of the same bytes as the var name
+	typedef std::vector<ConsoleVariables::pointer> ToggleVariablesRunning; ///< This is unecessary to be a pointer but I like the idea of using only 8 bytes instead of the same bytes as the var name.
 	typedef std::vector<Command*> ToggleCommandsRunning;
 
 	/**
-	 * @brief general context that can be used with multiple command contexts
+	 * @brief General context that can be used with multiple command contexts.
 	 */
 	struct NS_API Context {
 		ConsoleVariables consoleVariables{};
@@ -89,28 +86,33 @@ namespace ns {
 	};
 
 	/**
-	 * @brief context passed to commands callbacks which contains command required data
+	 * @brief Context passed to commands callbacks which contains command required data.
 	 */
 	struct NS_API CommandContext {
-		Lexer* pLexer = nullptr;
+		CommandContext();
+		CommandContext(Context* pCtx);
+		CommandContext(Context* pCtx, const std::string& lexerInput);
+		CommandContext(Context* pCtx, const char* lexerInput);
+
+		Context* pCtx = nullptr; ///< A general context which contains data which commands won't need unless for special cases.
 		Command* pCommand = nullptr;
-		Context* pCtx = nullptr; ///< A general context which contains data which commands won't need unless for special cases
+		Lexer lexer{};
 
 		Arguments args{};
 
-		std::string filePath{}; ///< when running script from a file
+		std::string filePath{}; ///< when running script from a file.
 		size_t lineCount = 0;
 
-		Origin origin = 0; ///< this is used so that the command knows where he's running in. See ns::OriginType
+		Origin origin = 0; ///< this is used so that the command knows where he's running in. See ns::OriginType.
 	};
 
 	/**
-	 * @brief If you want a 100% new copy without being dependent on the source context then use this function
+	 * @brief If you want a 100% new copy without being dependent on the source context then use this function.
 	 * LoopVariablesRunning and ToggleVariablesRunning stores pointers
-	 * pointed to ConsoleVariables as well as toggleCommandsRunning whose
+	 * to ConsoleVariables as well as toggleCommandsRunning whose
 	 * pointers are from CommandHandler. That's why this function exists:
 	 * It updates all those pointers.
-	 * @param source object to copy content from
+	 * @param source Object to copy content from.
 	 */
 	NS_API Context deepCopyContext(const Context* source);
 }
