@@ -13,11 +13,13 @@ ns::Lexer::Lexer(const std::string& _input) {
 ns::Lexer& ns::Lexer::operator=(const std::string& _input) {
 	clear();
 	input = _input;
+	return *this;
 }
 
 ns::Lexer& ns::Lexer::operator=(const char* _input) {
 	clear();
 	input = _input;
+	return *this;
 }
 
 void ns::Lexer::advance() {
