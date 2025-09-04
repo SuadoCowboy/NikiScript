@@ -4,6 +4,6 @@
 #include <cctype>
 #include <locale>
 
-bool ns::isSpaceNotNewline(char c) {
+bool ns::isSpaceNotNewline(unsigned char c) {
 	return isspace(c) && c != '\n';
 }

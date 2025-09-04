@@ -39,13 +39,13 @@ bool ns::var(CommandContext* pCtx, const std::string& name, const std::string& v
 		return false;
 	}
 
-	if (isdigit(name[0])) {
+	if (isdigit(static_cast<unsigned char>(name[0]))) {
 		ns::print(PrintLevel::ERROR, "Variable name can not contain digit in the beginning\n");
 		return  false;
 	}
 
 	for (size_t i = 0; i < name.size(); ++i) {
-		if (isspace(name[i])) {
+		if (isspace(static_cast<unsigned char>(name[i]))) {
 			ns::print(PrintLevel::ERROR, "Variable name can not contain whitespace\n");
 			return  false;
 		}

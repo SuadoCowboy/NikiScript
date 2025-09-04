@@ -60,5 +60,5 @@ namespace ns {
 	 * @return true if is space
 	 * @return false if is not space
 	 */
-	NS_API bool isSpaceNotNewline(char c);
+	NS_API bool isSpaceNotNewline(unsigned char c);
 }
