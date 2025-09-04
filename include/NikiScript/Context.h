@@ -46,7 +46,7 @@ namespace ns {
 		 */
 		template<typename T>
 		T getUnsigned(size_t index) {
-			return std::stoul(arguments[index]);
+			return static_cast<T>(std::stoul(arguments[index]));
 		}
 
 		/**
@@ -55,7 +55,7 @@ namespace ns {
 		 */
 		template<typename T>
 		T getSigned(size_t index) {
-			return T(std::stoi(arguments[index]));
+			return static_cast<T>(std::stoi(arguments[index]));
 		}
 
 #ifdef NS_ARGUMENTS_EXTRA
