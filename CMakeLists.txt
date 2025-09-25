@@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.10)
 project(NikiScript VERSION 0.0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
@@ -29,8 +31,6 @@ if(BUILD_SHARED)
 	target_compile_definitions(NikiScript PRIVATE NS_EXPORT=1)
 	if (MSVC)
 		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /wd4251") # ignore warning related to STL members on structures
-	else()
-		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC")
 	endif()
 else()
     add_library(NikiScript STATIC ${SOURCES})
