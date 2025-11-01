@@ -83,4 +83,20 @@ namespace ns {
 	NS_API void setInteger(CommandContext*, ProgramVariable* pVar, const std::string& str);
 	NS_API void setLong(CommandContext*, ProgramVariable* pVar, const std::string& str);
 	NS_API void setLongLong(CommandContext*, ProgramVariable* pVar, const std::string& str);
+
+	template<typename T, T bit>
+	void setBit(CommandContext*, ProgramVariable* pVar, const std::string& str) {
+		try {
+			if (std::stol(str) > 0) {
+				*static_cast<T*>(pVar->pValue) |= bit;
+			} else {
+				*static_cast<T*>(pVar->pValue) &= ~(bit);
+			}
+		} catch (...) {}
+	}
+
+	template<typename T, T bit>
+	std::string getBit(CommandContext*, ProgramVariable* pVar) {
+		return (*static_cast<T*>(pVar->pValue) & bit)? std::string("1") : std::string("0");
+	}
 }

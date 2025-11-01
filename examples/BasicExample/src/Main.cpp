@@ -51,6 +51,23 @@ static void crazy_command(ns::CommandContext* pCtx, void*) {
 }
 
 
+static float floatNumber = 0;
+static double doubleNumber = 0;
+static long double lDoubleNumber = 0;
+
+static int8_t int8 = 0;
+static int16_t int16 = 0;
+static int32_t int32 = 0;
+static int64_t int64 = 0;
+
+static uint8_t uint8 = 0;
+static uint16_t uint16 = 0;
+static uint32_t uint32 = 0;
+static unsigned long long uint64 = 0;
+
+static uint16_t bits = 0;
+
+
 void init(ns::Context& ctx) {
 	ns::registerCommands(&ctx);
 
@@ -59,40 +76,39 @@ void init(ns::Context& ctx) {
 	nsRegisterCommand(&ctx, "crazy", 0,1, crazy_command, "", "i[isCrazy?]", "");
 
 	// decimal numbers
-	float floatNumber = 0;
 	ns::registerVariable(&ctx, "float", "", &floatNumber, ns::getNumber<float>, ns::setFloat);
-
-	double doubleNumber = 0;
 	ns::registerVariable(&ctx, "double", "", &doubleNumber, ns::getNumber<double>, ns::setDouble);
-
-	long double lDoubleNumber = 0;
 	ns::registerVariable(&ctx, "ldouble", "", &lDoubleNumber, ns::getNumber<long double>, ns::setLongDouble);
 
 	// signed numbers
-	int8_t int8 = 0;
 	ns::registerVariable(&ctx, "int8", "", &int8, ns::getNumber<int8_t>, ns::setChar);
-
-	int16_t int16 = 0;
 	ns::registerVariable(&ctx, "int16", "", &int16, ns::getNumber<int16_t>, ns::setShort);
-
-	int32_t int32 = 0;
 	ns::registerVariable(&ctx, "int32", "", &int32, ns::getNumber<int32_t>, ns::setInteger);
-
-	int64_t int64 = 0;
 	ns::registerVariable(&ctx, "int64", "", &int64, ns::getNumber<int64_t>, ns::setLong);
 
 	// unsigned numbers
-	uint8_t uint8 = 0;
 	ns::registerVariable(&ctx, "uint8", "", &uint8, ns::getNumber<uint8_t>, ns::setUnsigned<uint8_t>);
-
-	uint16_t uint16 = 0;
 	ns::registerVariable(&ctx, "uint16", "", &uint16, ns::getNumber<uint16_t>, ns::setUnsigned<uint16_t>);
-
-	uint32_t uint32 = 0;
 	ns::registerVariable(&ctx, "uint32", "", &uint32, ns::getNumber<uint32_t>, ns::setUnsigned<uint32_t>);
-
-	unsigned long long uint64 = 0;
 	ns::registerVariable(&ctx, "uint64", "", &uint64, ns::getNumber<unsigned long long>, ns::setUnsignedLongLong);
+
+	// bits
+	ns::registerVariable(&ctx, "bit1", "", &bits, ns::getBit<uint16_t, 1>, ns::setBit<uint16_t, 1>);
+	ns::registerVariable(&ctx, "bit2", "", &bits, ns::getBit<uint16_t, 2>, ns::setBit<uint16_t, 2>);
+	ns::registerVariable(&ctx, "bit3", "", &bits, ns::getBit<uint16_t, 4>, ns::setBit<uint16_t, 4>);
+	ns::registerVariable(&ctx, "bit4", "", &bits, ns::getBit<uint16_t, 8>, ns::setBit<uint16_t, 8>);
+	ns::registerVariable(&ctx, "bit5", "", &bits, ns::getBit<uint16_t, 16>, ns::setBit<uint16_t, 16>);
+	ns::registerVariable(&ctx, "bit6", "", &bits, ns::getBit<uint16_t, 32>, ns::setBit<uint16_t, 32>);
+	ns::registerVariable(&ctx, "bit7", "", &bits, ns::getBit<uint16_t, 64>, ns::setBit<uint16_t, 64>);
+	ns::registerVariable(&ctx, "bit8", "", &bits, ns::getBit<uint16_t, 128>, ns::setBit<uint16_t, 128>);
+	ns::registerVariable(&ctx, "bit9", "", &bits, ns::getBit<uint16_t, 256>, ns::setBit<uint16_t, 256>);
+	ns::registerVariable(&ctx, "bit10", "", &bits, ns::getBit<uint16_t, 512>, ns::setBit<uint16_t, 512>);
+	ns::registerVariable(&ctx, "bit11", "", &bits, ns::getBit<uint16_t, 1024>, ns::setBit<uint16_t, 1024>);
+	ns::registerVariable(&ctx, "bit12", "", &bits, ns::getBit<uint16_t, 2048>, ns::setBit<uint16_t, 2048>);
+	ns::registerVariable(&ctx, "bit13", "", &bits, ns::getBit<uint16_t, 4096>, ns::setBit<uint16_t, 4096>);
+	ns::registerVariable(&ctx, "bit14", "", &bits, ns::getBit<uint16_t, 8192>, ns::setBit<uint16_t, 8192>);
+	ns::registerVariable(&ctx, "bit15", "", &bits, ns::getBit<uint16_t, 16384>, ns::setBit<uint16_t, 16384>);
+	ns::registerVariable(&ctx, "bit16", "", &bits, ns::getBit<uint16_t, 32768>, ns::setBit<uint16_t, 32768>);
 
 	char pName[16] = "nameless tee";
 	ns::registerVariable(&ctx, "name", "", pName, ns::getCharArray, ns::setCharArray<16>);
